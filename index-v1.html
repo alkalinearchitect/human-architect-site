@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Architect — Rebuild The Human System</title>
+<meta name="description" content="You are not broken. You are obstructed. Remove the interference. Restore the design. Master yourself.">
+<meta name="theme-color" content="#0d0a08">
+<meta property="og:title" content="Human Architect — Rebuild The Human System">
+<meta property="og:description" content="You are not broken. You are obstructed. Remove the interference. Restore the design. Master yourself.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0a08;--bg2:#14100c;--surface:#1c1814;
+  --paper:#f5efe6;--paper2:#c4b8a8;--paper3:#8a7f73;
+  --oxblood:#b54a2b;--oxblood-h:#d65a35;--oxblood-g:rgba(181,74,43,0.12);
+  --gold:#d4a853;--gold-g:rgba(212,168,83,0.1);
+  --border:rgba(245,239,230,0.08);--border2:rgba(245,239,230,0.18);
+  --r:6px;--r2:14px;--pill:9999px;
+  --serif:'Fraunces','Georgia',serif;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--paper);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;letter-spacing:-.01em;position:relative}
+/* Paper-grain noise overlay — gives the dark surface tactility */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.96 0 0 0 0 0.93 0 0 0 0 0.90 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:2;opacity:.55;mix-blend-mode:overlay}
+::selection{background:var(--oxblood-g);color:var(--oxblood-h)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;letter-spacing:-.04em;line-height:1.0}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input{font-family:inherit}
+.skip{position:absolute;left:-9999px;background:var(--oxblood);color:var(--paper);padding:10px 16px;border-radius:var(--r);font-size:13px;z-index:1000}
+.skip:focus{left:16px;top:16px}
+:focus-visible{outline:2px solid var(--oxblood);outline-offset:3px;border-radius:4px}
+
+/* CUSTOM CURSOR (desktop only) */
+@media(pointer:fine){
+  .cur{position:fixed;width:24px;height:24px;border:1.5px solid var(--paper2);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s ease,width .2s,height .2s,background .2s,border-color .2s;mix-blend-mode:difference}
+  .cur.hov{width:48px;height:48px;background:var(--paper);border-color:var(--paper)}
+  body{cursor:none}
+  a,button,input,.hover-grow{cursor:none}
+}
+
+/* Respect reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+  html{scroll-behavior:auto}
+}
+
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;background:rgba(13,10,8,0.7);backdrop-filter:saturate(140%) blur(28px);-webkit-backdrop-filter:saturate(140%) blur(28px);border-bottom:1px solid var(--border);transition:padding .3s,background .3s}
+.nav.scrolled{padding:10px 0;background:rgba(13,10,8,0.92)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--paper);text-decoration:none;letter-spacing:-.03em}
+.logo em{color:var(--oxblood);font-style:italic}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{color:var(--paper2);font-size:13px;font-weight:500;text-decoration:none;transition:color .2s;position:relative}
+.nav-links a:not(.nav-cta)::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--oxblood);transition:width .3s}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a:not(.nav-cta):hover::after{width:100%}
+.nav-cta{padding:8px 16px!important;border-radius:var(--pill);background:var(--oxblood)!important;color:var(--paper)!important;font-weight:600;font-size:12px!important;letter-spacing:.02em}
+.nav-cta:hover{background:var(--oxblood-h)!important}
+.burger{display:none;background:none;border:none;color:var(--paper);cursor:pointer;padding:6px;z-index:101}
+@media(max-width:900px){
+  .burger{display:block}
+  .nav-links{display:none}
+}
+/* Mobile overlay */
+.mobi{position:fixed;inset:0;background:var(--bg);z-index:99;padding:90px 28px 40px;flex-direction:column;justify-content:flex-start;opacity:0;transform:translateY(-10px);transition:opacity .3s,transform .3s;pointer-events:none;display:flex;gap:8px}
+.mobi.open{opacity:1;transform:translateY(0);pointer-events:auto}
+.mobi a{display:block;padding:18px 0;font-family:var(--serif);font-size:32px;font-weight:500;color:var(--paper);text-decoration:none;border-bottom:1px solid var(--border);letter-spacing:-.03em;opacity:0;transform:translateY(10px);transition:all .4s}
+.mobi.open a{opacity:1;transform:translateY(0)}
+.mobi.open a:nth-child(1){transition-delay:.05s}
+.mobi.open a:nth-child(2){transition-delay:.1s}
+.mobi.open a:nth-child(3){transition-delay:.15s}
+.mobi.open a:nth-child(4){transition-delay:.2s}
+.mobi.open a:nth-child(5){transition-delay:.25s}
+.mobi.open a:nth-child(6){transition-delay:.3s}
+.mobi.open a:nth-child(7){transition-delay:.35s}
+
+/* HERO */
+.hero{min-height:96vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:140px 28px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 30%,rgba(181,74,43,0.10) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 80% 70%,rgba(212,168,83,0.06) 0%,transparent 60%);pointer-events:none}
+.hc{position:relative;z-index:1;max-width:880px}
+.hero h1{font-size:clamp(2.6rem,8vw,5.4rem);margin-bottom:32px;line-height:0.95}
+.hero h1 .w{display:inline-block;opacity:0;transform:translateY(20px);filter:blur(8px);transition:all .8s cubic-bezier(.2,.7,.2,1)}
+.hero h1.go .w{opacity:1;transform:translateY(0);filter:blur(0)}
+.hero h1 .br{display:block;height:0}
+.hero h1 .morph{color:var(--oxblood);position:relative;display:inline-block;min-width:6ch}
+.hero h1 .morph span{display:inline-block;transition:all .5s cubic-bezier(.6,.2,.2,1)}
+.hero h1 .morph span.out{opacity:0;transform:translateY(-12px);filter:blur(6px)}
+.hero h1 .morph span.in{opacity:0;transform:translateY(12px);filter:blur(6px)}
+.hero p{font-size:clamp(1rem,1.4vw,1.1rem);color:var(--paper2);max-width:560px;margin:0 auto 44px;line-height:1.7;font-weight:400}
+.ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.scroll-cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:var(--paper3);font-size:11px;letter-spacing:.2em;text-transform:uppercase;animation:bob 2.4s ease-in-out infinite}
+.scroll-cue svg{margin:8px auto 0;display:block;width:14px;height:14px;stroke:var(--paper3);fill:none;stroke-width:1.5}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;border:none;text-decoration:none;letter-spacing:.01em;position:relative;overflow:hidden}
+.btn::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.06);transform:translateY(100%);transition:transform .3s}
+.btn:hover::after{transform:translateY(0)}
+.btn span{position:relative;z-index:1}
+.bp{background:var(--oxblood);color:var(--paper)}
+.bp:hover{background:var(--oxblood-h)}
+.bg{background:rgba(245,239,230,0.04);color:var(--paper2);border:1px solid var(--border)}
+.bg:hover{background:rgba(245,239,230,0.07);border-color:var(--border2);color:var(--paper)}
+.bo{background:transparent;color:var(--oxblood);border:1px solid rgba(181,74,43,0.4)}
+.bo:hover{background:var(--oxblood-g);border-color:var(--oxblood)}
+.bs{padding:9px 16px;font-size:12px}
+
+/* MARQUEE */
+.marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;background:var(--bg2);position:relative}
+.marquee::before,.marquee::after{content:'';position:absolute;top:0;width:120px;height:100%;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(to right,var(--bg2),transparent)}
+.marquee::after{right:0;background:linear-gradient(to left,var(--bg2),transparent)}
+.mtrack{display:flex;gap:32px;animation:scroll 38s linear infinite;width:max-content}
+.marquee:hover .mtrack{animation-play-state:paused}
+.mitem{font-family:var(--serif);font-size:16px;color:var(--paper2);font-style:italic;letter-spacing:-.02em;font-weight:400;white-space:nowrap;display:flex;align-items:center;gap:32px}
+.mitem::after{content:'·';color:var(--oxblood);margin-left:0}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.sec{padding:140px 0}
+.sec-tight{padding:90px 0}
+.sec2{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+.sh{text-align:center;margin-bottom:64px;max-width:560px;margin-left:auto;margin-right:auto}
+.sh .eyebrow{font-size:11px;color:var(--oxblood);font-weight:600;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;display:block}
+.sh h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:14px}
+.sh p{font-size:15px;color:var(--paper3);line-height:1.7}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;padding:60px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);gap:48px 24px}}
+.stat .num{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:500;color:var(--oxblood);line-height:1;margin-bottom:8px;letter-spacing:-.04em}
+.stat .num.gold{color:var(--gold)}
+.stat .label{font-size:10px;color:var(--paper3);text-transform:uppercase;letter-spacing:.25em;font-weight:600}
+
+/* FOUNDER */
+.founder{display:grid;grid-template-columns:160px 1fr;gap:48px;align-items:start;max-width:780px;margin:0 auto}
+@media(max-width:580px){.founder{grid-template-columns:1fr;gap:24px;text-align:center;justify-items:center}}
+.founder-img{width:160px;height:160px;border-radius:50%;overflow:hidden;border:2px solid var(--oxblood-g);background:var(--surface);box-shadow:0 0 0 6px rgba(181,74,43,0.05)}
+.founder-img img{width:100%;height:100%;object-fit:cover;display:block}
+.founder-img-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:48px;color:var(--oxblood);background:var(--surface)}
+.founder h3{font-size:28px;margin-bottom:6px}
+.founder .role{font-size:11px;color:var(--oxblood);font-weight:600;text-transform:uppercase;letter-spacing:.25em;margin-bottom:20px}
+.founder p{color:var(--paper2);font-size:15px;line-height:1.8;margin-bottom:14px}
+
+/* MANIFESTO */
+.manifesto{text-align:center;max-width:760px;margin:0 auto}
+.manifesto blockquote{font-family:var(--serif);font-size:clamp(1.4rem,3.4vw,2rem);color:var(--paper);line-height:1.35;margin-bottom:24px;font-weight:300;font-style:italic;letter-spacing:-.02em}
+.manifesto blockquote em{color:var(--oxblood);font-style:italic;font-weight:500}
+.manifesto cite{color:var(--paper3);font-size:13px;font-style:normal;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
+
+/* PILLARS */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:820px){.pgrid{grid-template-columns:1fr}}
+.pc{background:linear-gradient(135deg,rgba(245,239,230,0.025),rgba(245,239,230,0.005));border:1px solid var(--border);border-radius:var(--r2);padding:44px 32px;text-align:left;transition:all .35s;position:relative;overflow:hidden}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--oxblood),transparent);opacity:0;transition:opacity .35s}
+.pc:hover{background:linear-gradient(135deg,rgba(245,239,230,0.05),rgba(245,239,230,0.01));border-color:var(--border2);transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,0,0,0.4)}
+.pc:hover::before{opacity:1}
+.pc .icon{width:56px;height:56px;margin-bottom:24px;border-radius:var(--r);background:var(--oxblood-g);display:flex;align-items:center;justify-content:center}
+.pc .icon svg{width:28px;height:28px;stroke:var(--oxblood);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pc h3{font-size:22px;margin-bottom:12px;font-weight:500}
+.pc p{font-size:14px;color:var(--paper3);line-height:1.75}
+.pc .num{position:absolute;top:24px;right:28px;font-family:var(--serif);font-size:14px;color:var(--paper3);letter-spacing:.1em}
+
+/* STICKY DEEP-DIVE */
+.deep{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;max-width:1100px;margin:0 auto}
+@media(max-width:900px){.deep{grid-template-columns:1fr;gap:40px}}
+.deep-l{position:sticky;top:100px}
+.deep-l .eyebrow{font-size:11px;color:var(--oxblood);font-weight:600;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;display:block}
+.deep-l h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:20px;line-height:1.05}
+.deep-l p{color:var(--paper2);line-height:1.8;font-size:15px}
+.deep-r{display:flex;flex-direction:column;gap:40px}
+.deep-card{background:rgba(245,239,230,0.02);border:1px solid var(--border);border-radius:var(--r2);padding:32px;transition:all .3s}
+.deep-card:hover{border-color:var(--border2);background:rgba(245,239,230,0.04)}
+.deep-card .step{font-family:var(--serif);font-size:13px;color:var(--oxblood);letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.deep-card h3{font-size:20px;margin-bottom:10px;font-weight:500}
+.deep-card p{color:var(--paper3);font-size:14px;line-height:1.75}
+
+/* BOOK MARQUEE — visual ticker of book covers */
+.bmar{overflow:hidden;padding:24px 0;position:relative}
+.bmar::before,.bmar::after{content:'';position:absolute;top:0;width:160px;height:100%;z-index:2;pointer-events:none}
+.bmar::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.bmar::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.bmar-track{display:flex;gap:24px;animation:scroll 60s linear infinite;width:max-content}
+.bmar:hover .bmar-track{animation-play-state:paused}
+.bmar-cover{flex:0 0 auto;width:140px;aspect-ratio:2/3;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--surface);transition:transform .3s,border-color .3s}
+.bmar-cover:hover{transform:translateY(-6px) scale(1.04);border-color:var(--oxblood)}
+.bmar-cover img{width:100%;height:100%;object-fit:cover}
+.bmar-cover-fb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--paper3);font-size:18px}
+
+/* BOOK GRID */
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:920px){.bgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.bgrid{grid-template-columns:1fr}}
+.bc{background:rgba(245,239,230,0.02);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .35s;text-decoration:none;color:inherit;display:block}
+.bc:hover{border-color:var(--oxblood);transform:translateY(-6px);box-shadow:0 16px 50px rgba(181,74,43,0.1)}
+.bcv{width:100%;aspect-ratio:2/3;overflow:hidden;background:var(--surface);position:relative}
+.bcv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.bc:hover .bcv img{transform:scale(1.06)}
+.bcv-fb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:32px;color:var(--paper3)}
+.badge-new{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--bg);font-size:9px;font-weight:700;padding:5px 10px;border-radius:var(--pill);letter-spacing:.1em;text-transform:uppercase;z-index:2}
+.bi{padding:24px}
+.bi h3{font-size:18px;margin-bottom:6px;font-weight:500}
+.bi .tag{font-size:10px;color:var(--oxblood);font-weight:600;margin-bottom:12px;text-transform:uppercase;letter-spacing:.2em}
+.bi p{font-size:13px;color:var(--paper3);line-height:1.7;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.bth{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.bth span{font-size:9px;padding:3px 9px;border-radius:var(--pill);background:var(--oxblood-g);color:var(--oxblood-h);font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+
+/* PROTOCOLS */
+.protog{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:640px){.protog{grid-template-columns:1fr}}
+.protoc{background:rgba(245,239,230,0.02);border:1px solid var(--border);border-radius:var(--r2);padding:32px;transition:all .25s}
+.protoc:hover{border-color:var(--border2);background:rgba(245,239,230,0.04)}
+.protoc .icon{width:48px;height:48px;margin-bottom:20px;border-radius:var(--r);background:var(--gold-g);display:flex;align-items:center;justify-content:center}
+.protoc .icon svg{width:22px;height:22px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round}
+.protoc h3{font-size:17px;margin-bottom:10px;font-weight:500}
+.protoc p{font-size:13px;color:var(--paper3);line-height:1.7}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:820px){.tgrid{grid-template-columns:1fr}}
+.tcard{background:rgba(245,239,230,0.02);border:1px solid var(--border);border-radius:var(--r2);padding:32px;transition:all .25s}
+.tcard:hover{border-color:var(--border2)}
+.tcard .qmark{font-family:var(--serif);font-size:48px;color:var(--oxblood);line-height:.7;margin-bottom:10px;font-weight:300}
+.tcard p{color:var(--paper2);font-size:15px;line-height:1.75;margin-bottom:24px;font-family:var(--serif);font-style:italic;font-weight:300}
+.tcard .author{font-size:12px;color:var(--paper3);font-weight:600;letter-spacing:.05em}
+.tcard .author span{color:var(--oxblood);font-weight:400}
+
+/* CTA */
+.cta-box{text-align:center;padding:80px 48px;background:linear-gradient(135deg,rgba(181,74,43,0.10),rgba(212,168,83,0.04));border-radius:var(--r2);border:1px solid rgba(181,74,43,0.18);box-shadow:0 8px 60px rgba(181,74,43,0.06)}
+.cta-box h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:18px}
+.cta-box h2 em{color:var(--oxblood);font-style:italic;font-weight:700}
+.cta-box p{color:var(--paper2);line-height:1.8;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;font-size:15px}
+
+/* NEWSLETTER */
+.nl-box{text-align:center;max-width:560px;margin:0 auto}
+.nl-box h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px}
+.nl-box h2 em{color:var(--oxblood);font-style:italic}
+.nl-box p{color:var(--paper3);line-height:1.7;margin-bottom:28px;font-size:15px}
+.nl-embed{background:rgba(245,239,230,0.02);border:1px solid var(--border);border-radius:var(--r2);padding:8px;overflow:hidden}
+.nl-embed iframe{width:100%;border:none;background:transparent;min-height:120px}
+.nl-direct{margin-top:16px;font-size:12px;color:var(--paper3)}
+.nl-direct a{color:var(--paper2);border-bottom:1px solid var(--border2);transition:color .2s,border-color .2s;text-decoration:none}
+.nl-direct a:hover{color:var(--oxblood);border-color:var(--oxblood)}
+
+/* DISCLAIMER — muted, not error */
+.disc{padding:20px 24px;margin:48px auto;max-width:780px;background:rgba(245,239,230,0.025);border:1px solid var(--border);border-radius:var(--r);font-size:12px;color:var(--paper3);line-height:1.7;display:flex;gap:14px;align-items:flex-start}
+.disc svg{flex:0 0 16px;width:16px;height:16px;stroke:var(--paper3);fill:none;stroke-width:1.5;margin-top:2px}
+.disc strong{color:var(--paper2);font-weight:600;display:block;margin-bottom:4px;letter-spacing:.05em;font-size:11px;text-transform:uppercase}
+
+/* FOOTER */
+.footer{padding:80px 0 32px;border-top:1px solid var(--border);background:var(--bg2)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+@media(max-width:780px){.fg{grid-template-columns:1fr 1fr}}
+.fbrand{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--paper);margin-bottom:12px;letter-spacing:-.03em}
+.fbrand em{color:var(--oxblood);font-style:italic}
+.fdesc{font-size:13px;color:var(--paper3);line-height:1.8;max-width:300px}
+.footer h4{font-size:10px;text-transform:uppercase;letter-spacing:.25em;color:var(--paper3);margin-bottom:18px;font-weight:600}
+.flinks{list-style:none}
+.flinks li{margin-bottom:8px}
+.flinks a{color:var(--paper2);font-size:13px;text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--oxblood)}
+.fb{display:flex;justify-content:space-between;padding-top:28px;border-top:1px solid var(--border);font-size:11px;color:var(--paper3);letter-spacing:.05em}
+.fb em{color:var(--oxblood);font-style:italic;font-family:var(--serif)}
+@media(max-width:540px){.fb{flex-direction:column;gap:12px;text-align:center}}
+
+/* Closing mark */
+.close-mark{text-align:center;padding:0 0 60px;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--paper3);letter-spacing:.05em}
+.close-mark::before,.close-mark::after{content:'—';color:var(--oxblood);margin:0 12px}
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<div class="cur" id="cur" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="logo">Human <em>Architect</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#protocols">Protocols</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#books" class="nav-cta">Start Now</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+<nav class="mobi" id="mobi" aria-hidden="true">
+  <a href="#about">About</a>
+  <a href="#books">Books</a>
+  <a href="#philosophy">Philosophy</a>
+  <a href="#protocols">Protocols</a>
+  <a href="#newsletter">Newsletter</a>
+  <a href="#contact">Contact</a>
+  <a href="#books" style="color:var(--oxblood)">Start Now →</a>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hc">
+    <h1 id="hero-h1">
+      <span class="w">You</span>
+      <span class="w">Are</span>
+      <span class="w">Not</span>
+      <span class="w morph" id="morph">Broken.</span>
+      <span class="br"></span>
+      <span class="w">Remove</span>
+      <span class="w">the</span>
+      <span class="w" style="color:var(--oxblood);font-style:italic">Interference.</span>
+    </h1>
+    <p>Your body was designed to work. When it does not, the problem is not the design — it is the obstruction. Detoxify. Rebuild. Master yourself.</p>
+    <div class="ctas">
+      <a href="#books" class="btn bp hover-grow"><span>Explore The Books</span></a>
+      <a href="#philosophy" class="btn bg hover-grow"><span>Read The Philosophy</span></a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+</section>
+
+<!-- MARQUEE TICKER -->
+<div class="marquee" aria-hidden="true">
+  <div class="mtrack">
+    <span class="mitem">Detoxify</span><span class="mitem">Rebuild</span><span class="mitem">Master</span><span class="mitem">Sovereignty</span><span class="mitem">Discipline</span><span class="mitem">Terrain</span><span class="mitem">Body</span><span class="mitem">Mind</span><span class="mitem">Lifestyle</span>
+    <span class="mitem">Detoxify</span><span class="mitem">Rebuild</span><span class="mitem">Master</span><span class="mitem">Sovereignty</span><span class="mitem">Discipline</span><span class="mitem">Terrain</span><span class="mitem">Body</span><span class="mitem">Mind</span><span class="mitem">Lifestyle</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="num" data-target="5">0</div><div class="label">Books Published</div></div>
+      <div class="stat"><div class="num gold" data-target="840" data-suffix="+">0</div><div class="label">Total Pages</div></div>
+      <div class="stat"><div class="num" data-target="125">0</div><div class="label">Recipes</div></div>
+      <div class="stat"><div class="num gold" data-target="7">0</div><div class="label">Core Protocols</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="sec sec2" id="about">
+  <div class="wrap">
+    <div class="manifesto reveal">
+      <blockquote>The body is architecture. The mind is software. Food is information. Habits are code. Detoxification is the removal of interference. <em>Self-mastery is freedom.</em></blockquote>
+      <cite>Tyson Architect</cite>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="eyebrow">The Founder</span>
+      <h2>One man. One mission.</h2>
+    </div>
+    <div class="founder reveal">
+      <div class="founder-img">
+        <img src="public/founder.png" alt="Tyson Architect" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=&quot;founder-img-fallback&quot;>TA</div>'">
+      </div>
+      <div>
+        <h3>Tyson Architect</h3>
+        <div class="role">Founder, Human Architect</div>
+        <p>I spent years doing everything right. Clean diet. Training 5 days a week. Supplements that cost more than my rent. I still felt like shit. Not all the time. Just enough to know something was wrong.</p>
+        <p>Then I stopped looking at symptoms and started looking at the system. The body is not broken. It is obstructed. Every toxin you eliminate is a signal restored. Every habit you rebuild is a line of code rewritten.</p>
+        <p>I wrote these books so you do not have to spend years figuring out what I learned the hard way. The protocols work. The philosophy is sound. The only variable is you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="sec sec2" id="philosophy">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="eyebrow">The Framework</span>
+      <h2>Three Pillars</h2>
+      <p>Rebuild your body, mind, and lifestyle from the ground up.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pc reveal">
+        <span class="num">01</span>
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2.5c-3.5 5-6 8.5-6 12a6 6 0 0 0 12 0c0-3.5-2.5-7-6-12z"/><path d="M9 14a3 3 0 0 0 3 3"/></svg></div>
+        <h3>Detoxify</h3>
+        <p>Remove the interference. Clear the terrain. Your body is not broken — it is overloaded. Every toxin eliminated is a signal restored. Mucusless diet. Fruit cleansing. Tongue coating. Hydration first.</p>
+      </div>
+      <div class="pc reveal">
+        <span class="num">02</span>
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="6" y1="8" x2="12" y2="12"/><line x1="18" y1="8" x2="12" y2="12"/><line x1="6" y1="16" x2="12" y2="12"/><line x1="18" y1="16" x2="12" y2="12"/></svg></div>
+        <h3>Rebuild</h3>
+        <p>Restore circulation, elimination, and regeneration. The body knows how to heal — you just need to stop blocking it. Morning lemon water. Dry brushing. Cold exposure. Movement every 45 minutes.</p>
+      </div>
+      <div class="pc reveal">
+        <span class="num">03</span>
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><line x1="10.83" y1="12.17" x2="20" y2="3"/><line x1="16" y1="7" x2="20" y2="7"/><line x1="16" y1="11" x2="20" y2="11"/></svg></div>
+        <h3>Master Yourself</h3>
+        <p>Discipline is freedom. Habits are code. Your lifestyle is the operating system. Most people don't need more motivation — they need a cleaner system. Fruit before noon. Big salads. No dairy. Sauna when possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY DEEP DIVE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="deep">
+      <div class="deep-l reveal">
+        <span class="eyebrow">The Method</span>
+        <h2>A protocol, not a program.</h2>
+        <p>Programs end. Protocols become you. Every step in the Human Architect method is permanent — once it's integrated, you don't go back. You don't relapse from removing what was killing you.</p>
+      </div>
+      <div class="deep-r">
+        <div class="deep-card reveal">
+          <div class="step">Step 01</div>
+          <h3>Audit the inputs.</h3>
+          <p>Everything you eat, drink, breathe, see, scroll, and listen to is an input. Inputs become outputs. Inputs become you. Most people audit their bank account but never their bloodstream.</p>
+        </div>
+        <div class="deep-card reveal">
+          <div class="step">Step 02</div>
+          <h3>Remove the interference.</h3>
+          <p>Mucus. Parasites. Heavy metals. Seed oils. Bad relationships. Bad media. Bad self-talk. None of these belong in a healthy system. Remove them in that order.</p>
+        </div>
+        <div class="deep-card reveal">
+          <div class="step">Step 03</div>
+          <h3>Rebuild the architecture.</h3>
+          <p>Sleep. Sun. Movement. Fresh fruit. Cold water. Hot sauna. Strength training. Time outside. Time without a screen. Daily protocols, until they're no longer protocols — just how you live.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK MARQUEE -->
+<section class="sec-tight" style="padding-top:60px;padding-bottom:20px">
+  <div class="bmar" aria-hidden="true">
+    <div class="bmar-track">
+      <div class="bmar-cover"><img src="public/books/intelligent-design.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>ID</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/alkaline-awakening.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>AA</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/parasite-conspiracy.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>PC</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/life-force-energy.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>LFE</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/quit-prn-manual.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>QP</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/intelligent-design.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>ID</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/alkaline-awakening.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>AA</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/parasite-conspiracy.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>PC</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/life-force-energy.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>LFE</div>'"></div>
+      <div class="bmar-cover"><img src="public/books/quit-prn-manual.png" alt="" onerror="this.parentElement.innerHTML='<div class=&quot;bmar-cover-fb&quot;>QP</div>'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS GRID -->
+<section class="sec" id="books" style="padding-top:60px">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="eyebrow">The Library</span>
+      <h2>Five manuals for the rebuild.</h2>
+      <p>Written from experience, not theory. Pick the one that meets you where you are.</p>
+    </div>
+    <div class="bgrid">
+
+      <a href="#book-id" class="bc reveal">
+        <div class="bcv"><img src="public/books/intelligent-design.png" alt="Intelligent Design book cover" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;bcv-fb&quot;>ID</div>'"></div>
+        <div class="bi">
+          <h3>Intelligent Design</h3>
+          <div class="tag">The Architecture of Creation</div>
+          <p>Proving the existence of intelligent design through the complexity of nature. 204 pages of evidence that life reflects engineering, not accident.</p>
+          <div class="bth"><span>Design</span><span>Intelligence</span><span>Creation</span></div>
+          <span class="btn bs bo"><span>Preview Book →</span></span>
+        </div>
+      </a>
+
+      <a href="#book-aa" class="bc reveal">
+        <div class="bcv"><img src="public/books/alkaline-awakening.png" alt="Alkaline Awakening book cover" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;bcv-fb&quot;>AA</div>'"></div>
+        <div class="bi">
+          <h3>Alkaline Awakening</h3>
+          <div class="tag">Detoxification · Terrain · Circulation</div>
+          <p>Raw food, alkalinity, detoxification, energy, discipline. 357 pages with 125+ wholesome recipes and the complete Alkaline Architect protocol.</p>
+          <div class="bth"><span>Detox</span><span>Raw Food</span><span>Recipes</span></div>
+          <span class="btn bs bo"><span>Preview Book →</span></span>
+        </div>
+      </a>
+
+      <a href="#book-pc" class="bc reveal">
+        <div class="bcv"><img src="public/books/parasite-conspiracy.png" alt="Parasite Conspiracy book cover" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;bcv-fb&quot;>PC</div>'"></div>
+        <div class="bi">
+          <h3>Parasite Conspiracy</h3>
+          <div class="tag">Hidden Burdens · Awareness</div>
+          <p>Investigative exploration of hidden biological, environmental, and lifestyle burdens. The protocols to cleanse your body and reclaim sovereignty.</p>
+          <div class="bth"><span>Parasites</span><span>Detox</span><span>Protocols</span></div>
+          <span class="btn bs bo"><span>Preview Book →</span></span>
+        </div>
+      </a>
+
+      <a href="#book-lfe" class="bc reveal">
+        <div class="bcv">
+          <img src="public/books/life-force-energy.png" alt="Life Force Energy book cover" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;bcv-fb&quot;>LFE</div>'">
+          <span class="badge-new">New</span>
+        </div>
+        <div class="bi">
+          <h3>Life Force Energy</h3>
+          <div class="tag">Retention · Discipline · Sovereignty</div>
+          <p>Self-mastery, sexual energy, focus, presence. 163 pages on redirecting instinct into purpose and consolidating your vital power.</p>
+          <div class="bth"><span>Retention</span><span>Energy</span><span>Discipline</span></div>
+          <span class="btn bs bo"><span>Preview Book →</span></span>
+        </div>
+      </a>
+
+      <a href="#book-qp" class="bc reveal">
+        <div class="bcv"><img src="public/books/quit-prn-manual.png" alt="Quit PRN Manual book cover" loading="lazy" onerror="this.parentElement.innerHTML='<div class=&quot;bcv-fb&quot;>QP</div>'"></div>
+        <div class="bi">
+          <h3>Quit PRN Manual</h3>
+          <div class="tag">Recovery · Reboot · Freedom</div>
+          <p>The direct, no-excuses guide to breaking free from porn addiction. Weak men seek constant release. Strong men understand strategic conservation.</p>
+          <div class="bth"><span>Recovery</span><span>Discipline</span><span>Freedom</span></div>
+          <span class="btn bs bo"><span>Preview Book →</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROTOCOLS -->
+<section class="sec sec2" id="protocols">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="eyebrow">Daily Practice</span>
+      <h2>Seven foundational protocols.</h2>
+      <p>Start with these. Build the rest on top.</p>
+    </div>
+    <div class="protog">
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2.5c-3.5 5-6 8.5-6 12a6 6 0 0 0 12 0c0-3.5-2.5-7-6-12z"/></svg></div>
+        <h3>Hydration First</h3>
+        <p>One litre of room-temp lemon water before food. Hydration is the prerequisite for elimination. No coffee until you're hydrated.</p>
+      </div>
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M5 8c0-3 3-5 7-5s7 2 7 5"/><path d="M5 16c0 3 3 5 7 5s7-2 7-5"/><line x1="5" y1="8" x2="5" y2="16"/><line x1="19" y1="8" x2="19" y2="16"/></svg></div>
+        <h3>Tongue Coating Test</h3>
+        <p>Look at your tongue in the morning before water. White, yellow, or fuzzy = the system is overloaded. The tongue is the mirror of digestion.</p>
+      </div>
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><line x1="4" y1="20" x2="20" y2="4"/><line x1="8" y1="20" x2="20" y2="8"/><line x1="12" y1="20" x2="20" y2="12"/></svg></div>
+        <h3>Dry Brushing</h3>
+        <p>Five minutes before showering, dry-brush toward the heart. Lymph stimulation, dead-skin removal, circulation boost. Daily, no exceptions.</p>
+      </div>
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div>
+        <h3>Fruit Before Noon</h3>
+        <p>Fast-digesting fruit only until midday. Easy to digest, energy-dense, naturally fasted. Build the morning around motion and fruit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sh reveal">
+      <span class="eyebrow">Reader Voices</span>
+      <h2>What men are saying.</h2>
+    </div>
+    <div class="tgrid">
+      <div class="tcard reveal">
+        <div class="qmark">"</div>
+        <p>Three weeks in and I have more energy than I did in my twenties. The tongue test alone was a wake-up call. The rest is showing up.</p>
+        <div class="author">Jordan M. <span>· UK</span></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="qmark">"</div>
+        <p>I tried every supplement stack on the internet. This is the first thing that actually addressed the cause instead of the symptom.</p>
+        <div class="author">Marcus T. <span>· USA</span></div>
+      </div>
+      <div class="tcard reveal">
+        <div class="qmark">"</div>
+        <p>No bullshit. No upsell. Just a system that works if you work it. The Quit PRN manual saved my marriage.</p>
+        <div class="author">Anonymous Reader <span>· DE</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG CTA -->
+<section class="sec sec2">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2>Ready to <em>Rebuild</em>?</h2>
+      <p>For men ready to take responsibility for their body, habits, environment, and discipline. Not for everyone. For the few who refuse to decay quietly.</p>
+      <div class="ctas">
+        <a href="#books" class="btn bp hover-grow"><span>Explore The Books</span></a>
+        <a href="#protocols" class="btn bg hover-grow"><span>Read The Protocols</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="sec" id="newsletter">
+  <div class="wrap">
+    <div class="nl-box reveal">
+      <span class="eyebrow" style="display:block;font-size:11px;color:var(--oxblood);font-weight:600;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px">The Letters</span>
+      <h2>Join the <em>signal</em>.</h2>
+      <p>Weekly reflections on detoxification, discipline, body intelligence, and the architecture of human transformation. No spam. No upsells.</p>
+      <div class="nl-embed">
+        <iframe src="https://humanarchitect8.substack.com/embed" frameborder="0" scrolling="no" title="Subscribe to Human Architect on Substack"></iframe>
+      </div>
+      <p class="nl-direct">Or read past letters on <a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener noreferrer">Substack →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="wrap">
+  <div class="disc">
+    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div>
+      <strong>Health Disclaimer</strong>
+      This content is for education and personal development only. It does not constitute medical advice, diagnosis, or treatment. Consult a qualified healthcare professional before making major changes to your diet, lifestyle, supplements, or health practices.
+    </div>
+  </div>
+</div>
+
+</main>
+
+<div class="close-mark">Remove the interference</div>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <div class="fbrand">Human <em>Architect</em></div>
+        <p class="fdesc">A body, mind, and lifestyle philosophy for those ready to detoxify their environment, master their habits, and return to their original design.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="flinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#books">Books</a></li>
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#protocols">Protocols</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul class="flinks">
+          <li><a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener noreferrer">Substack</a></li>
+          <li><a href="https://instagram.com/humanarchitect_" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="mailto:humanarchitect@protonmail.com">Email</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="flinks">
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fb">
+      <span>&copy; 2026 Human Architect · <em>Master Yourself</em></span>
+      <span>Built by hand. No tracking. No bullshit.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Nav scroll state
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40)},{passive:true});
+
+  // Mobile menu
+  var burger=document.getElementById('burger'), mobi=document.getElementById('mobi');
+  burger.addEventListener('click',function(){
+    var open=mobi.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+    mobi.setAttribute('aria-hidden',!open);
+    document.body.style.overflow=open?'hidden':'';
+  });
+  mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+    mobi.classList.remove('open');burger.setAttribute('aria-expanded','false');mobi.setAttribute('aria-hidden','true');document.body.style.overflow='';
+  })});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&mobi.classList.contains('open')){
+      mobi.classList.remove('open');burger.setAttribute('aria-expanded','false');mobi.setAttribute('aria-hidden','true');document.body.style.overflow='';
+    }
+  });
+
+  // Hero word stagger reveal
+  var h1=document.getElementById('hero-h1');
+  if(!reduce){
+    var words=h1.querySelectorAll('.w');
+    setTimeout(function(){h1.classList.add('go')},120);
+    words.forEach(function(w,i){w.style.transitionDelay=(i*0.08)+'s'});
+  }else{
+    h1.classList.add('go');
+  }
+
+  // Morphing word: Broken → Obstructed → Asleep → (loop)
+  var morphEl=document.getElementById('morph');
+  var alternatives=['Broken.','Obstructed.','Asleep.'];
+  var idx=0;
+  function morph(){
+    if(reduce)return;
+    idx=(idx+1)%alternatives.length;
+    var span=document.createElement('span');
+    span.textContent=alternatives[idx];
+    span.className='in';
+    var oldText=morphEl.textContent;
+    var oldSpan=document.createElement('span');
+    oldSpan.textContent=oldText;
+    morphEl.textContent='';
+    morphEl.appendChild(oldSpan);
+    morphEl.appendChild(span);
+    requestAnimationFrame(function(){
+      oldSpan.classList.add('out');
+      requestAnimationFrame(function(){span.classList.remove('in')});
+      setTimeout(function(){morphEl.textContent=alternatives[idx]},520);
+    });
+  }
+  if(!reduce){setTimeout(function(){setInterval(morph,3200)},1600)}
+
+  // Reveal-on-scroll
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // Stagger children inside .pgrid / .bgrid / .protog / .tgrid / .deep-r
+        var children=e.target.querySelectorAll(':scope > *');
+        // If element is itself a card, no children to stagger
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+
+  // Smooth-scroll anchors
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(this.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+    });
+  });
+
+  // Stat count-up
+  function easeOutQuart(t){return 1-Math.pow(1-t,4)}
+  function countUp(el){
+    var target=parseInt(el.dataset.target,10);
+    var suffix=el.dataset.suffix||'';
+    var start=performance.now();
+    var duration=1600;
+    function tick(now){
+      var p=Math.min(1,(now-start)/duration);
+      el.textContent=Math.round(target*easeOutQuart(p))+suffix;
+      if(p<1)requestAnimationFrame(tick);
+    }
+    if(reduce){el.textContent=target+suffix;return}
+    requestAnimationFrame(tick);
+  }
+  var statIo=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.num[data-target]').forEach(countUp);
+        statIo.unobserve(e.target);
+      }
+    });
+  },{threshold:0.4});
+  document.querySelectorAll('.stats').forEach(function(el){statIo.observe(el)});
+
+  // Custom cursor (desktop fine-pointer only)
+  if(window.matchMedia('(pointer: fine)').matches && !reduce){
+    var cur=document.getElementById('cur');
+    var x=window.innerWidth/2,y=window.innerHeight/2,tx=x,ty=y;
+    document.addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY},{passive:true});
+    function frame(){x+=(tx-x)*0.22;y+=(ty-y)*0.22;cur.style.left=x+'px';cur.style.top=y+'px';requestAnimationFrame(frame)}
+    frame();
+    document.querySelectorAll('a,button,input,.hover-grow,.bc,.pc,.bmar-cover,.deep-card').forEach(function(el){
+      el.addEventListener('mouseenter',function(){cur.classList.add('hov')});
+      el.addEventListener('mouseleave',function(){cur.classList.remove('hov')});
+    });
+    document.addEventListener('mouseleave',function(){cur.style.opacity='0'});
+    document.addEventListener('mouseenter',function(){cur.style.opacity='1'});
+  }
+})();
+</script>
+</body>
+</html>

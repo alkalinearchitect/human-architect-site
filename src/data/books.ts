@@ -17,7 +17,7 @@ export const books: Book[] = [
     title: 'Intelligent Design',
     slug: 'intelligent-design',
     tagline: 'The Architecture of Creation',
-    description: 'A provocative exploration of human architecture, nature, complexity, consciousness, and the argument that life reflects intelligence rather than accident. This book examines the design principles embedded in human anatomy and asks: what does the structure of the body tell us about intelligence, pattern, and the nature of biological order?',
+    description: 'What if evolution cannot explain the irreducible complexity of the human eye, the blood clotting cascade, or the bacterial flagellum? This 204-page investigation dismantles the accident narrative and builds an airtight case that life was engineered — not by chance, but by intelligence. Written by Tyson Murray from years of obsessive research, not religious dogma. If you have ever felt in your bones that you are not a cosmic mistake, this book gives you the evidence. Stop believing you are random. Start understanding you are designed.',
     whoFor: [
       'Thinkers who question the narrative of random chance',
       'Anyone fascinated by the intersection of science and philosophy',
@@ -33,7 +33,7 @@ export const books: Book[] = [
     title: 'Alkaline Awakening',
     slug: 'alkaline-awakening',
     tagline: 'Detoxification. Terrain. Circulation. Regeneration.',
-    description: 'A deep guide to raw food, alkalinity, detoxification, energy, discipline, purification, and reconnecting with the intelligence of the body. Your body is not random — it is architecture. And like any architecture, it can be understood, maintained, and redesigned.',
+    description: 'You have tried every diet. You eat clean, train hard, and still feel like your body is running on 60 percent. This 357-page manual is the complete Alkaline Architect protocol — raw food, mucusless eating, fruit cleansing, circulation work, and 125+ recipes that actually taste good. I wrote this because I was that guy spending a fortune on supplements while my internal terrain was a swamp. Clear the terrain. The body knows how to heal when you stop poisoning it. Your energy, clarity, and digestion will never be the same.',
     whoFor: [
       'People who have tried every diet and still feel something is wrong',
       'Those seeking a deeper understanding of internal terrain',
@@ -49,7 +49,7 @@ export const books: Book[] = [
     title: 'Life Force Energy',
     slug: 'life-force-energy',
     tagline: 'Discipline. Energy. Presence. Sovereignty.',
-    description: 'A self-mastery text exploring discipline, sexual energy, focus, presence, and the redirection of instinct into purpose. This is not a book about suppression — it is about transformation. Taking the raw energy of human instinct and directing it toward creation, discipline, and sovereignty.',
+    description: 'Every time you release your seed, you are not relieving pressure. You are dumping the most biologically expensive substance your body produces — loaded with zinc, testosterone precursors, and neurological fuel — into a tissue paper. This 163-page guide is the no-bullshit manual on semen retention: the physical rewiring, the mental clarity, the magnetic presence, and the spiritual sovereignty that men across every culture have known for millennia. I wrote this because I wasted years of my life and did not understand why I felt hollow. Stop leaking power. Start consolidating it. Your future self will thank you or your current weakness will cost you everything.',
     whoFor: [
       'Men who want to understand their energy, not fight it',
       'Anyone seeking deeper discipline and focus',
@@ -65,7 +65,7 @@ export const books: Book[] = [
     title: 'Parasite Conspiracy',
     slug: 'parasite-conspiracy',
     tagline: 'Hidden Burdens. Awareness. Sovereignty.',
-    description: 'A controversial investigative-style book exploring hidden biological, environmental, and lifestyle burdens that may affect human vitality. This is not about fear — it is about awareness, personal responsibility, and the science of detoxification. An educational exploration, not a medical diagnosis.',
+    description: 'What is living inside you right now that you cannot see? This investigative 70-page exposé pulls back the curtain on the hidden biological burdens — parasites, environmental toxins, mucus-forming foods, and digital interference — that are silently draining your vitality. I wrote this because I discovered what was actually causing my fatigue and brain fog, and it was not what any doctor told you to look for. This is not fear. This is awareness. And awareness is the first protocol. Cleanse your body. Reclaim your sovereignty. Or stay blind and keep wondering why you feel like a ghost in your own life.',
     whoFor: [
       'People who want to go deeper than surface-level wellness',
       'Those who suspect there is more to the story',

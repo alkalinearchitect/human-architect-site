@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Architect — Rebuild The Human System</title>
+<meta name="description" content="You are not broken. You are obstructed. Remove the interference. Restore the design. Master yourself.">
+<meta name="theme-color" content="#08090a">
+<meta property="og:title" content="Human Architect — Rebuild The Human System">
+<meta property="og:description" content="You are not broken. You are obstructed. Remove the interference. Restore the design. Master yourself.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#08090a;--bg2:#0c0d0e;--surface:#18191b;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--text:#fff;--text2:#c0c6ce;--text3:#8a9099;--accent:#5e6ad2;--accent-h:#828fff;--accent-g:rgba(94,106,210,0.12);--warm:#d4a853;--warm-g:rgba(212,168,83,0.1);--r:8px;--r2:12px;--pill:9999px}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;font-feature-settings:'cv01','ss03'}
+::selection{background:rgba(94,106,210,0.2);color:var(--accent-h)}
+h1,h2,h3,h4{line-height:1.05;letter-spacing:-.03em;font-weight:500}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.4,0,.2,1),transform .6s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}html{scroll-behavior:auto}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(8,9,10,0.9);backdrop-filter:blur(40px);border-bottom:1px solid var(--border);transition:all .3s}
+.nav.scrolled{padding:8px 0}
+.nav-in{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:15px;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:-.02em}
+.logo em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a{color:var(--text3);font-size:13px;font-weight:500;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:6px 14px!important;border-radius:var(--pill);background:var(--accent)!important;color:#fff!important;font-weight:600;font-size:12px!important}
+.nav-cta:hover{background:var(--accent-h)!important}
+.burger{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:4px}
+@media(max-width:860px){.burger{display:block}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(8,9,10,0.98);flex-direction:column;padding:20px;gap:14px;border-bottom:1px solid var(--border)}.nav-links.open{display:flex}}
+
+/* HERO */
+.hero{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(94,106,210,0.12) 0%,transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(212,168,83,0.04) 0%,transparent 40%);pointer-events:none}
+.hc{position:relative;z-index:1;max-width:720px}
+.hero h1{font-size:clamp(3rem,7vw,5rem);margin-bottom:24px;letter-spacing:-.05em;line-height:1.0}
+.hero h1 em{color:var(--accent);font-style:normal;display:block}
+.hero p{font-size:18px;color:var(--text3);max-width:520px;margin:0 auto 40px;line-height:1.7}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* BTNS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:var(--r);font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;border:none;font-family:inherit;text-decoration:none;letter-spacing:-.01em}
+.bp{background:var(--accent);color:#fff}
+.bp:hover{background:var(--accent-h)}
+.bg{background:rgba(255,255,255,0.04);color:var(--text2);border:1px solid var(--border)}
+.bg:hover{background:rgba(255,255,255,0.08);border-color:var(--border2)}
+.bo{background:transparent;color:var(--accent);border:1px solid rgba(94,106,210,0.3)}
+.bo:hover{background:var(--accent-g);border-color:var(--accent)}
+.bs{padding:7px 14px;font-size:12px}
+
+/* SECTIONS */
+.sec{padding:120px 0}
+.sec2{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.sh{text-align:center;margin-bottom:56px}
+.sh h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:12px}
+.sh p{font-size:15px;color:var(--text3);max-width:500px;margin:0 auto}
+
+/* MANIFESTO */
+.manifesto{text-align:center;max-width:680px;margin:0 auto;padding:48px 0}
+.manifesto blockquote{font-size:clamp(1.2rem,2.8vw,1.5rem);color:var(--text2);line-height:1.5;margin-bottom:16px;font-weight:400}
+.manifesto p{color:var(--text3);font-size:13px}
+
+/* PILLARS */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.pgrid{grid-template-columns:1fr}}
+.pc{background:linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:var(--r2);padding:40px 28px;text-align:center;transition:all .3s}
+.pc:hover{background:linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border-color:var(--accent);box-shadow:0 8px 40px rgba(94,106,210,0.12)}
+.pc .icon{width:52px;height:52px;margin:0 auto 20px;border-radius:var(--r);background:var(--accent-g);display:flex;align-items:center;justify-content:center}
+.pc .icon svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.pc h3{font-size:18px;margin-bottom:10px;font-weight:600}
+.pc p{font-size:14px;color:var(--text3);line-height:1.7}
+
+/* BOOKS GRID */
+.bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.bgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.bgrid{grid-template-columns:1fr}}
+.bc{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .3s;text-decoration:none;color:inherit;display:block}
+.bc:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(94,106,210,0.15)}
+.bcv{width:100%;aspect-ratio:2/3;overflow:hidden;background:var(--surface);position:relative}
+.bcv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.bc:hover .bcv img{transform:scale(1.04)}
+.bcv-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--surface)}
+.bcv-fallback svg{width:28px;height:28px;stroke:var(--text3);opacity:.15;stroke-width:1}
+.badge-new{position:absolute;top:10px;right:10px;background:var(--warm);color:var(--bg);font-size:8px;font-weight:700;padding:4px 8px;border-radius:4px;letter-spacing:.5px}
+.bi{padding:20px}
+.bi h3{font-size:15px;margin-bottom:4px;font-weight:600}
+.bi .tag{font-size:9px;color:var(--accent);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.bi p{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.bth{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.bth span{font-size:8px;padding:2px 7px;border-radius:4px;background:var(--accent-g);color:var(--accent-h);font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+
+/* BOOK DETAIL */
+.bd-wrap{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+@media(max-width:740px){.bd-wrap{grid-template-columns:1fr;gap:28px}}
+.bd-cover{border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.bd-cover img{width:100%;display:block}
+.bd-info h2{font-size:2rem;margin-bottom:8px}
+.bd-info .tag{color:var(--accent);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:20px}
+.bd-info p{color:var(--text2);line-height:1.8;margin-bottom:16px;font-size:15px}
+.bd-quote{background:var(--accent-g);border-left:3px solid var(--accent);padding:20px 24px;border-radius:0 var(--r) var(--r) 0;margin:24px 0}
+.bd-quote p{color:var(--text2);font-size:15px;line-height:1.7;margin:0;font-style:italic}
+.bd-pages{margin-top:32px}
+.bd-pages h3{font-size:11px;color:var(--text3);margin-bottom:16px;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.bdpg{display:grid;grid-template-columns:repeat(3,fr);gap:10px}
+.bdpg img{width:100%;border-radius:6px;border:1px solid var(--border);cursor:pointer;transition:border-color .2s,transform .2s}
+.bdpg img:hover{border-color:var(--accent);transform:scale(1.02)}
+
+/* SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:768px){.split{grid-template-columns:1fr;gap:32px}}
+.split h2{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:18px}
+.split p{color:var(--text3);line-height:1.8;margin-bottom:14px;font-size:15px}
+.sv{background:linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:var(--r2);padding:48px;text-align:center}
+.sv .icon{width:52px;height:52px;margin:0 auto 20px;border-radius:var(--r);background:var(--warm-g);display:flex;align-items:center;justify-content:center}
+.sv .icon svg{width:24px;height:24px;stroke:var(--warm);fill:none;stroke-width:1.5}
+.sv h3{font-size:18px;margin-bottom:10px}
+.sv p{font-size:14px;color:var(--text3)}
+
+/* PROTOCOLS */
+.protog{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:600px){.protog{grid-template-columns:1fr}}
+.protoc{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:all .2s}
+.protoc:hover{border-color:var(--border2)}
+.protoc .icon{width:44px;height:44px;margin-bottom:16px;border-radius:var(--r);background:var(--accent-g);display:flex;align-items:center;justify-content:center}
+.protoc .icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.protoc h3{font-size:15px;margin-bottom:8px;font-weight:600}
+.protoc p{font-size:13px;color:var(--text3);line-height:1.7}
+
+/* CTA */
+.cta-box{text-align:center;padding:72px 40px;background:linear-gradient(135deg,rgba(94,106,210,0.08),rgba(94,106,210,0.02));border-radius:var(--r2);border:1px solid rgba(94,106,210,0.15);box-shadow:0 4px 40px rgba(94,106,210,0.06)}
+.cta-box h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin-bottom:16px}
+.cta-box p{color:var(--text3);line-height:1.8;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;font-size:15px}
+
+/* NL */
+.nlf{display:flex;gap:10px;max-width:420px;margin:0 auto}
+.nlf input{flex:1;padding:11px 16px;border-radius:var(--r);border:1px solid var(--border);background:var(--bg2);color:var(--text);font-size:14px;font-family:inherit}
+.nlf input:focus{outline:none;border-color:var(--accent)}
+.nlf input::placeholder{color:var(--text3)}
+@media(max-width:460px){.nlf{flex-direction:column}}
+
+/* FOOTER */
+.footer{padding:64px 0 24px;border-top:1px solid var(--border)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+@media(max-width:700px){.fg{grid-template-columns:1fr 1fr}}
+.fbrand{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
+.fbrand em{color:var(--accent);font-style:normal}
+.fdesc{font-size:12px;color:var(--text3);line-height:1.7}
+.footer h4{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text3);margin-bottom:12px;font-weight:600}
+.flinks{list-style:none}
+.flinks li{margin-bottom:6px}
+.flinks a{color:var(--text3);font-size:12px;text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--text)}
+.fb{display:flex;justify-content:space-between;padding-top:24px;border-top:1px solid var(--border);font-size:11px;color:var(--text3)}
+@media(max-width:500px){.fb{flex-direction:column;gap:8px;text-align:center}}
+
+/* DISCLAIMER */
+.disc{padding:16px 20px;margin:32px 0;background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.12);border-radius:var(--r);font-size:12px;color:var(--text3);line-height:1.7}
+.disc strong{color:#ef4444}
+
+/* FOUNDER */
+.founder{display:grid;grid-template-columns:120px 1fr;gap:32px;align-items:start;max-width:700px;margin:0 auto}
+@media(max-width:500px){.founder{grid-template-columns:1fr;gap:20px;text-align:center}}
+.founder-img{width:120px;height:120px;border-radius:50%;overflow:hidden;border:2px solid var(--border);background:var(--surface)}
+.founder-img img{width:100%;height:100%;object-fit:cover}
+.founder-info h3{font-size:20px;margin-bottom:4px}
+.founder-info .role{font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.founder-info p{color:var(--text2);font-size:14px;line-height:1.7}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.tgrid{grid-template-columns:1fr}}
+.tcard{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--r2);padding:28px}
+.tcard p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:16px;font-style:italic}
+.tcard .author{font-size:12px;color:var(--text3);font-weight:600}
+.tcard .author span{color:var(--accent);font-weight:400}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+@media(max-width-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat .num{font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1.1;margin-bottom:4px}
+.stat .label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="logo">Human <em>Architect</em></a>
+    <ul class="nav-links" id="nl">
+      <li><a href="#about">About</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#protocols">Protocols</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#books" class="nav-cta">Start Now</a></li>
+    </ul>
+    <button class="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nl" id="burgerBtn">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hc">
+    <h1>Your Best Years Are Being<br><em>Drained in Private.</em></h1>
+    <p>Every session costs you focus, drive, and the man you were supposed to become. You already know. That is not the problem. Acting on it is.</p>
+    <div class="ctas">
+      <a href="#books" class="btn bp">Explore The Books</a>
+      <a href="#philosophy" class="btn bg">Read The Philosophy</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="sec">
+  <div class="wrap">
+    <div class="stats reveal">
+      <div class="stat"><div class="num">5</div><div class="label">Books Published</div></div>
+      <div class="stat"><div class="num">840+</div><div class="label">Total Pages</div></div>
+      <div class="stat"><div class="num">125</div><div class="label">Recipes Included</div></div>
+      <div class="stat"><div class="num">7</div><div class="label">Core Protocols</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="sec sec2" id="about">
+  <div class="wrap">
+    <div class="manifesto reveal">
+      <blockquote>&ldquo;The body is architecture. The mind is software. Food is information. Habits are code. Detoxification is the removal of interference. Self-mastery is freedom.&rdquo;</blockquote>
+      <p>— Tyson Architect</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sh reveal">
+      <h2>The Founder</h2>
+      <p>One man. One mission. No excuses.</p>
+    </div>
+    <div class="founder reveal">
+      <div class="founder-img">
+        <img src="https://via.placeholder.com/120/18191b/5e6ad2?text=TA" alt="Tyson Architect">
+      </div>
+      <div class="founder-info">
+        <h3>Tyson Architect</h3>
+        <div class="role">Founder, Human Architect</div>
+        <p>I was the guy doing everything right and still feeling like a fraud. Training five days a week. Spending hundreds on supplements. Eating what I thought was clean. And still — the brain fog. The low energy. The sense that I was operating at half capacity while watching mediocre men outwork me.</p>
+        <p>Then I found out I had parasites. Real ones. Not a metaphor. And that was the day everything changed. I stopped chasing symptoms and started investigating the system. I pulled the toxins. I changed the terrain. I stopped wasting my sexual energy and started consolidating it. I went alkaline. I fasted. I sweated. I rebuilt from the inside out.</p>
+        <p>I wrote these books because I spent years and thousands of dollars learning what I am giving you in 840 pages. The protocols are not theory. They are what I live. The only variable left is your willingness to stop making excuses and start executing. I cannot want this for you more than you want it for yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="sec sec2">
+  <div class="wrap">
+    <div class="sh reveal">
+      <h2>Three Pillars</h2>
+      <p>The framework for rebuilding your body, mind, and lifestyle from the ground up.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <h3>Detoxify</h3>
+        <p>Remove the interference. Clear the terrain. Your body is not broken. It is overloaded. Every toxin you eliminate is a signal restored. Mucusless diet. Fruit cleansing. Tongue coating test. Hydration first.</p>
+      </div>
+      <div class="pc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <h3>Rebuild</h3>
+        <p>Restore circulation, elimination, and regeneration. Return to original design. The body knows how to heal. You just need to stop blocking it. Morning water with lemon. Dry brushing. Cold exposure. Movement every 45 minutes.</p>
+      </div>
+      <div class="pc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <h3>Master Yourself</h3>
+        <p>Discipline is freedom. Habits are code. Your lifestyle is the operating system. Most people do not need more motivation. They need a cleaner system. Fruit before noon. Big salad with every meal. No dairy. Sauna when possible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section class="sec" id="books">
+  <div class="wrap">
+    <div class="sh reveal">
+      <h2>The Books</h2>
+      <p>Five manuals for human optimization. Written from experience, not theory.</p>
+    </div>
+    <div class="bgrid">
+
+      <!-- Book 1: Intelligent Design -->
+      <div class="bc reveal">
+        <div class="bcv">
+          <img src="public/books/intelligent-design.png" alt="Intelligent Design book cover" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('bcv-fallback');this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><text x=\'12\' y=\'14\' text-anchor=\'middle\' font-size=\'6\' fill=\'currentColor\'>ID</text></svg>'">
+        </div>
+        <div class="bi">
+          <h3>Intelligent Design</h3>
+          <div class="tag">The Architecture of Creation</div>
+          <p>What if evolution cannot explain the irreducible complexity of the human eye, the blood clotting cascade, or the bacterial flagellum? 204 pages of evidence that life was engineered — not by chance, but by intelligence. If you have ever felt in your bones that you are not a cosmic mistake, this book gives you the evidence. Stop believing you are random. Start understanding you are designed.</p>
+          <div class="bth"><span>Design</span><span>Intelligence</span><span>Creation</span></div>
+          <a href="#" class="btn bs bo" data-slug="id">Preview Book</a>
+        </div>
+      </div>
+
+      <!-- Book 2: Alkaline Awakening -->
+      <div class="bc reveal">
+        <div class="bcv">
+          <img src="public/books/alkaline-awakening.png" alt="Alkaline Awakening book cover" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('bcv-fallback');this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><text x=\'12\' y=\'14\' text-anchor=\'middle\' font-size=\'6\' fill=\'currentColor\'>AA</text></svg>'">
+        </div>
+        <div class="bi">
+          <h3>Alkaline Awakening</h3>
+          <div class="tag">Detoxification. Terrain. Circulation.</div>
+          <p>You eat clean, train hard, and still feel like your body is running on 60 percent. 357 pages with the complete Alkaline Architect protocol — raw food, mucusless eating, fruit cleansing, and 125+ recipes. I wrote this because I was spending a fortune on supplements while my internal terrain was a swamp. Clear the terrain. Your energy, clarity, and digestion will never be the same.</p>
+          <div class="bth"><span>Detox</span><span>Raw Food</span><span>Recipes</span></div>
+          <a href="#" class="btn bs bo" data-slug="aa">Preview Book</a>
+        </div>
+      </div>
+
+      <!-- Book 3: Parasite Conspiracy -->
+      <div class="bc reveal">
+        <div class="bcv">
+          <img src="public/books/parasite-conspiracy.png" alt="Parasite Conspiracy book cover" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('bcv-fallback');this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><text x=\'12\' y=\'14\' text-anchor=\'middle\' font-size=\'6\' fill=\'currentColor\'>PC</text></svg>'">
+        </div>
+        <div class="bi">
+          <h3>Parasite Conspiracy</h3>
+          <div class="tag">Hidden Burdens. Awareness.</div>
+          <p>What is living inside you right now that you cannot see? This 70-page exposé uncovers the hidden biological burdens — parasites, environmental toxins, mucus-forming foods — silently draining your vitality. I wrote this because I discovered what was actually causing my fatigue, and no doctor thought to look. This is not fear. This is awareness. Cleanse your body or stay blind and keep wondering why you feel like a ghost.</p>
+          <div class="bth"><span>Parasites</span><span>Detox</span><span>Protocols</span></div>
+          <a href="#" class="btn bs bo" data-slug="pc">Preview Book</a>
+        </div>
+      </div>
+
+      <!-- Book 4: Life Force Energy -->
+      <div class="bc reveal">
+        <div class="bcv">
+          <img src="public/books/life-force-energy.png" alt="Life Force Energy book cover" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('bcv-fallback');this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><text x=\'12\' y=\'14\' text-anchor=\'middle\' font-size=\'6\' fill=\'currentColor\'>LFE</text></svg>'">
+          <span class="badge-new">NEW</span>
+        </div>
+        <div class="bi">
+          <h3>Life Force Energy</h3>
+          <div class="tag">Semen Retention. Discipline. Sovereignty.</div>
+          <p>Every time you release your seed, you dump the most biologically expensive substance your body produces into a tissue paper. 163 pages on semen retention — the physical rewiring, the mental clarity, the magnetic presence. I wrote this because I wasted years of my life and did not understand why I felt hollow. Stop leaking power. Start consolidating it. Your future self will thank you.</p>
+          <div class="bth"><span>Retention</span><span>Energy</span><span>Discipline</span></div>
+          <a href="#" class="btn bs bo" data-slug="lfe">Preview Book</a>
+        </div>
+      </div>
+
+      <!-- Book 5: Quit PRN Manual -->
+      <div class="bc reveal">
+        <div class="bcv">
+          <img src="public/books/quit-prn-manual.png" alt="Quit PRN Manual book cover" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('bcv-fallback');this.parentElement.innerHTML='<svg viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><text x=\'12\' y=\'14\' text-anchor=\'middle\' font-size=\'6\' fill=\'currentColor\'>QPRN</text></svg>'">
+        </div>
+        <div class="bi">
+          <h3>Quit PRN Manual</h3>
+          <div class="tag">Porn Recovery. Reboot. Freedom.</div>
+          <p>Every time you choose porn, you betray the man who wants a real relationship, the professional who needs clear focus, and the friend who deserves your full presence. This 44-page no-excuses manual is the reboot protocol — the neurological rewiring, the identity shift, the daily discipline that kills the addiction for good. I wrote this because I was that guy. Weak men seek constant release. Strong men understand strategic conservation. Break free or stay chained.</p>
+          <div class="bth"><span>Recovery</span><span>Discipline</span><span>Freedom</span></div>
+          <a href="#" class="btn bs bo" data-slug="qp">Preview Book</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- PHILOSOPHY -->
+<section class="sec sec2" id="philosophy">
+  <div class="wrap">
+    <div class="split">
+      <div class="reveal">
+        <h2>The Modern World <em style="color:var(--accent)">Drains You</em></h2>
+        <p>Processed food. Sedentary living. Digital overload. Environmental toxins. The modern environment is designed to extract your energy, attention, and health.</p>
+        <p>Human Architect exists to help you rebuild the system beneath your energy, clarity, and discipline. Not with quick fixes. With architecture.</p>
+        <p>Genesis 1:27. So God created mankind in his own image. The design is not the problem. The interference is.</p>
+        <a href="#books" class="btn bp">Explore The Books</a>
+      </div>
+      <div class="sv reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>The Method</h3>
+        <p>Detoxify. Rebuild. Master Yourself. Three pillars. One system. Zero excuses.</p>
+        <p style="margin-top:16px;font-size:13px;color:var(--text3)">Romans 12:2. Do not conform to the pattern of this world, but be transformed by the renewing of your mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOCOLS -->
+<section class="sec" id="protocols">
+  <div class="wrap">
+    <div class="sh reveal">
+      <h2>The Protocols</h2>
+      <p>Systems for detoxification, circulation, and regeneration. Educational frameworks, not medical advice.</p>
+    </div>
+    <div class="protog">
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Detoxification</h3>
+        <p>Clear the terrain. Mucusless diet, fruit cleansing, tongue coating test, hydration first. 500ml water with lemon before anything.</p>
+      </div>
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+        <h3>Circulation</h3>
+        <p>Your blood is a river. Morning water with lemon, dry brushing toward heart, cold exposure 2+ min, move every 45 minutes.</p>
+      </div>
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Regeneration</h3>
+        <p>The body rebuilds itself constantly. Fruit before noon, big salad with every meal, no dairy, sauna when possible.</p>
+      </div>
+      <div class="protoc reveal">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M12 12l4-4"/></svg></div>
+        <h3>Breathwork</h3>
+        <p>Your nervous system is the master regulator. Box breathing (4-4-4-4), deep belly breathing 3x daily, cold exposure breathing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec sec2">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2>Ready to <em style="color:var(--accent)">Rebuild</em>?</h2>
+      <p>For men ready to take personal responsibility for their body, habits, environment, and discipline. Not for everyone. For the few who refuse to decay quietly.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="#books" class="btn bp">Explore The Books</a>
+        <a href="#protocols" class="btn bg">Read The Protocols</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="sec" id="newsletter">
+  <div class="wrap">
+    <div style="text-align:center;max-width:500px;margin:0 auto" class="reveal">
+      <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:12px">Join The <em style="color:var(--accent)">Letters</em></h2>
+      <p style="color:var(--text3);line-height:1.7;margin-bottom:24px;font-size:15px">Weekly reflections on detoxification, discipline, body intelligence, and the architecture of human transformation.</p>
+      <form class="nlf" onsubmit="event.preventDefault();">
+        <label for="nl-name" class="sr-only">Your name</label>
+        <input type="text" id="nl-name" placeholder="Your name" required>
+        <label for="nl-email" class="sr-only">Your email</label>
+        <input type="email" id="nl-email" placeholder="Your email" required>
+        <button type="submit" class="btn bp">Join</button>
+      </form>
+      <p style="font-size:11px;color:var(--text3);margin-top:12px">Or subscribe on <a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener noreferrer" style="color:var(--text2)">Substack</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="wrap">
+  <div class="disc"><strong>Health Disclaimer:</strong> This content is for education and personal development only. It does not provide medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making major changes to your diet, lifestyle, supplements, or health practices.</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <div class="fbrand">Human <em>Architect</em></div>
+        <p class="fdesc">A body, mind, and lifestyle philosophy for those ready to detoxify their environment, master their habits, and return to their original design.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul class="flinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#books">Books</a></li>
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#protocols">Protocols</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul class="flinks">
+          <li><a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener noreferrer">Substack</a></li>
+          <li><a href="https://instagram.com/humanarchitect_" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="mailto:humanarchitect@protonmail.com">Email</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul class="flinks">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Health Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fb">
+      <span>&copy; 2026 Human Architect. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+  var burger=document.getElementById('burgerBtn');
+  var nl=document.getElementById('nl');
+  burger.addEventListener('click',function(){
+    var isOpen=nl.classList.toggle('open');
+    burger.setAttribute('aria-expanded',isOpen);
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){nl.classList.remove('open');burger.setAttribute('aria-expanded','false')})});
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){nl.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+})();
+</script>
+
+<!-- BOOK PREVIEW MODAL -->
+<div class="modal-overlay" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display:none">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Close preview">&times;</button>
+    <div class="modal-body">
+      <div class="modal-cover"><img id="modalCover" src="" alt=""></div>
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <div class="tag" id="modalTag"></div>
+        <p id="modalDesc1"></p>
+        <p id="modalDesc2"></p>
+        <div class="bd-quote"><p id="modalQuote"></p></div>
+        <div class="bd-pages">
+          <h3>Preview Pages</h3>
+          <div class="bdpg" id="modalPages"></div>
+        </div>
+        <div style="margin-top:24px;"><a href="#" class="btn bp">Get This Book</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.85);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .3s}
+.modal-overlay.open{opacity:1}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);max-width:900px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.92);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--text3);font-size:28px;cursor:pointer;z-index:10;padding:4px 8px;line-height:1;transition:color .2s}
+.modal-close:hover{color:var(--text)}
+.modal-body{display:grid;grid-template-columns:280px 1fr;gap:32px;padding:32px}
+@media(max-width:700px){.modal-body{grid-template-columns:1fr;padding:20px}}
+.modal-cover img{width:100%;border-radius:var(--r);border:1px solid var(--border)}
+.modal-info h2{font-size:1.6rem;margin-bottom:6px}
+</style>
+
+<script>
+var booksData={
+  id:{title:"Intelligent Design",tag:"The Architecture of Creation — 204 pages",cover:"public/books/intelligent-design.png",desc1:"What if evolution cannot explain the irreducible complexity of the human eye, the blood clotting cascade, or the bacterial flagellum? 204 pages of evidence that life was engineered — not by chance, but by intelligence.",desc2:"If you have ever felt in your bones that you are not a cosmic mistake, this book gives you the evidence.",quote:"We are not random accidents in an indifferent universe. Each of us carries within us a spark of divinity, a purpose woven into the very fabric of our being.",pages:["public/books/pages/id-p1.png","public/books/pages/id-p2.png","public/books/pages/id-p3.png"]},
+  aa:{title:"Alkaline Awakening",tag:"Detoxification. Terrain. Circulation. — 357 pages",cover:"public/books/alkaline-awakening.png",desc1:"You eat clean, train hard, and still feel like your body is running on 60 percent. 357 pages with the complete Alkaline Architect protocol — raw food, mucusless eating, fruit cleansing, and 125+ recipes.",desc2:"I wrote this because I was spending a fortune on supplements while my internal terrain was a swamp. Clear the terrain.",quote:"Revitalize Your Being: Unleash the Power of Alkalinity, Detox, Fasting, Sauna, Ice Bath, Breathwork, Spirituality, and 125 Wholesome Recipes.",pages:["public/books/pages/aa-p1.png","public/books/pages/aa-p2.png","public/books/pages/aa-p3.png"]},
+  pc:{title:"Parasite Conspiracy",tag:"Hidden Burdens. Awareness. — 70 pages",cover:"public/books/parasite-conspiracy.png",desc1:"What is living inside you right now that you cannot see? This 70-page exposé uncovers the hidden biological burdens — parasites, environmental toxins, mucus-forming foods — silently draining your vitality.",desc2:"I wrote this because I discovered what was actually causing my fatigue, and no doctor thought to look. This is not fear. This is awareness.",quote:"When these protocols are applied with intention and consciousness, the human body will begin to vibrate and glow with optimal health, energy, and vitality.",pages:["public/books/pages/pc-p1.png","public/books/pages/pc-p2.png","public/books/pages/pc-p3.png"]},
+  lfe:{title:"Life Force Energy",tag:"Semen Retention. Discipline. Sovereignty. — 163 pages",cover:"public/books/life-force-energy.png",desc1:"Every time you release your seed, you dump the most biologically expensive substance your body produces into a tissue paper. 163 pages on semen retention — the physical rewiring, the mental clarity, the magnetic presence.",desc2:"I wrote this because I wasted years of my life and did not understand why I felt hollow. Stop leaking power. Start consolidating it.",quote:"The body is a temple. Just as you would treat a temple with reverence, so too should we approach our bodies. This temple is sacred. Guard it.",pages:["public/books/pages/lfe-p1.png","public/books/pages/lfe-p2.png","public/books/pages/lfe-p3.png"]},
+  qp:{title:"Quit PRN Manual",tag:"Porn Recovery. Reboot. Freedom. — 44 pages",cover:"public/books/quit-prn-manual.png",desc1:"The direct, no-excuses guide to breaking free from porn addiction. Every time you resist wasting your seed, you are not suppressing power. You are consolidating it.",desc2:"I was that guy. I know what it costs. I know what it takes to break free. This manual is the shortcut I wish I had.",quote:"Every time you choose porn, you betray yourself. You betray the man who wants a real relationship. You betray the professional who needs clear focus.",pages:["public/books/pages/qp-p1.png","public/books/pages/qp-p2.png","public/books/pages/qp-p3.png"]}
+};
+
+function openModal(slug){
+  var b=booksData[slug];if(!b)return;
+  document.getElementById('modalCover').src=b.cover;
+  document.getElementById('modalTitle').textContent=b.title;
+  document.getElementById('modalTag').textContent=b.tag;
+  document.getElementById('modalDesc1').textContent=b.desc1;
+  document.getElementById('modalDesc2').textContent=b.desc2;
+  document.getElementById('modalQuote').textContent=b.quote;
+  var pg=document.getElementById('modalPages');pg.innerHTML='';
+  b.pages.forEach(function(p){var i=document.createElement('img');i.src=p;i.alt='Preview';i.loading='lazy';i.onerror=function(){this.style.display='none'};pg.appendChild(i)});
+  var m=document.getElementById('bookModal');m.style.display='flex';void m.offsetWidth;m.classList.add('open');document.body.style.overflow='hidden';
+  document.getElementById('modalClose').focus();
+}
+function closeModal(){
+  var m=document.getElementById('bookModal');m.classList.remove('open');
+  setTimeout(function(){m.style.display='none';document.body.style.overflow=''},300);
+}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('bookModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal()});
+document.querySelectorAll('.bc .bo').forEach(function(btn){
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    var slug=this.getAttribute('data-slug');
+    openModal(slug);
+  });
+});
+</script>
+</body>
+</html>
