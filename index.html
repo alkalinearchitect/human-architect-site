@@ -406,7 +406,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
     </div>
     <div class="bgrid">
 
-      <a href="#book-id" class="bc reveal">
+      <a href="#" class="bc reveal" data-book="id" role="button" aria-label="View Intelligent Design">
         <div class="bcv"><img src="public/books/intelligent-design.png" alt="Intelligent Design" loading="lazy"></div>
         <div class="bi">
           <h3>Intelligent Design</h3>
@@ -417,7 +417,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
         </div>
       </a>
 
-      <a href="#book-aa" class="bc reveal">
+      <a href="#" class="bc reveal" data-book="aa" role="button" aria-label="View Alkaline Awakening">
         <div class="bcv"><img src="public/books/alkaline-awakening.png" alt="Alkaline Awakening" loading="lazy"></div>
         <div class="bi">
           <h3>Alkaline Awakening</h3>
@@ -428,7 +428,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
         </div>
       </a>
 
-      <a href="#book-pc" class="bc reveal">
+      <a href="#" class="bc reveal" data-book="pc" role="button" aria-label="View Parasite Conspiracy">
         <div class="bcv"><img src="public/books/parasite-conspiracy.png" alt="Parasite Conspiracy" loading="lazy"></div>
         <div class="bi">
           <h3>Parasite Conspiracy</h3>
@@ -439,7 +439,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
         </div>
       </a>
 
-      <a href="#book-lfe" class="bc reveal">
+      <a href="#" class="bc reveal" data-book="lfe" role="button" aria-label="View Life Force Energy">
         <div class="bcv">
           <img src="public/books/life-force-energy.png" alt="Life Force Energy" loading="lazy">
           <span class="badge-new">New</span>
@@ -453,7 +453,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
         </div>
       </a>
 
-      <a id="book-qp" href="#book-qp" class="bc reveal">
+      <a href="#" class="bc reveal" data-book="qpn" role="button" aria-label="View Quit PRN Manual">
         <div class="bcv"><img src="public/books/quit-prn-manual.png" alt="Quit PRN Manual" loading="lazy"></div>
         <div class="bi">
           <h3>Quit PRN Manual</h3>
@@ -834,6 +834,118 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   });
   document.addEventListener('keydown',function(e){
     if(e.key==='Escape'){lightbox.classList.remove('open');document.body.style.overflow='';}
+  });
+
+  // ── BOOK MODALS ──
+  var books={
+    id:{
+      title:'Intelligent Design',
+      tag:'The Architecture of Creation',
+      img:'public/books/intelligent-design.png',
+      desc:'Life was engineered. Not random. Not accidental. 204 pages of evidence that every cell in your body is proof of design. This book dismantles the myth of blind evolution and replaces it with a rigorous, evidence-based framework for understanding biological complexity.',
+      stats:[{n:'204',l:'Pages'},{n:'1',l:'Book'},{n:'2025',l:'Published'}],
+      inside:'The book opens with the complexity argument — a single cell contains more coded information than the entire Library of Congress. From there it walks through irreducible complexity, the DNA code, the fine-tuning of universal constants, and the mathematical imbability of random formation. Each chapter builds on the last, culminating in a philosophical framework that doesn\'t require faith — just honesty.',
+      who:'For men who\'ve been told their whole lives that life is meaningless accident. For the ones who looked at their own body and knew — on some level — that this couldn\'t have happened by chance. This book gives you the vocabulary and the evidence.',
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Free Sample',url:'#'}],
+      related:['aa','pc','lfe']
+    },
+    aa:{
+      title:'Alkaline Awakening',
+      tag:'Detoxification · Terrain · Circulation',
+      img:'public/books/alkaline-awakening.png',
+      desc:'Your blood is acidic. Your terrain is toxic. 357 pages. 125+ recipes. The complete Alkaline Architect protocol — start tonight. This isn\'t a theory book. It\'s a manual. Every recipe, every protocol, every explanation is written for immediate use.',
+      stats:[{n:'357',l:'Pages'},{n:'125+',l:'Recipes'},{n:'30',l:'Day Protocol'}],
+      inside:'Three parts: The Science (why acidity kills), The Protocol (the 30-day Alkaline Architect system), The Recipes (125+ alkaline meals, smoothies, and drinks organized by meal type and season). Includes a full elimination protocol, a lymphatic drainage guide, and a daily tracking template.',
+      who:'For men who are tired of feeling like shit and ready to do something about it. If you\'ve tried supplements, diets, and detoxes that didn\'t work — this addresses the actual root cause. Not a quick fix. A permanent rebuild.',
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Beacons Shop',url:'https://beacons.ai/humanarchitect/shop'}],
+      related:['id','pc','qpn']
+    },
+    pc:{
+      title:'Parasite Conspiracy',
+      tag:'Hidden Burdens · Awareness',
+      img:'public/books/parasite-conspiracy.png',
+      desc:'Something is living inside you. Feeding. Hiding. This book names it — then gives you the protocol to remove it. A systematic guide to identifying, eliminating, and preventing parasitic colonization.',
+      stats:[{n:'70',l:'Pages'},{n:'5',l:'Protocols'},{n:'3',l:'Stages'}],
+      inside:'Part one covers what parasites actually are — not the sanitized version from medical school, but the reality of what lives in the human body and how modern food, water, and travel accelerate colonization. Part two gives you the exact protocol: herbal antiparasitics, timing, dosing, and the critical pre-and-post elimination steps most people skip.',
+      who:'For men who suspect something is wrong but can\'t get a diagnosis. For the ones who\'ve been told "your labs are fine" while feeling anything but. This book gives you the language to understand what\'s happening and the protocol to fix it.',
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Free Sample',url:'#'}],
+      related:['id','aa','lfe']
+    },
+    lfe:{
+      title:'Life Force Energy',
+      tag:'Retention · Discipline · Sovereignty',
+      img:'public/books/life-force-energy.png',
+      desc:'Your most powerful energy is leaking. Every day. 163 pages on how to stop the leak, redirect the current, and become dangerous. The definitive guide to semen retention, energy conservation, and masculine sovereignty.',
+      stats:[{n:'163',l:'Pages'},{n:'90',l:'Day Protocol'},{n:'7',l:'Chapters'}],
+      inside:'The science of retention (what actually happens hormonally and neurologically), the philosophy of conservation (why every major tradition teaches this), and the practical protocol (the 90-day Life Force system). Includes flatline management, trigger rewiring, energy redirection techniques, and the daily non-negotiables.',
+      who:'For men who know they\'re wasting their most powerful resource and are ready to stop. Not about willpower — about understanding the system so well that the right choice becomes the easy choice.',
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Beacons Shop',url:'https://beacons.ai/humanarchitect/shop'}],
+      related:['id','aa','qpn']
+    },
+    qpn:{
+      title:'Quit PRN Manual',
+      tag:'Recovery · Reboot · Freedom',
+      img:'public/books/quit-prn-manual.png',
+      desc:'You know what it\'s doing to you. You keep doing it anyway. This is the manual that breaks the cycle. No excuses. A complete system for eliminating porn from your life — permanently.',
+      stats:[{n:'44',l:'Pages'},{n:'21',l:'Day Reboot'},{n:'10',l:'Steps'}],
+      inside:'The neuroscience of porn addiction (what it does to your brain, your hormones, your relationships, your ambition), the exact 21-day reboot protocol, trigger identification and rewiring, environment design, accountability systems, and the relapse prevention framework. Written by someone who\'s been through it.',
+      who:'For men who are done lying to themselves. If you\'ve tried quitting and failed — this isn\'t about trying harder. It\'s about understanding the system so you can break it permanently.',
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Free Sample',url:'#'}],
+      related:['id','aa','lfe']
+    }
+  };
+
+  function openBookModal(id){
+    var b=books[id]; if(!b) return;
+    document.getElementById('modalImg').src=b.img;
+    document.getElementById('modalTitle').textContent=b.title;
+    document.getElementById('modalTag').textContent=b.tag;
+    document.getElementById('modalDesc').textContent=b.desc;
+    document.getElementById('modalInside').textContent=b.inside;
+    document.getElementById('modalWho').textContent=b.who;
+    // stats
+    var statsHtml='';
+    b.stats.forEach(function(s){statsHtml+='<div class="modal-stat"><div class="num">'+s.n+'</div><div class="label">'+s.l+'</div></div>';});
+    document.getElementById('modalStats').innerHTML=statsHtml;
+    // buy buttons
+    var buyHtml='';
+    b.buy.forEach(function(btn){buyHtml+='<a href="'+btn.url+'" class="btn bp" target="_blank" rel="noopener">'+btn.text+'</a>';});
+    document.getElementById('modalBuy').innerHTML=buyHtml;
+    // related books
+    var relHtml='';
+    b.related.forEach(function(rid){var rb=books[rid]; if(rb) relHtml+='<a href="#" class="related-book" data-related="'+rid+'"><img src="'+rb.img+'" alt="'+rb.title+'" loading="lazy"><div class="rbi"><h4>'+rb.title+'</h4><p>'+rb.tag+'</p></div></a>';});
+    document.getElementById('modalRelated').innerHTML=relHtml;
+    // lock scroll
+    document.body.style.overflow='hidden';
+    document.getElementById('bookModal').classList.add('open');
+  }
+
+  function closeBookModal(){
+    document.getElementById('bookModal').classList.remove('open');
+    document.body.style.overflow='';
+  }
+
+  // Book card clicks
+  document.querySelectorAll('[data-book]').forEach(function(el){
+    el.addEventListener('click',function(e){
+      e.preventDefault();
+      openBookModal(this.dataset.book);
+    });
+  });
+
+  // Related book clicks (delegation)
+  document.getElementById('modalRelated').addEventListener('click',function(e){
+    var el=e.target.closest('[data-related]');
+    if(el){e.preventDefault(); openBookModal(el.dataset.related);}
+  });
+
+  // Close modal
+  document.getElementById('bookModalClose').addEventListener('click',closeBookModal);
+  document.getElementById('bookModal').addEventListener('click',function(e){
+    if(e.target===this) closeBookModal();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeBookModal();
   });
 
 })();
