@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Section, { SectionHeader } from '@/components/ui/Section'
 import Button from '@/components/ui/Button'
 import { books } from '@/data/books'
@@ -23,14 +22,8 @@ export default function BooksPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {books.map((book) => (
             <div key={book.id} className="bg-[var(--card)] border border-[var(--border)] rounded-2xl overflow-hidden hover:border-[var(--border-light)] hover:-translate-y-1 transition-all duration-300 reveal">
-              <div className="w-full aspect-[3/4] bg-[var(--surface)] relative">
-                <Image
-                  src={book.coverImage}
-                  alt={`${book.title} cover`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+              <div style={{ width: '100%', aspectRatio: '3/4', background: '#141420', position: 'relative', overflow: 'hidden' }}>
+                <img src={book.coverImage} alt={book.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-2">
