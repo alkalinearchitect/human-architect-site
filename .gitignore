@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/books/*.png
+public/books/pages/*.png
+public/substack-avatar.png
+compress_images.py
