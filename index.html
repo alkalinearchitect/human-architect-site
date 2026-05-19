@@ -89,6 +89,8 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 /* —— MOBILE —— */
 .mobi{position:fixed;inset:0;background:var(--bg);z-index:99;padding:80px 28px 32px;flex-direction:column;opacity:0;transform:translateY(-8px);transition:all .3s;pointer-events:none;display:flex;gap:0}
 .mobi.open{opacity:1;transform:translateY(0);pointer-events:auto}
+.mobi-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--paper3);cursor:pointer;padding:8px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;z-index:100}
+.mobi-close:hover{color:var(--paper)}
 .mobi a{display:block;padding:16px 0;font-family:var(--serif);font-size:28px;font-weight:400;color:var(--paper);border-bottom:1px solid var(--border);letter-spacing:-.03em}
 
 /* —— HERO —— */
@@ -199,19 +201,19 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .related-book img{width:100%;height:120px;object-fit:contain;background:var(--bg)}
 .related-book .rbi{padding:10px}
 /* —— BOOK GRID —— */
-.bgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.bgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1060px;margin:0 auto}
 @media(max-width:900px){.bgrid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:560px){.bgrid{grid-template-columns:repeat(2,1fr)}}
 .bc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .3s cubic-bezier(.2,.7,.2,1);color:inherit;display:block;position:relative}
 .bc:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,30,58,0.08)}
 .bcv{width:100%;overflow:hidden;background:var(--bg3);position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:3/4}
-.bcv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.bcv img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .bc:hover .bcv img{transform:scale(1.04)}
 .badge-new{position:absolute;top:6px;right:6px;background:var(--accent);color:#fff;font-size:6px;font-weight:700;padding:2px 5px;border-radius:var(--pill);letter-spacing:.1em;text-transform:uppercase;z-index:2}
 .bi{padding:10px}
 .bi h3{font-size:13px;margin-bottom:3px;font-weight:400;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bi .tag{font-size:7px;color:var(--accent);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bi p{font-size:10px;color:var(--paper3);line-height:1.6;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bi .tag{font-size:7px;color:var(--accent);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.12em}
+.bi p{font-size:12px;color:var(--paper3);line-height:1.6;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .bth{display:flex;flex-wrap:wrap;gap:2px;margin-bottom:8px}
 .bth span{font-size:6px;padding:1px 4px;border-radius:var(--pill);background:var(--accent-g);color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
 
@@ -235,7 +237,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .founder{display:grid;grid-template-columns:140px 1fr;gap:40px;align-items:start;max-width:760px;margin:0 auto}
 @media(max-width:600px){.founder{grid-template-columns:1fr;gap:20px;text-align:center;justify-items:center}}
 .founder-img{width:140px;height:140px;border-radius:50%;overflow:hidden;background:var(--bg3);position:relative;border:1px solid var(--border)}
-.founder-img img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.founder-img img{width:100%;height:100%;object-fit:contain;border-radius:50%}
 .founder h3{font-size:24px;margin-bottom:4px;letter-spacing:-.02em}
 .founder .role{font-size:9px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.18em;margin-bottom:14px}
 .founder p{color:var(--paper2);font-size:13px;line-height:1.8;margin-bottom:10px}
@@ -348,6 +350,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   </div>
 </nav>
 <nav class="mobi" id="mobi" aria-label="Mobile">
+  <button class="mobi-close" id="mobiClose" aria-label="Close menu">Close ✕</button>
   <a href="#books">Books</a>
   <a href="#about">About</a>
   <a href="#previews">Previews</a>
@@ -382,7 +385,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 <!-- STATS -->
 <section class="sec-tight">
   <div class="wrap">
-    <div class="stats reveal">
+    <div class="stats">
       <div class="stat"><div class="num" data-target="5">0</div><div class="label">Books Published</div></div>
       <div class="stat"><div class="num" data-target="840" data-sym="+">0</div><div class="label">Total Pages</div></div>
       <div class="stat"><div class="num" data-target="125">0</div><div class="label">Recipes</div></div>
@@ -426,7 +429,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="tag">The Architecture of Creation</div>
           <p>Life was engineered. Not random. Not accidental. 204 pages of evidence that every cell in your body is proof of design.</p>
           <div class="bth"><span>Design</span><span>Intelligence</span><span>Creation</span></div>
-          <span class="btn bs bo">Get This Book <span class="arrow">→</span></span>
+          <a href="https://www.amazon.com/dp/B0F9F2K8SW" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
       </a>
 
@@ -437,7 +440,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="tag">Detoxification · Terrain · Circulation</div>
           <p>Your blood is acidic. Your terrain is toxic. 357 pages. 125+ recipes. The complete Alkaline Architect protocol — start tonight.</p>
           <div class="bth"><span>Detox</span><span>Raw Food</span><span>Recipes</span></div>
-          <span class="btn bs bo">Get This Book <span class="arrow">→</span></span>
+          <a href="https://www.amazon.com/dp/B0F9F3JXQ4" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
       </a>
 
@@ -448,7 +451,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="tag">Hidden Burdens · Awareness</div>
           <p>Something is living inside you. Feeding. Hiding. This book names it — then gives you the protocol to remove it.</p>
           <div class="bth"><span>Parasites</span><span>Detox</span><span>Protocols</span></div>
-          <span class="btn bs bo">Get This Book <span class="arrow">→</span></span>
+          <a href="https://www.amazon.com/dp/B0F9F4NQZR" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
       </a>
 
@@ -462,7 +465,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="tag">Retention · Discipline · Sovereignty</div>
           <p>Your most powerful energy is leaking. Every day. 163 pages on how to stop the leak, redirect the current, and become dangerous.</p>
           <div class="bth"><span>Retention</span><span>Energy</span><span>Discipline</span></div>
-          <span class="btn bs bo">Get This Book <span class="arrow">→</span></span>
+          <a href="https://www.amazon.com/dp/B0F9F5VWP2" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
       </a>
 
@@ -473,7 +476,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="tag">Recovery · Reboot · Freedom</div>
           <p>You know what it's doing to you. You keep doing it anyway. This is the manual that breaks the cycle. No excuses.</p>
           <div class="bth"><span>Recovery</span><span>Discipline</span><span>Freedom</span></div>
-          <span class="btn bs bo">Get This Book <span class="arrow">→</span></span>
+          <a href="https://www.amazon.com/dp/B0F9F6BQY8" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
       </a>
 
@@ -573,7 +576,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
     </div>
     <div class="founder reveal">
       <div class="founder-img">
-        <img src="public/founder.png" alt="Tyson Architect" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:40px;color:var(--accent);background:var(--bg3);border-radius:50%&quot;>TA</div>'">
+        <img src="public/substack-avatar.png" alt="Tyson Architect">
       </div>
       <div>
         <h3>Tyson Architect</h3>
@@ -809,8 +812,10 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 
   // Mobile menu
   var burger=document.getElementById('burger'),mobi=document.getElementById('mobi');
+  function closeMobi(){mobi.classList.remove('open');burger.setAttribute('aria-expanded','false');mobi.setAttribute('aria-hidden','true');document.body.style.overflow='';}
   burger.addEventListener('click',function(){var open=mobi.classList.toggle('open');burger.setAttribute('aria-expanded',open);mobi.setAttribute('aria-hidden',!open);document.body.style.overflow=open?'hidden':'';});
-  mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mobi.classList.remove('open');burger.setAttribute('aria-expanded','false');mobi.setAttribute('aria-hidden','true');document.body.style.overflow='';});});
+  document.getElementById('mobiClose').addEventListener('click',closeMobi);
+  mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMobi);});
 
   // Hero stagger
   var hero=document.querySelector('.hero');
@@ -866,7 +871,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       stats:[{n:'204',l:'Pages'},{n:'1',l:'Book'},{n:'2025',l:'Published'}],
       inside:'The book opens with the complexity argument — a single cell contains more coded information than the entire Library of Congress. From there it walks through irreducible complexity, the DNA code, the fine-tuning of universal constants, and the mathematical imbability of random formation. Each chapter builds on the last, culminating in a philosophical framework that doesn\'t require faith — just honesty.',
       who:'For men who\'ve been told their whole lives that life is meaningless accident. For the ones who looked at their own body and knew — on some level — that this couldn\'t have happened by chance. This book gives you the vocabulary and the evidence.',
-      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Free Sample',url:'#'}],
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0F9F2K8SW'},{text:'Free Sample',url:'https://humanarchitect8.substack.com'}],
       related:['aa','pc','lfe']
     },
     aa:{
@@ -877,7 +882,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       stats:[{n:'357',l:'Pages'},{n:'125+',l:'Recipes'},{n:'30',l:'Day Protocol'}],
       inside:'Three parts: The Science (why acidity kills), The Protocol (the 30-day Alkaline Architect system), The Recipes (125+ alkaline meals, smoothies, and drinks organized by meal type and season). Includes a full elimination protocol, a lymphatic drainage guide, and a daily tracking template.',
       who:'For men who are tired of feeling like shit and ready to do something about it. If you\'ve tried supplements, diets, and detoxes that didn\'t work — this addresses the actual root cause. Not a quick fix. A permanent rebuild.',
-      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Beacons Shop',url:'https://beacons.ai/humanarchitect/shop'}],
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0F9F3JXQ4'},{text:'Beacons Shop',url:'https://beacons.ai/humanarchitect/shop'}],
       related:['id','pc','qpn']
     },
     pc:{
@@ -888,7 +893,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       stats:[{n:'70',l:'Pages'},{n:'5',l:'Protocols'},{n:'3',l:'Stages'}],
       inside:'Part one covers what parasites actually are — not the sanitized version from medical school, but the reality of what lives in the human body and how modern food, water, and travel accelerate colonization. Part two gives you the exact protocol: herbal antiparasitics, timing, dosing, and the critical pre-and-post elimination steps most people skip.',
       who:'For men who suspect something is wrong but can\'t get a diagnosis. For the ones who\'ve been told "your labs are fine" while feeling anything but. This book gives you the language to understand what\'s happening and the protocol to fix it.',
-      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Free Sample',url:'#'}],
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0F9F4NQZR'},{text:'Free Sample',url:'https://humanarchitect8.substack.com'}],
       related:['id','aa','lfe']
     },
     lfe:{
@@ -899,7 +904,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       stats:[{n:'163',l:'Pages'},{n:'90',l:'Day Protocol'},{n:'7',l:'Chapters'}],
       inside:'The science of retention (what actually happens hormonally and neurologically), the philosophy of conservation (why every major tradition teaches this), and the practical protocol (the 90-day Life Force system). Includes flatline management, trigger rewiring, energy redirection techniques, and the daily non-negotiables.',
       who:'For men who know they\'re wasting their most powerful resource and are ready to stop. Not about willpower — about understanding the system so well that the right choice becomes the easy choice.',
-      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Beacons Shop',url:'https://beacons.ai/humanarchitect/shop'}],
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0F9F5VWP2'},{text:'Beacons Shop',url:'https://beacons.ai/humanarchitect/shop'}],
       related:['id','aa','qpn']
     },
     qpn:{
@@ -910,7 +915,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       stats:[{n:'44',l:'Pages'},{n:'21',l:'Day Reboot'},{n:'10',l:'Steps'}],
       inside:'The neuroscience of porn addiction (what it does to your brain, your hormones, your relationships, your ambition), the exact 21-day reboot protocol, trigger identification and rewiring, environment design, accountability systems, and the relapse prevention framework. Written by someone who\'s been through it.',
       who:'For men who are done lying to themselves. If you\'ve tried quitting and failed — this isn\'t about trying harder. It\'s about understanding the system so you can break it permanently.',
-      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0BBP7QX8D'},{text:'Free Sample',url:'#'}],
+      buy:[{text:'Amazon →',url:'https://www.amazon.com/dp/B0F9F6BQY8'},{text:'Free Sample',url:'https://humanarchitect8.substack.com'}],
       related:['id','aa','lfe']
     }
   };
