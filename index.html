@@ -130,8 +130,21 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .sh .eyebrow::before,.sh .eyebrow::after{content:'';width:16px;height:1px;background:var(--accent);opacity:.4}
 .sh h2{font-size:clamp(1.5rem,3.2vw,2.4rem);margin-bottom:12px;letter-spacing:-.04em}
 .sh p{font-size:14px;color:var(--paper3);line-height:1.7;max-width:460px;margin:0 auto}
+/* —— SCROLL ANIMATIONS —— */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+/* Stagger children */
+.stagger > *:nth-child(1){transition-delay:0s}
+.stagger > *:nth-child(2){transition-delay:.08s}
+.stagger > *:nth-child(3){transition-delay:.16s}
+.stagger > *:nth-child(4){transition-delay:.24s}
+.stagger > *:nth-child(5){transition-delay:.32s}
 
 /* —— STATS —— */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:left;padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -185,22 +198,22 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .related-book:hover{border-color:var(--accent)}
 .related-book img{width:100%;height:120px;object-fit:contain;background:var(--bg)}
 .related-book .rbi{padding:10px}
-.related-book .rbi h4{font-size:12px;margin-bottom:2px;font-weight:400}
-.related-book .rbi p{font-size:9px;color:var(--paper3);text-transform:uppercase;letter-spacing:.1em}
-@media(max-width:900px){.bgrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.bgrid{grid-template-columns:1fr}}
-.bc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .3s;color:inherit;display:block}
-.bc:hover{border-color:var(--accent);transform:translateY(-3px)}
-.bcv{width:100%;overflow:hidden;background:var(--bg3);position:relative;display:flex;align-items:center;justify-content:center;min-height:320px}
-.bcv img{width:100%;height:auto;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.bc:hover .bcv img{transform:scale(1.03)}
-.badge-new{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;font-size:7px;font-weight:700;padding:3px 7px;border-radius:var(--pill);letter-spacing:.1em;text-transform:uppercase;z-index:2}
-.bi{padding:16px}
-.bi h3{font-size:16px;margin-bottom:4px;font-weight:400;letter-spacing:-.02em}
-.bi .tag{font-size:8px;color:var(--accent);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.15em}
-.bi p{font-size:12px;color:var(--paper3);line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.bth{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:12px}
-.bth span{font-size:7px;padding:2px 6px;border-radius:var(--pill);background:var(--accent-g);color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.1em}
+/* —— BOOK GRID —— */
+.bgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:900px){.bgrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.bgrid{grid-template-columns:repeat(2,1fr)}}
+.bc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .3s cubic-bezier(.2,.7,.2,1);color:inherit;display:block;position:relative}
+.bc:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,30,58,0.08)}
+.bcv{width:100%;overflow:hidden;background:var(--bg3);position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:3/4}
+.bcv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.bc:hover .bcv img{transform:scale(1.04)}
+.badge-new{position:absolute;top:6px;right:6px;background:var(--accent);color:#fff;font-size:6px;font-weight:700;padding:2px 5px;border-radius:var(--pill);letter-spacing:.1em;text-transform:uppercase;z-index:2}
+.bi{padding:10px}
+.bi h3{font-size:13px;margin-bottom:3px;font-weight:400;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi .tag{font-size:7px;color:var(--accent);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi p{font-size:10px;color:var(--paper3);line-height:1.6;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bth{display:flex;flex-wrap:wrap;gap:2px;margin-bottom:8px}
+.bth span{font-size:6px;padding:1px 4px;border-radius:var(--pill);background:var(--accent-g);color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
 
 /* —— PAGE PREVIEWS —— */
 .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
@@ -404,7 +417,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       <h2>Five manuals. <span class="illuminate">One system.</span></h2>
       <p>Written from experience, not theory. Each book is a complete protocol — not a summary, not a teaser. The full rebuild.</p>
     </div>
-    <div class="bgrid">
+    <div class="bgrid stagger">
 
       <a href="#" class="bc reveal" data-book="id" role="button" aria-label="View Intelligent Design">
         <div class="bcv"><img src="public/books/intelligent-design.png" alt="Intelligent Design" loading="lazy"></div>
@@ -804,9 +817,16 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   hero.querySelectorAll('h1 .w').forEach(function(w,i){w.style.transitionDelay=(0.1+i*0.06)+'s'});
   setTimeout(function(){hero.classList.add('loaded')},100);
 
-  // Reveal on scroll
-  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -20px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  // Reveal on scroll — smooth, progressive
+  var revealIo=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // Don't unobserve — let it re-trigger if needed
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){revealIo.observe(el);});
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
