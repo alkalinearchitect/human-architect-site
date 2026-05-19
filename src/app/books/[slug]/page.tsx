@@ -67,6 +67,88 @@ export default async function BookPage({ params }: Props) {
         </div>
       </Section>
 
+      {book.pullQuotes && book.pullQuotes.length > 0 && (
+        <Section>
+          <div style={{ maxWidth: 900, margin: '0 auto', display: 'grid', gap: 32 }}>
+            {book.pullQuotes.map((q, i) => (
+              <blockquote
+                key={i}
+                style={{
+                  margin: 0,
+                  padding: '36px 40px',
+                  borderLeft: '3px solid #d4a853',
+                  background: 'linear-gradient(135deg, rgba(212,168,83,0.05), rgba(45,212,191,0.03))',
+                  borderRadius: 12,
+                  color: '#e8e8f0',
+                  fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                  lineHeight: 1.4,
+                  fontWeight: 600,
+                  fontStyle: 'italic',
+                }}
+              >
+                “{q.text}”
+                {q.source && (
+                  <div style={{ marginTop: 12, fontSize: 14, color: '#d4a853', fontStyle: 'normal', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>
+                    — {q.source}
+                  </div>
+                )}
+              </blockquote>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {book.gallery && book.gallery.length > 0 && (
+        <Section dark>
+          <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+            <h2 style={{ fontSize: 28, fontWeight: 700, marginBottom: 8, textAlign: 'center' }}>Inside the Book</h2>
+            <p style={{ color: '#6b6b80', textAlign: 'center', marginBottom: 32 }}>A glimpse of what awaits inside.</p>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: 20,
+              }}
+            >
+              {book.gallery.map((g) => (
+                <figure
+                  key={g.src}
+                  style={{
+                    margin: 0,
+                    background: '#141420',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: 16,
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s, border-color 0.3s',
+                  }}
+                >
+                  <div style={{ width: '100%', aspectRatio: '3/4', overflow: 'hidden', background: '#0a0a14' }}>
+                    <img
+                      src={g.src}
+                      alt={g.caption}
+                      loading="lazy"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    />
+                  </div>
+                  <figcaption
+                    style={{
+                      padding: '14px 16px',
+                      fontSize: 13,
+                      color: '#a0a0b8',
+                      textAlign: 'center',
+                      fontWeight: 600,
+                      letterSpacing: 0.3,
+                    }}
+                  >
+                    {g.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </Section>
+      )}
+
       <Section>
         <div style={{ maxWidth: 750, margin: '0 auto', textAlign: 'center' }}>
           <p style={{ color: '#a0a0b8', lineHeight: 1.7, marginBottom: 32 }}>This book is for people who want to go deeper than surface-level wellness. It presents evidence, explores mechanisms, and provides frameworks for understanding — not medical advice.</p>

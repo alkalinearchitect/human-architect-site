@@ -1,3 +1,13 @@
+export interface GalleryItem {
+  src: string
+  caption: string
+}
+
+export interface PullQuote {
+  text: string
+  source?: string
+}
+
 export interface Book {
   id: string
   title: string
@@ -9,6 +19,8 @@ export interface Book {
   coverImage: string
   paymentLink: string
   status: 'published' | 'coming-soon'
+  gallery?: GalleryItem[]
+  pullQuotes?: PullQuote[]
 }
 
 export const books: Book[] = [
@@ -24,9 +36,20 @@ export const books: Book[] = [
       'People who sense deeper order in biological systems',
     ],
     themes: ['Design', 'Architecture', 'Intelligence', 'Creation', 'Consciousness'],
-    coverImage: '/books/intelligent-design.png',
+    coverImage: '/books/intelligent-design.jpg',
     paymentLink: '#',
     status: 'published',
+    gallery: [
+      { src: '/books/pages/id-human-ear.jpg',      caption: 'The Human Ear — a Marvel of Design' },
+      { src: '/books/pages/id-human-hand.jpg',     caption: 'The Human Hand — a Masterpiece' },
+      { src: '/books/pages/id-anatomy-study.jpg',  caption: 'What We Learn From Studying the Body' },
+      { src: '/books/pages/id-cover-art.jpg',      caption: 'Proving the Existence of Creation' },
+    ],
+    pullQuotes: [
+      { text: 'Not by chance. By design.' },
+      { text: 'The eye, the ear, the hand — no accident could author this.' },
+      { text: 'Anatomy is architecture. Biology is engineering.' },
+    ],
   },
   {
     id: 'alkaline-awakening',
@@ -40,9 +63,20 @@ export const books: Book[] = [
       'Anyone ready to take responsibility for their biological environment',
     ],
     themes: ['Detoxification', 'Terrain', 'Circulation', 'Regeneration', 'Raw Food'],
-    coverImage: '/books/alkaline-awakening.png',
+    coverImage: '/books/alkaline-awakening.jpg',
     paymentLink: '#',
     status: 'published',
+    gallery: [
+      { src: '/books/pages/aa-cover-art.jpg',  caption: 'Harnessing the Power Within' },
+      { src: '/books/pages/aa-utopia.jpg',     caption: 'Utopia — Rising Above the Old Path' },
+      { src: '/books/pages/aa-osteolysis.jpg', caption: 'Acidity, Bones, and Why Terrain Matters' },
+      { src: '/books/pages/aa-skincare.jpg',   caption: 'Glow From the Inside Out' },
+    ],
+    pullQuotes: [
+      { text: 'Clear the terrain. The body knows how to heal.' },
+      { text: 'Food is information. Habits are code.' },
+      { text: 'Stop poisoning the system. Watch what it does next.' },
+    ],
   },
   {
     id: 'life-force-energy',
@@ -56,9 +90,22 @@ export const books: Book[] = [
       'People ready to redirect instinct into purpose',
     ],
     themes: ['Discipline', 'Energy', 'Sovereignty', 'Self-Mastery', 'Focus'],
-    coverImage: '/books/life-force-energy.png',
+    coverImage: '/books/life-force-energy.jpg',
     paymentLink: '#',
     status: 'coming-soon',
+    gallery: [
+      { src: '/books/pages/lfe-duality.jpg',         caption: 'Sacred Masculine, Sacred Feminine' },
+      { src: '/books/pages/lfe-invitation.jpg',      caption: 'The Invitation' },
+      { src: '/books/pages/lfe-fruit-of-spirit.jpg', caption: 'Self-Control: A Fruit of the Spirit' },
+      { src: '/books/pages/lfe-redirect-energy.jpg', caption: 'Redirect Your Energy' },
+      { src: '/books/pages/lfe-currency-of-gods.jpg', caption: 'Your Seed Is the Currency of the Gods' },
+      { src: '/books/pages/lfe-new-paradigm.jpg',    caption: 'The New Paradigm of Relationships' },
+    ],
+    pullQuotes: [
+      { text: 'Retention isn’t denial. It’s redirection.' },
+      { text: 'Your spine is an altar. Your breath, a prayer. Your seed, a covenant.' },
+      { text: 'One who conserves his seed gains strength equal to ten thousand men.', source: 'Kama Sutra' },
+    ],
   },
   {
     id: 'parasite-conspiracy',
@@ -72,8 +119,18 @@ export const books: Book[] = [
       'Anyone ready to take sovereignty over their internal environment',
     ],
     themes: ['Parasites', 'Awareness', 'Detox', 'Sovereignty', 'Investigation'],
-    coverImage: '/books/parasite-conspiracy.png',
+    coverImage: '/books/parasite-conspiracy.jpg',
     paymentLink: '#',
     status: 'published',
+    gallery: [
+      { src: '/books/pages/pc-cover-art.jpg', caption: 'Protocols of Illumination' },
+      { src: '/books/pages/pc-herbs.jpg',     caption: 'Herbs for Parasites' },
+      { src: '/books/pages/pc-massage.jpg',   caption: 'Releasing What the Body Stores' },
+    ],
+    pullQuotes: [
+      { text: 'This is not fear. This is awareness.' },
+      { text: 'Awareness is the first protocol.' },
+      { text: 'Cleanse the body. Reclaim sovereignty.' },
+    ],
   },
 ]
