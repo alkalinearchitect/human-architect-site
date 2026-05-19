@@ -89,8 +89,8 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 /* —— MOBILE —— */
 .mobi{position:fixed;inset:0;background:var(--bg);z-index:99;padding:80px 28px 32px;flex-direction:column;opacity:0;transform:translateY(-8px);transition:all .3s;pointer-events:none;display:flex;gap:0}
 .mobi.open{opacity:1;transform:translateY(0);pointer-events:auto}
-.mobi-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--paper3);cursor:pointer;padding:8px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;z-index:100}
-.mobi-close:hover{color:var(--paper)}
+.mobi-close{position:absolute;top:14px;right:14px;background:var(--bg2);border:1px solid var(--border);color:var(--paper);cursor:pointer;padding:10px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;z-index:100;border-radius:var(--r);min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.mobi-close:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .mobi a{display:block;padding:16px 0;font-family:var(--serif);font-size:28px;font-weight:400;color:var(--paper);border-bottom:1px solid var(--border);letter-spacing:-.03em}
 
 /* —— HERO —— */
@@ -201,43 +201,44 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .related-book img{width:100%;height:120px;object-fit:contain;background:var(--bg)}
 .related-book .rbi{padding:10px}
 /* —— BOOK GRID —— */
-.bgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1060px;margin:0 auto}
+.bgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;max-width:1060px;margin:0 auto}
 @media(max-width:900px){.bgrid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:560px){.bgrid{grid-template-columns:repeat(2,1fr)}}
-.bc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .3s cubic-bezier(.2,.7,.2,1);color:inherit;display:block;position:relative}
+.bc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;transition:all .3s cubic-bezier(.2,.7,.2,1);color:inherit;display:block;position:relative;cursor:pointer}
 .bc:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,30,58,0.08)}
-.bcv{width:100%;overflow:hidden;background:var(--bg3);position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:3/4}
-.bcv img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.bcv{width:100%;overflow:hidden;background:var(--bg3);position:relative;padding-top:133.33%}
+.bcv img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .bc:hover .bcv img{transform:scale(1.04)}
 .badge-new{position:absolute;top:6px;right:6px;background:var(--accent);color:#fff;font-size:6px;font-weight:700;padding:2px 5px;border-radius:var(--pill);letter-spacing:.1em;text-transform:uppercase;z-index:2}
 .bi{padding:10px}
-.bi h3{font-size:13px;margin-bottom:3px;font-weight:400;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bi .tag{font-size:7px;color:var(--accent);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.12em}
-.bi p{font-size:12px;color:var(--paper3);line-height:1.6;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.bi h3{font-size:12px;margin-bottom:3px;font-weight:400;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi .tag{font-size:7px;color:var(--accent);font-weight:600;margin-bottom:5px;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bi p{font-size:11px;color:var(--paper3);line-height:1.55;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .bth{display:flex;flex-wrap:wrap;gap:2px;margin-bottom:8px}
 .bth span{font-size:6px;padding:1px 4px;border-radius:var(--pill);background:var(--accent-g);color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
 
 /* —— PAGE PREVIEWS —— */
 .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
 @media(max-width:700px){.preview-grid{grid-template-columns:repeat(2,1fr)}}
-.page-prev{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);transition:all .3s;position:relative;background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;min-height:280px}
+.page-prev{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);transition:all .3s;position:relative;background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;aspect-ratio:3/4;min-height:200px}
 .page-prev:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 24px rgba(196,30,58,0.08)}
-.page-prev img{width:100%;height:auto;object-fit:contain;display:block;max-height:100%}
-.page-prev-label{position:absolute;bottom:8px;left:8px;right:8px;z-index:2;font-size:8px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-weight:600;text-align:center}
+.page-prev img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;inset:0}
+.page-prev-label{position:absolute;bottom:8px;left:8px;right:8px;z-index:2;font-size:8px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-weight:600;text-align:center;pointer-events:none}
 .preview-text{display:grid;gap:10px;margin-top:12px}
 .preview-text p{font-family:var(--serif);font-size:14px;color:var(--paper2);line-height:1.7;font-style:italic;font-weight:300;padding:14px 16px;background:var(--bg2);border-left:2px solid var(--accent);border-radius:0 var(--r) var(--r) 0}
 .book-preview-block{margin-top:40px}
 .book-preview-block:first-child{margin-top:24px}
 .bp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.bp-header img{width:28px;height:42px;object-fit:cover;border-radius:3px}
+.bp-header img{width:36px;height:52px;object-fit:contain;border-radius:3px;background:var(--bg3)}
 .bp-header h3{font-size:15px;margin-bottom:1px}
 .bp-header p{font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-weight:500}
 
 /* —— FOUNDER —— */
 .founder{display:grid;grid-template-columns:140px 1fr;gap:40px;align-items:start;max-width:760px;margin:0 auto}
 @media(max-width:600px){.founder{grid-template-columns:1fr;gap:20px;text-align:center;justify-items:center}}
-.founder-img{width:140px;height:140px;border-radius:50%;overflow:hidden;background:var(--bg3);position:relative;border:1px solid var(--border)}
-.founder-img img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.founder-img{width:140px;height:140px;border-radius:50%;overflow:hidden;background:var(--bg3);position:relative;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.founder-img img{width:100%;height:100%;object-fit:contain;border-radius:50%;position:relative;z-index:1}
+.founder-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 40% 35%,rgba(196,30,58,0.06),transparent 70%);z-index:0}
 .founder h3{font-size:24px;margin-bottom:4px;letter-spacing:-.02em}
 .founder .role{font-size:9px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.18em;margin-bottom:14px}
 .founder p{color:var(--paper2);font-size:13px;line-height:1.8;margin-bottom:10px}
@@ -422,7 +423,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
     </div>
     <div class="bgrid stagger">
 
-      <a href="#" class="bc reveal" data-book="id" role="button" aria-label="View Intelligent Design">
+      <div class="bc reveal" data-book="id" role="button" tabindex="0" aria-label="View Intelligent Design">
         <div class="bcv"><img src="public/books/intelligent-design.png" alt="Intelligent Design" loading="lazy"></div>
         <div class="bi">
           <h3>Intelligent Design</h3>
@@ -431,9 +432,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="bth"><span>Design</span><span>Intelligence</span><span>Creation</span></div>
           <a href="https://www.amazon.com/dp/B0F9F2K8SW" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
-      </a>
+      </div>
 
-      <a href="#" class="bc reveal" data-book="aa" role="button" aria-label="View Alkaline Awakening">
+      <div class="bc reveal" data-book="aa" role="button" tabindex="0" aria-label="View Alkaline Awakening">
         <div class="bcv"><img src="public/books/alkaline-awakening.png" alt="Alkaline Awakening" loading="lazy"></div>
         <div class="bi">
           <h3>Alkaline Awakening</h3>
@@ -442,9 +443,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="bth"><span>Detox</span><span>Raw Food</span><span>Recipes</span></div>
           <a href="https://www.amazon.com/dp/B0F9F3JXQ4" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
-      </a>
+      </div>
 
-      <a href="#" class="bc reveal" data-book="pc" role="button" aria-label="View Parasite Conspiracy">
+      <div class="bc reveal" data-book="pc" role="button" tabindex="0" aria-label="View Parasite Conspiracy">
         <div class="bcv"><img src="public/books/parasite-conspiracy.png" alt="Parasite Conspiracy" loading="lazy"></div>
         <div class="bi">
           <h3>Parasite Conspiracy</h3>
@@ -453,9 +454,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="bth"><span>Parasites</span><span>Detox</span><span>Protocols</span></div>
           <a href="https://www.amazon.com/dp/B0F9F4NQZR" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
-      </a>
+      </div>
 
-      <a href="#" class="bc reveal" data-book="lfe" role="button" aria-label="View Life Force Energy">
+      <div class="bc reveal" data-book="lfe" role="button" tabindex="0" aria-label="View Life Force Energy">
         <div class="bcv">
           <img src="public/books/life-force-energy.png" alt="Life Force Energy" loading="lazy">
           <span class="badge-new">New</span>
@@ -467,9 +468,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="bth"><span>Retention</span><span>Energy</span><span>Discipline</span></div>
           <a href="https://www.amazon.com/dp/B0F9F5VWP2" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
-      </a>
+      </div>
 
-      <a href="#" class="bc reveal" data-book="qpn" role="button" aria-label="View Quit PRN Manual">
+      <div class="bc reveal" data-book="qpn" role="button" tabindex="0" aria-label="View Quit PRN Manual">
         <div class="bcv"><img src="public/books/quit-prn-manual.png" alt="Quit PRN Manual" loading="lazy"></div>
         <div class="bi">
           <h3>Quit PRN Manual</h3>
@@ -478,7 +479,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
           <div class="bth"><span>Recovery</span><span>Discipline</span><span>Freedom</span></div>
           <a href="https://www.amazon.com/dp/B0F9F6BQY8" class="btn bs bo" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a>
         </div>
-      </a>
+      </div>
 
     </div>
   </div>
@@ -838,7 +839,29 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 
   // Stat count-up
   function easeOutQuart(t){return 1-Math.pow(1-t,4)}
-  var statIo=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.querySelectorAll('.num[data-target]').forEach(function(el){var target=parseInt(el.dataset.target,10);var start=performance.now();var dur=1500;if(reduce){el.textContent=target+(el.dataset.sym||'');return;}function tick(now){var p=Math.min(1,(now-start)/dur);el.textContent=Math.round(target*easeOutQuart(p))+(el.dataset.sym||'');if(p<1)requestAnimationFrame(tick);}requestAnimationFrame(tick);});e.target.querySelectorAll('.stat').forEach(function(s){s.classList.add('visible');});statIo.unobserve(e.target);}});},{threshold:0.3});
+  var statIo=new IntersectionObserver(function(entries){entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.num[data-target]').forEach(function(el){
+        if(el.dataset.counted) return;
+        el.dataset.counted='true';
+        var target=parseInt(el.dataset.target,10);
+        var sym=el.dataset.sym||'';
+        var start=performance.now();
+        var dur=1800;
+        if(reduce){el.textContent=target+sym;return;}
+        function tick(now){
+          var p=Math.min(1,(now-start)/dur);
+          el.textContent=Math.round(target*easeOutQuart(p))+sym;
+          if(p<1)requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+      e.target.querySelectorAll('.stat').forEach(function(s,i){
+        setTimeout(function(){s.classList.add('visible');},i*120);
+      });
+      statIo.unobserve(e.target);
+    }
+  });},{threshold:0.2});
   document.querySelectorAll('.stats').forEach(function(el){statIo.observe(el);});
 
   // Lightbox
@@ -950,11 +973,20 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
     document.body.style.overflow='';
   }
 
-  // Book card clicks
+  // Book card clicks — open modal unless clicking a buy button
   document.querySelectorAll('[data-book]').forEach(function(el){
     el.addEventListener('click',function(e){
+      // Don't open modal if user clicked a buy/link button
+      if(e.target.closest('a, button')) return;
       e.preventDefault();
       openBookModal(this.dataset.book);
+    });
+    // Keyboard support
+    el.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        openBookModal(this.dataset.book);
+      }
     });
   });
 

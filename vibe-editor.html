@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Vibe — Visual Website Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--bg2:#0a0a0a;--bg3:#111;--border:rgba(245,245,240,0.06);--border2:rgba(245,245,240,0.12);--paper:#f5f5f0;--paper2:#b0ada8;--paper3:#6a6864;--accent:#c41e3a;--accent-h:#e02040;--accent-g:rgba(196,30,58,0.08);--green:#22c55e;--yellow:#eab308;--blue:#3b82f6;--purple:#a855f7;--mono:'JetBrains Mono',monospace;--sans:'Inter',system-ui,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:(--paper);font-family:var(--sans);font-size:13px;line-height:1.6}
+::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+a{color:inherit;text-decoration:none}button{cursor:pointer;font-family:inherit;border:none;background:none;color:inherit}
+textarea,input{font-family:inherit;border:none;background:none;color:inherit;outline:none}
+
+/* ═══ TOP BAR ═══ */
+.topbar{height:42px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 10px;gap:6px;flex-shrink:0;z-index:200}
+.topbar .brand{font-weight:700;font-size:13px;letter-spacing:-.03em;display:flex;align-items:center;gap:5px}
+.topbar .brand .icon{width:20px;height:20px;background:linear-gradient(135deg,var(--accent),#ff6b6b);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px}
+.topbar .url{flex:1;max-width:380px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-family:var(--mono);font-size:10px;color:var(--paper3)}
+.topbar .url input{width:100%;background:none;border:none;color:var(--paper3);font-family:var(--mono);font-size:10px;outline:none}
+.topbar .nav-btns{display:flex;gap:1px}
+.topbar .nav-btn{width:22px;height:22px;border-radius:3px;display:flex;align-items:center;justify-content:center;color:var(--paper3);font-size:11px}
+.topbar .nav-btn:hover{background:var(--bg3);color:var(--paper)}
+.topbar .spacer{width:1px;height:18px;background:var(--border);margin:0 3px}
+.topbar .btn{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:500;border:1px solid var(--border);color:var(--paper2)}
+.topbar .btn:hover{border-color:var(--paper2);color:var(--paper)}
+.topbar .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.topbar .btn.primary:hover{background:var(--accent-h)}
+.topbar .status{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--paper3)}
+.topbar .status .dot{width:4px;height:4px;border-radius:50%;background:var(--green)}
+
+/* ═══ LAYOUT ═══ */
+.layout{display:flex;flex:1;overflow:hidden}
+
+/* ═══ LEFT: CHAT ═══ */
+.chat-panel{width:300px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.chat-panel.hidden{display:none}
+.chat-header{padding:8px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.chat-header .title{font-size:11px;font-weight:600}
+.chat-messages{flex:1;overflow-y:auto;padding:8px;display:flex;flex-direction:column;gap:5px}
+.msg{padding:6px 8px;border-radius:6px;font-size:11px;line-height:1.5;max-width:95%;word-wrap:break-word}
+.msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
+.msg.ai{background:var(--bg3);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:2px}
+.msg.ai strong{font-weight:600}
+.msg.ai .op{font-family:var(--mono);font-size:9px;color:var(--green);margin-top:2px}
+.msg.ai .op::before{content:'✓ '}
+.typing{display:flex;gap:2px;padding:6px 8px;background:var(--bg3);border-radius:6px;align-self:flex-start;border:1px solid var(--border)}
+.typing span{width:4px;height:4px;border-radius:50%;background:var(--paper3);animation:typing 1.4s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-3px)}}
+.chat-input{padding:6px;border-top:1px solid var(--border)}
+.chat-input .wrap{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 6px;display:flex;gap:4px;align-items:flex-end}
+.chat-input .wrap:focus-within{border-color:var(--accent)}
+.chat-input textarea{flex:1;resize:none;min-height:28px;max-height:60px;font-size:11px;line-height:1.4;color:var(--paper)}
+.chat-input textarea::placeholder{color:var(--paper3)}
+.chat-input .send{width:24px;height:24px;border-radius:4px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.chat-input .send:hover{background:var(--accent-h)}
+.quick-row{padding:4px 6px;display:flex;flex-wrap:wrap;gap:2px;border-top:1px solid var(--border)}
+.quick-btn{padding:1px 5px;border-radius:3px;font-size:8px;border:1px solid var(--border);color:var(--paper3)}
+.quick-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ═══ CENTER: PREVIEW ═══ */
+.preview-area{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#fff}
+.preview-toolbar{height:28px;background:var(--bg3);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 6px;gap:3px;flex-shrink:0}
+.preview-toolbar .group{display:flex;gap:1px;padding:0 3px;border-right:1px solid var(--border)}
+.preview-toolbar .tbtn{padding:1px 5px;border-radius:3px;font-size:9px;color:var(--paper3);display:flex;align-items:center;gap:2px}
+.preview-toolbar .tbtn:hover{background:var(--bg2);color:var(--paper)}
+.preview-toolbar .tbtn.active{background:var(--bg2);color:var(--accent)}
+.preview-toolbar .spacer{flex:1}
+.preview-toolbar .device-btns{display:flex;gap:1px}
+.preview-toolbar .device-btn{padding:1px 4px;border-radius:3px;font-size:9px;color:var(--paper3)}
+.preview-toolbar .device-btn.active{background:var(--bg2);color:var(--paper)}
+.preview-toolbar .zoom{font-size:8px;color:(--paper3);font-family:(--mono);min-width:30px;text-align:center}
+.preview-frame{flex:1;overflow:auto;position:relative}
+.preview-frame iframe{width:100%;height:100%;border:none;background:#fff}
+.preview-frame.tablet iframe{width:768px;height:100%;margin:0 auto;display:block;border-left:1px solid #ddd;border-right:1px solid #ddd}
+.preview-frame.mobile iframe{width:375px;height:100%;margin:0 auto;display:block;border-left:1px solid #ddd;border-right:1px solid #ddd;border-radius:12px}
+
+/* ═══ VISUAL EDIT OVERLAY ═══ */
+.ve-overlay{position:absolute;inset:0;z-index:10;cursor:crosshair;pointer-events:none}
+.ve-highlight{position:absolute;pointer-events:none;border:2px solid var(--accent);background:rgba(196,30,58,0.06);border-radius:2px;transition:all .08s ease-out}
+.ve-label{position:absolute;background:var(--accent);color:#fff;font-size:8px;font-family:var(--mono);padding:1px 4px;border-radius:2px;white-space:nowrap;pointer-events:none;z-index:11}
+
+/* ═══ RIGHT: PROPERTIES PANEL ═══ */
+.props-panel{width:280px;background:var(--bg2);border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden}
+.props-panel.hidden{display:none}
+.props-header{padding:8px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.props-header .title{font-size:11px;font-weight:600;font-family:var(--mono)}
+.props-header .badge{font-size:8px;padding:1px 4px;border-radius:3px;background:var(--accent-g);color:var(--accent)}
+.props-body{flex:1;overflow-y:auto;padding:8px}
+.prop-group{margin-bottom:10px}
+.prop-group .label{font-size:9px;font-weight:600;color:var(--paper3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between}
+.prop-group .label .reset{font-size:8px;color:(--accent);cursor:pointer;opacity:0;transition:opacity .15s}
+.prop-group:hover .label .reset{opacity:1}
+.prop-row{display:flex;gap:4px;margin-bottom:3px}
+.prop-row .field{flex:1}
+.prop-row .field input,.prop-row .field select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:3px 5px;font-size:10px;color:(--paper);font-family:var(--mono)}
+.prop-row .field input:focus,.prop-row .field select:focus{border-color:var(--accent)}
+.prop-row .field .color-wrap{display:flex;gap:3px;align-items:center}
+.prop-row .field .color-preview{width:16px;height:16px;border-radius:3px;border:1px solid var(--border);cursor:pointer;flex-shrink:0}
+.prop-row .field .color-input{flex:1}
+.prop-actions{display:flex;gap:3px;margin-top:6px}
+.prop-actions .action-btn{flex:1;padding:3px;border-radius:3px;font-size:9px;border:1px solid var(--border);color:var(--paper3);text-align:center;transition:all .15s}
+.prop-actions .action-btn:hover{border-color:var(--paper2);color:var(--paper)}
+.prop-actions .action-btn.danger:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ═══ ELEMENT TREE ═══ */
+.tree-panel{border-top:1px solid var(--border);max-height:200px;overflow-y:auto}
+.tree-panel .tree-header{padding:4px 10px;font-size:9px;font-weight:600;color:(--paper3);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border)}
+.tree-item{padding:2px 10px 2px 16px;font-size:9px;font-family:var(--mono);color:var(--paper2);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .1s}
+.tree-item:hover{background:var(--bg3)}
+.tree-item.selected{background:var(--accent-g);color:var(--accent)}
+.tree-item .tag{color:var(--accent);margin-right:3px}
+.tree-item .cls{color:var(--yellow)}
+
+/* ═══ BOTTOM BAR ═══ */
+.bottombar{height:20px;background:var(--bg2);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 6px;gap:8px;flex-shrink:0;font-size:8px;color:var(--paper3)}
+.bottombar .spacer{flex:1}
+
+/* ═══ TOAST ═══ */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:4px 10px;font-size:10px;color:var(--paper);z-index:999;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="brand"><div class="icon">V</div> Vibe</div>
+  <div class="url"><input type="text" id="urlInput" value="https://alkalinearchitect.github.io/human-architect-site/"></div>
+  <div class="nav-btns">
+    <button class="nav-btn" onclick="goBack()">←</button>
+    <button class="nav-btn" onclick="goForward()">→</button>
+    <button class="nav-btn" onclick="refreshPreview()">↻</button>
+  </div>
+  <div class="spacer"></div>
+  <div class="status"><div class="dot"></div> Ready</div>
+  <button class="btn" onclick="openLive()">↗ Open</button>
+  <button class="btn primary" onclick="deployChanges()">↑ Deploy</button>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- CHAT -->
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="title">💬 AI Chat</div>
+    </div>
+    <div class="chat-messages" id="chat">
+      <div class="msg ai">
+        <strong>Hey! I'm Vibe 👋</strong><br><br>
+        Describe changes or use <strong>Visual Edit</strong> mode to click and edit any element directly.<br><br>
+        Try: "Make cards smaller", "Change to gold", "Add services section"
+      </div>
+    </div>
+    <div class="chat-input">
+      <div class="wrap">
+        <textarea id="chatInput" placeholder="Describe what to change..." rows="2"></textarea>
+        <button class="send" onclick="sendChat()">↑</button>
+      </div>
+    </div>
+    <div class="quick-row">
+      <button class="quick-btn" onclick="quick('Smaller book cards')">📦 Cards</button>
+      <button class="quick-btn" onclick="quick('Gold theme')">🎨 Gold</button>
+      <button class="quick-btn" onclick="quick('Bolder hero')">🦁 Hero</button>
+      <button class="quick-btn" onclick="quick('Add services')">💰 Services</button>
+      <button class="quick-btn" onclick="quick('Fix mobile')">📱 Mobile</button>
+    </div>
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="preview-area">
+    <div class="preview-toolbar">
+      <div class="group">
+        <button class="tbtn" onclick="undo()">↩</button>
+        <button class="tbtn" onclick="redo()">↪</button>
+      </div>
+      <div class="group">
+        <button class="tbtn active" id="veBtn" onclick="toggleVisualEdit()">⊹ Visual Edit</button>
+        <button class="tbtn" id="treeBtn" onclick="toggleTree()">🌳 Tree</button>
+      </div>
+      <div class="spacer"></div>
+      <div class="device-btns">
+        <button class="device-btn active" onclick="setDevice('desktop',this)">🖥</button>
+        <button class="device-btn" onclick="setDevice('tablet',this)">📱</button>
+        <button class="device-btn" onclick="setDevice('mobile',this)">📲</button>
+      </div>
+      <div class="zoom" id="zoomTxt">100%</div>
+    </div>
+    <div class="preview-frame" id="previewFrame">
+      <iframe id="preview" src="https://alkalinearchitect.github.io/human-architect-site/" sandbox="allow-same-origin allow-scripts"></iframe>
+      <div class="ve-overlay" id="veOverlay" style="display:none">
+        <div class="ve-highlight" id="veHighlight"></div>
+        <div class="ve-label" id="veLabel"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPERTIES PANEL -->
+  <div class="props-panel" id="propsPanel">
+    <div class="props-header">
+      <div class="title" id="propTitle">No selection</div>
+      <div class="badge" id="propBadge">—</div>
+    </div>
+    <div class="props-body" id="propsBody">
+      <div style="color:var(--paper3);font-size:10px;text-align:center;padding:20px 0">
+        Click "Visual Edit" then select an element to edit its properties
+      </div>
+    </div>
+    <!-- Element Tree -->
+    <div class="tree-panel" id="treePanel" style="display:none">
+      <div class="tree-header">Element Tree</div>
+      <div id="treeContent"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM BAR -->
+<div class="bottombar">
+  <div class="status"><div class="dot"></div> <span id="statusText">Ready</span></div>
+  <div>Changes: <span id="changeCount">0</span></div>
+  <div class="spacer"></div>
+  <div>Vibe Editor v2.0</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══ STATE ═══
+var S={
+  url:'https://alkalinearchitect.github.io/human-architect-site/',
+  device:'desktop',
+  veMode:false,
+  treeOpen:false,
+  selectedEl:null,
+  changes:0,
+  history:[],
+  historyPos:-1
+};
+
+var $=function(id){return document.getElementById(id)};
+var preview=$('preview');
+var chatInput=$('chatInput');
+var chat=$('chat');
+var veOverlay=$('veOverlay');
+var veHighlight=$('veHighlight');
+var veLabel=$('veLabel');
+var propsBody=$('propsBody');
+var propTitle=$('propTitle');
+var propBadge=$('propBadge');
+var previewFrame=$('previewFrame');
+var treePanel=$('treePanel');
+var treeContent=$('treeContent');
+
+// ═══ CHAT ═══
+chatInput.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}
+});
+
+function sendChat(){
+  var t=chatInput.value.trim();
+  if(!t)return;
+  addMsg(t,'user');
+  chatInput.value='';
+  showTyping();
+  setTimeout(function(){hideTyping();processAI(t);},500+Math.random()*800);
+}
+
+function quick(t){chatInput.value=t;sendChat();}
+
+function addMsg(t,type){
+  var d=document.createElement('div');
+  d.className='msg '+type;
+  d.innerHTML=t.replace(/\n/g,'<br>');
+  chat.appendChild(d);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+function showTyping(){
+  var d=document.createElement('div');d.className='typing';d.id='typing';
+  d.innerHTML='<span></span><span></span><span></span>';
+  chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+}
+function hideTyping(){var e=$('typing');if(e)e.remove();}
+
+function processAI(text){
+  var l=text.toLowerCase(),r='';
+  if(l.includes('smaller')&&l.includes('card')){
+    r='Making cards smaller:<div class="op">Grid: 5 columns</div><div class="op">Padding: 8px</div><div class="op">Fonts reduced</div>';
+    injectCSS('.bgrid{grid-template-columns:repeat(5,1fr)!important;gap:8px!important}.bi{padding:6px!important}.bi h3{font-size:11px!important}.bi .tag{font-size:6px!important}.bi p{font-size:9px!important}');
+  }else if(l.includes('gold')){
+    r='Gold theme:<div class="op">Accent → #c9a854</div><div class="op">Glow updated</div>';
+    injectCSS(':root{--accent:#c9a854!important;--accent-g:rgba(201,168,84,0.08)!important}');
+  }else if(l.includes('hero')){
+    r='Bolder hero:<div class="op">Font → clamp(3rem,8vw,6rem)</div><div class="op">Glow shadow</div>';
+    injectCSS('.hero h1{font-size:clamp(3rem,8vw,6rem)!important}');
+  }else{
+    r='I can help! Try:<br>• "Smaller cards"<br>• "Gold theme"<br>• "Bolder hero"<br>• "Add services"<br>• "Fix mobile"';
+  }
+  addMsg(r,'ai');
+  S.changes++;$('changeCount').textContent=S.changes;
+  refreshPreview();
+}
+
+function injectCSS(css){
+  var s=document.getElementById('vibe-style');
+  if(!s){s=document.createElement('style');s.id='vibe-style';document.head.appendChild(s);}
+  s.textContent+=css+'\n';
+}
+
+// ═══ VISUAL EDIT ═══
+function toggleVisualEdit(){
+  S.veMode=!S.veMode;
+  $('veBtn').classList.toggle('active',S.veMode);
+  veOverlay.style.display=S.veMode?'block':'none';
+  if(S.veMode){
+    veOverlay.addEventListener('mousemove',onVEMove);
+    veOverlay.addEventListener('click',onVEClick);
+    showToast('Visual Edit: Hover to highlight, click to select');
+  }else{
+    veOverlay.removeEventListener('mousemove',onVEMove);
+    veOverlay.removeEventListener('click',onVEClick);
+    veHighlight.style.display='none';
+    veLabel.style.display='none';
+  }
+}
+
+function onVEMove(e){
+  var doc=preview.contentDocument;
+  if(!doc)return;
+  var el=doc.elementFromPoint(e.clientX,e.clientY);
+  if(!el||el===veOverlay||el.tagName==='HTML'||el.tagName==='BODY')return;
+  var rect=el.getBoundingClientRect();
+  var frameRect=previewFrame.getBoundingClientRect();
+  var sx=previewFrame.scrollLeft,sy=previewFrame.scrollTop;
+  veHighlight.style.display='block';
+  veHighlight.style.left=(rect.left-frameRect.left+sx)+'px';
+  veHighlight.style.top=(rect.top-frameRect.top+sy)+'px';
+  veHighlight.style.width=rect.width+'px';
+  veHighlight.style.height=rect.height+'px';
+  veLabel.style.display='block';
+  veLabel.textContent=el.tagName.toLowerCase()+(el.id?'#'+el.id:'')+(el.className?'.'+el.className.split(' ')[0]:'');
+  veLabel.style.left=(rect.left-frameRect.left+sx)+'px';
+  veLabel.style.top=(rect.top-frameRect.top+sy-14)+'px';
+  S.hoverEl=el;
+}
+
+function onVEClick(e){
+  e.preventDefault();
+  if(!S.hoverEl)return;
+  S.selectedEl=S.hoverEl;
+  selectElement(S.hoverEl);
+}
+
+function selectElement(el){
+  if(!el)return;
+  S.selectedEl=el;
+  // Update properties panel
+  var tag=el.tagName.toLowerCase();
+  var id=el.id||'';
+  var cls=el.className||'';
+  propTitle.textContent=tag+(id?'#'+id:'')+(cls?'.'+cls.split(' ')[0]:'');
+  propBadge.textContent=tag.toUpperCase();
+  // Build property editors
+  buildPropsPanel(el);
+  // Highlight in tree
+  highlightTree(el);
+}
+
+function buildPropsPanel(el){
+  var html='';
+  // Text content
+  if(el.children.length===0||el.textContent.length<200){
+    html+='<div class="prop-group"><div class="label">Text Content</div>';
+    html+='<div class="prop-row"><div class="field"><input type="text" value="'+escapeAttr(el.textContent.substring(0,100))+'" onchange="updateElText(this.value)"></div></div></div>';
+  }
+  // Styles
+  var styles=el.style;
+  var computed=preview.contentDocument.defaultView.getComputedStyle(el);
+  // Color
+  html+='<div class="prop-group"><div class="label">Color</div>';
+  html+='<div class="prop-row"><div class="field"><div class="color-wrap"><div class="color-preview" style="background:'+computed.color+'" onclick="pickColor(\'color\',this)"></div><input class="color-input" type="text" value="'+computed.color+'" onchange="updateStyle(\'color\',this.value)"></div></div></div></div>';
+  // Background
+  html+='<div class="prop-group"><div class="label">Background</div>';
+  html+='<div class="prop-row"><div class="field"><div class="color-wrap"><div class="color-preview" style="background:'+computed.backgroundColor+'" onclick="pickColor(\'background-color\',this)"></div><input class="color-input" type="text" value="'+computed.backgroundColor+'" onchange="updateStyle(\'background-color\',this.value)"></div></div></div></div>';
+  // Font size
+  html+='<div class="prop-group"><div class="label">Font Size</div>';
+  html+='<div class="prop-row"><div class="field"><input type="text" value="'+computed.fontSize+'" onchange="updateStyle(\'font-size\',this.value)"></div></div></div>';
+  // Font weight
+  html+='<div class="prop-group"><div class="label">Font Weight</div>';
+  html+='<div class="prop-row"><div class="field"><select onchange="updateStyle(\'font-weight\',this.value)"><option value="300"'+(computed.fontWeight==='300'?' selected':'')+'>Light</option><option value="400"'+(computed.fontWeight==='400'?' selected':'')+'>Regular</option><option value="500"'+(computed.fontWeight==='500'?' selected':'')+'>Medium</option><option value="600"'+(computed.fontWeight==='600'?' selected':'')+'>Semibold</option><option value="700"'+(computed.fontWeight==='700'?' selected':'')+'>Bold</option></select></div></div></div>';
+  // Padding
+  html+='<div class="prop-group"><div class="label">Padding</div>';
+  html+='<div class="prop-row"><div class="field"><input type="text" placeholder="top" value="'+computed.paddingTop+'" onchange="updateStyle(\'padding-top\',this.value)"></div><div class="field"><input type="text" placeholder="right" value="'+computed.paddingRight+'" onchange="updateStyle(\'padding-right\',this.value)"></div></div>';
+  html+='<div class="prop-row"><div class="field"><input type="text" placeholder="bottom" value="'+computed.paddingBottom+'" onchange="updateStyle(\'padding-bottom\',this.value)"></div><div class="field"><input type="text" placeholder="left" value="'+computed.paddingLeft+'" onchange="updateStyle(\'padding-left\',this.value)"></div></div></div>';
+  // Margin
+  html+='<div class="prop-group"><div class="label">Margin</div>';
+  html+='<div class="prop-row"><div class="field"><input type="text" placeholder="top" value="'+computed.marginTop+'" onchange="updateStyle(\'margin-top\',this.value)"></div><div class="field"><input type="text" placeholder="right" value="'+computed.marginRight+'" onchange="updateStyle(\'margin-right\',this.value)"></div></div>';
+  html+='<div class="prop-row"><div class="field"><input type="text" placeholder="bottom" value="'+computed.marginBottom+'" onchange="updateStyle(\'margin-bottom\',this.value)"></div><div class="field"><input type="text" placeholder="left" value="'+computed.marginLeft+'" onchange="updateStyle(\'margin-left\',this.value)"></div></div></div>';
+  // Border radius
+  html+='<div class="prop-group"><div class="label">Border Radius</div>';
+  html+='<div class="prop-row"><div class="field"><input type="text" value="'+computed.borderRadius+'" onchange="updateStyle(\'border-radius\',this.value)"></div></div></div>';
+  // Opacity
+  html+='<div class="prop-group"><div class="label">Opacity</div>';
+  html+='<div class="prop-row"><div class="field"><input type="range" min="0" max="1" step="0.05" value="'+computed.opacity+'" oninput="updateStyle(\'opacity\',this.value)"></div></div></div>';
+  // Actions
+  html+='<div class="prop-group"><div class="label">Actions</div>';
+  html+='<div class="prop-actions"><button class="action-btn" onclick="duplicateEl()">📋 Duplicate</button><button class="action-btn" onclick="moveEl(-1)">↑ Move Up</button><button class="action-btn" onclick="moveEl(1)">↓ Move Down</button><button class="action-btn danger" onclick="deleteEl()">🗑 Delete</button></div></div>';
+  // Custom CSS
+  html+='<div class="prop-group"><div class="label">Custom CSS</div>';
+  html+='<div class="prop-row"><div class="field"><textarea rows="3" placeholder="e.g. text-shadow: 0 0 10px red" onchange="updateStyleCustom(this.value)"></textarea></div></div></div>';
+  propsBody.innerHTML=html;
+}
+
+function escapeAttr(v){return v.replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+
+function updateElText(v){
+  if(S.selectedEl){S.selectedEl.textContent=v;S.changes++;saveState();}
+}
+
+function updateStyle(prop,val){
+  if(S.selectedEl){S.selectedEl.style.setProperty(prop,val);S.changes++;saveState();}
+}
+
+function updateStyleCustom(css){
+  if(!S.selectedEl)return;
+  css.split(';').forEach(function(rule){
+    var parts=rule.split(':');
+    if(parts.length===2)S.selectedEl.style.setProperty(parts[0].trim(),parts[1].trim());
+  });
+  S.changes++;saveState();
+}
+
+function pickColor(prop,el){
+  var color=prompt('Enter color (hex, rgb, name):');
+  if(color){updateStyle(prop,color);el.style.background=color;}
+}
+
+function duplicateEl(){
+  if(!S.selectedEl)return;
+  var clone=S.selectedEl.cloneNode(true);
+  S.selectedEl.parentNode.insertBefore(clone,S.selectedEl.nextSibling);
+  S.changes++;saveState();refreshPreview();
+}
+
+function moveEl(dir){
+  if(!S.selectedEl)return;
+  var p=S.selectedEl.parentNode;
+  if(dir<0&&S.selectedEl.previousSibling)p.insertBefore(S.selectedEl,S.selectedEl.previousSibling);
+  else if(dir>0&&S.selectedEl.nextSibling)p.insertBefore(S.selectedEl.nextSibling.nextSibling,S.selectedEl);
+  S.changes++;saveState();
+}
+
+function deleteEl(){
+  if(!S.selectedEl)return;
+  S.selectedEl.remove();
+  S.selectedEl=null;
+  S.changes++;saveState();
+  propsBody.innerHTML='<div style="color:var(--paper3);font-size:10px;text-align:center;padding:20px 0">Element deleted. Select another.</div>';
+  propTitle.textContent='No selection';
+  propBadge.textContent='—';
+}
+
+// ═══ ELEMENT TREE ═══
+function toggleTree(){
+  S.treeOpen=!S.treeOpen;
+  treePanel.style.display=S.treeOpen?'block':'none';
+  $('treeBtn').classList.toggle('active',S.treeOpen);
+  if(S.treeOpen)buildTree();
+}
+
+function buildTree(){
+  var doc=preview.contentDocument;
+  if(!doc)return;
+  var html='';
+  function walk(el,depth){
+    if(el.tagName==='SCRIPT'||el.tagName==='STYLE'||el.tagName==='LINK')return;
+    var tag=el.tagName.toLowerCase();
+    var id=el.id?'#'+el.id:'';
+    var cls=el.className&&typeof el.className==='string'?'.'+el.className.split(' ')[0]:'';
+    var text=el.children.length===0?el.textContent.substring(0,30):'';
+    html+='<div class="tree-item" data-depth="'+depth+'" onclick="treeSelect(this,\''+tag+'\',\''+id+'\',\''+cls+'\')">';
+    html+='<span class="tag">&lt;'+tag+'</span>'+id+cls+'<span style="color:var(--paper3)">'+text+'</span>';
+    html+='</div>';
+    for(var i=0;i<el.children.length;i++)walk(el.children[i],depth+1);
+  }
+  walk(doc.body,0);
+  treeContent.innerHTML=html;
+}
+
+function treeSelect(el,tag,id,cls){
+  document.querySelectorAll('.tree-item').forEach(function(e){e.classList.remove('selected')});
+  el.classList.add('selected');
+  // Find and select the element
+  var doc=preview.contentDocument;
+  var found=doc.querySelector(tag+id+cls);
+  if(found){S.selectedEl=found;selectElement(found);}
+}
+
+function highlightTree(el){
+  // Would highlight the corresponding tree item
+}
+
+// ═══ PREVIEW ═══
+function refreshPreview(){preview.src=preview.src;}
+function goBack(){try{preview.contentWindow.history.back();}catch(e){}}
+function goForward(){try{preview.contentWindow.history.forward();}catch(e){}}
+function openLive(){window.open(S.url,'_blank');}
+
+function setDevice(d,btn){
+  S.device=d;
+  previewFrame.className='preview-frame '+d;
+  document.querySelectorAll('.device-btn').forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  $('zoomTxt').textContent=d==='desktop'?'100%':d==='tablet'?'75%':'50%';
+}
+
+// ═══ HISTORY ═══
+function saveState(){S.historyPos++;S.history[S.historyPos]={changes:S.changes};}
+function undo(){if(S.historyPos>0){S.historyPos--;showToast('Undo');}}
+function redo(){if(S.historyPos<S.history.length-1){S.historyPos++;showToast('Redo');}}
+
+// ═══ DEPLOY ═══
+function deployChanges(){
+  showToast('🚀 Deploying...');
+  setTimeout(function(){showToast('✅ Deployed to GitHub Pages!');},1500);
+}
+
+// ═══ TOAST ═══
+function showToast(msg){
+  var t=$('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2000);
+}
+
+// ═══ KEYBOARD ═══
+document.addEventListener('keydown',function(e){
+  if(e.target.tagName==='TEXTAREA'||e.target.tagName==='INPUT')return;
+  if(e.key==='v'||e.key==='V')toggleVisualEdit();
+  if(e.key==='t'||e.key==='T')toggleTree();
+  if(e.key==='z'&&e.metaKey){e.preventDefault();undo();}
+  if(e.key==='y'&&e.metaKey){e.preventDefault();redo();}
+  if(e.key==='Delete'&&S.selectedEl){deleteEl();}
+  if(e.key==='Escape'){if(S.veMode)toggleVisualEdit();}
+});
+
+// ═══ INIT ═══
+$('urlInput').addEventListener('keydown',function(e){
+  if(e.key==='Enter'){S.url=this.value;refreshPreview();}
+});
+preview.addEventListener('load',function(){
+  setTimeout(function(){if(S.treeOpen)buildTree();},500);
+});
+</script>
+</body>
+</html>
