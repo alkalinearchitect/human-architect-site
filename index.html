@@ -42,7 +42,53 @@ button,input{font-family:inherit}
 h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-height:1.05}
 
 /* —— ILLUMINATED WORDS —— */
-.illuminate{color:var(--accent);text-shadow:0 0 20px rgba(255,255,255,0.15),0 0 40px rgba(255,255,255,0.05);font-style:italic;font-weight:500}
+.illuminate{color:var(--accent);text-shadow:0 0 20px rgba(255,255,255,0.15),0 0 40px rgba(255,255,255,0.05);font-style:italic;font-weight:500;animation:illumPulse 3s ease-in-out infinite}
+@keyframes illumPulse{0%,100%{text-shadow:0 0 20px rgba(255,255,255,0.15),0 0 40px rgba(255,255,255,0.05)}50%{text-shadow:0 0 30px rgba(255,255,255,0.25),0 0 60px rgba(255,255,255,0.1),0 0 80px rgba(255,255,255,0.04)}}
+
+/* —— HERO HEADLINE: SLAM + MORPH —— */
+.hero h1 .w{
+  display:inline-block;will-change:transform,opacity,filter;
+  opacity:0;transform:translateY(60px) scale(.4) rotateX(90deg);filter:blur(20px);
+  transition:all 1s cubic-bezier(.16,.84,.33,1);
+}
+.hero.loaded h1 .w{
+  opacity:1;transform:translateY(0) scale(1) rotateX(0);filter:blur(0);
+}
+/* Slam impact — a subtle scale bounce after landing */
+.hero.loaded h1 .w.slam{
+  animation:slamBounce 1.4s cubic-bezier(.16,.84,.33,1) forwards;
+}
+@keyframes slamBounce{
+  0%{transform:translateY(60px) scale(.4) rotateX(90deg);filter:blur(20px);opacity:0}
+  50%{transform:translateY(0) scale(1.08) rotateX(0);filter:blur(0);opacity:1}
+  70%{transform:translateY(-4px) scale(.97)}
+  85%{transform:translateY(1px) scale(1.01)}
+  100%{transform:translateY(0) scale(1)}
+}
+
+/* —— MORPHING TEXT —— */
+.morph-wrap{
+  display:inline-block;position:relative;overflow:hidden;vertical-align:bottom;
+  min-width:1ch;
+}
+.morph-word{
+  display:block;white-space:nowrap;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s;
+}
+.morph-word.out{
+  position:absolute;top:0;left:0;right:0;
+  transform:translateY(120%) rotateX(-90deg);opacity:0;
+}
+.morph-word.in{
+  transform:translateY(0) rotateX(0);opacity:1;
+}
+.morph-word.exit{
+  transform:translateY(-120%) rotateX(90deg);opacity:0;
+}
+
+/* Hero glow orb that moves */
+.hero-glow{animation:heroOrb 8s ease-in-out infinite}
+@keyframes heroOrb{0%,100%{background:radial-gradient(ellipse 50% 40% at 50% 45%,rgba(255,255,255,0.02),transparent 70%)}33%{background:radial-gradient(ellipse 45% 35% at 48% 50%,rgba(255,255,255,0.03),transparent 70%)}66%{background:radial-gradient(ellipse 55% 45% at 52% 42%,rgba(255,255,255,0.025),transparent 70%)}}
 
 /* —— SCROLL PROGRESS —— */
 .prog{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--accent);z-index:200;transition:width .05s linear}
@@ -367,13 +413,25 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   <div class="hc">
     <span class="hero-eyebrow"><span class="dot"></span>5 books · 7 protocols · One mission</span>
     <h1 id="heroH1">
-      <span class="w">Your Body</span>
-      <span class="w">Was Engineered</span>
-      <span class="w">For Greatness.</span>
+      <span class="w">You</span>
+      <span class="w">Were</span>
+      <span class="w">Designed</span>
+      <span class="w">To Be</span>
       <span class="br"></span>
-      <span class="w">You've Been</span>
-      <span class="w">Running It</span>
-      <span class="w">On <span class="illuminate">Poison.</span></span>
+      <span class="w"><span class="illuminate">Dangerous.</span></span>
+      <span class="br"></span>
+      <span class="w">You've</span>
+      <span class="w">Been</span>
+      <span class="w">Feeding</span>
+      <span class="w">It</span>
+      <span class="w">
+        <span class="morph-wrap" id="morphTarget">
+          <span class="morph-word in" data-morph="0">Poison.</span>
+          <span class="morph-word out" data-morph="1">Garbage.</span>
+          <span class="morph-word out" data-morph="2">Toxins.</span>
+          <span class="morph-word out" data-morph="3">Rot.</span>
+        </span>
+      </span>
     </h1>
     <p>Every toxin you eliminate is a signal restored. Every habit you rebuild is a system upgraded. This is the architecture of <span class="illuminate">human regeneration</span>.</p>
     <div class="ctas">
@@ -818,10 +876,52 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   document.getElementById('mobiClose').addEventListener('click',closeMobi);
   mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMobi);});
 
-  // Hero stagger
+  // Hero slam + stagger
   var hero=document.querySelector('.hero');
-  hero.querySelectorAll('h1 .w').forEach(function(w,i){w.style.transitionDelay=(0.1+i*0.06)+'s'});
-  setTimeout(function(){hero.classList.add('loaded')},100);
+  var h1words=hero.querySelectorAll('h1 .w');
+  h1words.forEach(function(w,i){
+    w.style.transitionDelay=(0.15+i*0.08)+'s';
+  });
+  // Trigger slam class after initial load
+  setTimeout(function(){
+    hero.classList.add('loaded');
+    h1words.forEach(function(w,i){
+      setTimeout(function(){w.classList.add('slam');},i*80);
+    });
+  },100);
+
+  // ── MORPHING TEXT ENGINE ──
+  var morphCycle=['Poison.','Garbage.','Toxins.','Rot.'];
+  var morphIdx=0;
+  var morphEl=document.getElementById('morphTarget');
+  if(morphEl){
+    // Set width to widest word to prevent layout shift
+    var maxW=0;
+    morphEl.querySelectorAll('.morph-word').forEach(function(el){
+      var w=el.offsetWidth;
+      if(w>maxW)maxW=w;
+    });
+    morphEl.style.minWidth=(maxW+4)+'px';
+    morphEl.style.textAlign='center';
+
+    setInterval(function(){
+      var words=morphEl.querySelectorAll('.morph-word');
+      var curIdx=morphIdx;
+      var nextIdx=(morphIdx+1)%morphCycle.length;
+      // Current word exits up
+      words[curIdx].classList.remove('in');
+      words[curIdx].classList.add('exit');
+      // Next word enters from below
+      words[nextIdx].classList.remove('out');
+      words[nextIdx].classList.add('in');
+      // After transition, reset exited word
+      setTimeout(function(){
+        words[curIdx].classList.remove('exit');
+        words[curIdx].classList.add('out');
+      },600);
+      morphIdx=nextIdx;
+    },2500);
+  }
 
   // Reveal on scroll — smooth, progressive
   var revealIo=new IntersectionObserver(function(entries){
