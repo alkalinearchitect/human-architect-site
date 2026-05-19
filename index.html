@@ -870,8 +870,10 @@ if(mobiClose)mobiClose.addEventListener('click',function(){mobi.classList.remove
 mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mobi.classList.remove('open');document.body.style.overflow=''})});
 
 // Hero slam
-window.addEventListener('load',function(){document.getElementById('hero').classList.add('loaded')});
-setTimeout(function(){document.getElementById('hero').classList.add('loaded')},300);
+function loadHero(){var h=document.getElementById('hero');if(h&&!h.classList.contains('loaded'))h.classList.add('loaded')}
+window.addEventListener('load',loadHero);
+document.addEventListener('DOMContentLoaded',function(){setTimeout(loadHero,100)});
+setTimeout(loadHero,1000);
 
 // Morphing text
 var morphWords=document.querySelectorAll('#morphTarget .morph-word');
@@ -934,7 +936,7 @@ var books={
   aa:{title:'Alkaline Awakening',tag:'Detoxification · Terrain · Circulation',pages:'357',recipes:'125+',desc:'Your blood is acidic. Your terrain is toxic. 357 pages. 125+ recipes. The complete Alkaline Architect protocol — start tonight. This is the foundational detox system of Human Architect. Every recipe is designed to reduce blood acidity, clear mucus, and restore proper circulation.',img:'public/books/alkaline-awakening.png',amazon:'https://www.amazon.com/dp/B0F9F3JXQ4'},
   pc:{title:'Parasite Conspiracy',tag:'Hidden Burdens · Awareness',pages:'70',desc:'Something is living inside you. Feeding. Hiding. This book names it — then gives you the protocol to remove it. A systematic guide to identifying, eliminating, and preventing parasitic colonization. You cannot detoxify a body that is actively being fed on.',img:'public/books/parasite-conspiracy.png',amazon:'https://www.amazon.com/dp/B0F9F4NQZR'},
   lfe:{title:'Life Force Energy',tag:'Retention · Discipline · Sovereignty',pages:'163',desc:'Your most powerful energy is leaking. Every day. 163 pages on how to stop the leak, redirect the current, and become dangerous. The definitive guide to semen retention, energy conservation, and masculine sovereignty. The 90-day Life Force Energy protocol.',img:'public/books/life-force-energy.png',amazon:'https://www.amazon.com/dp/B0F9F5VWP2'},
-  qpn:{title:'Quit PRN Manual',tag:'Recovery · Reboot · Freedom',pages:'44',desc:'You know what it's doing to you. You keep doing it anyway. This is the manual that breaks the cycle. No excuses. A complete system for eliminating porn from your life permanently. The 21-day reboot protocol that rewires triggers and reshapes your environment.',img:'public/books/quit-prn-manual.png',amazon:'https://www.amazon.com/dp/B0F9F6BQY8'}
+  qpn:{title:'Quit PRN Manual',tag:'Recovery · Reboot · Freedom',pages:'44',desc:'You know what it\'s doing to you. You keep doing it anyway. This is the manual that breaks the cycle. No excuses. A complete system for eliminating porn from your life permanently. The 21-day reboot protocol that rewires triggers and reshapes your environment.',img:'public/books/quit-prn-manual.png',amazon:'https://www.amazon.com/dp/B0F9F6BQY8'}
 };
 
 var overlay=document.createElement('div');overlay.className='modal-overlay';overlay.id='bookModal';
