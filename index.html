@@ -47,46 +47,36 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 
 /* —— HERO HEADLINE: SLAM + MORPH —— */
 .hero h1 .w{
-  display:inline-block;will-change:transform,opacity,filter;
-  opacity:0;transform:translateY(60px) scale(.4) rotateX(90deg);filter:blur(20px);
-  transition:all 1s cubic-bezier(.16,.84,.33,1);
+  display:inline-block;
+  opacity:0;
+  transform:translateY(60px) scale(.4);
+  filter:blur(16px);
+  transition:opacity .7s cubic-bezier(.16,.84,.33,1),transform .7s cubic-bezier(.16,.84,.33,1),filter .7s cubic-bezier(.16,.84,.33,1);
 }
 .hero.loaded h1 .w{
-  opacity:1;transform:translateY(0) scale(1) rotateX(0);filter:blur(0);
-}
-/* Slam impact — a subtle scale bounce after landing */
-.hero.loaded h1 .w.slam{
-  animation:slamBounce 1.4s cubic-bezier(.16,.84,.33,1) forwards;
-}
-@keyframes slamBounce{
-  0%{transform:translateY(60px) scale(.4) rotateX(90deg);filter:blur(20px);opacity:0}
-  50%{transform:translateY(0) scale(1.08) rotateX(0);filter:blur(0);opacity:1}
-  70%{transform:translateY(-4px) scale(.97)}
-  85%{transform:translateY(1px) scale(1.01)}
-  100%{transform:translateY(0) scale(1)}
+  opacity:1;transform:translateY(0) scale(1);filter:blur(0);
 }
 
 /* —— MORPHING TEXT —— */
 .morph-wrap{
   display:inline-block;position:relative;overflow:hidden;vertical-align:bottom;
-  min-width:1ch;
 }
 .morph-word{
   display:block;white-space:nowrap;
-  transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .35s ease;
 }
 .morph-word.out{
   position:absolute;top:0;left:0;right:0;
-  transform:translateY(120%) rotateX(-90deg);opacity:0;
+  transform:translateY(110%);opacity:0;
 }
 .morph-word.in{
-  transform:translateY(0) rotateX(0);opacity:1;
+  transform:translateY(0);opacity:1;
 }
 .morph-word.exit{
-  transform:translateY(-120%) rotateX(90deg);opacity:0;
+  transform:translateY(-110%);opacity:0;
 }
 
-/* Hero glow orb that moves */
+/* Hero glow orb */
 .hero-glow{animation:heroOrb 8s ease-in-out infinite}
 @keyframes heroOrb{0%,100%{background:radial-gradient(ellipse 50% 40% at 50% 45%,rgba(255,255,255,0.02),transparent 70%)}33%{background:radial-gradient(ellipse 45% 35% at 48% 50%,rgba(255,255,255,0.03),transparent 70%)}66%{background:radial-gradient(ellipse 55% 45% at 52% 42%,rgba(255,255,255,0.025),transparent 70%)}}
 
@@ -148,8 +138,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .hero-eyebrow .dot{width:4px;height:4px;border-radius:50%;background:var(--accent);animation:pulse 2.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .hero h1{font-size:clamp(2.2rem,6vw,4.8rem);margin-bottom:24px;line-height:0.95;font-weight:400}
-.hero h1 .w{display:inline-block;opacity:0;transform:translateY(20px);filter:blur(8px);transition:all .8s cubic-bezier(.2,.7,.2,1)}
-.hero.loaded h1 .w{opacity:1;transform:translateY(0);filter:blur(0)}
 .hero h1 .br{display:block;height:0;width:100%}
 .hero p{font-size:clamp(.9rem,1.1vw,1.05rem);color:var(--paper2);max-width:500px;margin:0 auto 36px;line-height:1.75;font-weight:300;opacity:0;transform:translateY(10px);transition:all .8s .5s cubic-bezier(.2,.7,.2,1)}
 .hero.loaded p{opacity:1;transform:translateY(0)}
@@ -179,20 +167,22 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .sh h2{font-size:clamp(1.5rem,3.2vw,2.4rem);margin-bottom:12px;letter-spacing:-.04em}
 .sh p{font-size:14px;color:var(--paper3);line-height:1.7;max-width:460px;margin:0 auto}
 /* —— SCROLL ANIMATIONS —— */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
-.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.reveal-scale.visible{opacity:1;transform:scale(1)}
+.reveal,.reveal-left,.reveal-right,.reveal-scale{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.visible,.reveal-left.visible,.reveal-right.visible,.reveal-scale.visible{
+  opacity:1;transform:translateY(0) translateX(0) scale(1);
+}
+.reveal-left{transform:translateX(-24px)}
+.reveal-right{transform:translateX(24px)}
+.reveal-scale{transform:scale(.95)}
 /* Stagger children */
 .stagger > *:nth-child(1){transition-delay:0s}
-.stagger > *:nth-child(2){transition-delay:.08s}
-.stagger > *:nth-child(3){transition-delay:.16s}
-.stagger > *:nth-child(4){transition-delay:.24s}
-.stagger > *:nth-child(5){transition-delay:.32s}
+.stagger > *:nth-child(2){transition-delay:.06s}
+.stagger > *:nth-child(3){transition-delay:.12s}
+.stagger > *:nth-child(4){transition-delay:.18s}
+.stagger > *:nth-child(5){transition-delay:.24s}
 
 /* —— STATS —— */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:left;padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -415,13 +405,12 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
     <h1 id="heroH1">
       <span class="w">You</span>
       <span class="w">Were</span>
-      <span class="w">Designed</span>
-      <span class="w">To Be</span>
+      <span class="w">Built</span>
+      <span class="w">Different.</span>
       <span class="br"></span>
       <span class="w"><span class="illuminate">Dangerous.</span></span>
       <span class="br"></span>
-      <span class="w">You've</span>
-      <span class="w">Been</span>
+      <span class="w">You're</span>
       <span class="w">Feeding</span>
       <span class="w">It</span>
       <span class="w">
@@ -433,7 +422,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
         </span>
       </span>
     </h1>
-    <p>Every toxin you eliminate is a signal restored. Every habit you rebuild is a system upgraded. This is the architecture of <span class="illuminate">human regeneration</span>.</p>
+    <p>Every toxin removed is a signal restored. Every habit rebuilt is a system upgraded. This is <span class="illuminate">human regeneration</span>.</p>
     <div class="ctas">
       <a href="#books" class="btn bp"><span>Get The Books</span><span class="arrow">→</span></a>
       <a href="#about" class="btn bg">The Method</a>
@@ -879,59 +868,70 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   // Hero slam + stagger
   var hero=document.querySelector('.hero');
   var h1words=hero.querySelectorAll('h1 .w');
-  h1words.forEach(function(w,i){
-    w.style.transitionDelay=(0.15+i*0.08)+'s';
-  });
-  // Trigger slam class after initial load
-  setTimeout(function(){
-    hero.classList.add('loaded');
+  // Wait for fonts before triggering slam
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){triggerSlam();});
+  }else{
+    setTimeout(triggerSlam,250);
+  }
+  function triggerSlam(){
     h1words.forEach(function(w,i){
-      setTimeout(function(){w.classList.add('slam');},i*80);
+      w.style.transitionDelay=(0.12+i*0.07)+'s';
     });
-  },100);
+    hero.classList.add('loaded');
+  }
 
   // ── MORPHING TEXT ENGINE ──
   var morphCycle=['Poison.','Garbage.','Toxins.','Rot.'];
   var morphIdx=0;
   var morphEl=document.getElementById('morphTarget');
   if(morphEl){
-    // Set width to widest word to prevent layout shift
-    var maxW=0;
-    morphEl.querySelectorAll('.morph-word').forEach(function(el){
-      var w=el.offsetWidth;
-      if(w>maxW)maxW=w;
-    });
-    morphEl.style.minWidth=(maxW+4)+'px';
-    morphEl.style.textAlign='center';
-
-    setInterval(function(){
+    // Wait for fonts to load before measuring widths
+    function initMorph(){
       var words=morphEl.querySelectorAll('.morph-word');
-      var curIdx=morphIdx;
-      var nextIdx=(morphIdx+1)%morphCycle.length;
-      // Current word exits up
-      words[curIdx].classList.remove('in');
-      words[curIdx].classList.add('exit');
-      // Next word enters from below
-      words[nextIdx].classList.remove('out');
-      words[nextIdx].classList.add('in');
-      // After transition, reset exited word
+      var maxW=0;
+      words.forEach(function(el){
+        // Force layout
+        var w=el.getBoundingClientRect().width;
+        if(w>maxW)maxW=w;
+      });
+      if(maxW>0){
+        morphEl.style.minWidth=Math.ceil(maxW+4)+'px';
+      }
+      // Start cycling after a short delay
       setTimeout(function(){
-        words[curIdx].classList.remove('exit');
-        words[curIdx].classList.add('out');
-      },600);
-      morphIdx=nextIdx;
-    },2500);
+        setInterval(function(){
+          var words=morphEl.querySelectorAll('.morph-word');
+          var curIdx=morphIdx;
+          var nextIdx=(morphIdx+1)%morphCycle.length;
+          words[curIdx].classList.remove('in');
+          words[curIdx].classList.add('exit');
+          words[nextIdx].classList.remove('out');
+          words[nextIdx].classList.add('in');
+          setTimeout(function(){
+            words[curIdx].classList.remove('exit');
+            words[curIdx].classList.add('out');
+          },500);
+          morphIdx=nextIdx;
+        },2200);
+      },800);
+    }
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(initMorph);
+    }else{
+      setTimeout(initMorph,300);
+    }
   }
 
-  // Reveal on scroll — smooth, progressive
+  // Reveal on scroll — smooth, one-shot
   var revealIo=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
         e.target.classList.add('visible');
-        // Don't unobserve — let it re-trigger if needed
+        revealIo.unobserve(e.target);
       }
     });
-  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  },{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
   document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale').forEach(function(el){revealIo.observe(el);});
 
   // Smooth scroll
