@@ -16,7 +16,7 @@
 <meta property="og:description" content="5 books. 7 protocols. Alternative health, spirituality, and the conscious biology of the human body for men and women. By Tyson Architect.">
 <meta property="og:url" content="https://alkalinearchitect.github.io/human-architect-site/">
 <meta property="og:site_name" content="Human Architect">
-<meta property="og:image" content="https://alkalinearchitect.github.io/human-architect-site/public/substack-avatar.png">
+<meta property="og:image" content="https://alkalinearchitect.github.io/human-architect-site/public/books/alkaline-awakening.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Human Architect book collection by Tyson Architect">
@@ -26,17 +26,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Human Architect — Sovereign Biology & Regeneration">
 <meta name="twitter:description" content="5 books. 7 protocols. Alternative health, spirituality, and the conscious biology of the human body. By Tyson Architect.">
-<meta name="twitter:image" content="https://alkalinearchitect.github.io/human-architect-site/public/substack-avatar.png">
+<meta name="twitter:image" content="https://alkalinearchitect.github.io/human-architect-site/public/books/alkaline-awakening.png">
 <meta name="twitter:creator" content="@humanarchitect8">
-<meta name="theme-color" content="#050505">
-
-<link rel="preload" as="image" href="public/book-covers/intelligent-design.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/alkaline-awakening.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/life-force-energy.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/parasite-conspiracy.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/quit-prn-manual.webp" type="image/webp">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <!-- Structured Data: Organization -->
 <script type="application/ld+json">
@@ -109,7 +100,7 @@
     "@type": "WebPage",
     "@id": "https://alkalinearchitect.github.io/human-architect-site/"
   },
-  "image": "https://alkalinearchitect.github.io/human-architect-site/public/substack-avatar.png"
+  "image": "https://alkalinearchitect.github.io/human-architect-site/public/books/alkaline-awakening.png"
 }
 </script>
 
@@ -122,11 +113,11 @@
   "author": {"@type": "Person", "name": "Tyson Architect"},
   "numberOfBooks": 5,
   "hasPart": [
-    {"@type": "Book", "name": "Intelligent Design", "numberOfPages": 204, "isbn": "B0F9F2K8SW", "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae"},
-    {"@type": "Book", "name": "Alkaline Awakening", "numberOfPages": 357, "isbn": "B0F9F3JXQ4", "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae"},
-    {"@type": "Book", "name": "Parasite Conspiracy", "numberOfPages": 70, "isbn": "B0F9F4NQZR", "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae"},
-    {"@type": "Book", "name": "Life Force Energy", "numberOfPages": 163, "isbn": "B0F9F5VWP2", "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae"},
-    {"@type": "Book", "name": "Quit PRN Manual", "numberOfPages": 44, "isbn": "B0F9F6BQY8", "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae"}
+    {"@type": "Book", "name": "Intelligent Design", "numberOfPages": 204, "isbn": "B0F9F2K8SW", "url": "https://www.amazon.com/dp/B0F9F2K8SW"},
+    {"@type": "Book", "name": "Alkaline Awakening", "numberOfPages": 357, "isbn": "B0F9F3JXQ4", "url": "https://www.amazon.com/dp/B0F9F3JXQ4"},
+    {"@type": "Book", "name": "Parasite Conspiracy", "numberOfPages": 70, "isbn": "B0F9F4NQZR", "url": "https://www.amazon.com/dp/B0F9F4NQZR"},
+    {"@type": "Book", "name": "Life Force Energy", "numberOfPages": 163, "isbn": "B0F9F5VWP2", "url": "https://www.amazon.com/dp/B0F9F5VWP2"},
+    {"@type": "Book", "name": "Quit PRN Manual", "numberOfPages": 44, "isbn": "B0F9F6BQY8", "url": "https://www.amazon.com/dp/B0F9F6BQY8"}
   ]
 }
 </script>
@@ -250,12 +241,6 @@
 }
 </script>
 
-
-<link rel="preload" as="image" href="public/book-covers/intelligent-design.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/alkaline-awakening.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/life-force-energy.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/parasite-conspiracy.webp" type="image/webp">
-<link rel="preload" as="image" href="public/book-covers/quit-prn-manual.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -770,554 +755,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   }
 }
 
-
-/* ===== 3D BOOK CARD TILT ===== */
-.apple-book-grid {
-  perspective: 1200px;
-}
-.book-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: transform 0.15s ease-out, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-}
-.book-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.06) 0%,
-    transparent 40%,
-    transparent 60%,
-    rgba(255,255,255,0.03) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-.book-card:hover::before {
-  opacity: 1;
-}
-.book-card-img-wrap {
-  transform-style: preserve-3d;
-  transition: transform 0.15s ease-out;
-}
-.book-card-img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ===== FLOATING PARTICLES ===== */
-.particle {
-  position: fixed;
-  width: 3px;
-  height: 3px;
-  background: rgba(218,165,32,0.3);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  animation: particleFloat linear infinite;
-}
-@keyframes particleFloat {
-  0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
-  10% { opacity: 1; scale: 1; }
-  90% { opacity: 0.5; }
-  100% { transform: translateY(-10vh) translateX(80px) scale(0.5); opacity: 0; }
-}
-
-/* ===== FLOATING BOOK COVERS (background) ===== */
-.floating-book {
-  position: absolute;
-  width: 80px;
-  height: 110px;
-  border-radius: 4px;
-  object-fit: cover;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 0;
-  animation: floatBook 20s ease-in-out infinite;
-  filter: blur(1px);
-}
-.floating-book:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; animation-duration: 25s; }
-.floating-book:nth-child(2) { top: 30%; right: 8%; animation-delay: -5s; animation-duration: 22s; }
-.floating-book:nth-child(3) { top: 60%; left: 3%; animation-delay: -10s; animation-duration: 28s; }
-.floating-book:nth-child(4) { top: 80%; right: 5%; animation-delay: -15s; animation-duration: 24s; }
-.floating-book:nth-child(5) { top: 45%; left: 50%; animation-delay: -8s; animation-duration: 26s; }
-@keyframes floatBook {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  25% { transform: translateY(-30px) rotate(3deg) scale(1.05); }
-  50% { transform: translateY(-15px) rotate(-2deg) scale(0.98); }
-  75% { transform: translateY(-40px) rotate(1deg) scale(1.02); }
-}
-
-/* ===== HERO PARALLAX DEPTH ===== */
-.hero {
-  perspective: 1000px;
-}
-.hero .macro-type {
-  transition: transform 0.1s ease-out;
-}
-.hero-aura, .hero-aura-2 {
-  transition: transform 0.15s ease-out;
-}
-.organic-orb {
-  transition: transform 0.2s ease-out;
-}
-
-/* ===== 3D REVEAL ANIMATIONS ===== */
-.reveal-3d {
-  opacity: 0;
-  transform: perspective(800px) rotateX(15deg) translateY(60px) scale(0.95);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-3d.is-visible {
-  opacity: 1;
-  transform: perspective(800px) rotateX(0deg) translateY(0) scale(1);
-}
-.reveal-left {
-  opacity: 0;
-  transform: perspective(800px) rotateY(10deg) translateX(-60px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-left.is-visible {
-  opacity: 1;
-  transform: perspective(800px) rotateY(0deg) translateX(0);
-}
-.reveal-right {
-  opacity: 0;
-  transform: perspective(800px) rotateY(-10deg) translateX(60px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-right.is-visible {
-  opacity: 1;
-  transform: perspective(800px) rotateY(0deg) translateX(0);
-}
-
-/* ===== GLOW PULSE ON ILLUMINATE ===== */
-.illuminate {
-  position: relative;
-  display: inline-block;
-}
-.illuminate::after {
-  content: '';
-  position: absolute;
-  inset: -4px -8px;
-  background: radial-gradient(ellipse at center, rgba(218,165,32,0.15) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  pointer-events: none;
-  z-index: -1;
-}
-.illuminate:hover::after,
-.is-visible .illuminate::after {
-  opacity: 1;
-  animation: glowPulse 2s ease-in-out infinite;
-}
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-}
-
-/* ===== SMOOTH STAT COUNTER ===== */
-.stat .num {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-.stat:hover .num {
-  transform: scale(1.1);
-}
-
-/* ===== MAGNETIC BUTTON EFFECT ===== */
-.apple-btn, .btn {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-}
-.apple-btn:hover, .btn:hover {
-  transform: scale(1.03);
-}
-.apple-btn:active, .btn:active {
-  transform: scale(0.98);
-}
-
-/* ===== SCROLL-TRIGGERED PARALLAX SECTIONS ===== */
-.parallax-section {
-  position: relative;
-  overflow: hidden;
-}
-.parallax-bg {
-  position: absolute;
-  inset: -20%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.1s linear;
-  z-index: 0;
-}
-</style>
-<noscript>
-<style>
-  .reveal { opacity: 1 !important; transform: none !important; }
-  .mobi { display: none; }
-
-/* ===== 3D BOOK CARD TILT ===== */
-.apple-book-grid {
-  perspective: 1200px;
-}
-.book-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: transform 0.15s ease-out, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-}
-.book-card::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.06) 0%,
-    transparent 40%,
-    transparent 60%,
-    rgba(255,255,255,0.03) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-.book-card:hover::before {
-  opacity: 1;
-}
-.book-card-img-wrap {
-  transform-style: preserve-3d;
-  transition: transform 0.15s ease-out;
-}
-.book-card-img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ===== FLOATING PARTICLES ===== */
-.particle {
-  position: fixed;
-  width: 3px;
-  height: 3px;
-  background: rgba(218,165,32,0.3);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  animation: particleFloat linear infinite;
-}
-@keyframes particleFloat {
-  0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
-  10% { opacity: 1; scale: 1; }
-  90% { opacity: 0.5; }
-  100% { transform: translateY(-10vh) translateX(80px) scale(0.5); opacity: 0; }
-}
-
-/* ===== FLOATING BOOK COVERS (background) ===== */
-.floating-book {
-  position: absolute;
-  width: 80px;
-  height: 110px;
-  border-radius: 4px;
-  object-fit: cover;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 0;
-  animation: floatBook 20s ease-in-out infinite;
-  filter: blur(1px);
-}
-.floating-book:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; animation-duration: 25s; }
-.floating-book:nth-child(2) { top: 30%; right: 8%; animation-delay: -5s; animation-duration: 22s; }
-.floating-book:nth-child(3) { top: 60%; left: 3%; animation-delay: -10s; animation-duration: 28s; }
-.floating-book:nth-child(4) { top: 80%; right: 5%; animation-delay: -15s; animation-duration: 24s; }
-.floating-book:nth-child(5) { top: 45%; left: 50%; animation-delay: -8s; animation-duration: 26s; }
-@keyframes floatBook {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  25% { transform: translateY(-30px) rotate(3deg) scale(1.05); }
-  50% { transform: translateY(-15px) rotate(-2deg) scale(0.98); }
-  75% { transform: translateY(-40px) rotate(1deg) scale(1.02); }
-}
-
-/* ===== HERO PARALLAX DEPTH ===== */
-.hero {
-  perspective: 1000px;
-}
-.hero .macro-type {
-  transition: transform 0.1s ease-out;
-}
-.hero-aura, .hero-aura-2 {
-  transition: transform 0.15s ease-out;
-}
-.organic-orb {
-  transition: transform 0.2s ease-out;
-}
-
-/* ===== 3D REVEAL ANIMATIONS ===== */
-.reveal-3d {
-  opacity: 0;
-  transform: perspective(800px) rotateX(15deg) translateY(60px) scale(0.95);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-3d.is-visible {
-  opacity: 1;
-  transform: perspective(800px) rotateX(0deg) translateY(0) scale(1);
-}
-.reveal-left {
-  opacity: 0;
-  transform: perspective(800px) rotateY(10deg) translateX(-60px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-left.is-visible {
-  opacity: 1;
-  transform: perspective(800px) rotateY(0deg) translateX(0);
-}
-.reveal-right {
-  opacity: 0;
-  transform: perspective(800px) rotateY(-10deg) translateX(60px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-right.is-visible {
-  opacity: 1;
-  transform: perspective(800px) rotateY(0deg) translateX(0);
-}
-
-/* ===== GLOW PULSE ON ILLUMINATE ===== */
-.illuminate {
-  position: relative;
-  display: inline-block;
-}
-.illuminate::after {
-  content: '';
-  position: absolute;
-  inset: -4px -8px;
-  background: radial-gradient(ellipse at center, rgba(218,165,32,0.15) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  pointer-events: none;
-  z-index: -1;
-}
-.illuminate:hover::after,
-.is-visible .illuminate::after {
-  opacity: 1;
-  animation: glowPulse 2s ease-in-out infinite;
-}
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-}
-
-/* ===== SMOOTH STAT COUNTER ===== */
-.stat .num {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-.stat:hover .num {
-  transform: scale(1.1);
-}
-
-/* ===== MAGNETIC BUTTON EFFECT ===== */
-.apple-btn, .btn {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
-}
-.apple-btn:hover, .btn:hover {
-  transform: scale(1.03);
-}
-.apple-btn:active, .btn:active {
-  transform: scale(0.98);
-}
-
-/* ===== SCROLL-TRIGGERED PARALLAX SECTIONS ===== */
-.parallax-section {
-  position: relative;
-  overflow: hidden;
-}
-.parallax-bg {
-  position: absolute;
-  inset: -20%;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.1s linear;
-  z-index: 0;
-}
-
-/* ===== HERO REDESIGN ===== */
-.hero-left-label {
-  position: absolute;
-  left: 24px;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: center;
-  font-size: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: var(--paper3);
-  white-space: nowrap;
-  z-index: 3;
-  font-weight: 500;
-}
-.hero-left-label::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--border2);
-  margin-right: 8px;
-  vertical-align: middle;
-}
-.hero-book-spines {
-  position: absolute;
-  right: 32px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 3;
-}
-.hero-spine {
-  width: 3px;
-  height: 48px;
-  border-radius: 2px;
-  opacity: 0.15;
-  transition: all 0.4s ease;
-}
-.hero-spine:nth-child(1) { background: #c41e3a; height: 52px; }
-.hero-spine:nth-child(2) { background: #e8e8e8; height: 60px; }
-.hero-spine:nth-child(3) { background: #c41e3a; height: 44px; opacity: 0.1; }
-.hero-spine:nth-child(4) { background: #6a6864; height: 36px; }
-.hero-spine:nth-child(5) { background: #e8e8e8; height: 30px; opacity: 0.12; }
-.hero-spine:hover { opacity: 0.5; width: 5px; }
-.hero-ticker {
-  position: absolute;
-  bottom: 32px;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  overflow: hidden;
-  padding: 12px 0;
-  border-top: 1px solid var(--border);
-}
-.hero-ticker-track {
-  display: flex;
-  gap: 48px;
-  animation: tickerScroll 20s linear infinite;
-  white-space: nowrap;
-}
-.hero-ticker-track span {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--paper3);
-  font-weight: 500;
-  flex-shrink: 0;
-}
-.hero-ticker-track span em {
-  color: var(--accent);
-  font-style: normal;
-  font-weight: 600;
-}
-@keyframes tickerScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  opacity: 0.4;
-  animation: scrollBounce 2s ease-in-out infinite;
-}
-.hero-scroll-hint span {
-  font-size: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--paper3);
-}
-.hero-scroll-hint .scroll-line {
-  width: 1px;
-  height: 32px;
-  background: linear-gradient(to bottom, var(--paper3), transparent);
-}
-@keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(6px); }
-}
-.hero h1 .line-1 {
-  display: block;
-  font-weight: 500;
-  letter-spacing: -0.05em;
-}
-.hero h1 .line-2 {
-  display: block;
-  font-weight: 300;
-  letter-spacing: -0.03em;
-  color: var(--paper2);
-}
-@media(max-width: 800px) {
-  .hero-left-label { display: none; }
-  .hero-book-spines { display: none; }
-  .hero-ticker { bottom: 24px; }
-  .hero-scroll-hint { bottom: 60px; }
-}
-
-/* ===== ABOUT / SCIENCE OF MIND REDESIGN ===== */
-.pillars {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--border);
-  border-radius: var(--r2);
-  overflow: hidden;
-}
-.pillar {
-  background: var(--bg);
-  padding: 36px 28px;
-  text-align: left;
-  transition: background 0.3s;
-}
-.pillar:hover { background: var(--bg2); }
-.pillar-num {
-  font-family: var(--serif);
-  font-size: 10px;
-  color: var(--accent);
-  opacity: 0.4;
-  margin-bottom: 16px;
-  letter-spacing: 0.15em;
-}
-.pillar h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-  font-weight: 400;
-}
-.pillar h3 .illuminate { font-size: 18px; }
-.pillar p {
-  font-size: 12px;
-  color: var(--paper3);
-  line-height: 1.7;
-  font-weight: 300;
-}
-.about-closing {
-  text-align: center;
-  margin-top: 48px;
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: var(--paper2);
-  font-style: italic;
-  font-weight: 300;
-  letter-spacing: -0.01em;
-}
-@media(max-width: 700px) {
-  .pillars { grid-template-columns: 1fr; }
-}
+</style></head>
 <body>
 <a href="#main" class="skip">Skip to content</a>
 <div class="prog" id="prog"></div>
@@ -1360,55 +798,15 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   <div class="organic-orb orb-1" aria-hidden="true"></div>
   <div class="organic-orb orb-2" aria-hidden="true"></div>
   <div class="macro-type">ARCHITECT</div>
-
-  <!-- Left architectural label -->
-  <div class="hero-left-label">Protocol v5.0 · Build 001</div>
-
-  <!-- Right book spines -->
-  <div class="hero-book-spines" aria-hidden="true">
-    <div class="hero-spine"></div>
-    <div class="hero-spine"></div>
-    <div class="hero-spine"></div>
-    <div class="hero-spine"></div>
-    <div class="hero-spine"></div>
-  </div>
-
-  <!-- Scroll hint -->
-  <div class="hero-scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
-
-  <!-- Ticker -->
-  <div class="hero-ticker">
-    <div class="hero-ticker-track">
-      <span><em>5</em> Books Published</span>
-      <span><em>840+</em> Total Pages</span>
-      <span><em>125</em> Alkaline Recipes</span>
-      <span><em>7</em> Core Protocols</span>
-      <span><em>21-Day</em> Reboot System</span>
-      <span><em>90-Day</em> Energy Protocol</span>
-      <span><em>30-Day</em> Alkaline Architect</span>
-      <span><em>5</em> Books Published</span>
-      <span><em>840+</em> Total Pages</span>
-      <span><em>125</em> Alkaline Recipes</span>
-      <span><em>7</em> Core Protocols</span>
-      <span><em>21-Day</em> Reboot System</span>
-      <span><em>90-Day</em> Energy Protocol</span>
-      <span><em>30-Day</em> Alkaline Architect</span>
-    </div>
-  </div>
-
-  <div class="hc" style="position:relative; z-index:2; text-align: center; padding-top: 8vh;">
+  <div class="hc" style="position:relative; z-index:2; text-align: center; padding-top: 10vh;">
     <div class="glass-badge reveal reveal-up"><div class="dot"></div>Original Blueprint : Active</div>
     <h1 class="reveal reveal-up delay-1" style="font-size: clamp(3.2rem, 8vw, 7.5rem); margin-bottom:24px; line-height: 0.95; letter-spacing: -0.04em;">
-      <span class="line-1">Unburden your biology.</span>
-      <span class="line-2" style="font-size: 0.55em; margin-top: 16px;">Let the native architecture restore itself.</span>
+      Unburden your biology.
     </h1>
-    <p class="reveal reveal-up delay-2" style="font-size: clamp(1.1rem, 1.8vw, 1.35rem); color: var(--paper2); max-width: 700px; margin-left: auto; margin-right: auto; margin-bottom: 60px; font-weight: 300; line-height: 1.6;">We don't fix the human system. We remove the interference.</p>
+    <p class="reveal reveal-up delay-2" style="font-size: clamp(1.1rem, 1.8vw, 1.35rem); color: var(--paper2); max-width: 700px; margin-left: auto; margin-right: auto; margin-bottom: 60px; font-weight: 300; line-height: 1.6;">We do not fix the human system. We remove the interference and let the native architecture restore itself.</p>
     <div class="ctas reveal reveal-up delay-3" style="display: flex; justify-content: center; gap: 20px;">
-      <a href="#books" class="apple-btn" style="background: #fff; color: #000; padding: 16px 36px; font-size: 11px;"><span>Get The Books</span><span class="arrow">→</span></a>
-      <a href="#about" class="apple-btn" style="padding: 16px 36px; font-size: 11px;">The Method</a>
+      <a href="#books" class="apple-btn" style="background: #fff; color: #000;"><span>Get The Books</span><span class="arrow">→</span></a>
+      <a href="#about" class="apple-btn">The Method</a>
     </div>
   </div>
 </section>
@@ -1424,35 +822,24 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   </div>
 </section>
 
-<section class="sec sec2" id="about" style="padding: 18vh 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+<section class="sec sec2" id="about" style="padding: 20vh 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
   <div class="wrap">
     <div class="manifesto reveal reveal-up" style="text-align: center;">
-      <h2 style="font-size: clamp(2.2rem, 4.5vw, 4.5rem); letter-spacing: -0.04em; line-height: 1.15; margin-bottom: 16px; font-weight: 400;">
-        Every cell contains an ancient blueprint.
+      <h2 style="font-size: clamp(2.2rem, 4.5vw, 4.5rem); letter-spacing: -0.04em; line-height: 1.15; margin-bottom: 40px; font-weight: 400;">
+        Every cell contains an ancient blueprint.<br>
+        <span class="illuminate" style="font-style: italic;">Detoxification is the unburdening of a masterpiece.</span>
       </h2>
-      <p style="font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--paper2); font-style: italic; font-weight: 300; margin-bottom: 60px;">Detoxification is the unburdening of a masterpiece.</p>
-    </div>
-
-    <div class="pillars reveal reveal-up delay-1">
-      <div class="pillar">
-        <div class="pillar-num">I — BIOLOGY</div>
-        <h3>Conscious terrain. <span class="illuminate">Zero symptoms.</span></h3>
-        <p>Every cell possesses innate intelligence. Clear the obstruction — parasites, mucus, synthetic toxins — and the body restores itself. No external authority needed.</p>
+      
+      <!-- AEO & GEO Semantic Injection -->
+      <div class="manifesto-aeo reveal reveal-up delay-2" style="margin-top: 80px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; padding: 40px; background: rgba(255,255,255,0.02); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+        <h3 style="font-family: var(--serif); font-size: clamp(24px, 3vw, 32px); color: var(--paper); margin-bottom: 24px; font-weight: 300;">Conscious Biology. Science of the Mind.</h3>
+        <p style="color: var(--paper2); font-size: 16px; line-height: 1.8; margin-bottom: 20px;">
+          Human Architect operates at the absolute intersection of <strong>alternative health</strong>, physical regeneration, and <strong>spirituality</strong>. We don't treat symptoms. We rebuild the biological terrain. The <em>conscious biology of the body</em> dictates that every cell possesses innate intelligence. When you clear the obstruction—parasites, mucus, and synthetic toxins—you unleash this intelligence.
+        </p>
+        <p style="color: var(--paper2); font-size: 16px; line-height: 1.8;">
+          True <strong>wellness and healing</strong> is impossible without the <em>Science of the Mind</em>. By combining the <strong>alkaline diet</strong>, semen retention, and the HALT protocol, we rewire dopaminergic pathways to create unbreakable mental architecture. This is the definitive protocol for human regeneration.
+        </p>
       </div>
-      <div class="pillar">
-        <div class="pillar-num">II — MIND</div>
-        <h3>Science of the Mind. <span class="illuminate">Neural sovereignty.</span></h3>
-        <p>Semen retention. HALT protocol. Dopaminergic rewiring. Mental architecture is built through discipline, not medication. The mind heals the body.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">III — ENERGY</div>
-        <h3>Life force. <span class="illuminate">Magnetic presence.</span></h3>
-        <p>Conserved energy consolidates into power. The alkaline diet, circadian rhythm, and lymphatic flow create a biological terrain where vitality is the default state.</p>
-      </div>
-    </div>
-
-    <div class="about-closing reveal reveal-up delay-2">
-      We don't fix the human system. We remove what shouldn't be there.
     </div>
   </div>
 </section>
@@ -1523,19 +910,12 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       <h2 style="font-size: clamp(3rem, 6vw, 6rem); letter-spacing: -0.04em;">Five manuals. <span class="illuminate">One protocol.</span></h2>
       <p style="font-size: 1.25rem; color: var(--paper2); max-width: 500px; margin: 24px auto 0;">Zero excuses. Written from experience, not theory.</p>
     </div>
-    <!-- Floating book covers (background decoration) -->
-    <img src="public/book-covers/intelligent-design.webp" alt="" class="floating-book" aria-hidden="true">
-    <img src="public/book-covers/alkaline-awakening.webp" alt="" class="floating-book" aria-hidden="true">
-    <img src="public/book-covers/life-force-energy.webp" alt="" class="floating-book" aria-hidden="true">
-    <img src="public/book-covers/parasite-conspiracy.webp" alt="" class="floating-book" aria-hidden="true">
-    <img src="public/book-covers/quit-prn-manual.webp" alt="" class="floating-book" aria-hidden="true">
-
     
     <div class="apple-book-grid">
       <!-- ID -->
-      <div class="book-card bc reveal-3d" data-book="id" role="button" tabindex="0" aria-label="Open Intelligent Design Protocol">
+      <div class="book-card bc reveal reveal-up" data-book="id" role="button" tabindex="0" aria-label="Open Intelligent Design Protocol">
         <div class="book-card-img-wrap">
-          <img src="public/book-covers/intelligent-design.webp" alt="Intelligent Design" class="book-card-img">
+          <img src="public/book-covers/intelligent-design.webp" alt="Intelligent Design" class="book-card-img" loading="lazy">
           <div class="book-card-hover-overlay">
             <span class="book-card-btn">Open Protocol</span>
           </div>
@@ -1549,9 +929,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       </div>
 
       <!-- AA -->
-      <div class="book-card bc reveal-3d" data-book="aa" role="button" tabindex="0" aria-label="Open Alkaline Awakening Protocol">
+      <div class="book-card bc reveal reveal-up" data-book="aa" role="button" tabindex="0" aria-label="Open Alkaline Awakening Protocol">
         <div class="book-card-img-wrap">
-          <img src="public/book-covers/alkaline-awakening.webp" alt="Alkaline Awakening" class="book-card-img">
+          <img src="public/book-covers/alkaline-awakening.webp" alt="Alkaline Awakening" class="book-card-img" loading="lazy">
           <div class="book-card-hover-overlay">
             <span class="book-card-btn">Open Protocol</span>
           </div>
@@ -1565,9 +945,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       </div>
 
       <!-- LFE -->
-      <div class="book-card bc reveal-3d" data-book="lfe" role="button" tabindex="0" aria-label="Open Life Force Energy Protocol">
+      <div class="book-card bc reveal reveal-up" data-book="lfe" role="button" tabindex="0" aria-label="Open Life Force Energy Protocol">
         <div class="book-card-img-wrap">
-          <img src="public/book-covers/life-force-energy.webp" alt="Life Force Energy" class="book-card-img">
+          <img src="public/book-covers/life-force-energy.webp" alt="Life Force Energy" class="book-card-img" loading="lazy">
           <div class="book-card-hover-overlay">
             <span class="book-card-btn">Open Protocol</span>
           </div>
@@ -1581,9 +961,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       </div>
 
       <!-- PC -->
-      <div class="book-card bc reveal-3d" data-book="pc" role="button" tabindex="0" aria-label="Open Parasite Conspiracy Protocol">
+      <div class="book-card bc reveal reveal-up" data-book="pc" role="button" tabindex="0" aria-label="Open Parasite Conspiracy Protocol">
         <div class="book-card-img-wrap">
-          <img src="public/book-covers/parasite-conspiracy.webp" alt="Parasite Conspiracy" class="book-card-img">
+          <img src="public/books/parasite-conspiracy.webp" alt="Parasite Conspiracy" class="book-card-img" loading="lazy">
           <div class="book-card-hover-overlay">
             <span class="book-card-btn">Open Protocol</span>
           </div>
@@ -1597,9 +977,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
       </div>
 
       <!-- QPN -->
-      <div class="book-card bc reveal-3d" data-book="qpn" role="button" tabindex="0" aria-label="Open Quit PRN Manual Protocol">
+      <div class="book-card bc reveal reveal-up" data-book="qpn" role="button" tabindex="0" aria-label="Open Quit PRN Manual Protocol">
         <div class="book-card-img-wrap">
-          <img src="public/book-covers/quit-prn-manual.webp" alt="Quit PRN Manual" class="book-card-img">
+          <img src="public/books/quit-prn-manual.webp" alt="Quit PRN Manual" class="book-card-img" loading="lazy">
           <div class="book-card-hover-overlay">
             <span class="book-card-btn">Open Protocol</span>
           </div>
@@ -1702,7 +1082,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 </section>
 
 <div id="lightbox" role="dialog" aria-label="Image preview">
-  <img id="lightbox-img" src="" alt="Book page preview">
+  <img id="lightbox-img" src="" alt="">
   <button id="lightbox-close" aria-label="Close lightbox">Close ✕</button>
 </div>
 
@@ -1886,7 +1266,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   <div class="wrap">
     <div class="fg">
       <div><div class="fbrand">Human <em>Architect</em></div><p class="fdesc">A body, mind, and lifestyle philosophy for individuals ready to detoxify, master their habits, and return to their original design.</p></div>
-      <div><h4>Library</h4><ul class="flinks"><li><a href="#books">All Books</a></li><li><a href="#previews">Previews</a></li><li><a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" rel="noopener">Intelligent Design</a></li><li><a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" rel="noopener">Alkaline Awakening</a></li><li><a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" rel="noopener">Life Force Energy</a></li></ul></div>
+      <div><h4>Library</h4><ul class="flinks"><li><a href="#books">All Books</a></li><li><a href="#previews">Previews</a></li><li><a href="https://www.amazon.com/dp/B0F9F2K8SW" target="_blank" rel="noopener">Intelligent Design</a></li><li><a href="https://www.amazon.com/dp/B0F9F3JXQ4" target="_blank" rel="noopener">Alkaline Awakening</a></li><li><a href="https://www.amazon.com/dp/B0F9F5VWP2" target="_blank" rel="noopener">Life Force Energy</a></li></ul></div>
       <div><h4>Learn</h4><ul class="flinks"><li><a href="#about">The Method</a></li><li><a href="#protocols">Protocols</a></li><li><a href="#faq">FAQ</a></li><li><a href="#testimonials">Testimonials</a></li></ul></div>
       <div><h4>Connect</h4><ul class="flinks"><li><a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener">Substack</a></li><li><a href="https://instagram.com/humanarchitect_" target="_blank" rel="noopener">Instagram</a></li><li><a href="#newsletter">Newsletter</a></li></ul></div>
     </div>
@@ -1942,17 +1322,17 @@ mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',functi
 
   // Book modals
   var books={
-    id:{title:'Intelligent Design',tag:'The Architecture of Creation',pages:'204',desc:'An investigation into the irreducible complexity of cellular life. Discover the airtight case that you are not a cosmic accident, but a masterfully engineered architecture. Explore how DNA functions as code, how the brain acts as a biological supercomputer, and how the intricacies of the human eye and ear defy evolution. A beautifully written proof of intelligent design at the cellular level.',img:'public/book-covers/intelligent-design.webp',url:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    aa:{title:'Alkaline Awakening',tag:'Detoxification · Terrain · Circulation',pages:'357',recipes:'125+',desc:'The definitive 357-page manual for cellular restoration. Learn to harmonize your biochemistry, activate your lymphatic system, optimize circulation, and nourish your body using nature\'s raw food intelligence. This system provides a practical transition into a high-vitality lifestyle, backed by 125+ nutrient-dense alkaline recipes and deep detoxification protocols.',img:'public/book-covers/alkaline-awakening.webp',url:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    pc:{title:'Parasite Conspiracy',tag:'Hidden Burdens · Awareness',pages:'70',desc:'A systematic exploration of hidden environmental and biological obstructions. Reclaim your biological integrity from the modern elements draining your cellular resonance. This guide names the obstructions and details the precise natural steps to unburden your terrain, restore nutrient absorption, and return your body to still energy.',img:'public/book-covers/parasite-conspiracy.webp',url:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    lfe:{title:'Life Force Energy',tag:'Retention · Discipline · Sovereignty',pages:'163',desc:'A stoic, scientific manual on energy conservation and semen retention. Discover how to consolidate your primary neurological and physical power to build deep presence, boost testosterone, and strengthen your bioenergetic field. This protocol redirects raw physical energy into cognitive clarity and purposeful self-mastery.',img:'public/book-covers/life-force-energy.webp',url:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    qpn:{title:'Quit PRN Manual',tag:'Recovery · Reboot · Freedom',pages:'44',desc:'A precise 21-day neural reboot protocol. Recalibrate your brain\'s dopamine pathways, eliminate digital interference, and build a fortress of mental stillness. Learn how to restructure your environment, overcome compulsive feedback loops, and reclaim your supreme focus and sovereign autonomy.',img:'public/book-covers/quit-prn-manual.webp',url:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'}
+    id:{title:'Intelligent Design',tag:'The Architecture of Creation',pages:'204',desc:'An investigation into the irreducible complexity of cellular life. Discover the airtight case that you are not a cosmic accident, but a masterfully engineered architecture. Explore how DNA functions as code, how the brain acts as a biological supercomputer, and how the intricacies of the human eye and ear defy evolution. A beautifully written proof of intelligent design at the cellular level.',img:'public/book-covers/intelligent-design.webp',amazon:'https://www.amazon.com/dp/B0F9F2K8SW'},
+    aa:{title:'Alkaline Awakening',tag:'Detoxification · Terrain · Circulation',pages:'357',recipes:'125+',desc:'The definitive 357-page manual for cellular restoration. Learn to harmonize your biochemistry, activate your lymphatic system, optimize circulation, and nourish your body using nature\'s raw food intelligence. This system provides a practical transition into a high-vitality lifestyle, backed by 125+ nutrient-dense alkaline recipes and deep detoxification protocols.',img:'public/book-covers/alkaline-awakening.webp',amazon:'https://www.amazon.com/dp/B0F9F3JXQ4'},
+    pc:{title:'Parasite Conspiracy',tag:'Hidden Burdens · Awareness',pages:'70',desc:'A systematic exploration of hidden environmental and biological obstructions. Reclaim your biological integrity from the modern elements draining your cellular resonance. This guide names the obstructions and details the precise natural steps to unburden your terrain, restore nutrient absorption, and return your body to still energy.',img:'public/books/parasite-conspiracy.webp',amazon:'https://www.amazon.com/dp/B0F9F4NQZR'},
+    lfe:{title:'Life Force Energy',tag:'Retention · Discipline · Sovereignty',pages:'163',desc:'A stoic, scientific manual on energy conservation and semen retention. Discover how to consolidate your primary neurological and physical power to build deep presence, boost testosterone, and strengthen your bioenergetic field. This protocol redirects raw physical energy into cognitive clarity and purposeful self-mastery.',img:'public/book-covers/life-force-energy.webp',amazon:'https://www.amazon.com/dp/B0F9F5VWP2'},
+    qpn:{title:'Quit PRN Manual',tag:'Recovery · Reboot · Freedom',pages:'44',desc:'A precise 21-day neural reboot protocol. Recalibrate your brain\'s dopamine pathways, eliminate digital interference, and build a fortress of mental stillness. Learn how to restructure your environment, overcome compulsive feedback loops, and reclaim your supreme focus and sovereign autonomy.',img:'public/books/quit-prn-manual.webp',amazon:'https://www.amazon.com/dp/B0F9F6BQY8'}
   };
 
   var overlay=document.getElementById('bookModal');
   if(!overlay) {
     overlay=document.createElement('div');overlay.className='modal-overlay';overlay.id='bookModal';
-    overlay.innerHTML='<div class="modal"><button class="modal-close" aria-label="Close">Close ✕</button><div class="modal-cover"><div class="modal-cover-img"><img id="mImg" src="" alt="Book cover" loading="lazy"></div><div class="modal-cover-info"><div class="tag" id="mTag"></div><h2 id="mTitle"></h2><div class="modal-stats"><div class="modal-stat"><div class="num" id="mPages"></div><div class="label">Pages</div></div><div class="modal-stat" id="mRecipesWrap" style="display:none"><div class="num" id="mRecipes"></div><div class="label">Recipes</div></div></div><p id="mDesc"></p><div class="modal-buy"><a id="mBuy" href="#" class="btn bp" target="_blank" rel="noopener">Get on Beacons <span class="arrow">→</span></a><a href="#newsletter" class="btn bg">Read Free</a></div></div></div><div class="modal-body"><div class="modal-section"><h3>About this book</h3><p id="mDesc2"></p></div><div class="modal-section"><h3>Related Books</h3><div class="modal-related" id="mRelated"></div></div></div></div>';
+    overlay.innerHTML='<div class="modal"><button class="modal-close" aria-label="Close">Close ✕</button><div class="modal-cover"><div class="modal-cover-img"><img id="mImg" src="" alt="" loading="lazy"></div><div class="modal-cover-info"><div class="tag" id="mTag"></div><h2 id="mTitle"></h2><div class="modal-stats"><div class="modal-stat"><div class="num" id="mPages"></div><div class="label">Pages</div></div><div class="modal-stat" id="mRecipesWrap" style="display:none"><div class="num" id="mRecipes"></div><div class="label">Recipes</div></div></div><p id="mDesc"></p><div class="modal-buy"><a id="mAmazon" href="#" class="btn bp" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a><a href="#newsletter" class="btn bg">Read Free</a></div></div></div><div class="modal-body"><div class="modal-section"><h3>About this book</h3><p id="mDesc2"></p></div><div class="modal-section"><h3>Related Books</h3><div class="modal-related" id="mRelated"></div></div></div></div>';
     document.body.appendChild(overlay);
   }
 
@@ -1965,7 +1345,7 @@ mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',functi
     document.getElementById('mPages').textContent=b.pages;
     document.getElementById('mDesc').textContent=b.desc;
     document.getElementById('mDesc2').textContent=b.desc;
-    document.getElementById('mBuy').href=b.url;
+    document.getElementById('mAmazon').href=b.amazon;
     var rw=document.getElementById('mRecipesWrap');
     if(b.recipes){document.getElementById('mRecipes').textContent=b.recipes;rw.style.display='block'}else{rw.style.display='none'}
     var rel=document.getElementById('mRelated');rel.innerHTML='';
@@ -1989,132 +1369,6 @@ mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',functi
   });
 
 })();
-
-
-// ===== DYNAMIC MOVEMENT SYSTEM =====
-
-// 1. Mouse-tracking 3D book card tilt
-document.querySelectorAll('.book-card').forEach(function(card) {
-  card.addEventListener('mousemove', function(e) {
-    var rect = card.getBoundingClientRect();
-    var x = e.clientX - rect.left;
-    var y = e.clientY - rect.top;
-    var centerX = rect.width / 2;
-    var centerY = rect.height / 2;
-    var rotateX = (y - centerY) / 20;  // Max ~2.5deg tilt
-    var rotateY = (centerX - x) / 20;
-    var scale = 1.02;
-    card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(' + scale + ') translateY(-6px)';
-  });
-  card.addEventListener('mouseleave', function() {
-    card.style.transform = '';
-  });
-});
-
-// 2. Hero parallax on mouse move
-var hero = document.getElementById('hero');
-if (hero) {
-  var heroAura = hero.querySelector('.hero-aura');
-  var heroAura2 = hero.querySelector('.hero-aura-2');
-  var heroOrb1 = hero.querySelector('.orb-1');
-  var heroOrb2 = hero.querySelector('.orb-2');
-  var macroType = hero.querySelector('.macro-type');
-  
-  document.addEventListener('mousemove', function(e) {
-    var mx = (e.clientX / window.innerWidth - 0.5) * 2;  // -1 to 1
-    var my = (e.clientY / window.innerHeight - 0.5) * 2;
-    if (heroAura) heroAura.style.transform = 'translate(' + (mx * 30) + 'px, ' + (my * 20) + 'px)';
-    if (heroAura2) heroAura2.style.transform = 'translate(' + (mx * -20) + 'px, ' + (my * -15) + 'px)';
-    if (heroOrb1) heroOrb1.style.transform = 'translate(' + (mx * 50) + 'px, ' + (my * 30) + 'px)';
-    if (heroOrb2) heroOrb2.style.transform = 'translate(' + (mx * -40) + 'px, ' + (my * -25) + 'px)';
-    if (macroType) macroType.style.transform = 'translate(' + (mx * 8) + 'px, ' + (my * 5) + 'px)';
-  });
-}
-
-// 3. Particle system
-(function() {
-  var particleCount = 20;
-  var container = document.body;
-  for (var i = 0; i < particleCount; i++) {
-    var p = document.createElement('div');
-    p.className = 'particle';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (15 + Math.random() * 20) + 's';
-    p.style.animationDelay = (Math.random() * 15) + 's';
-    p.style.width = (2 + Math.random() * 3) + 'px';
-    p.style.height = p.style.width;
-    var opacity = 0.15 + Math.random() * 0.25;
-    p.style.background = 'rgba(218,165,32,' + opacity + ')';
-    container.appendChild(p);
-  }
-})();
-
-// 4. Scroll parallax for floating books
-window.addEventListener('scroll', function() {
-  var scrollY = window.scrollY;
-  document.querySelectorAll('.floating-book').forEach(function(book, i) {
-    var speed = 0.05 + (i * 0.02);
-    book.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
-  });
-}, {passive: true});
-
-// 5. IntersectionObserver for 3D reveals
-var reveal3dObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      reveal3dObserver.unobserve(entry.target);
-    }
-  });
-}, { rootMargin: '0px', threshold: 0.1 });
-
-document.querySelectorAll('.reveal-3d, .reveal-left, .reveal-right').forEach(function(el) {
-  reveal3dObserver.observe(el);
-});
-
-// 6. Staggered reveal for book cards
-document.querySelectorAll('.book-card').forEach(function(card, i) {
-  card.style.transitionDelay = (i * 0.1) + 's';
-});
-
-// 7. Smooth number counting animation for stats
-function animateValue(el, start, end, duration) {
-  var startTime = null;
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    var progress = Math.min((timestamp - startTime) / duration, 1);
-    var eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
-    var current = Math.floor(start + (end - start) * eased);
-    var text = el.textContent;
-    var suffix = text.replace(/[0-9+]/g, '');
-    el.textContent = current + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-}
-
-var statsObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (entry.isIntersecting) {
-      var numEl = entry.target.querySelector('.num');
-      if (numEl && !numEl.dataset.animated) {
-        numEl.dataset.animated = 'true';
-        var text = numEl.textContent;
-        var num = parseInt(text);
-        var suffix = text.replace(/[0-9+]/g, '');
-        if (!isNaN(num)) {
-          animateValue(numEl, 0, num, 1500);
-        }
-      }
-      statsObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.stat').forEach(function(stat) {
-  statsObserver.observe(stat);
-});
-
 
 // Apple-Level Scroll Animations (IntersectionObserver)
 var observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
