@@ -702,38 +702,45 @@ function renderPreviews(){
 }
 
 function openModal(slug){
-  var book=null;
-  for(var i=0;i<books.length;i++){if(books[i].slug===slug){book=books[i];break;}}
-  if(!book)return;
-  var ih="";
-  for(var j=0;j<book.inside.length;j++){ih+="<li>"+book.inside[j]+"</li>";}
-  var h="";
-  h+="<div class="modal-cover">";
-  h+="<div class="modal-cover-img"><img src=""+book.cover+"" alt=""+book.title+""></div>";
-  h+="<div class="modal-cover-info">";
-  h+="<div class="tag">"+book.category+"</div>";
-  h+="<h2>"+book.title+"</h2>";
-  h+="<p>"+book.desc+"</p>";
-  h+="<div class="modal-stats">";
-  h+="<div class="modal-stat"><div class="num">"+book.pages+"</div><div class="label">Pages</div></div>";
-  h+="</div>";
-  h+="<div class="modal-buy">";
-  h+="<a href=""+BEACONS_URL+"" class="btn bp" target="_blank" rel="noopener">SECURE YOUR COPY</a>";
-  h+="</div></div></div>";
-  h+="<div class="modal-body">";
-  h+="<div class="modal-section">";
-  h+="<h3>What You Will Walk Away With</h3>";
-  h+="<ul>"+ih+"</ul>";
-  h+="</div>";
-  h+="<div class="modal-section">";
-  h+="<h3>The 30-Day Protocol</h3>";
-  h+="<p style="font-size:12px;color:var(--paper2);line-height:1.6;">Every book includes a clear 30-day or 21-day execution plan. No theory. Only protocols you can run today.</p>";
-  h+="</div>";
-  h+="<div class="modal-disclaimer">"+book.disclaimer+"</div>";
-  h+="</div>";
-  document.getElementById("modalContent").innerHTML=h;
+  var book = null;
+  for (var i = 0; i < books.length; i++) {
+    if (books[i].slug === slug) { book = books[i]; break; }
+  }
+  if (!book) return;
+
+  var ih = "";
+  for (var j = 0; j < book.inside.length; j++) {
+    ih += "<li>" + book.inside[j] + "</li>";
+  }
+
+  var h = "";
+  h += "<div class=\"modal-cover\">";
+  h += "<div class=\"modal-cover-img\"><img src=\"" + book.cover + "\" alt=\"" + book.title + "\"></div>";
+  h += "<div class=\"modal-cover-info\">";
+  h += "<div class=\"tag\">" + book.category + "</div>";
+  h += "<h2>" + book.title + "</h2>";
+  h += "<p>" + book.desc + "</p>";
+  h += "<div class=\"modal-stats\">";
+  h += "<div class=\"modal-stat\"><div class=\"num\">" + book.pages + "</div><div class=\"label\">Pages</div></div>";
+  h += "</div>";
+  h += "<div class=\"modal-buy\">";
+  h += "<a href=\"" + BEACONS_URL + "\" class=\"btn bp\" target=\"_blank\" rel=\"noopener\">SECURE YOUR COPY</a>";
+  h += "</div></div></div>";
+  h += "<div class=\"modal-body\">";
+  h += "<div class=\"modal-section\">";
+  h += "<h3>What You Will Walk Away With</h3>";
+  h += "<ul>" + ih + "</ul>";
+  h += "</div>";
+  h += "<div class=\"modal-section\">";
+  h += "<h3>The 30-Day Protocol</h3>";
+  h += "<p style=\"font-size:12px;color:var(--paper2);line-height:1.6;\">Every book includes a clear 30-day or 21-day execution plan. No theory. Only protocols you can run today.</p>";
+  h += "</div>";
+  h += "<div class=\"modal-disclaimer\">" + book.disclaimer + "</div>";
+  h += "</div>";
+
+  document.getElementById("modalContent").innerHTML = h;
   document.getElementById("modalOverlay").classList.add("open");
-  document.body.style.overflow="hidden";
+  document.body.style.overflow = "hidden";
 }
 function closeModal(){
   document.getElementById("modalOverlay").classList.remove("open");
