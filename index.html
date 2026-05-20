@@ -1588,24 +1588,7 @@ mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',functi
     Object.keys(books).forEach(function(k){if(k!==key){var rb=books[k];var rImg=rb.img||'';rel.innerHTML+='<a href="#" class="related-book" data-related="'+k+'"><img src="'+rImg+'" alt="'+rb.title+'" loading="lazy"><div class="rbi" style="padding:8px;font-size:10px;color:var(--paper2)">'+rb.title+'</div></a>'}});
     overlay.classList.add('open');document.body.style.overflow='hidden';
     rel.querySelectorAll('.related-book').forEach(function(rb){rb.addEventListener('click',function(e){e.preventDefault();openModal(rb.getAttribute('data-related'))})});
-  }
-    document.getElementById('mImg').src=b.img;
-    document.getElementById('mImg').alt=b.title+' by Tyson Architect';
-    document.getElementById('mTag').textContent=b.tag;
-    document.getElementById('mTitle').textContent=b.title;
-    document.getElementById('mPages').textContent=b.pages;
-    document.getElementById('mDesc').textContent=b.desc;
-    document.getElementById('mDesc2').textContent=b.desc;
-    document.getElementById('mAmazon').href=b.amazon;
-    var rw=document.getElementById('mRecipesWrap');
-    if(b.recipes){document.getElementById('mRecipes').textContent=b.recipes;rw.style.display='block'}else{rw.style.display='none'}
-    var rel=document.getElementById('mRelated');rel.innerHTML='';
-    Object.keys(books).forEach(function(k){if(k!==key){var rb=books[k];rel.innerHTML+='<a href="#" class="related-book" data-related="'+k+'"><img src="'+rb.img+'" alt="'+rb.title+'" loading="lazy"><div class="rbi" style="padding:8px;font-size:10px;color:var(--paper2)">'+rb.title+'</div></a>'}});
-    overlay.classList.add('open');document.body.style.overflow='hidden';
-    rel.querySelectorAll('.related-book').forEach(function(rb){rb.addEventListener('click',function(e){e.preventDefault();openModal(rb.getAttribute('data-related'))})});
-  }
-
-  document.querySelectorAll('.bc').forEach(function(bc){
+  }document.querySelectorAll('.bc').forEach(function(bc){
     bc.addEventListener('click', function(e){
       if(e.target.closest('a')) return;
       openModal(bc.getAttribute('data-book'));
