@@ -351,6 +351,17 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.04em;line-
   *{animation:none!important;transition:none!important}
   .stagger>*,.reveal{opacity:1;transform:none}
 }
+
+/* Transformations / Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+@media(max-width:900px){.testimonials-grid{grid-template-columns:1fr}}
+.testimonial-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:28px;position:relative}
+.testimonial-card::before{content:"\201C";font-size:120px;line-height:1;font-family:var(--serif);color:var(--accent);opacity:.08;position:absolute;top:10px;right:24px}
+.testimonial-quote{font-size:15px;line-height:1.55;color:var(--paper);font-weight:300;margin-bottom:24px}
+.testimonial-meta{display:flex;align-items:center;gap:12px}
+.testimonial-name{font-weight:500;font-size:13px}
+.testimonial-role{font-size:11px;color:var(--paper3);letter-spacing:.08em;text-transform:uppercase}
+
 </style>
 </head>
 <body>
@@ -395,10 +406,10 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.04em;line-
   <div class="hc">
     <div class="hero-eyebrow">5 Books. One System. By Tyson Architect.</div>
     <h1>RESET YOUR BODY.<br><em>REBUILD</em> YOUR LIFE.</h1>
-    <p>Simple systems for food, discipline, energy, and self-control. 5 books. 7 protocols. Written by <strong>Tyson Architect</strong>.</p>
+    <p>5 books. 7 protocols. Zero fluff. For men done with half-measures and ready to architect their own biology, energy, and discipline.</p>
     <div class="ctas hero-cta">
-      <a href="#books" class="btn bp">Explore the Books <span class="arrow">&rarr;</span></a>
-      <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" class="btn bg" target="_blank" rel="noopener">Shop All 5</a>
+      <a href="#books" class="btn bp">See The System <span class="arrow">&rarr;</span></a>
+      <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" class="btn bg" target="_blank" rel="noopener">Get All 5 Now</a>
     </div>
   </div>
 </section>
@@ -522,6 +533,37 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.04em;line-
 </section>
 
 <!-- FAQ -->
+<!-- Transformations -->
+<section class="sec" id="results">
+  <div class="wrap">
+    <div class="sh reveal">
+      <div class="eyebrow">Real Men. Real Shifts.</div>
+      <h2>They Stopped <em>Surviving</em>.<br>They Started <em>Architecting</em>.</h2>
+      <p>These are the results from men who ran the protocols with discipline.</p>
+    </div>
+    <div class="testimonials-grid reveal stagger" data-stagger>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">“I was 38, exhausted, brain fogged, and addicted to the scroll. 34 days on the Alkaline protocol and my energy came back like I was 25 again. Lost 19 pounds without counting calories. The mucusless approach is real.”</div>
+        <div class="testimonial-meta">
+          <div><div class="testimonial-name">Marcus R.</div><div class="testimonial-role">London • 38</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">“Quit PRN + Life Force Energy changed everything. 21 days in and the mental clarity is insane. I stopped watching porn completely and redirected that energy into my business. Best decision I made this year.”</div>
+        <div class="testimonial-meta">
+          <div><div class="testimonial-name">David K.</div><div class="testimonial-role">Manchester • 29</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">“Parasite Conspiracy + the full system cleared issues I had for years. Brain fog gone. Digestion fixed. I finally feel like my body is working with me instead of against me. Tyson’s frameworks are gold.”</div>
+        <div class="testimonial-meta">
+          <div><div class="testimonial-name">James T.</div><div class="testimonial-role">Bristol • 41</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec sec2" id="faq">
   <div class="wrap">
     <div class="sh reveal">
@@ -581,9 +623,9 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.04em;line-
 <section class="sec">
   <div class="wrap">
     <div class="cta-box reveal">
-      <h2>Ready to Start?</h2>
-      <p>5 books. 7 protocols. One simple system for taking control of your body, your habits, and your life.</p>
-      <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" class="btn bp" target="_blank" rel="noopener">GET ALL 5 BOOKS <span class="arrow">&rarr;</span></a>
+      <h2>Stop Waiting.<br>Start Architecting.</h2>
+      <p>5 books. 7 protocols. One system that actually works. The men who execute see results in 21–30 days. The question is: are you ready to become one of them?</p>
+      <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" class="btn bp" target="_blank" rel="noopener">GET THE FULL SYSTEM NOW <span class="arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -666,30 +708,33 @@ function openModal(slug){
   var ih="";
   for(var j=0;j<book.inside.length;j++){ih+="<li>"+book.inside[j]+"</li>";}
   var h="";
-  h+='<div class="modal-cover">';
-  h+='<div class="modal-cover-img"><img src="'+book.cover+'" alt="'+book.title+'"></div>';
-  h+='<div class="modal-cover-info">';
-  h+='<div class="tag">'+book.category+'</div>';
-  h+='<h2>'+book.title+'</h2>';
-  h+='<p>'+book.desc+'</p>';
-  h+='<div class="modal-stats">';
-  h+='<div class="modal-stat"><div class="num">'+book.pages+'</div><div class="label">Pages</div></div>';
-  h+='</div>';
-  h+='<div class="modal-buy">';
-  h+='<a href="'+BEACONS_URL+'" class="btn bp" target="_blank" rel="noopener">GET THE BOOK</a>';
-  h+='</div></div></div>';
-  h+='<div class="modal-body">';
-  h+='<div class="modal-section">';
-  h+='<h3>Inside This Book</h3>';
-  h+='<ul>'+ih+'</ul>';
-  h+='</div>';
-  h+='<div class="modal-disclaimer">'+book.disclaimer+'</div>';
-  h+='</div>';
+  h+="<div class="modal-cover">";
+  h+="<div class="modal-cover-img"><img src=""+book.cover+"" alt=""+book.title+""></div>";
+  h+="<div class="modal-cover-info">";
+  h+="<div class="tag">"+book.category+"</div>";
+  h+="<h2>"+book.title+"</h2>";
+  h+="<p>"+book.desc+"</p>";
+  h+="<div class="modal-stats">";
+  h+="<div class="modal-stat"><div class="num">"+book.pages+"</div><div class="label">Pages</div></div>";
+  h+="</div>";
+  h+="<div class="modal-buy">";
+  h+="<a href=""+BEACONS_URL+"" class="btn bp" target="_blank" rel="noopener">SECURE YOUR COPY</a>";
+  h+="</div></div></div>";
+  h+="<div class="modal-body">";
+  h+="<div class="modal-section">";
+  h+="<h3>What You Will Walk Away With</h3>";
+  h+="<ul>"+ih+"</ul>";
+  h+="</div>";
+  h+="<div class="modal-section">";
+  h+="<h3>The 30-Day Protocol</h3>";
+  h+="<p style="font-size:12px;color:var(--paper2);line-height:1.6;">Every book includes a clear 30-day or 21-day execution plan. No theory. Only protocols you can run today.</p>";
+  h+="</div>";
+  h+="<div class="modal-disclaimer">"+book.disclaimer+"</div>";
+  h+="</div>";
   document.getElementById("modalContent").innerHTML=h;
   document.getElementById("modalOverlay").classList.add("open");
   document.body.style.overflow="hidden";
 }
-
 function closeModal(){
   document.getElementById("modalOverlay").classList.remove("open");
   document.body.style.overflow="";
