@@ -649,33 +649,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 }
 
 /* Child-Friendly VPO Explainer & Visual Diagram */
-.vpo-explainer-sec {
-  max-width: 800px;
-  margin: -2vh auto 6vh;
-  padding: 32px;
-  background: rgba(255,255,255,0.01);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-}
-.vpo-analogy-title {
-  font-family: var(--serif);
-  font-size: 20px;
-  color: var(--accent);
-  margin-bottom: 12px;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-}
-.vpo-analogy-text {
-  font-size: 14px;
-  color: var(--paper2);
-  line-height: 1.6;
-  max-width: 680px;
-  margin: 0 auto 28px;
-}
 .vpo-diagram-row {
   display: flex;
   align-items: center;
@@ -717,10 +690,6 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.vpo-diag-icon {
-  font-size: 24px;
-  margin-bottom: 8px;
 }
 .vpo-diag-name {
   font-size: 11px;
@@ -933,6 +902,32 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 @media(max-width: 700px) {
   .pillars { grid-template-columns: 1fr; }
 }
+/* Modal price + previews */
+.modal-price-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.modal-price{font-family:var(--serif);font-size:22px;color:var(--accent);font-weight:600}
+.modal-save{font-size:11px;color:var(--paper3);background:rgba(196,30,58,0.12);border:1px solid rgba(196,30,58,0.25);border-radius:4px;padding:3px 10px;font-weight:600;letter-spacing:.04em}
+.modal-previews{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:12px}
+@media(max-width:600px){.modal-previews{grid-template-columns:repeat(3,1fr);gap:6px}}
+.modal-preview{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);background:var(--bg3);text-align:center}
+.modal-preview img{width:100%;height:80px;object-fit:contain;display:block}
+.modal-preview span{display:block;font-size:9px;color:var(--paper3);text-transform:uppercase;letter-spacing:.1em;padding:4px 0;font-weight:500}
+/* Font size fixes */
+body{font-size:16px}
+.nav-links a{font-size:12px}
+.nav-cta{font-size:11px!important}
+.btn{font-size:12px}
+.bs{font-size:10px}
+.sh .eyebrow{font-size:10px}
+.sh p{font-size:15px}
+.hero-eyebrow{font-size:10px}
+.stat .label{font-size:10px}
+.manifesto cite{font-size:12px}
+.modal-close{font-size:12px}
+.modal-cover-info .tag{font-size:10px}
+.modal-cover-info p{font-size:15px}
+.modal-section p{font-size:14px}
+.modal-stat .label{font-size:9px}
+.mobi-close{font-size:12px}
 </style></head>
 <body>
 <a href="#main" class="skip">Skip to content</a>
@@ -1077,60 +1072,39 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 </section>
 
 <section class="vpo-sec" id="vpo-formula">
-  <div class="organic-orb orb-3" aria-hidden="true"></div>
-  <div class="organic-orb orb-4" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="sh reveal reveal-up" style="text-align: center; margin-bottom: 6vh;">
+    <div class="sh reveal reveal-up" style="text-align: center; margin-bottom: 8vh;">
       <span class="eyebrow">The Formula</span>
       <h2 style="font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.04em; font-weight: 300;">
         The Vitality Equation: <span class="illuminate">V = P − O</span>
       </h2>
-      <p style="font-size: 1.1rem; color: var(--paper2); max-width: 600px; margin: 16px auto 0;">
-        Potential (P) is absolute, divine, and locked at 100%. Your experienced Vitality (V) is simply Potential minus Obstruction (O). Wipe away the dust to let your light shine.
+      <p style="font-size: 1.1rem; color: var(--paper2); max-width: 560px; margin: 16px auto 0;">
+        Your potential is fixed. Your vitality is what remains after obstruction. Remove the interference — the signal returns.
       </p>
     </div>
-
-    <div class="vpo-explainer-sec reveal reveal-up" style="margin-top: -2vh; margin-bottom: 2vh;">
-      <h3 class="vpo-analogy-title">The Lightbulb Analogy (Simple Explanation)</h3>
-      <p class="vpo-analogy-text">
-        Imagine your body is a beautiful, bright lightbulb. 
-        <strong>Potential (P)</strong> is your battery: it is always perfect, absolute, and locked at 100%. 
-        <strong>Obstruction (O)</strong> is the mud and dust covering the glass (heavy metals, processed foods, stress, and digital clutter). 
-        <strong>Vitality (V)</strong> is how much bright light actually shines through to the world! 
-        You don't need a bigger battery to shine brighter—you just need to clean the dust off the glass.
-      </p>
-
-      <div class="vpo-diagram-row">
-        <!-- P Node -->
-        <div class="vpo-diag-node potential">
-          <div class="vpo-diag-icon">🔋</div>
-          <div class="vpo-diag-name">Potential (P)</div>
-          <div class="vpo-diag-val">100% Locked</div>
-          <div class="vpo-diag-desc">Your divine, perfect native biology.</div>
-        </div>
-
-        <!-- Minus -->
-        <div class="vpo-diag-symbol">−</div>
-
-        <!-- O Node -->
-        <div class="vpo-diag-node obstruction">
-          <div class="vpo-diag-icon">🌫️</div>
-          <div class="vpo-diag-name">Obstruction (O)</div>
-          <div class="vpo-diag-val">40% Load</div>
-          <div class="vpo-diag-desc">Dirt, metals, stagnant food, screen drain.</div>
-        </div>
-
-        <!-- Equals -->
-        <div class="vpo-diag-symbol">=</div>
-
-        <!-- V Node -->
-        <div class="vpo-diag-node vitality">
-          <div class="vpo-diag-icon">💡</div>
-          <div class="vpo-diag-name">Vitality (V)</div>
-          <div class="vpo-diag-val">60% Shine</div>
-          <div class="vpo-diag-desc">How bright your light shines out.</div>
-        </div>
+    <div class="vpo-diagram-row reveal reveal-up" style="max-width: 900px; margin: 0 auto;">
+      <div class="vpo-diag-node potential">
+        <div class="vpo-diag-name">Potential</div>
+        <div class="vpo-diag-val">P</div>
+        <div class="vpo-diag-desc">Your native biology. Fixed. Divine. Non-negotiable.</div>
       </div>
+      <div class="vpo-diag-symbol">−</div>
+      <div class="vpo-diag-node obstruction">
+        <div class="vpo-diag-name">Obstruction</div>
+        <div class="vpo-diag-val">O</div>
+        <div class="vpo-diag-desc">Toxins. Mucus. Parasites. Bad inputs. Digital drain.</div>
+      </div>
+      <div class="vpo-diag-symbol">=</div>
+      <div class="vpo-diag-node vitality">
+        <div class="vpo-diag-name">Vitality</div>
+        <div class="vpo-diag-val">V</div>
+        <div class="vpo-diag-desc">What you actually experience. Energy. Clarity. Presence.</div>
+      </div>
+    </div>
+    <div class="reveal reveal-up delay-1" style="text-align: center; margin-top: 6vh;">
+      <p style="font-size: 16px; color: var(--paper2); max-width: 500px; margin: 0 auto; line-height: 1.7; font-weight: 300;">
+        You were not designed to be fixed. You were designed to be <span class="illuminate">unburdened</span>. Every toxin removed is a signal restored. Every habit rebuilt is a load-bearing wall replaced.
+      </p>
     </div>
   </div>
 </section>
@@ -1577,22 +1551,44 @@ mobi.querySelectorAll('a').forEach(function(a){a.addEventListener('click',functi
 
   // Book modals
   var books={
-    id:{title:'Intelligent Design',tag:'The Architecture of Creation',pages:'204',desc:'An investigation into the irreducible complexity of cellular life. Discover the airtight case that you are not a cosmic accident, but a masterfully engineered architecture. Explore how DNA functions as code, how the brain acts as a biological supercomputer, and how the intricacies of the human eye and ear defy evolution. A beautifully written proof of intelligent design at the cellular level.',img:'public/book-covers/intelligent-design.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    aa:{title:'Alkaline Awakening',tag:'Detoxification · Terrain · Circulation',pages:'357',recipes:'125+',desc:'The definitive 357-page manual for cellular restoration. Learn to harmonize your biochemistry, activate your lymphatic system, optimize circulation, and nourish your body using nature\'s raw food intelligence. This system provides a practical transition into a high-vitality lifestyle, backed by 125+ nutrient-dense alkaline recipes and deep detoxification protocols.',img:'public/book-covers/alkaline-awakening.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    pc:{title:'Parasite Conspiracy',tag:'Hidden Burdens · Awareness',pages:'70',desc:'A systematic exploration of hidden environmental and biological obstructions. Reclaim your biological integrity from the modern elements draining your cellular resonance. This guide names the obstructions and details the precise natural steps to unburden your terrain, restore nutrient absorption, and return your body to still energy.',img:'public/books/parasite-conspiracy.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    lfe:{title:'Life Force Energy',tag:'Retention · Discipline · Sovereignty',pages:'163',desc:'A stoic, scientific manual on energy conservation and semen retention. Discover how to consolidate your primary neurological and physical power to build deep presence, boost testosterone, and strengthen your bioenergetic field. This protocol redirects raw physical energy into cognitive clarity and purposeful self-mastery.',img:'public/book-covers/life-force-energy.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'},
-    qpn:{title:'Quit PRN Manual',tag:'Recovery · Reboot · Freedom',pages:'44',desc:'A precise 21-day neural reboot protocol. Recalibrate your brain\'s dopamine pathways, eliminate digital interference, and build a fortress of mental stillness. Learn how to restructure your environment, overcome compulsive feedback loops, and reclaim your supreme focus and sovereign autonomy.',img:'public/books/quit-prn-manual.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae'}
+    id:{title:'Intelligent Design',tag:'The Architecture of Creation',pages:'204',price:'$19.99',desc:'An investigation into the irreducible complexity of cellular life. Discover the airtight case that you are not a cosmic accident, but a masterfully engineered architecture. Explore how DNA functions as code, how the brain acts as a biological supercomputer, and how the intricacies of the human eye and ear defy evolution.',img:'public/book-covers/intelligent-design.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae',previews:[{img:'public/book-previews/intelligent-design/cover-p1.webp',label:'Cover'},{img:'public/book-previews/intelligent-design/what-is-id-p6.webp',label:'Intro'},{img:'public/book-previews/intelligent-design/purpose-vs-randomness-p7.webp',label:'Purpose'},{img:'public/book-previews/intelligent-design/code-of-life-p14.webp',label:'DNA'},{img:'public/book-previews/intelligent-design/human-brain-p18.webp',label:'The Brain'},{img:'public/book-previews/intelligent-design/eye-marvel-p24.webp',label:'The Eye'}]},
+    aa:{title:'Alkaline Awakening',tag:'Detoxification \u00b7 Terrain \u00b7 Circulation',pages:'357',recipes:'125+',price:'$24.99',desc:'The definitive 357-page manual for cellular restoration. Learn to harmonize your biochemistry, activate your lymphatic system, optimize circulation, and nourish your body using nature\'s raw food intelligence. Backed by 125+ nutrient-dense alkaline recipes and deep detoxification protocols.',img:'public/book-covers/alkaline-awakening.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae',previews:[{img:'public/book-previews/alkaline-awakening/cover-p1.webp',label:'Cover'},{img:'public/book-previews/alkaline-awakening/ph-balance-p3.webp',label:'pH Balance'},{img:'public/book-previews/alkaline-awakening/circadian-rhythm-p4.webp',label:'Rhythm'},{img:'public/book-previews/alkaline-awakening/recipes-p7.webp',label:'Recipes'},{img:'public/book-previews/alkaline-awakening/harmony-p17.webp',label:'Harmony'},{img:'public/book-previews/alkaline-awakening/6-staples-p40.webp',label:'6 Staples'}]},
+    pc:{title:'Parasite Conspiracy',tag:'Hidden Burdens \u00b7 Awareness',pages:'70',price:'$9.99',desc:'A systematic exploration of hidden environmental and biological obstructions. Reclaim your biological integrity from the modern elements draining your cellular resonance. This guide names the obstructions and details the precise natural steps to unburden your terrain.',img:'public/books/parasite-conspiracy.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae',previews:[{img:'public/book-previews/parasite-conspiracy/cover-p1.webp',label:'Cover'},{img:'public/book-previews/parasite-conspiracy/protocols-p3.webp',label:'Protocols'},{img:'public/book-previews/parasite-conspiracy/elimination-channels-p15.webp',label:'Elimination'},{img:'public/book-previews/parasite-conspiracy/mind-control-p17.webp',label:'Mind Control'},{img:'public/book-previews/parasite-conspiracy/cleanses-p24.webp',label:'Cleanses'},{img:'public/book-previews/parasite-conspiracy/herbs-p29.webp',label:'Herbs'}]},
+    lfe:{title:'Life Force Energy',tag:'Retention \u00b7 Discipline \u00b7 Sovereignty',pages:'163',price:'$14.99',desc:'A stoic, scientific manual on energy conservation and semen retention. Discover how to consolidate your primary neurological and physical power to build deep presence, boost testosterone, and strengthen your bioenergetic field.',img:'public/book-covers/life-force-energy.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae',previews:[{img:'public/book-previews/life-force-energy/cover-p1.webp',label:'Cover'},{img:'public/book-previews/life-force-energy/kabbalah-p4.webp',label:'Kabbalah'},{img:'public/book-previews/life-force-energy/self-control-p52.webp',label:'Self Control'},{img:'public/book-previews/life-force-energy/egyptian-p74.webp',label:'Egyptian'},{img:'public/book-previews/life-force-energy/greco-roman-p164.webp',label:'Greco-Roman'},{img:'public/book-previews/life-force-energy/michelangelo-p184.webp',label:'Michelangelo'}]},
+    qpn:{title:'Quit PRN Manual',tag:'Recovery \u00b7 Reboot \u00b7 Freedom',pages:'44',price:'$9.99',desc:'A precise 21-day neural reboot protocol. Recalibrate your brain\'s dopamine pathways, eliminate digital interference, and build a fortress of mental stillness. Learn how to restructure your environment and reclaim your supreme focus.',img:'public/books/quit-prn-manual.webp',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae',previews:[{img:'public/book-previews/quit-prn/cover-p1.webp',label:'Cover'},{img:'public/book-previews/quit-prn/conservation-p2.webp',label:'Conservation'},{img:'public/book-previews/quit-prn/betrayal-p5.webp',label:'The Trap'},{img:'public/book-previews/quit-prn/human-architect-p8.webp',label:'Intro'},{img:'public/book-previews/quit-prn/urge-data-p21.webp',label:'Urge Data'},{img:'public/book-previews/quit-prn/halt-protocol-p22.webp',label:'HALT Protocol'}]},
+    bundle:{title:'The Full Protocol',tag:'Complete Library \u00b7 All 5 Manuals',pages:'840+',price:'$49.99',save:'$29',desc:'Get all 5 manuals in one bundle. The complete Human Architect system \u2014 detox, retention, parasite cleansing, dopamine reboot, and the architecture of creation. Everything you need to rebuild from the foundation.',img:'',amazon:'https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae',previews:[{img:'public/book-covers/intelligent-design.webp',label:'Intelligent Design'},{img:'public/book-covers/alkaline-awakening.webp',label:'Alkaline Awakening'},{img:'public/book-covers/life-force-energy.webp',label:'Life Force Energy'},{img:'public/books/parasite-conspiracy.webp',label:'Parasite Conspiracy'},{img:'public/books/quit-prn-manual.webp',label:'Quit PRN Manual'},{img:'public/book-covers/intelligent-design.webp',label:'Bundle Cover'}]}
   };
 
   var overlay=document.getElementById('bookModal');
   if(!overlay) {
     overlay=document.createElement('div');overlay.className='modal-overlay';overlay.id='bookModal';
-    overlay.innerHTML='<div class="modal"><button class="modal-close" aria-label="Close">Close ✕</button><div class="modal-cover"><div class="modal-cover-img"><img id="mImg" src="" alt="" loading="lazy"></div><div class="modal-cover-info"><div class="tag" id="mTag"></div><h2 id="mTitle"></h2><div class="modal-stats"><div class="modal-stat"><div class="num" id="mPages"></div><div class="label">Pages</div></div><div class="modal-stat" id="mRecipesWrap" style="display:none"><div class="num" id="mRecipes"></div><div class="label">Recipes</div></div></div><p id="mDesc"></p><div class="modal-buy"><a id="mAmazon" href="#" class="btn bp" target="_blank" rel="noopener">Get This Book <span class="arrow">→</span></a><a href="#newsletter" class="btn bg">Read Free</a></div></div></div><div class="modal-body"><div class="modal-section"><h3>About this book</h3><p id="mDesc2"></p></div><div class="modal-section"><h3>Related Books</h3><div class="modal-related" id="mRelated"></div></div></div></div>';
+    overlay.innerHTML='<div class="modal"><button class="modal-close" aria-label="Close">Close \u2715</button><div class="modal-cover"><div class="modal-cover-img" id="mImgWrap"><img id="mImg" src="" alt="" loading="lazy"></div><div class="modal-cover-info"><div class="tag" id="mTag"></div><h2 id="mTitle"></h2><div class="modal-price-row"><span class="modal-price" id="mPrice"></span><span class="modal-save" id="mSave" style="display:none"></span></div><div class="modal-stats"><div class="modal-stat"><div class="num" id="mPages"></div><div class="label">Pages</div></div><div class="modal-stat" id="mRecipesWrap" style="display:none"><div class="num" id="mRecipes"></div><div class="label">Recipes</div></div></div><p id="mDesc"></p><div class="modal-buy"><a id="mAmazon" href="#" class="btn bp" target="_blank" rel="noopener">Get This Book <span class="arrow">\u2192</span></a><a href="#newsletter" class="btn bg">Read Free</a></div></div></div><div class="modal-body"><div class="modal-section" id="mPreviewsSection"><h3>Inside this book</h3><div class="modal-previews" id="mPreviews"></div></div><div class="modal-section"><h3>Related Books</h3><div class="modal-related" id="mRelated"></div></div></div></div>';
     document.body.appendChild(overlay);
   }
 
   function openModal(key){
     var b=books[key];if(!b)return;
+    var imgEl=document.getElementById('mImg');
+    if(b.img){imgEl.src=b.img;imgEl.alt=b.title+' by Tyson Architect';imgEl.style.display='block'}else{imgEl.style.display='none'}
+    document.getElementById('mTag').textContent=b.tag;
+    document.getElementById('mTitle').textContent=b.title;
+    document.getElementById('mPages').textContent=b.pages;
+    document.getElementById('mDesc').textContent=b.desc;
+    var priceEl=document.getElementById('mPrice');
+    if(priceEl){priceEl.textContent=b.price||'';priceEl.style.display=b.price?'inline':'none'}
+    var saveEl=document.getElementById('mSave');
+    if(saveEl){saveEl.textContent=b.save?'Save '+b.save:'';saveEl.style.display=b.save?'inline':'none'}
+    document.getElementById('mAmazon').href=b.amazon;
+    var rw=document.getElementById('mRecipesWrap');
+    if(b.recipes){document.getElementById('mRecipes').textContent=b.recipes;rw.style.display='block'}else{rw.style.display='none'}
+    var prevSection=document.getElementById('mPreviewsSection');
+    var prevEl=document.getElementById('mPreviews');
+    if(prevEl&&b.previews&&b.previews.length){prevEl.innerHTML='';b.previews.forEach(function(p){prevEl.innerHTML+='<div class="modal-preview"><img src="'+p.img+'" alt="'+p.label+'" loading="lazy"><span>'+p.label+'</span></div>'});if(prevSection)prevSection.style.display='block'}else{if(prevSection)prevSection.style.display='none'}
+    var rel=document.getElementById('mRelated');rel.innerHTML='';
+    Object.keys(books).forEach(function(k){if(k!==key){var rb=books[k];var rImg=rb.img||'';rel.innerHTML+='<a href="#" class="related-book" data-related="'+k+'"><img src="'+rImg+'" alt="'+rb.title+'" loading="lazy"><div class="rbi" style="padding:8px;font-size:10px;color:var(--paper2)">'+rb.title+'</div></a>'}});
+    overlay.classList.add('open');document.body.style.overflow='hidden';
+    rel.querySelectorAll('.related-book').forEach(function(rb){rb.addEventListener('click',function(e){e.preventDefault();openModal(rb.getAttribute('data-related'))})});
+  }
     document.getElementById('mImg').src=b.img;
     document.getElementById('mImg').alt=b.title+' by Tyson Architect';
     document.getElementById('mTag').textContent=b.tag;
