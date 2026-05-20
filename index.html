@@ -99,11 +99,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#080808;--bg2:#0e0e0e;--bg3:#161616;
-  --paper:#f0efe8;--paper2:#9a9890;--paper3:#5a5850;
-  --accent:#a78bfa;--accent2:#6d4ed8;--accent3:#2dd4bf;
-  --border:rgba(240,239,232,0.05);--border2:rgba(240,239,232,0.1);
-  --r:6px;--r2:10px;--r3:16px;--pill:9999px;
+  --bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;
+  --paper:#e8e6df;--paper2:#8a8578;--paper3:#5a5650;
+  --accent:#8a8578;--accent2:#6b665e;--accent3:#4a4640;
+  --border:rgba(232,230,223,0.06);--border2:rgba(232,230,223,0.12);
+  --r:4px;--r2:8px;--r3:12px;--pill:9999px;
   --serif:'Fraunces','Georgia',serif;
   --sans:'Inter',-apple-system,system-ui,sans-serif;
 }
@@ -113,206 +113,211 @@ body{background:var(--bg);color:var(--paper);font-family:var(--sans);font-size:1
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input{font-family:inherit}
-::selection{background:var(--accent);color:var(--bg)}
-:focus-visible{outline:1px solid var(--accent);outline-offset:3px;border-radius:2px}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-height:1.05}
+::selection{background:var(--paper);color:var(--bg)}
+:focus-visible{outline:1px solid var(--paper2);outline-offset:4px;border-radius:0}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-.04em;line-height:1.05}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(232,230,223,0.12);border-radius:0}
+::-webkit-scrollbar-thumb:hover{background:rgba(232,230,223,0.25)}
 
 /* Progress bar */
-.prog{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--accent);z-index:200;transition:width .05s linear}
+.prog{position:fixed;top:0;left:0;height:1px;width:0%;background:var(--paper);opacity:.5;z-index:200;transition:width .05s linear}
 
 /* Skip link */
-.skip{position:absolute;left:-9999px;background:var(--accent);color:var(--bg);padding:8px 14px;border-radius:var(--r);font-size:12px;z-index:1000}
+.skip{position:absolute;left:-9999px;background:var(--paper);color:var(--bg);padding:8px 14px;border-radius:var(--r);font-size:12px;z-index:1000}
 .skip:focus{left:16px;top:16px}
 
 /* Nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(8,8,8,0.85);backdrop-filter:saturate(140%) blur(20px);-webkit-backdrop-filter:saturate(140%) blur(20px);border-bottom:1px solid transparent;transition:all .3s}
-.nav.scrolled{padding:10px 0;background:rgba(8,8,8,0.95);border-bottom-color:var(--border)}
-.nav-in{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--paper);letter-spacing:-.02em}
-.logo span{color:var(--accent);font-style:italic}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{color:var(--paper2);font-size:11px;font-weight:500;transition:color .2s;letter-spacing:.04em;text-transform:uppercase}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;background:rgba(10,10,10,0.88);backdrop-filter:saturate(140%) blur(24px);-webkit-backdrop-filter:saturate(140%) blur(24px);border-bottom:1px solid transparent;transition:all .4s}
+.nav.scrolled{padding:12px 0;background:rgba(10,10,10,0.95);border-bottom-color:var(--border)}
+.nav-in{max-width:1200px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:17px;font-weight:300;color:var(--paper);letter-spacing:-.02em}
+.logo span{font-style:italic;font-weight:400;opacity:.6}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{color:var(--paper2);font-size:10px;font-weight:500;transition:color .3s;letter-spacing:.08em;text-transform:uppercase}
 .nav-links a:hover{color:var(--paper)}
-.nav-cta{padding:7px 14px!important;border-radius:var(--pill);background:var(--paper)!important;color:var(--bg)!important;font-weight:600;font-size:10px!important;letter-spacing:.06em;text-transform:uppercase;transition:all .2s}
-.nav-cta:hover{background:var(--accent)!important;color:var(--bg)!important}
+.nav-cta{padding:8px 16px!important;border-radius:0;background:var(--paper)!important;color:var(--bg)!important;font-weight:500;font-size:10px!important;letter-spacing:.1em;text-transform:uppercase;transition:all .4s;border:1px solid var(--paper)!important}
+.nav-cta:hover{background:transparent!important;color:var(--paper)!important}
 .burger{display:none;background:none;border:none;color:var(--paper);cursor:pointer;padding:4px;z-index:101}
-.burger svg{width:24px;height:24px}
+.burger svg{width:22px;height:22px}
 @media(max-width:800px){.burger{display:block}.nav-links{display:none}}
 
 /* Mobile menu */
-.mobi{position:fixed;inset:0;background:var(--bg);z-index:99;padding:80px 28px 32px;flex-direction:column;opacity:0;transform:translateY(-8px);transition:all .3s;pointer-events:none;display:flex;gap:0}
+.mobi{position:fixed;inset:0;background:var(--bg);z-index:99;padding:80px 28px 32px;flex-direction:column;opacity:0;transform:translateY(-8px);transition:all .4s;pointer-events:none;display:flex;gap:0}
 .mobi.open{opacity:1;transform:translateY(0);pointer-events:auto}
-.mobi-close{position:absolute;top:16px;right:16px;background:var(--bg2);border:1px solid var(--border);color:var(--paper);cursor:pointer;padding:10px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;z-index:100;border-radius:var(--r);min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
-.mobi-close:hover{background:var(--accent);color:var(--bg);border-color:var(--accent)}
-.mobi a{display:block;padding:18px 0;font-family:var(--serif);font-size:28px;font-weight:400;color:var(--paper);border-bottom:1px solid var(--border);letter-spacing:-.03em}
+.mobi-close{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border);color:var(--paper);cursor:pointer;padding:10px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:500;z-index:100;border-radius:0;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.mobi-close:hover{background:var(--paper);color:var(--bg);border-color:var(--paper)}
+.mobi a{display:block;padding:20px 0;font-family:var(--serif);font-size:28px;font-weight:300;color:var(--paper);border-bottom:1px solid var(--border);letter-spacing:-.03em}
 
 /* Hero */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 60px;position:relative}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(167,139,250,0.04),transparent);pointer-events:none}
-.hc{position:relative;z-index:2;max-width:720px}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:var(--pill);background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.16);font-size:9px;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:28px}
-.hero h1{font-size:clamp(2.4rem,6.5vw,5rem);margin-bottom:24px;line-height:0.95;font-weight:400}
-.hero h1 .accent{color:var(--accent)}
-.hero p{font-size:clamp(.95rem,1.2vw,1.1rem);color:var(--paper2);max-width:480px;margin:0 auto 36px;line-height:1.75;font-weight:300}
-.ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 24px;border-radius:var(--pill);font-size:11px;font-weight:600;cursor:pointer;transition:all .25s;border:none;letter-spacing:.06em;text-transform:uppercase}
-.btn .arrow{display:inline-block;transition:transform .25s}
-.btn:hover .arrow{transform:translateX(3px)}
-.bp{background:var(--paper);color:var(--bg)}.bp:hover{background:var(--accent);color:var(--bg)}
-.bg{background:transparent;color:var(--paper2);border:1px solid var(--border2)}.bg:hover{border-color:var(--paper2);color:var(--paper)}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative}
+.hc{position:relative;z-index:2;max-width:780px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:10px;color:var(--paper3);letter-spacing:.32em;text-transform:uppercase;font-weight:500;margin-bottom:40px}
+.hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--paper3);display:inline-block}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(48px,9vw,136px);line-height:0.92;letter-spacing:-0.045em;color:var(--paper);margin-bottom:32px}
+.hero h1 em,.hero h1 .accent{font-style:italic;font-weight:400;color:var(--paper)}
+.hero p{font-size:clamp(15px,1.3vw,17px);color:var(--paper2);max-width:520px;margin:0 auto 44px;line-height:1.7;font-weight:300}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;font-size:10px;font-weight:500;cursor:pointer;transition:all .4s;border:none;letter-spacing:.12em;text-transform:uppercase;border-radius:0}
+.btn .arrow{display:inline-block;transition:transform .3s}
+.btn:hover .arrow{transform:translateX(4px)}
+.bp{background:var(--paper);color:var(--bg);border:1px solid var(--paper)}.bp:hover{background:transparent;color:var(--paper)}
+.bg{background:transparent;color:var(--paper2);border:1px solid var(--border2)}.bg:hover{border-color:var(--paper);color:var(--paper)}
 
 /* Section basics */
-.sec{padding:80px 0;position:relative}
+.sec{padding:100px 0;position:relative}
 .sec2{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
-.sh{text-align:center;margin-bottom:56px;max-width:540px;margin-left:auto;margin-right:auto}
-.sh .eyebrow{font-size:9px;color:var(--accent);font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px;display:inline-flex;align-items:center;gap:8px}
-.sh .eyebrow::before,.sh .eyebrow::after{content:'';width:16px;height:1px;background:var(--accent);opacity:.4}
-.sh h2{font-size:clamp(1.6rem,3.5vw,2.6rem);margin-bottom:14px;letter-spacing:-.04em}
-.sh p{font-size:14px;color:var(--paper3);line-height:1.7;max-width:460px;margin:0 auto}
+.wrap{max-width:1140px;margin:0 auto;padding:0 40px}
+.sh{text-align:center;margin-bottom:72px;max-width:580px;margin-left:auto;margin-right:auto}
+.sh .eyebrow{font-size:10px;color:var(--paper3);font-weight:500;letter-spacing:.32em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:14px;justify-content:center}
+.sh .eyebrow::before,.sh .eyebrow::after{content:'';flex:1;max-width:60px;height:1px;background:var(--paper3);opacity:.4}
+.sh h2{font-family:var(--serif);font-weight:300;font-size:clamp(32px,5.5vw,72px);line-height:1.02;letter-spacing:-.035em;color:var(--paper);margin-bottom:16px}
+.sh h2 em{font-style:italic;font-weight:400}
+.sh p{font-size:15px;color:var(--paper2);line-height:1.7;max-width:500px;margin:0 auto;font-weight:300}
 
 /* Stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:left;padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);gap:28px 16px}}
-.stat{position:relative;padding-left:14px}
-.stat::before{content:'';position:absolute;left:0;top:4px;width:2px;height:28px;background:var(--accent)}
-.stat .num{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:var(--paper);line-height:1;margin-bottom:6px;letter-spacing:-.04em}
-.stat .label{font-size:9px;color:var(--paper3);text-transform:uppercase;letter-spacing:.18em;font-weight:500}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:left;padding:48px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr);gap:32px 16px}}
+.stat{position:relative;padding-top:24px;border-top:1px solid rgba(232,230,223,0.08)}
+.stat .num{font-family:var(--serif);font-weight:300;font-size:clamp(48px,7vw,88px);letter-spacing:-.04em;color:var(--paper);line-height:1}
+.stat .label{font-size:10px;color:var(--paper3);text-transform:uppercase;letter-spacing:.28em;font-weight:500;margin-top:12px}
 
-/* ===== BOOKS GRID ===== */
+/* Books grid */
 .books-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
 @media(max-width:1100px){.books-grid{grid-template-columns:repeat(3,1fr);gap:16px}}
 @media(max-width:768px){.books-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
 @media(max-width:480px){.books-grid{grid-template-columns:1fr;max-width:320px;margin:0 auto}}
 
 .book-card{
-  background:rgba(255,255,255,0.01);
-  border:1px solid rgba(255,255,255,0.04);
+  border:1px solid transparent;
   border-radius:var(--r2);
   padding:14px;
   display:flex;flex-direction:column;
   cursor:pointer;
-  transition:all .4s cubic-bezier(.16,1,.3,1);
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
   position:relative;
+  background:transparent;
 }
 .book-card:hover{
-  background:rgba(255,255,255,0.03);
-  border-color:rgba(167,139,250,0.15);
-  transform:translateY(-4px);
-  box-shadow:0 16px 40px rgba(0,0,0,0.5);
+  transform:translateY(-6px);
+  border-color:transparent;
 }
 .book-card-img-wrap{
   width:100%;aspect-ratio:3/4;
   border-radius:var(--r);overflow:hidden;
   position:relative;background:var(--bg3);
   margin-bottom:14px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+  box-shadow:0 8px 24px rgba(0,0,0,0.5);
   display:flex;align-items:center;justify-content:center;
 }
-.book-card-img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
-.book-card:hover .book-card-img{transform:scale(1.04)}
-.book-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.book-card-img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.book-card:hover .book-card-img{transform:scale(1.03)}
+.book-card-overlay{position:absolute;inset:0;background:rgba(10,10,10,0.45);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s}
 .book-card:hover .book-card-overlay{opacity:1}
-.book-card-overlay span{background:#fff;color:#000;padding:7px 14px;border-radius:20px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em}
-.book-card-meta{display:flex;justify-content:space-between;align-items:center;font-size:8px;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;font-weight:600;margin-bottom:8px}
-.book-card-num{opacity:.5}
-.book-card-title{font-family:var(--serif);font-size:16px;line-height:1.15;margin-bottom:6px;color:var(--paper)}
-.book-card-desc{font-size:11px;color:var(--paper2);line-height:1.5;font-weight:300;margin-bottom:12px}
-.book-card-cta{font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-top:auto;display:flex;align-items:center;gap:4px;transition:gap .2s}
+.book-card-overlay span{background:transparent;color:var(--paper);padding:10px 22px;border:1px solid var(--paper);font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.18em}
+.book-card-meta{display:flex;justify-content:space-between;align-items:center;font-size:8px;color:var(--paper3);text-transform:uppercase;letter-spacing:.22em;font-weight:500;margin-bottom:8px}
+.book-card-num{opacity:.4}
+.book-card-title{font-family:var(--serif);font-size:16px;line-height:1.15;margin-bottom:6px;color:var(--paper);font-weight:300;letter-spacing:-.02em}
+.book-card-desc{font-size:11px;color:var(--paper2);line-height:1.55;font-weight:300;margin-bottom:12px}
+.book-card-cta{font-size:9px;color:var(--paper2);text-transform:uppercase;letter-spacing:.18em;font-weight:500;margin-top:auto;display:flex;align-items:center;gap:4px;transition:gap .3s;position:relative;padding-bottom:6px}
+.book-card-cta::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--paper);transition:width .4s ease}
 .book-card:hover .book-card-cta{gap:8px}
+.book-card:hover .book-card-cta::after{width:36px}
 
-/* ===== PREVIEWS ===== */
-.preview-panels{display:flex;flex-direction:column;gap:48px}
+/* Previews */
+.preview-panels{display:flex;flex-direction:column;gap:56px}
 .preview-panel{width:100%}
-.preview-panel-header{text-align:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.preview-panel-header h3{font-size:20px;letter-spacing:-.02em;margin-bottom:4px;font-weight:400}
-.preview-panel-header .tag{font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:.15em;font-weight:600}
+.preview-panel-header{text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.preview-panel-header h3{font-size:20px;letter-spacing:-.02em;margin-bottom:4px;font-weight:300}
+.preview-panel-header .tag{font-size:9px;color:var(--paper3);text-transform:uppercase;letter-spacing:.22em;font-weight:500}
 .preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
 @media(max-width:600px){.preview-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
-.page-prev{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);transition:all .4s cubic-bezier(.16,1,.3,1);position:relative;background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;aspect-ratio:3/4;min-height:180px}
-.page-prev:hover{border-color:rgba(167,139,250,0.2);transform:scale(1.03);box-shadow:0 10px 30px rgba(0,0,0,0.6);z-index:10}
+.page-prev{border-radius:var(--r);overflow:hidden;border:1px solid var(--border);transition:all .5s cubic-bezier(.22,1,.36,1);position:relative;background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;aspect-ratio:3/4;min-height:180px}
+.page-prev:hover{border-color:var(--border2);transform:scale(1.02);box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:10}
 .page-prev img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;inset:0}
-.page-prev-label{position:absolute;bottom:10px;left:6px;right:6px;z-index:2;font-size:8px;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;font-weight:600;text-align:center;pointer-events:none;opacity:0;transform:translateY(6px);transition:all .3s}
+.page-prev-label{position:absolute;bottom:10px;left:6px;right:6px;z-index:2;font-size:8px;color:var(--paper);text-transform:uppercase;letter-spacing:.12em;font-weight:500;text-align:center;pointer-events:none;opacity:0;transform:translateY(6px);transition:all .4s}
 .page-prev:hover .page-prev-label{opacity:1;transform:translateY(0)}
 
-/* ===== MANIFESTO ===== */
-.manifesto{text-align:center;max-width:640px;margin:0 auto}
-.manifesto blockquote{font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.5rem);color:var(--paper);line-height:1.45;margin-bottom:14px;font-weight:300;font-style:italic;letter-spacing:-.01em}
-.manifesto cite{color:var(--paper3);font-size:10px;font-style:normal;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+/* Manifesto */
+.manifesto{text-align:center;max-width:780px;margin:0 auto}
+.manifesto blockquote{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(24px,3.4vw,40px);line-height:1.25;letter-spacing:-.02em;color:var(--paper)}
+.manifesto cite{font-style:normal;font-size:10px;letter-spacing:.32em;color:var(--paper3);text-transform:uppercase;font-weight:500;display:block;text-align:center;margin-top:36px}
 
-/* ===== ABOUT / FOUNDER ===== */
-.founder{display:grid;grid-template-columns:120px 1fr;gap:36px;align-items:start;max-width:720px;margin:0 auto}
+/* Founder */
+.founder{display:grid;grid-template-columns:120px 1fr;gap:40px;align-items:start;max-width:720px;margin:0 auto}
 @media(max-width:600px){.founder{grid-template-columns:1fr;gap:20px;text-align:center;justify-items:center}}
 .founder-img{width:120px;height:120px;border-radius:50%;overflow:hidden;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
 .founder-img img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.founder h3{font-size:22px;margin-bottom:4px;letter-spacing:-.02em}
-.founder .role{font-size:9px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.18em;margin-bottom:14px}
-.founder p{color:var(--paper2);font-size:13px;line-height:1.8;margin-bottom:10px}
+.founder h3{font-size:22px;margin-bottom:4px;letter-spacing:-.02em;font-weight:300}
+.founder .role{font-size:9px;color:var(--paper3);font-weight:500;text-transform:uppercase;letter-spacing:.28em;margin-bottom:16px}
+.founder p{color:var(--paper2);font-size:13px;line-height:1.8;margin-bottom:12px;font-weight:300}
 
-/* ===== PROTOCOLS ===== */
+/* Protocols */
 .protog{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 @media(max-width:640px){.protog{grid-template-columns:1fr}}
-.protoc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:24px;transition:border-color .3s}
+.protoc{background:transparent;border:1px solid var(--border);border-radius:var(--r2);padding:28px;transition:border-color .4s}
 .protoc:hover{border-color:var(--border2)}
-.protoc .icon{width:36px;height:36px;margin-bottom:12px;border-radius:var(--r);background:rgba(167,139,250,0.08);display:flex;align-items:center;justify-content:center}
-.protoc .icon svg{width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.protoc .icon{width:36px;height:36px;margin-bottom:14px;border-radius:var(--r);background:rgba(232,230,223,0.04);display:flex;align-items:center;justify-content:center}
+.protoc .icon svg{width:16px;height:16px;stroke:var(--paper2);fill:none;stroke-width:1.5}
 .protoc h3{font-size:15px;margin-bottom:6px;font-weight:400;letter-spacing:-.01em}
-.protoc p{font-size:12px;color:var(--paper3);line-height:1.7}
+.protoc p{font-size:12px;color:var(--paper3);line-height:1.7;font-weight:300}
 
-/* ===== FAQ ===== */
+/* FAQ */
 .faq{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
-.faq-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
-.faq-q{width:100%;background:none;border:none;color:var(--paper);font-family:var(--serif);font-size:16px;font-weight:400;padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;text-align:left;letter-spacing:-.01em}
-.faq-q:hover{color:var(--accent)}
-.faq-q svg{width:16px;height:16px;flex-shrink:0;margin-left:16px;transition:transform .3s;stroke:var(--paper3)}
+.faq-item{background:transparent;border:1px solid var(--border);border-radius:var(--r2);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;color:var(--paper);font-family:var(--serif);font-size:16px;font-weight:300;padding:22px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;text-align:left;letter-spacing:-.01em;transition:color .3s}
+.faq-q:hover{color:var(--paper2)}
+.faq-q svg{width:14px;height:14px;flex-shrink:0;margin-left:16px;transition:transform .3s;stroke:var(--paper3)}
 .faq-item.open .faq-q svg{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 24px}
-.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
-.faq-a p{color:var(--paper2);font-size:13px;line-height:1.75}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease;padding:0 24px}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 22px}
+.faq-a p{color:var(--paper2);font-size:13px;line-height:1.75;font-weight:300}
 
-/* ===== CTA ===== */
-.cta-box{text-align:center;padding:64px 36px;background:var(--bg2);border-radius:var(--r3);border:1px solid var(--border);position:relative;overflow:hidden}
-.cta-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(167,139,250,0.04),transparent);pointer-events:none}
+/* CTA */
+.cta-box{text-align:center;padding:80px 40px;background:transparent;border-radius:0;border:1px solid var(--border)}
 .cta-box h2{font-size:clamp(1.5rem,3.2vw,2.2rem);margin-bottom:14px;letter-spacing:-.03em}
-.cta-box p{color:var(--paper2);line-height:1.75;margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto;font-size:14px}
+.cta-box p{color:var(--paper2);line-height:1.75;margin-bottom:32px;max-width:460px;margin-left:auto;margin-right:auto;font-size:14px;font-weight:300}
 
-/* ===== FOOTER ===== */
-.footer{padding:48px 0;border-top:1px solid var(--border)}
+/* Footer */
+.footer{padding:56px 0;border-top:1px solid var(--border)}
 .footer-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-copy{font-size:11px;color:var(--paper3)}
-.footer-links{display:flex;gap:20px;list-style:none}
-.footer-links a{font-size:11px;color:var(--paper3);transition:color .2s}
+.footer-copy{font-size:11px;color:var(--paper3);font-weight:300}
+.footer-links{display:flex;gap:24px;list-style:none}
+.footer-links a{font-size:10px;color:var(--paper3);transition:color .3s;text-transform:uppercase;letter-spacing:.12em;font-weight:500}
 .footer-links a:hover{color:var(--paper)}
 
-/* ===== MODAL ===== */
-.modal-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(8,8,8,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .3s}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(10,10,10,0.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .4s}
 .modal-overlay.open{display:flex;opacity:1}
-.modal{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);max-width:680px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(20px) scale(.97);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);max-width:680px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(16px) scale(.98);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
 .modal-overlay.open .modal{transform:translateY(0) scale(1)}
-.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--paper3);font-size:11px;cursor:pointer;text-transform:uppercase;letter-spacing:.12em;font-weight:500;padding:8px;z-index:2;border-radius:var(--r)}
+.modal-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--paper3);font-size:10px;cursor:pointer;text-transform:uppercase;letter-spacing:.12em;font-weight:500;padding:8px;z-index:2;border-radius:0}
 .modal-close:hover{color:var(--paper)}
 .modal-cover{display:grid;grid-template-columns:180px 1fr;gap:24px;padding:28px 28px 0}
 @media(max-width:540px){.modal-cover{grid-template-columns:1fr;gap:14px;padding:20px 18px 0}}
 .modal-cover-img{width:100%;border-radius:var(--r);overflow:hidden;background:var(--bg3);display:flex;align-items:center;justify-content:center}
 .modal-cover-img img{width:100%;height:auto;object-fit:contain;border-radius:var(--r)}
-.modal-cover-info h2{font-size:24px;margin-bottom:4px;letter-spacing:-.03em}
-.modal-cover-info .tag{font-size:9px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px}
-.modal-cover-info p{color:var(--paper2);font-size:13px;line-height:1.7;margin-bottom:14px}
+.modal-cover-info h2{font-size:24px;margin-bottom:4px;letter-spacing:-.03em;font-weight:300}
+.modal-cover-info .tag{font-size:9px;color:var(--paper3);font-weight:500;text-transform:uppercase;letter-spacing:.22em;margin-bottom:10px}
+.modal-cover-info p{color:var(--paper2);font-size:13px;line-height:1.7;margin-bottom:14px;font-weight:300}
 .modal-stats{display:flex;gap:16px;margin-bottom:16px}
-.modal-stat .num{font-family:var(--serif);font-size:20px;color:var(--paper);font-weight:400}
+.modal-stat .num{font-family:var(--serif);font-size:20px;color:var(--paper);font-weight:300}
 .modal-stat .label{font-size:8px;color:var(--paper3);text-transform:uppercase;letter-spacing:.12em;font-weight:500;margin-top:2px}
 .modal-body{padding:0 28px 28px}
 @media(max-width:540px){.modal-body{padding:0 18px 20px}}
 .modal-section{margin-bottom:20px}
-.modal-section h3{font-size:14px;margin-bottom:6px;letter-spacing:-.01em}
+.modal-section h3{font-size:14px;margin-bottom:6px;letter-spacing:-.01em;font-weight:400}
 .modal-section ul{list-style:none;padding:0}
-.modal-section ul li{font-size:12px;color:var(--paper2);line-height:1.6;padding:3px 0;padding-left:14px;position:relative}
-.modal-section ul li::before{content:'';position:absolute;left:0;top:10px;width:4px;height:1px;background:var(--accent)}
+.modal-section ul li{font-size:12px;color:var(--paper2);line-height:1.6;padding:3px 0;padding-left:14px;position:relative;font-weight:300}
+.modal-section ul li::before{content:'';position:absolute;left:0;top:10px;width:4px;height:1px;background:var(--paper3)}
 .modal-buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.modal-disclaimer{font-size:10px;color:var(--paper3);margin-top:14px;line-height:1.5}
+.modal-disclaimer{font-size:10px;color:var(--paper3);margin-top:14px;line-height:1.5;font-weight:300}
 
-/* ===== REVEAL ANIMATIONS ===== */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+/* Reveal animations */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1.1s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
@@ -320,128 +325,31 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 .reveal-delay-4{transition-delay:.4s}
 .reveal-delay-5{transition-delay:.5s}
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:480px){
-  .sec{padding:56px 0}
-  .wrap{padding:0 20px}
-  .sh{margin-bottom:36px}
-  .hero{padding:100px 20px 48px}
-  .cta-box{padding:40px 20px}
-}
-
-/* ───────────────────────────────────────────────────────────────
-   MODERN EFFECTS LAYER — v2 (electric accent)
-   ─────────────────────────────────────────────────────────────── */
-
-/* 1. Animated gradient mesh behind the hero */
-.mesh{
-  position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
-  --mx1:50%;--my1:30%;--mx2:70%;--my2:70%;--mx3:30%;--my3:80%;
-  background:
-    radial-gradient(720px circle at var(--mx1) var(--my1), rgba(167,139,250,0.22) 0%, transparent 60%),
-    radial-gradient(620px circle at var(--mx2) var(--my2), rgba(45,212,191,0.14)  0%, transparent 55%),
-    radial-gradient(520px circle at var(--mx3) var(--my3), rgba(109,78,216,0.18)  0%, transparent 60%);
-  filter:blur(42px);
-  transform:translateZ(0);
-}
-
-/* 2. Cursor light (follows the mouse, only on devices that hover) */
-@media (hover:hover){
-  .cursorlight{
-    position:fixed;top:0;left:0;width:560px;height:560px;border-radius:50%;
-    background:radial-gradient(circle, rgba(167,139,250,0.10) 0%, transparent 65%);
-    transform:translate(-50%,-50%);pointer-events:none;z-index:1;
-    transition:opacity .25s;opacity:0;mix-blend-mode:screen;
-    filter:blur(20px);
-  }
-  body:hover .cursorlight{opacity:1}
-}
-
-/* 3. Film grain — barely there, kills the digital flatness */
-.grain{
-  position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-  background-size:200px 200px;
-}
-
-/* 4. Tilt-on-hover books */
-.tilt{transform-style:preserve-3d;transition:transform .25s cubic-bezier(.22,1,.36,1);will-change:transform}
-.tilt-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s}
-.tilt:hover .tilt-glow{opacity:1}
-
-/* 5. Magnetic CTA */
-.magnetic{transition:transform .18s cubic-bezier(.22,1,.36,1)}
-
-/* 6. Staggered reveal — children fade up one after another */
-.stagger>*{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1)}
-.stagger.in>*:nth-child(1){transition-delay:.06s}
-.stagger.in>*:nth-child(2){transition-delay:.14s}
-.stagger.in>*:nth-child(3){transition-delay:.22s}
-.stagger.in>*:nth-child(4){transition-delay:.30s}
-.stagger.in>*:nth-child(5){transition-delay:.38s}
-.stagger.in>*:nth-child(6){transition-delay:.46s}
+/* Stagger */
+.stagger>*{opacity:0;transform:translateY(20px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}
+.stagger.in>*:nth-child(1){transition-delay:.08s}
+.stagger.in>*:nth-child(2){transition-delay:.18s}
+.stagger.in>*:nth-child(3){transition-delay:.28s}
+.stagger.in>*:nth-child(4){transition-delay:.38s}
 .stagger.in>*{opacity:1;transform:translateY(0)}
 
-/* 7. Word-by-word kinetic headline */
-.kin-line{display:block;overflow:hidden}
-.kin-word{display:inline-block;margin-right:.25em;opacity:0;transform:translateY(.7em);transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1)}
-.kin.in .kin-word{opacity:1;transform:translateY(0)}
-.kin .accent{
-  background:linear-gradient(135deg,#a78bfa 0%,#2dd4bf 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+/* Responsive */
+@media(max-width:480px){
+  .sec{padding:64px 0}
+  .wrap{padding:0 20px}
+  .sh{margin-bottom:40px}
+  .hero{padding:100px 20px 56px}
+  .cta-box{padding:48px 20px}
 }
 
-/* 8. Magnet-glow on primary buttons */
-.bp{
-  position:relative;overflow:hidden;
-  background:linear-gradient(135deg,#a78bfa 0%,#6d4ed8 100%);
-  color:#0a0a14 !important;border:none;
-  box-shadow:0 8px 30px rgba(167,139,250,0.28);
-  transition:transform .25s, box-shadow .25s;
-}
-.bp:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(167,139,250,0.45)}
-.bp::after{
-  content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);
-  transform:translateX(-100%);transition:transform .8s ease;
-}
-.bp:hover::after{transform:translateX(100%)}
-
-/* 9. Cleaner scrollbar */
-::-webkit-scrollbar{width:8px;height:8px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(167,139,250,0.25);border-radius:99px}
-::-webkit-scrollbar-thumb:hover{background:rgba(167,139,250,0.45)}
-
-/* 10. Marquee */
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
-.marquee-track{display:inline-flex;gap:48px;padding:0 24px;animation:mq 38s linear infinite;white-space:nowrap;will-change:transform}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-item{font-family:var(--serif);font-size:clamp(28px,5vw,64px);font-weight:400;letter-spacing:-.03em;color:var(--paper3);display:inline-flex;align-items:center;gap:24px}
-.marquee-item::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent)}
-
-/* 11. Glow ring around the hero CTA cluster */
-.hero-cta{position:relative}
-.hero-cta::before{
-  content:'';position:absolute;inset:-30px;border-radius:9999px;z-index:-1;
-  background:radial-gradient(closest-side,rgba(167,139,250,0.18),transparent 70%);
-  animation:breathe 6s ease-in-out infinite;
-}
-@keyframes breathe{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.08);opacity:1}}
-
-/* 12. Section dividers */
-.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(167,139,250,.35),transparent);margin:0 auto;max-width:600px}
-
-/* 13. Reduce motion overrides */
-@media (prefers-reduced-motion:reduce){
-  .mesh,.cursorlight,.tilt,.tilt-glow,.bp::after,.marquee-track,.hero-cta::before{animation:none !important;transition:none !important}
-  .stagger>*{opacity:1;transform:none}
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .stagger>*,.reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
-<div class="cursorlight" id="cursorlight" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
 
 <!-- Progress bar -->
 <div class="prog" id="prog"></div>
@@ -479,36 +387,14 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 </div>
 
 <!-- Hero -->
-<section class="hero" id="hero" style="position:relative">
-  <div class="mesh" id="mesh"></div>
-  <div class="hc" style="position:relative;z-index:1">
+<section class="hero" id="hero">
+  <div class="hc">
     <div class="hero-eyebrow">5 Books. One System.</div>
-    <h1 class="kin" id="kin-headline">
-      <span class="kin-line"><span class="kin-word">RESET</span><span class="kin-word">YOUR</span><span class="kin-word">BODY.</span></span>
-      <span class="kin-line"><span class="kin-word">REBUILD</span><span class="kin-word accent">YOUR</span><span class="kin-word accent">LIFE.</span></span>
-    </h1>
+    <h1>RESET YOUR BODY.<br><em>REBUILD</em> YOUR LIFE.</h1>
     <p>Simple systems for food, discipline, energy, and self-control. Written by Tyson Architect.</p>
     <div class="ctas hero-cta">
-      <a href="#books" class="btn bp magnetic" data-magnetic>Explore the Books <span class="arrow">&rarr;</span></a>
-      <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" class="btn bg magnetic" data-magnetic target="_blank" rel="noopener">Shop All 5</a>
-    </div>
-  </div>
-</section>
-
-<!-- Marquee strip — moving book titles -->
-<section class="sec" style="padding:24px 0 8px">
-  <div class="marquee">
-    <div class="marquee-track">
-      <span class="marquee-item">Alkaline Awakening</span>
-      <span class="marquee-item">Intelligent Design</span>
-      <span class="marquee-item">Life Force Energy</span>
-      <span class="marquee-item">Parasite Conspiracy</span>
-      <span class="marquee-item">Quit PRN Manual</span>
-      <span class="marquee-item">Alkaline Awakening</span>
-      <span class="marquee-item">Intelligent Design</span>
-      <span class="marquee-item">Life Force Energy</span>
-      <span class="marquee-item">Parasite Conspiracy</span>
-      <span class="marquee-item">Quit PRN Manual</span>
+      <a href="#books" class="btn bp">Explore the Books <span class="arrow">&rarr;</span></a>
+      <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" class="btn bg" target="_blank" rel="noopener">Shop All 5</a>
     </div>
   </div>
 </section>
@@ -530,7 +416,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   <div class="wrap">
     <div class="sh reveal">
       <div class="eyebrow">The Collection</div>
-      <h2>Five Books. One Simple System.</h2>
+      <h2>Five Books. <em>One Simple System.</em></h2>
       <p>Eat better. Think clearer. Live with discipline. Every book gives you a clear protocol — not vague theory.</p>
     </div>
     <div class="books-grid" id="booksGrid">
@@ -554,7 +440,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   <div class="wrap">
     <div class="sh reveal">
       <div class="eyebrow">Inside the Books</div>
-      <h2>Real Pages. Real Content.</h2>
+      <h2>Real Pages. <em>Real Content.</em></h2>
       <p>Flip through actual pages from each book. No fluff — just what's inside.</p>
     </div>
     <div class="preview-panels" id="previewPanels">
@@ -580,8 +466,8 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
         <div class="role">Founder & Author</div>
         <p>Tyson Architect writes about detox, circulation, fasting, discipline, and the architecture of human regeneration. His work covers alkaline eating, parasite cleansing, semen retention, porn recovery, and intelligent design.</p>
         <p>He is the author of 5 books and creator of the HALT Protocol — a simple system for auditing your inputs, removing interference, and rebuilding your body from the inside out.</p>
-        <div style="margin-top:16px">
-          <a href="https://humanarchitect8.substack.com" class="btn bs bp" target="_blank" rel="noopener">Read on Substack <span class="arrow">&rarr;</span></a>
+        <div style="margin-top:20px">
+          <a href="https://humanarchitect8.substack.com" class="btn bp" target="_blank" rel="noopener">Read on Substack <span class="arrow">&rarr;</span></a>
         </div>
       </div>
     </div>
@@ -593,7 +479,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
   <div class="wrap">
     <div class="sh reveal">
       <div class="eyebrow">The System</div>
-      <h2>7 Protocols. Clear Results.</h2>
+      <h2>7 Protocols. <em>Clear Results.</em></h2>
       <p>Each book gives you a step-by-step protocol. Programs end. Protocols become you.</p>
     </div>
     <div class="protog reveal">
@@ -701,7 +587,7 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.04em;line-
 </div>
 
 <script>
-var books=[{slug:"alkaline-awakening",title:"Alkaline Awakening",subtitle:"Eat Better. Think Clearer. Live With Discipline.",category:"Health, Detox & Nutrition",pages:357,desc:"A complete system for pH balance, lymphatic detox, circadian eating, breathwork, sauna protocols, and 125+ alkaline recipes.",cover:"public/book-covers/alkaline-awakening.webp",previews:[{file:"public/book-previews/alkaline-awakening/cover-p1.webp",label:"Cover"},{file:"public/book-previews/alkaline-awakening/breathwork-p2.webp",label:"Breathwork & Ice Baths"},{file:"public/book-previews/alkaline-awakening/ph-balance-p3.webp",label:"pH Balance & Lymphatic System"},{file:"public/book-previews/alkaline-awakening/circadian-rhythm-p4.webp",label:"Circadian Rhythm Eating"},{file:"public/book-previews/alkaline-awakening/recipes-p7.webp",label:"Alkaline Human Recipes"},{file:"public/book-previews/alkaline-awakening/harmony-p17.webp",label:"Live In Harmony With Our Natural Design"},{file:"public/book-previews/alkaline-awakening/6-staples-p40.webp",label:"Alkaline University"}],inside:["The science of pH balance and why acidity is the root of disease","Lymphatic system activation and deep detoxification","Circadian rhythm eating — aligning meals with your body's clock","Breathwork, sauna, and ice bath protocols","Grape detox and lemon detox cleanse guides","125+ Alkaline Human Recipes","Epigenetics and the power of mindset","Alkaline University — a complete framework for total body restoration"],disclaimer:"Educational content only. Not medical advice. Always consult a qualified healthcare professional."},{slug:"intelligent-design",title:"Intelligent Design",subtitle:"Evidence of Purpose in the Architecture of Life",category:"Consciousness & Creation",pages:204,desc:"A bold examination of the evidence for intelligent design — from the code of DNA to the marvel of the human eye.",cover:"public/book-covers/intelligent-design.webp",previews:[{file:"public/book-previews/intelligent-design/cover-p1.webp",label:"Cover"},{file:"public/book-previews/intelligent-design/what-is-id-p6.webp",label:"What Is Intelligent Design?"},{file:"public/book-previews/intelligent-design/purpose-vs-randomness-p7.webp",label:"Purpose Vs Randomness"},{file:"public/book-previews/intelligent-design/code-of-life-p14.webp",label:"The Code of Life"},{file:"public/book-previews/intelligent-design/human-brain-p18.webp",label:"The Human Brain"},{file:"public/book-previews/intelligent-design/consciousness-p19.webp",label:"The Mystery of Consciousness"},{file:"public/book-previews/intelligent-design/eye-marvel-p24.webp",label:"The Human Eye: A Technological Marvel"},{file:"public/book-previews/intelligent-design/ear-design-p28.webp",label:"The Complexity of the Eye"}],inside:["What Intelligent Design really means — and why it matters","Purpose vs. randomness: why chance cannot explain complexity","The Code of Life: DNA as evidence of a coder","The Human Brain: a biological supercomputer","The Mystery of Consciousness","The Human Eye: 50x more powerful than the best smartphone camera","The Human Ear: a masterpiece of engineering","The Fingerprint of Divinity — Fibonacci and sacred geometry in nature"],disclaimer:"Philosophical and educational content. The book presents the author's perspective."},{slug:"parasite-conspiracy",title:"Parasite Conspiracy",subtitle:"What's Really Living Inside You — And How to Get It Out",category:"Detox & Parasite Cleansing",pages:70,desc:"The hidden world of parasites — what they are, how they get in, and the exact protocols to get them out.",cover:"public/book-covers/parasite-conspiracy.webp",previews:[{file:"public/book-previews/parasite-conspiracy/cover-p1.webp",label:"Cover"},{file:"public/book-previews/parasite-conspiracy/protocols-p3.webp",label:"Parasite Protocols"},{file:"public/book-previews/parasite-conspiracy/elimination-channels-p15.webp",label:"Elimination Channels"},{file:"public/book-previews/parasite-conspiracy/mind-control-p17.webp",label:"Mind Control"},{file:"public/book-previews/parasite-conspiracy/cleanses-p24.webp",label:"Cleanses"},{file:"public/book-previews/parasite-conspiracy/herbs-p29.webp",label:"Herbs"}],inside:["What parasites are and how they enter the body","The 5 elimination channels and how to open them","Parasite cleansing protocols — step by step","Herbs that kill parasites: wormwood, black walnut, cloves","How parasites affect your mind and behavior","The connection between parasites and chronic disease","Full 30-day parasite cleanse protocol"],disclaimer:"Educational content only. Not medical advice. Consult a healthcare professional before any cleanse."},{slug:"life-force-energy",title:"Life Force Energy",subtitle:"Semen Retention & the Alchemy of Male Power",category:"Discipline & Self-Mastery",pages:163,desc:"Your semen isn't waste — it's liquid lightning. The ancient practice of semen retention as a tool for harnessing life force energy.",cover:"public/book-covers/life-force-energy.webp",previews:[{file:"public/book-previews/life-force-energy/cover-p1.webp",label:"Cover"},{file:"public/book-previews/life-force-energy/kabbalah-p4.webp",label:"Ancient Wisdom"},{file:"public/book-previews/life-force-energy/magnetism-p5.webp",label:"Magnetism"},{file:"public/book-previews/life-force-energy/walking-power-grid-p10.webp",label:"Walking Power Grid"},{file:"public/book-previews/life-force-energy/warrior-p11.webp",label:"Benefits"},{file:"public/book-previews/life-force-energy/alchemy-of-man-p16.webp",label:"Alchemy of Man"},{file:"public/book-previews/life-force-energy/magnetic-being-p77.webp",label:"MAGNETIC BEING"},{file:"public/book-previews/life-force-energy/aura-p78.webp",label:"Bioenergetics & Aura"}],inside:["What semen retention really is — and why it's not about denial","The science: 45% testosterone surge within seven days","You will become a walking power grid","Semen Retention Benefits: physical, mental, and spiritual","Alchemy of Man: understanding immortality through divine alchemy","MAGNETIC BEING — why retention makes the world gravitate toward you","Bioenergetics and Aura: when you stop leaking, you vibrate differently","The Warrior's Recovery Protocol for sustained practice"],disclaimer:"Educational personal-development content only. Not medical or psychological advice."},{slug:"quit-prn",title:"Quit PRN Manual",subtitle:"The 21-Day System to Eliminate Porn Forever",category:"Porn Recovery & Dopamine",pages:44,desc:"A 44-page system for eliminating porn from your life permanently. The neuroscience, the protocol, the relapse prevention.",cover:"public/book-covers/quit-prn.webp",previews:[{file:"public/book-previews/quit-prn/cover-p1.webp",label:"Cover"},{file:"public/book-previews/quit-prn/conservation-p2.webp",label:"Conservation"},{file:"public/book-previews/quit-prn/betrayal-p5.webp",label:"The Betrayal"},{file:"public/book-previews/quit-prn/human-architect-p8.webp",label:"The Human Architect"},{file:"public/book-previews/quit-prn/urge-data-p21.webp",label:"Urge Data"},{file:"public/book-previews/quit-prn/halt-protocol-p22.webp",label:"HALT Protocol"}],inside:["The neuroscience of porn addiction — what it does to your brain","The exact 21-day reboot protocol","Trigger identification and rewiring","Environment design: make relapse impossible","Accountability systems that actually work","Relapse prevention framework","The HALT Protocol applied to porn recovery"],disclaimer:"Educational content only. Not medical or psychological advice. Consult a professional for addiction concerns."}];
+var books=[{slug:"alkaline-awakening",title:"Alkaline Awakening",subtitle:"Eat Better. Think Clearer. Live With Discipline.",category:"Health, Detox & Nutrition",pages:357,desc:"A complete system for pH balance, lymphatic detox, circadian eating, breathwork, sauna protocols, and 125+ alkaline recipes.",cover:"public/book-covers/alkaline-awakening.webp",previews:[{file:"public/book-previews/alkaline-awakening/cover-p1.webp",label:"Cover"},{file:"public/book-previews/alkaline-awakening/breathwork-p2.webp",label:"Breathwork & Ice Baths"},{file:"public/book-previews/alkaline-awakening/ph-balance-p3.webp",label:"pH Balance & Lymphatic System"},{file:"public/book-previews/alkaline-awakening/circadian-rhythm-p4.webp",label:"Circadian Rhythm Eating"},{file:"public/book-previews/alkaline-awakening/recipes-p7.webp",label:"Alkaline Human Recipes"},{file:"public/book-previews/alkaline-awakening/harmony-p17.webp",label:"Live In Harmony With Our Natural Design"},{file:"public/book-previews/alkaline-awakening/6-staples-p40.webp",label:"Alkaline University"}],inside:["The science of pH balance and why acidity is the root of disease","Lymphatic system activation and deep detoxification","Circadian rhythm eating — aligning meals with your body's clock","Breathwork, sauna, and ice bath protocols","Grape detox and lemon detox cleanse guides","125+ Alkaline Human Recipes","Epigenetics and the power of mindset","Alkaline University — a complete framework for total body restoration"],disclaimer:"Educational content only. Not medical advice. Always consult a qualified healthcare professional."},{slug:"intelligent-design",title:"Intelligent Design",subtitle:"Evidence of Purpose in the Architecture of Life",category:"Consciousness & Creation",pages:204,desc:"A bold examination of the evidence for intelligent design — from the code of DNA to the marvel of the human eye.",cover:"public/book-covers/intelligent-design.webp",previews:[{file:"public/book-previews/intelligent-design/cover-p1.webp",label:"Cover"},{file:"public/book-previews/intelligent-design/dna-code-p2.webp",label:"The Code of DNA"},{file:"public/book-previews/intelligent-design/human-eye-p3.webp",label:"The Human Eye"},{file:"public/book-previews/intelligent-design/irreducible-complexity-p4.webp",label:"Irreducible Complexity"},{file:"public/book-previews/intelligent-design/fine-tuning-p5.webp",label:"Fine-Tuning of the Universe"}],inside:["The DNA code — language, information, and the origin of life","The human eye — irreducible complexity and purposeful design","The fine-tuning of the universe — constants that allow life","Consciousness and the hard problem of subjective experience","The architecture of the cell — molecular machines and specified complexity","What the fossil record actually shows","Why the design argument matters for how you live"],disclaimer:"Educational content only. Presents arguments for intelligent design alongside mainstream science for comparative study."},{slug:"parasite-conspiracy",title:"Parasite Conspiracy",subtitle:"What's Really Living Inside You",category:"Health, Detox & Parasites",pages:70,desc:"A no-nonsense guide to identifying, eliminating, and preventing parasites — the hidden epidemic nobody talks about.",cover:"public/book-covers/parasite-conspiracy.webp",previews:[{file:"public/book-previews/parasite-conspiracy/cover-p1.webp",label:"Cover"},{file:"public/book-previews/parasite-conspiracy/types-p2.webp",label:"Types of Parasites"},{file:"public/book-previews/parasite-conspiracy/symptoms-p3.webp",label:"Symptoms & Signs"},{file:"public/book-previews/parasite-conspiracy/cleanse-protocol-p4.webp",label:"Cleanse Protocol"},{file:"public/book-previews/parasite-conspiracy/prevention-p5.webp",label:"Prevention"}],inside:["The hidden epidemic — why parasites are more common than you think","Types of parasites that infect humans — worms, protozoa, flukes","Symptoms that doctors miss — fatigue, brain fog, digestive issues","The complete parasite cleanse protocol — herbs, timing, and dosing","How to test for parasites — what actually works","Prevention — diet, hygiene, and environmental controls","Real case studies and recovery timelines"],disclaimer:"Educational content only. Not medical advice. Consult a qualified healthcare professional before starting any cleanse protocol."},{slug:"life-force-energy",title:"Life Force Energy",subtitle:"The Science and Practice of Semen Retention",category:"Discipline, Energy & Vitality",pages:163,desc:"A 90-day system for energy conservation, dopamine balance, and redirecting sexual energy into vitality and focus.",cover:"public/book-covers/life-force-energy.webp",previews:[{file:"public/book-previews/life-force-energy/cover-p1.webp",label:"Cover"},{file:"public/book-previews/life-force-energy/science-p2.webp",label:"The Science"},{file:"public/book-previews/life-force-energy/warrior-protocol-p3.webp",label:"Warrior's Recovery Protocol"},{file:"public/book-previews/life-force-energy/dark-knight-p4.webp",label:"Dark Knight Phase"},{file:"public/book-previews/life-force-energy/energy-redirection-p5.webp",label:"Energy Redirection"}],inside:["The science of semen retention — testosterone, dopamine, and neurochemistry","Ancient wisdom — kundalini, chi, and divine alchemy across cultures","The Warrior's Recovery Protocol — a 90-day structured system","The Dark Knight phase — navigating the first 21 days","Energy redirection — channeling sexual energy into creative output","The 45% testosterone surge — what happens within 7 days","Long-term transformation — what changes after 30, 60, and 90 days"],disclaimer:"Educational content only. Not medical advice. Individual results may vary. Consult a healthcare professional for personal health decisions."},{slug:"quit-prn-manual",title:"Quit PRN Manual",subtitle:"A 21-Day System for Eliminating Porn Permanently",category:"Discipline, Recovery & Self-Control",pages:44,desc:"A complete 21-day reboot protocol — neuroscience, trigger rewiring, environment design, and relapse prevention.",cover:"public/book-covers/quit-prn-manp.webp",previews:[{file:"public/book-previews/quit-prn-manual/cover-p1.webp",label:"Cover"},{file:"public/book-previews/quit-prn-manual/neuroscience-p2.webp",label:"The Neuroscience"},{file:"public/book-previews/quit-prn-manual/21-day-p3.webp",label:"21-Day Reboot"},{file:"public/book-previews/quit-prn-manual/triggers-p4.webp",label:"Trigger Rewiring"},{file:"public/book-previews/quit-prn-manual/relapse-p5.webp",label:"Relapse Prevention"}],inside:["The neuroscience of porn addiction — how dopamine hijacks your brain","The 21-day reboot protocol — day by day instructions","Trigger identification and rewiring — HALT, BED, and the craving loop","Environment design — making relapse harder than recovery","Accountability systems — building a support structure that works","Relapse prevention — what to do when (not if) you slip","Life after porn — clarity, confidence, and restored drive"],disclaimer:"Educational content only. Not a substitute for professional therapy or medical advice. If you struggle with compulsive behavior, seek qualified support."}];
 
 var BEACONS_URL="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae";
 
@@ -711,12 +597,11 @@ function renderBooks(){
   var h="";
   for(var i=0;i<books.length;i++){
     var b=books[i];
-    h+='<div class="book-card tilt reveal reveal-delay-'+(i+1)+'" onclick="openModal(\''+b.slug+'\')" data-tilt>';
+    h+='<div class="book-card reveal reveal-delay-'+(i+1)+'" onclick="openModal(\''+b.slug+'\')">';
     h+='<div class="book-card-img-wrap">';
     h+='<img src="'+b.cover+'" alt="'+b.title+' by Tyson Architect" loading="lazy" class="book-card-img">';
     h+='<div class="book-card-overlay"><span>View Book</span></div>';
     h+='</div>';
-    h+='<div class="tilt-glow"></div>';
     h+='<div class="book-card-meta"><span class="book-card-num">BOOK '+(i+1)+'</span><span>'+b.category+'</span></div>';
     h+='<div class="book-card-title">'+b.title+'</div>';
     h+='<div class="book-card-desc">'+b.desc+'</div>';
@@ -803,20 +688,30 @@ document.addEventListener("DOMContentLoaded",function(){
   renderBooks();
   renderPreviews();
 
+  // Reveal observer
   var obs=new IntersectionObserver(function(entries){
     for(var i=0;i<entries.length;i++){
       if(entries[i].isIntersecting)entries[i].target.classList.add("visible");
     }
-  },{threshold:0.1,rootMargin:"0px 0px -40px 0px"});
+  },{threshold:0.08,rootMargin:"0px 0px -40px 0px"});
   var items=document.querySelectorAll(".reveal");
   for(var j=0;j<items.length;j++)obs.observe(items[j]);
 
+  // Stagger observer
+  var staggers=document.querySelectorAll("[data-stagger]");
+  if(staggers.length){
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");so.unobserve(e.target);}});},{threshold:0.15});
+    staggers.forEach(function(el){so.observe(el);});
+  }
+
+  // Scroll: nav + progress
   window.addEventListener("scroll",function(){
     var n=document.getElementById("nav");
     if(n){if(window.scrollY>60)n.classList.add("scrolled");else n.classList.remove("scrolled");}
     updateProgress();
   },{passive:true});
 
+  // FAQ toggle
   var faqs=document.querySelectorAll(".faq-q");
   for(var k=0;k<faqs.length;k++){
     faqs[k].addEventListener("click",function(){
@@ -828,102 +723,20 @@ document.addEventListener("DOMContentLoaded",function(){
     });
   }
 
+  // Mobile menu
   var burger=document.getElementById("burger");
   if(burger)burger.addEventListener("click",function(){document.getElementById("mobi").classList.add("open");this.setAttribute("aria-expanded","true");});
-
   var mc=document.getElementById("mobiClose");
   if(mc)mc.addEventListener("click",closeMobi);
 
+  // Modal
   var modalClose=document.getElementById("modalClose");
   if(modalClose)modalClose.addEventListener("click",closeModal);
-
   var mo=document.getElementById("modalOverlay");
   if(mo)mo.addEventListener("click",function(e){if(e.target===this)closeModal();});
 
+  // Escape key
   document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeModal();closeMobi();}});
-
-  // ── Modern effects: cursor light, mesh drift, kinetic, stagger, tilt, magnetic ──
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // Cursor light follows the mouse (desktop only)
-  var cl = document.getElementById("cursorlight");
-  if(cl && !reduce){
-    var cx=0,cy=0,tx=0,ty=0,raf=0;
-    window.addEventListener("mousemove",function(e){tx=e.clientX;ty=e.clientY;
-      if(!raf)raf=requestAnimationFrame(function step(){
-        cx+=(tx-cx)*0.12;cy+=(ty-cy)*0.12;
-        cl.style.left=cx+"px";cl.style.top=cy+"px";
-        raf=Math.abs(tx-cx)>0.5||Math.abs(ty-cy)>0.5?requestAnimationFrame(step):0;
-      });
-    },{passive:true});
-  }
-
-  // Animated mesh background — drifting blobs
-  var mesh=document.getElementById("mesh");
-  if(mesh && !reduce){
-    var t0=performance.now();
-    function meshTick(t){
-      var dt=(t-t0)/1000;
-      mesh.style.setProperty('--mx1',(50+Math.sin(dt*0.18)*22)+'%');
-      mesh.style.setProperty('--my1',(30+Math.cos(dt*0.13)*12)+'%');
-      mesh.style.setProperty('--mx2',(70+Math.cos(dt*0.21)*20)+'%');
-      mesh.style.setProperty('--my2',(70+Math.sin(dt*0.16)*14)+'%');
-      mesh.style.setProperty('--mx3',(30+Math.sin(dt*0.11)*24)+'%');
-      mesh.style.setProperty('--my3',(80+Math.cos(dt*0.19)*10)+'%');
-      requestAnimationFrame(meshTick);
-    }
-    requestAnimationFrame(meshTick);
-  }
-
-  // Kinetic headline — reveal each word in turn
-  var kin=document.getElementById("kin-headline");
-  if(kin){
-    var ws=kin.querySelectorAll(".kin-word");
-    ws.forEach(function(w,i){w.style.transitionDelay=(i*70)+"ms"});
-    requestAnimationFrame(function(){kin.classList.add("in");});
-  }
-
-  // Stagger observer — group children animate in sequence
-  var staggers=document.querySelectorAll("[data-stagger]");
-  if(staggers.length){
-    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");so.unobserve(e.target);}});},{threshold:0.18});
-    staggers.forEach(function(el){so.observe(el);});
-  }
-
-  // Tilt cards — 3D rotation on cursor (delegated, applies to all .tilt added later too)
-  function bindTilt(){
-    if(reduce)return;
-    var cards=document.querySelectorAll("[data-tilt]");
-    cards.forEach(function(c){
-      if(c._tilt)return;c._tilt=true;
-      c.addEventListener("mousemove",function(e){
-        var r=c.getBoundingClientRect();
-        var x=e.clientX-r.left,y=e.clientY-r.top;
-        var rx=((y-r.height/2)/r.height)*-8;
-        var ry=((x-r.width/2)/r.width)*8;
-        c.style.transform="perspective(1000px) rotateX("+rx+"deg) rotateY("+ry+"deg) translateZ(0)";
-        var g=c.querySelector(".tilt-glow");
-        if(g){g.style.background="radial-gradient(380px circle at "+(x/r.width*100)+"% "+(y/r.height*100)+"%, rgba(167,139,250,0.16), transparent 60%)";}
-      });
-      c.addEventListener("mouseleave",function(){c.style.transform="";});
-    });
-  }
-  bindTilt();
-  // Re-bind after dynamic books render
-  setTimeout(bindTilt,100);
-
-  // Magnetic buttons — gentle cursor pull
-  if(!reduce){
-    var mags=document.querySelectorAll("[data-magnetic]");
-    mags.forEach(function(m){
-      m.addEventListener("mousemove",function(e){
-        var r=m.getBoundingClientRect();
-        var x=e.clientX-(r.left+r.width/2),y=e.clientY-(r.top+r.height/2);
-        m.style.transform="translate("+(x/r.width*12)+"px,"+(y/r.height*12)+"px)";
-      });
-      m.addEventListener("mouseleave",function(){m.style.transform="";});
-    });
-  }
 });
 </script>
 </body>
