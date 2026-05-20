@@ -23,19 +23,19 @@ export default function ContactPage() {
             <div className="text-4xl mb-4">📧</div>
             <h3 className="text-xl font-bold mb-3">Email</h3>
             <p className="text-sm text-[var(--text-muted)] mb-4">For general enquiries and collaborations.</p>
-            <a href="mailto:humanarchitect@protonmail.com" className="text-[var(--gold)] hover:underline text-sm">humanarchitect@protonmail.com</a>
+            <a href="mailto:humanarchitect@protonmail.com" className="text-[var(--accent)] hover:underline text-sm">humanarchitect@protonmail.com</a>
           </div>
           <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 text-center">
             <div className="text-4xl mb-4">📝</div>
             <h3 className="text-xl font-bold mb-3">Substack</h3>
             <p className="text-sm text-[var(--text-muted)] mb-4">Weekly essays and protocol updates.</p>
-            <a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener" className="text-[var(--gold)] hover:underline text-sm">humanarchitect8.substack.com →</a>
+            <a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener" className="text-[var(--accent)] hover:underline text-sm">humanarchitect8.substack.com →</a>
           </div>
           <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 text-center">
             <div className="text-4xl mb-4">📸</div>
             <h3 className="text-xl font-bold mb-3">Instagram</h3>
             <p className="text-sm text-[var(--text-muted)] mb-4">Visual content and daily insights.</p>
-            <a href="https://instagram.com/humanarchitect_" target="_blank" rel="noopener" className="text-[var(--gold)] hover:underline text-sm">@humanarchitect_ →</a>
+            <a href="https://instagram.com/humanarchitect_" target="_blank" rel="noopener" className="text-[var(--accent)] hover:underline text-sm">@humanarchitect_ →</a>
           </div>
           <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-8 text-center">
             <div className="text-4xl mb-4">🎵</div>

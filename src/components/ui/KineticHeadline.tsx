@@ -42,7 +42,7 @@ export default function KineticHeadline({ lines, className = '' }: KineticHeadli
                 opacity: 0,
                 transform: 'translateY(0.6em)',
                 transition: 'opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1)',
-                background: 'linear-gradient(135deg, #e8c97a, #2dd4bf)',
+                background: 'linear-gradient(135deg, #c4b5fd, #2dd4bf)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',

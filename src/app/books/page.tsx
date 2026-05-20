@@ -29,17 +29,17 @@ export default function BooksPage() {
                 <div className="flex items-center gap-3 mb-2">
                   <h3 className="text-2xl font-bold">{book.title}</h3>
                   {book.status === 'coming-soon' && (
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-[var(--gold-dim)] text-[var(--gold)] font-semibold uppercase tracking-[0.5px]">Soon</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-[var(--accent-dim)] text-[var(--accent)] font-semibold uppercase tracking-[0.5px]">Soon</span>
                   )}
                 </div>
-                <p className="text-sm text-[var(--gold)] font-semibold mb-4">{book.tagline}</p>
+                <p className="text-sm text-[var(--accent)] font-semibold mb-4">{book.tagline}</p>
                 <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-5">{book.description}</p>
                 <div className="mb-5">
                   <p className="text-xs font-bold uppercase tracking-[1px] text-[var(--text-secondary)] mb-2">Who this is for:</p>
                   <ul className="space-y-1">
                     {book.whoFor.map((item) => (
                       <li key={item} className="text-sm text-[var(--text-muted)] flex items-start gap-2">
-                        <span className="text-[var(--gold)] mt-1">•</span>
+                        <span className="text-[var(--accent)] mt-1">•</span>
                         {item}
                       </li>
                     ))}
@@ -53,7 +53,7 @@ export default function BooksPage() {
                 <div className="flex gap-3">
                   <Button href={`/books/${book.slug}`} variant="primary" size="sm">View Book</Button>
                   {book.status === 'published' && (
-                    <a href={book.paymentLink} className="inline-flex items-center px-4 py-2 text-sm font-bold text-[var(--gold)] border border-[rgba(212,168,83,0.3)] rounded-xl hover:bg-[var(--gold-dim)] transition-all">Get the Book →</a>
+                    <a href={book.paymentLink} className="inline-flex items-center px-4 py-2 text-sm font-bold text-[var(--accent)] border border-[rgba(212,168,83,0.3)] rounded-xl hover:bg-[var(--accent-dim)] transition-all">Get the Book →</a>
                   )}
                 </div>
               </div>

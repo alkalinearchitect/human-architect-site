@@ -43,7 +43,7 @@ export default function Header() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="text-[13.5px] font-semibold uppercase tracking-[0.8px] text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-300 hover:after:w-full"
+                className="text-[13.5px] font-semibold uppercase tracking-[0.8px] text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-[var(--accent)] after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.label}
               </Link>
@@ -69,7 +69,7 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-lg font-semibold text-[var(--text)] hover:text-[var(--gold)] transition-colors"
+                  className="text-lg font-semibold text-[var(--text)] hover:text-[var(--accent)] transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}

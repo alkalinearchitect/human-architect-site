@@ -22,7 +22,7 @@ export default function TermsPage() {
           <h2 className="text-2xl font-bold text-[var(--text)] mt-10 mb-4">4. Limitation of Liability</h2>
           <p>Human Architect shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of this website or its content.</p>
           <h2 className="text-2xl font-bold text-[var(--text)] mt-10 mb-4">5. Contact</h2>
-          <p>For questions about these Terms, contact <a href="mailto:humanarchitect@protonmail.com" className="text-[var(--gold)]">humanarchitect@protonmail.com</a>.</p>
+          <p>For questions about these Terms, contact <a href="mailto:humanarchitect@protonmail.com" className="text-[var(--accent)]">humanarchitect@protonmail.com</a>.</p>
         </div>
       </div>
     </section>

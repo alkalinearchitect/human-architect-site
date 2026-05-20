@@ -43,7 +43,7 @@ export default async function BookPage({ params }: Props) {
             </div>
             <div style={{ display: 'flex', gap: 16 }}>
               {book.status === 'published' ? (
-                <a href={book.paymentLink} style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 28px', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', borderRadius: 12, background: 'linear-gradient(135deg, #d4a853, #c49a3f)', color: '#000', textDecoration: 'none' }}>Get the Book →</a>
+                <a href={book.paymentLink} style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 28px', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', borderRadius: 12, background: 'linear-gradient(135deg, #a78bfa, #6d4ed8)', color: '#000', textDecoration: 'none' }}>Get the Book →</a>
               ) : (
                 <span style={{ display: 'inline-flex', alignItems: 'center', padding: '14px 28px', fontSize: 14, fontWeight: 700, textTransform: 'uppercase', borderRadius: 12, background: 'rgba(255,255,255,0.05)', color: '#6b6b80', border: '1px solid rgba(255,255,255,0.06)' }}>Coming Soon</span>
               )}
@@ -59,7 +59,7 @@ export default async function BookPage({ params }: Props) {
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {book.whoFor.map((item) => (
               <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 12, color: '#a0a0b8', lineHeight: 1.7 }}>
-                <span style={{ color: '#d4a853', fontSize: 18 }}>•</span>
+                <span style={{ color: '#a78bfa', fontSize: 18 }}>•</span>
                 {item}
               </li>
             ))}
@@ -76,7 +76,7 @@ export default async function BookPage({ params }: Props) {
                 style={{
                   margin: 0,
                   padding: '36px 40px',
-                  borderLeft: '3px solid #d4a853',
+                  borderLeft: '3px solid #a78bfa',
                   background: 'linear-gradient(135deg, rgba(212,168,83,0.05), rgba(45,212,191,0.03))',
                   borderRadius: 12,
                   color: '#e8e8f0',
@@ -88,7 +88,7 @@ export default async function BookPage({ params }: Props) {
               >
                 “{q.text}”
                 {q.source && (
-                  <div style={{ marginTop: 12, fontSize: 14, color: '#d4a853', fontStyle: 'normal', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>
+                  <div style={{ marginTop: 12, fontSize: 14, color: '#a78bfa', fontStyle: 'normal', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>
                     — {q.source}
                   </div>
                 )}
@@ -153,7 +153,7 @@ export default async function BookPage({ params }: Props) {
         <div style={{ maxWidth: 750, margin: '0 auto', textAlign: 'center' }}>
           <p style={{ color: '#a0a0b8', lineHeight: 1.7, marginBottom: 32 }}>This book is for people who want to go deeper than surface-level wellness. It presents evidence, explores mechanisms, and provides frameworks for understanding — not medical advice.</p>
           {book.status === 'published' ? (
-            <a href={book.paymentLink} style={{ display: 'inline-flex', alignItems: 'center', padding: '16px 36px', fontSize: 16, fontWeight: 700, textTransform: 'uppercase', borderRadius: 12, background: 'linear-gradient(135deg, #d4a853, #c49a3f)', color: '#000', textDecoration: 'none' }}>Get {book.title} →</a>
+            <a href={book.paymentLink} style={{ display: 'inline-flex', alignItems: 'center', padding: '16px 36px', fontSize: 16, fontWeight: 700, textTransform: 'uppercase', borderRadius: 12, background: 'linear-gradient(135deg, #a78bfa, #6d4ed8)', color: '#000', textDecoration: 'none' }}>Get {book.title} →</a>
           ) : (
             <span style={{ display: 'inline-flex', alignItems: 'center', padding: '16px 36px', fontSize: 16, fontWeight: 700, textTransform: 'uppercase', borderRadius: 12, background: 'rgba(255,255,255,0.05)', color: '#6b6b80', border: '1px solid rgba(255,255,255,0.06)' }}>Coming Soon</span>
           )}

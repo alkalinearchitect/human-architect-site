@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           <h2 className="text-2xl font-bold text-[var(--text)] mt-10 mb-4">4. Your Rights</h2>
           <p>You have the right to access, correct, or delete your personal data. You may unsubscribe from our newsletter at any time by clicking the unsubscribe link in any email.</p>
           <h2 className="text-2xl font-bold text-[var(--text)] mt-10 mb-4">5. Contact</h2>
-          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:humanarchitect@protonmail.com" className="text-[var(--gold)]">humanarchitect@protonmail.com</a>.</p>
+          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:humanarchitect@protonmail.com" className="text-[var(--accent)]">humanarchitect@protonmail.com</a>.</p>
         </div>
       </div>
     </section>

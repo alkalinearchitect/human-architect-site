@@ -22,7 +22,7 @@ export default function Footer() {
             <ul className="list-none space-y-3">
               {navigation.footer.slice(0, 5).map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors">
+                  <Link href={item.href} className="text-sm text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -36,7 +36,7 @@ export default function Footer() {
             <ul className="list-none space-y-3">
               {navigation.social.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="text-sm text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors">
+                  <a href={item.href} className="text-sm text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">
                     {item.label}
                   </a>
                 </li>
@@ -50,7 +50,7 @@ export default function Footer() {
             <ul className="list-none space-y-3">
               {navigation.legal.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors">
+                  <Link href={item.href} className="text-sm text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors">
                     {item.label}
                   </Link>
                 </li>

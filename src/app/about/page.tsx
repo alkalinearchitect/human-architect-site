@@ -24,9 +24,9 @@ export default function AboutPage() {
           <p className="text-[var(--text-secondary)] leading-relaxed mb-4">Human Architect studies the body, mind, environment, and technology as one connected architecture. Not as separate domains — as a single system that can be understood, optimised, and redesigned.</p>
           <p className="text-[var(--text-secondary)] leading-relaxed mb-4">This is not generic wellness. This is not biohacking for its own sake. This is a serious, cinematic knowledge system built on the premise that your biology is not random — it is architecture. And architecture can be redesigned.</p>
 
-          <div className="my-10 p-8 border-l-[3px] border-[var(--gold)] bg-[var(--gold-dim)] rounded-r-xl">
+          <div className="my-10 p-8 border-l-[3px] border-[var(--accent)] bg-[var(--accent-dim)] rounded-r-xl">
             <p className="font-display italic text-xl text-[var(--text)] leading-relaxed mb-3">&ldquo;Your habits are instructions. Your environment is programming you. Your circulation is your internal logistics system. Your mind is the operating system. And you are the architect.&rdquo;</p>
-            <p className="text-sm text-[var(--gold)] font-semibold">— Human Architect</p>
+            <p className="text-sm text-[var(--accent)] font-semibold">— Human Architect</p>
           </div>
 
           <h2 className="text-3xl font-bold mb-6 mt-12">What We Study</h2>

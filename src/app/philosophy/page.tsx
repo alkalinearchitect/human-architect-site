@@ -29,7 +29,7 @@ export default function PhilosophyPage() {
 
       <Section>
         <div className="max-w-[750px] mx-auto">
-          <div className="my-10 p-8 border-l-[3px] border-[var(--gold)] bg-[var(--gold-dim)] rounded-r-xl">
+          <div className="my-10 p-8 border-l-[3px] border-[var(--accent)] bg-[var(--accent-dim)] rounded-r-xl">
             <p className="font-display italic text-xl text-[var(--text)] leading-relaxed">&ldquo;The body is architecture. The mind is software. Food is information. Habits are code. Detoxification is the removal of interference. Self-mastery is freedom.&rdquo;</p>
           </div>
         </div>

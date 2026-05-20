@@ -26,16 +26,16 @@ export function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label className="block text-xs font-bold uppercase tracking-[0.8px] text-[var(--text-secondary)] mb-2">Name</label>
-          <input type="text" required className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--gold)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all" placeholder="Your name" />
+          <input type="text" required className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all" placeholder="Your name" />
         </div>
         <div>
           <label className="block text-xs font-bold uppercase tracking-[0.8px] text-[var(--text-secondary)] mb-2">Email</label>
-          <input type="email" required className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--gold)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all" placeholder="your@email.com" />
+          <input type="email" required className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all" placeholder="your@email.com" />
         </div>
       </div>
       <div>
         <label className="block text-xs font-bold uppercase tracking-[0.8px] text-[var(--text-secondary)] mb-2">Subject</label>
-        <select className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--gold)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all">
+        <select className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all">
           <option>General Enquiry</option>
           <option>Book Purchase</option>
           <option>Collaboration</option>
@@ -46,7 +46,7 @@ export function ContactForm() {
       </div>
       <div>
         <label className="block text-xs font-bold uppercase tracking-[0.8px] text-[var(--text-secondary)] mb-2">Message</label>
-        <textarea required className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--gold)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all min-h-[120px] resize-y" placeholder="Your message..." />
+        <textarea required className="w-full px-4 py-3.5 rounded-xl border border-[var(--border)] bg-[var(--deep)] text-[var(--text)] text-sm focus:outline-none focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(212,168,83,0.1)] transition-all min-h-[120px] resize-y" placeholder="Your message..." />
       </div>
       <Button variant="primary" size="lg" className="w-full">Send Message</Button>
     </form>

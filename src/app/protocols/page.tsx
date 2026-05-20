@@ -38,7 +38,7 @@ export default function ProtocolsPage() {
               <ul className="space-y-2">
                 {protocol.items.map((item) => (
                   <li key={item} className="text-sm text-[var(--text-secondary)] flex items-start gap-2">
-                    <span className="text-[var(--gold)] mt-0.5">•</span>
+                    <span className="text-[var(--accent)] mt-0.5">•</span>
                     {item}
                   </li>
                 ))}
