@@ -43,3 +43,4 @@ public/books/*.png
 public/books/pages/*.png
 public/substack-avatar.png
 compress_images.py
+tools/
