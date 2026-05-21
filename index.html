@@ -373,6 +373,39 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
   .nav-cta { font-size:10px !important; padding:8px 16px !important; }
   body { font-size:16px; }
 }
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+  body { font-size: 18px; }
+  .stats { grid-template-columns: 1fr; gap: 24px; }
+  .preview-grid { grid-template-columns: 1fr; gap: 12px; }
+  .fab { padding: 20px 30px; font-size: 12px; bottom: 24px; right: 24px; }
+  .nav-in { padding: 0 20px; }
+  .burger { padding: 6px; }
+  .burger svg { width: 28px; height: 28px; }
+  .mobi { padding-top: 100px; padding-left: 24px; padding-right: 24px; }
+  .mobi a { padding: 20px 0; font-size: 24px; }
+  .mobi-close { top: 24px; right: 24px; padding: 16px; font-size: 12px; min-width: 56px; min-height: 56px; }
+  .tool-card { padding: 28px 24px; }
+  .tool-icon { width: 44px; height: 44px; font-size: 20px; }
+  .tool-card h3 { font-size: 20px; }
+  .diag-question-card { padding: 24px 20px; }
+  .diag-option { padding: 16px 20px; font-size: 15px; }
+  .calc-vitality { padding: 20px 18px; }
+  .calc-vitality .big-score { font-size: 60px; }
+  .book-card { padding: 16px; }
+  .book-card-title { font-size: 18px; }
+  .book-card-desc { font-size: 14px; }
+  .cta-box { padding: 60px 30px; }
+  .cta-box h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+  .cta-box p { font-size: 16px; }
+  .modal-overlay { padding: 16px; }
+  .modal { border-radius: 20px; }
+  .modal-cover-img { margin-bottom: 20px; }
+  .modal-stat .num { font-size: 22px; }
+  .modal-stat .label { font-size: 10px; }
+  .modal-action-btn { padding: 14px 28px; font-size: 11px; }
+  .modal-disclaimer { font-size: 12px; }
+}
 </style>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
