@@ -26,15 +26,17 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # Only deploy the static site files — never the whole repo
+      - name: Prepare deployment directory
+        run: |
+          mkdir -p _site
+          cp index.html robots.txt sitemap.xml _site/
+          cp -r public _site/
+          echo "Prepared site files for deployment"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: |
-            index.html
-            public/
-            robots.txt
-            sitemap.xml
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
