@@ -81,7 +81,7 @@
   --paper: #f5f5f0;
   --paper2: #a8a59f;
   --paper3: #5f5c55;
-  --accent: #3b82f6;
+  --accent: #c41e3a;
   --accent-glow: rgba(196, 30, 58, 0.18);
   --accent-2: #e11d48;
   --border: rgba(245,245,240,0.08);
@@ -167,12 +167,29 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .sh h2 em { font-style:italic; font-weight:400; color:var(--accent); }
 .sh p { font-size:15px; color:var(--paper2); line-height:1.72; max-width:520px; margin:0 auto; font-weight:300; }
 
-/* Stats */
-.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; text-align:left; padding:36px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-@media (max-width:720px) { .stats { grid-template-columns:repeat(2,1fr); gap:28px 18px; } }
+/* Stats — unified 5-cell with count-up */
+.stats { display:grid; grid-template-columns:repeat(5,1fr); gap:18px; text-align:left; padding:36px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+@media (max-width:980px) { .stats { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:560px) { .stats { grid-template-columns:repeat(2,1fr); gap:28px 18px; } }
 .stat { position:relative; padding-top:22px; border-top:1px solid rgba(245,245,240,0.07); }
-.stat .num { font-family:var(--serif); font-weight:300; font-size:clamp(46px,7.2vw,86px); letter-spacing:-.045em; color:var(--accent); line-height:1; }
+.stat .num { font-family:var(--serif); font-weight:300; font-size:clamp(42px,6.4vw,80px); letter-spacing:-.045em; color:var(--accent); line-height:1; font-variant-numeric:tabular-nums; }
 .stat .label { font-size:10px; color:var(--paper2); text-transform:uppercase; letter-spacing:.3em; font-weight:600; margin-top:10px; }
+
+/* Book card — subtle 3D tilt + accent glow on hover (CSS-only, motion-safe) */
+@media (prefers-reduced-motion: no-preference) {
+  .book-card { transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s, border-color .5s; will-change:transform; }
+  .book-card:hover { transform:perspective(1100px) rotateX(2deg) rotateY(-2deg) translateY(-6px); box-shadow:0 36px 70px -24px rgba(196,30,58,0.22), 0 6px 18px rgba(0,0,0,0.35); border-color:var(--accent); }
+  .book-card-img { transition:transform .8s cubic-bezier(.2,.8,.2,1); }
+  .book-card:hover .book-card-img { transform:scale(1.04); }
+  .page-prev { transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s; }
+  .page-prev:hover { transform:translateY(-3px) scale(1.015); box-shadow:0 18px 36px -14px rgba(196,30,58,0.22); }
+}
+
+/* Founder monogram — replaces the placeholder image */
+.founder-monogram { width:108px; height:108px; border-radius:50%; background:var(--bg3); border:1px solid var(--border2); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; flex-shrink:0; }
+.founder-monogram .monogram-mark { font-family:var(--serif); font-weight:300; font-size:38px; letter-spacing:.04em; color:var(--paper); line-height:1; }
+.founder-monogram .monogram-rule { width:24px; height:1px; background:var(--accent); margin:8px 0 6px; }
+.founder-monogram .monogram-sub { font-size:8px; letter-spacing:.32em; color:var(--paper3); font-weight:600; }
 
 /* TOOLS OF THE ARCHITECT - PREMIUM REBUILT */
 .tools { background:linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%); padding:80px 0; border-bottom:1px solid var(--border); }
@@ -295,8 +312,9 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 /* Founder */
 .founder { display:grid; grid-template-columns:110px 1fr; gap:38px; align-items:start; max-width:700px; margin:0 auto; }
 @media (max-width:600px) { .founder { grid-template-columns:1fr; gap:18px; text-align:center; justify-items:center; } }
-.founder-img { width:108px; height:108px; border-radius:50%; overflow:hidden; background:var(--bg3); border:1px solid var(--border); }
-.founder-img img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+/* legacy .founder-img kept as fallback — primary styles now in .founder-monogram block */
+.founder-img:not(.founder-monogram) { width:108px; height:108px; border-radius:50%; overflow:hidden; background:var(--bg3); border:1px solid var(--border); }
+.founder-img:not(.founder-monogram) img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
 .founder h3 { font-size:21px; margin-bottom:2px; letter-spacing:-.02em; font-weight:300; }
 .founder .role { font-size:9px; color:var(--paper2); font-weight:600; text-transform:uppercase; letter-spacing:.3em; margin-bottom:14px; }
 .founder p { color:var(--paper2); font-size:13.5px; line-height:1.78; margin-bottom:10px; font-weight:300; }
@@ -450,7 +468,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 <section class="hero">
   <canvas id="hero-canvas" width="1400" height="900"></canvas>
   <div class="hc">
-    <div class="hero-eyebrow">EST. 2022 • LONDON</div>
+    <div class="hero-eyebrow">THE OBSTRUCTION AUDIT — TYSON ARCHITECT</div>
     <h1 id="hero-headline">
       <span class="word">YOUR</span>
       <span class="word">POWER</span>
@@ -469,21 +487,16 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
     <div style="margin-top:18px; font-size:11px; color:var(--paper2); letter-spacing:0.05em;">5 Books • 7 Named Protocols • 90-Day Execution Plan • Instant Access</div>
   </div>
 
-<!-- Extra Viral Stats -->
-<div class="wrap">
-  <div class="stats">
-    <div class="stat reveal"><div class="num" data-target="1234">1,234</div><div class="label">Architects Started</div></div>
-  </div>
-</div>
 </section>
 
-<!-- STATS -->
+<!-- STATS — unified 5-cell row, count-up on view -->
 <div class="wrap">
   <div class="stats">
-    <div class="stat reveal"><div class="num" data-target="5">5</div><div class="label">Books • One System</div></div>
-    <div class="stat reveal"><div class="num" data-target="7">7</div><div class="label">Named Protocols</div></div>
-    <div class="stat reveal"><div class="num" data-target="30">30</div><div class="label">Day Execution Plans</div></div>
-    <div class="stat reveal"><div class="num" data-target="90">90</div><div class="label">Day Full Rebuild</div></div>
+    <div class="stat reveal"><div class="num" data-target="1234" data-suffix="">0</div><div class="label">Architects Started</div></div>
+    <div class="stat reveal"><div class="num" data-target="5">0</div><div class="label">Books • One System</div></div>
+    <div class="stat reveal"><div class="num" data-target="7">0</div><div class="label">Named Protocols</div></div>
+    <div class="stat reveal"><div class="num" data-target="30">0</div><div class="label">Day Execution Plans</div></div>
+    <div class="stat reveal"><div class="num" data-target="90">0</div><div class="label">Day Full Rebuild</div></div>
   </div>
 </div>
 
@@ -661,8 +674,10 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 <section class="sec" id="founder">
   <div class="wrap">
     <div class="founder reveal">
-      <div class="founder-img">
-        <img src="public/book-covers/alkaline-awakening.webp" alt="Tyson Architect">
+      <div class="founder-img founder-monogram" aria-hidden="true">
+        <div class="monogram-mark">TA</div>
+        <div class="monogram-rule"></div>
+        <div class="monogram-sub">THE ARCHITECT</div>
       </div>
       <div>
         <h3>Tyson Architect</h3>
@@ -1018,36 +1033,6 @@ function startProtocolFromBook(slug) {
   }, 700);
 }
 
-// HALT DIAGNOSTIC ENGINE
-function runDiagnostic() {
-  var q1 = parseInt(document.getElementById("q1").value);
-  var q2 = parseInt(document.getElementById("q2").value);
-  var q3 = parseInt(document.getElementById("q3").value);
-  var q4 = parseInt(document.getElementById("q4").value);
-  var q5 = parseInt(document.getElementById("q5").value);
-  var q6 = parseInt(document.getElementById("q6").value);
-
-  var total = q1 + q2 + q3 + q4 + q5 + q6; // max 24
-  var pct = Math.round((total / 24) * 100);
-
-  var level = "";
-  var rec = "";
-  var book = "";
-
-  if (total <= 8) { level = "LOW OBSTRUCTION - MAINTENANCE MODE"; rec = "You are already executing at a high level. Use Life Force Energy and Intelligent Design to deepen."; book = "life-force-energy"; }
-  else if (total <= 13) { level = "MODERATE LEAK - AUDIT REQUIRED"; rec = "Begin with Alkaline Awakening for 21 days. Add Quit PRN if porn is present. Your V=P-O score will improve 25-40%."; book = "alkaline-awakening"; }
-  else if (total <= 18) { level = "HIGH OBSTRUCTION - FULL REBOOT"; rec = "Start immediately with Quit PRN Manual (21 days) + Alkaline Awakening. Parasite Conspiracy next if fatigue remains. This is not optional."; book = "quit-prn"; }
-  else { level = "CRITICAL - SYSTEM COLLAPSE IMMINENT"; rec = "Full system required. Quit PRN + Alkaline Awakening + Parasite Conspiracy simultaneously for first 30 days. Then Life Force Energy. No half-measures will work."; book = "quit-prn"; }
-
-  document.getElementById("diag-score").textContent = total;
-  document.getElementById("diag-level").textContent = level;
-  document.getElementById("diag-rec").innerHTML = rec + " <strong>Recommended first book: " + book.toUpperCase().replace("-"," ") + "</strong>";
-  document.getElementById("diag-result").classList.add("show");
-
-  // Save to localStorage
-  localStorage.setItem("ha_diagnostic", JSON.stringify({score: total, level: level, rec: rec, date: new Date().toISOString()}));
-}
-
 // V = P - O LIVE CALCULATOR
 function calcVitality() {
   var power = parseInt(document.getElementById("power").value);
@@ -1234,7 +1219,7 @@ function initHeroCinematic() {
 
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#3b82f6";
+    ctx.fillStyle = "#c41e3a";
 
     for (var i = 0; i < particles.length; i++) {
       var p = particles[i];
@@ -1300,6 +1285,37 @@ document.addEventListener("DOMContentLoaded", function() {
   var items = document.querySelectorAll(".reveal");
   for (var j = 0; j < items.length; j++) obs.observe(items[j]);
 
+  // Count-up: animate .num[data-target] from 0 → target when in view
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var numEls = document.querySelectorAll('.num[data-target]');
+  if (prefersReduced) {
+    numEls.forEach(function(el){
+      var t = parseInt(el.getAttribute('data-target'), 10) || 0;
+      el.textContent = t >= 1000 ? t.toLocaleString() : String(t);
+    });
+  } else {
+    var numObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting || e.target.dataset.counted) return;
+        e.target.dataset.counted = '1';
+        var target = parseInt(e.target.getAttribute('data-target'), 10) || 0;
+        var duration = 1200;
+        var start = performance.now();
+        var format = function(n){ return n >= 1000 ? n.toLocaleString() : String(n); };
+        function step(now){
+          var t = Math.min(1, (now - start) / duration);
+          // easeOutCubic
+          var eased = 1 - Math.pow(1 - t, 3);
+          var value = Math.round(target * eased);
+          e.target.textContent = format(value);
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+    numEls.forEach(function(el){ numObs.observe(el); });
+  }
+
   // Nav scroll
   window.addEventListener("scroll", function() {
     var n = document.getElementById("nav");
@@ -1359,7 +1375,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Final authority signal in console for the curious
-  console.log("%c[Human Architect v2.1] The architecture is ready. Execute without negotiation. - Tyson Architect", "color:#3b82f6; font-family:monospace");
+  console.log("%c[Human Architect v2.1] The architecture is ready. Execute without negotiation. - Tyson Architect", "color:#c41e3a; font-family:monospace");
 });
 
 // Expose for debugging / future agents
