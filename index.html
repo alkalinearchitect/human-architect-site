@@ -374,6 +374,8 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
   body { font-size:16px; }
 }
 </style>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 
@@ -384,11 +386,11 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
   <div class="nav-in">
     <div class="logo">HUMAN ARCHITECT <span>by Tyson Architect</span></div>
     <ul class="nav-links">
-      <li><a href="#books">The Books</a></li>
+      <li><a href="#books"><i class="fa-solid fa-book"></i> The Books</a></li>
       <li><a href="#tools">Tools</a></li>
-      <li><a href="#roadmap">90-Day Rebuild</a></li>
-      <li><a href="#faq">Questions</a></li>
-      <li><a href="#founder">The Architect</a></li>
+      <li><a href="#roadmap"><i class="fa-solid fa-road"></i> 90-Day Rebuild</a></li>
+      <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> Questions</a></li>
+      <li><a href="#founder"><i class="fa-solid fa-user"></i> The Architect</a></li>
       <li><a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="nav-cta">GET THE SYSTEM</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Menu">
@@ -400,11 +402,11 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 <!-- MOBILE MENU -->
 <div class="mobi" id="mobi">
   <button class="mobi-close" id="mobiClose">CLOSE</button>
-  <a href="#books">The Books</a>
-  <a href="#tools">The Tools</a>
-  <a href="#roadmap">90-Day Rebuild</a>
-  <a href="#faq">Questions</a>
-  <a href="#founder">The Architect</a>
+  <a href="#books"><i class="fa-solid fa-book"></i> The Books</a>
+  <a href="#tools"><i class="fa-solid fa-wrench"></i> The Tools</a>
+  <a href="#roadmap"><i class="fa-solid fa-road"></i> 90-Day Rebuild</a>
+  <a href="#faq"><i class="fa-solid fa-circle-question"></i> Questions</a>
+  <a href="#founder"><i class="fa-solid fa-user"></i> The Architect</a>
   <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank">SECURE THE SYSTEM</a>
 </div>
 
@@ -430,6 +432,13 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
     </div>
     <div style="margin-top:18px; font-size:11px; color:var(--paper2); letter-spacing:0.05em;">5 Books • 7 Named Protocols • 90-Day Execution Plan • Instant Access</div>
   </div>
+
+<!-- Extra Viral Stats -->
+<div class="wrap">
+  <div class="stats">
+    <div class="stat reveal"><div class="num" data-target="1234">1,234</div><div class="label">Architects Started</div></div>
+  </div>
+</div>
 </section>
 
 <!-- STATS -->
@@ -447,7 +456,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
   <div class="wrap">
     <div class="manifesto reveal">
       <blockquote>“You are not broken. You are <span class="illuminate">obstructed</span>. The leaks are measurable. The architecture can be rebuilt.”</blockquote>
-      <cite>— TYSON ARCHITECT</cite>
+      <cite>- TYSON ARCHITECT</cite>
     </div>
   </div>
 </section>
@@ -465,7 +474,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
       <!-- PREMIUM HALT DIAGNOSTIC -->
       <div class="tool-card reveal" id="halt-card">
         <div class="tool-header">
-          <div class="tool-icon">H</div>
+          <div class="tool-icon"><i class="fa-solid fa-shield-halved"></i></div>
           <h3>HALT Diagnostic</h3>
         </div>
         <p>Private 6-question audit. No data leaves this device. Get your Obstruction Score and exact starting protocol.</p>
@@ -488,7 +497,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
           
           <div id="diag-results" class="diag-results">
             <div class="score-row">
-              <div id="diag-score" class="score">—</div>
+              <div id="diag-score" class="score">-</div>
               <div class="score-label">/ 24</div>
             </div>
             <div id="diag-level" class="level"></div>
@@ -504,7 +513,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
       <!-- PREMIUM V = P - O CALCULATOR -->
       <div class="tool-card reveal" id="vpo-card">
         <div class="tool-header">
-          <div class="tool-icon">V</div>
+          <div class="tool-icon"><i class="fa-solid fa-calculator"></i></div>
           <h3>V = P − O Calculator</h3>
         </div>
         <p>Vitality equals Power minus Obstruction. Move the sliders to see exactly where your life is leaking right now.</p>
@@ -512,14 +521,14 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
         <div class="calc">
           <div class="calc-group">
             <div class="calc-label">
-              <span>POWER — Energy &amp; Discipline</span>
+              <span>POWER - Energy &amp; Discipline</span>
               <span id="power-val" class="val">52</span>
             </div>
             <input type="range" id="power" min="10" max="100" value="52" class="calc-slider" oninput="calcVitality()">
           </div>
           <div class="calc-group">
             <div class="calc-label">
-              <span>OBSTRUCTION — Leaks &amp; Toxins</span>
+              <span>OBSTRUCTION - Leaks &amp; Toxins</span>
               <span id="obstruction-val" class="val">68</span>
             </div>
             <input type="range" id="obstruction" min="10" max="100" value="68" class="calc-slider" oninput="calcVitality()">
@@ -544,7 +553,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
     <div class="sh">
       <div class="eyebrow">THE COMPLETE SYSTEM</div>
       <h2>Five Books.<br>One Architecture.</h2>
-      <p>You do not need more information. You need the exact protocols that remove what is blocking your energy, focus, and drive — then rebuild you into the man who executes without hesitation.</p>
+      <p>You do not need more information. You need the exact protocols that remove what is blocking your energy, focus, and drive - then rebuild you into the man who executes without hesitation.</p>
     </div>
 
     <div class="books-grid" id="booksGrid"></div>
@@ -622,7 +631,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
       <div>
         <h3>Tyson Architect</h3>
         <div class="role">THE HUMAN ARCHITECT</div>
-        <p>I leaked power for years — through screens, food, and women. Then I stopped. These books are the precise system that took me from constant fatigue and zero drive to the strongest, clearest version of myself I have ever been. No supplements. No gurus. Only architecture you can execute.</p>
+        <p>I leaked power for years - through screens, food, and women. Then I stopped. These books are the precise system that took me from constant fatigue and zero drive to the strongest, clearest version of myself I have ever been. No supplements. No gurus. Only architecture you can execute.</p>
       </div>
     </div>
   </div>
@@ -661,7 +670,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
     <div style="max-width:620px; margin:0 auto; text-align:center; padding:32px 20px; background:var(--bg2); border:1px solid var(--border); border-radius:20px;">
       <div style="font-size:10px; color:var(--accent); letter-spacing:0.3em; margin-bottom:8px;">30-DAY IRONCLAD COMMITMENT</div>
       <h3 style="font-size:24px; margin-bottom:14px; letter-spacing:-0.02em;">If You Execute and See No Shift, We Return Your Investment.</h3>
-      <p style="color:var(--paper2); font-size:14px; line-height:1.65; max-width:480px; margin:0 auto 18px;">Run the protocols exactly as written for 30 days. If your energy, clarity, and drive do not measurably improve, contact us. Full refund. No questions. Weakness is not tolerated — but we stand behind ruthless execution.</p>
+      <p style="color:var(--paper2); font-size:14px; line-height:1.65; max-width:480px; margin:0 auto 18px;">Run the protocols exactly as written for 30 days. If your energy, clarity, and drive do not measurably improve, contact us. Full refund. No questions. Weakness is not tolerated - but we stand behind ruthless execution.</p>
       <div style="font-size:11px; color:var(--paper3);">Self-accountability is required. Results come from action, not purchase. This is architecture, not magic.</div>
     </div>
   </div>
@@ -727,12 +736,12 @@ var books = [
     inside: [
       "The science of pH balance and why acidity is the root of disease",
       "Lymphatic system activation and deep detoxification",
-      "Circadian rhythm eating — aligning meals with your body's clock",
+      "Circadian rhythm eating - aligning meals with your body's clock",
       "Breathwork, sauna, and ice bath protocols",
       "Grape detox and lemon detox cleanse guides",
       "125+ Alkaline Human Recipes",
       "Epigenetics and the power of mindset",
-      "Alkaline University — a complete framework for total body restoration"
+      "Alkaline University - a complete framework for total body restoration"
     ],
     disclaimer: "Educational content only. Not medical advice. Always consult a qualified healthcare professional."
   },
@@ -742,7 +751,7 @@ var books = [
     subtitle: "Evidence of Purpose in the Architecture of Life",
     category: "Consciousness & Creation",
     pages: 204,
-    desc: "The philosophy that makes the protocols permanent. Understand why you were built for power — and stop negotiating with weakness.",
+    desc: "The philosophy that makes the protocols permanent. Understand why you were built for power - and stop negotiating with weakness.",
     cover: "public/book-covers/intelligent-design.webp",
     previews: [
       {file: "public/book-previews/intelligent-design/cover-p1.webp", label: "Cover"},
@@ -754,11 +763,11 @@ var books = [
       {file: "public/book-previews/intelligent-design/what-is-id-p6.webp", label: "What Is Intelligent Design"}
     ],
     inside: [
-      "The DNA code — language, information, and the origin of life",
-      "The human eye — irreducible complexity and purposeful design",
-      "The fine-tuning of the universe — constants that allow life",
+      "The DNA code - language, information, and the origin of life",
+      "The human eye - irreducible complexity and purposeful design",
+      "The fine-tuning of the universe - constants that allow life",
       "Consciousness and the hard problem of subjective experience",
-      "The architecture of the cell — molecular machines and specified complexity",
+      "The architecture of the cell - molecular machines and specified complexity",
       "What the fossil record actually shows",
       "Why the design argument matters for how you live"
     ],
@@ -781,12 +790,12 @@ var books = [
       {file: "public/book-previews/parasite-conspiracy/mind-control-p17.webp", label: "Mind Control Parasites"}
     ],
     inside: [
-      "The hidden epidemic — why parasites are more common than you think",
-      "Types of parasites that infect humans — worms, protozoa, flukes",
-      "Symptoms that doctors miss — fatigue, brain fog, digestive issues",
-      "The complete parasite cleanse protocol — herbs, timing, and dosing",
-      "How to test for parasites — what actually works",
-      "Prevention — diet, hygiene, and environmental controls",
+      "The hidden epidemic - why parasites are more common than you think",
+      "Types of parasites that infect humans - worms, protozoa, flukes",
+      "Symptoms that doctors miss - fatigue, brain fog, digestive issues",
+      "The complete parasite cleanse protocol - herbs, timing, and dosing",
+      "How to test for parasites - what actually works",
+      "Prevention - diet, hygiene, and environmental controls",
       "Real case studies and recovery timelines"
     ],
     disclaimer: "Educational content only. Not medical advice. Consult a qualified healthcare professional before starting any cleanse protocol."
@@ -809,13 +818,13 @@ var books = [
       {file: "public/book-previews/life-force-energy/walking-power-grid-p10.webp", label: "Walking Power Grid"}
     ],
     inside: [
-      "The science of semen retention — testosterone, dopamine, and neurochemistry",
-      "Ancient wisdom — kundalini, chi, and divine alchemy across cultures",
-      "The Warrior's Recovery Protocol — a 90-day structured system",
-      "The Dark Knight phase — navigating the first 21 days",
-      "Energy redirection — channeling sexual energy into creative output",
-      "The 45% testosterone surge — what happens within 7 days",
-      "Long-term transformation — what changes after 30, 60, and 90 days"
+      "The science of semen retention - testosterone, dopamine, and neurochemistry",
+      "Ancient wisdom - kundalini, chi, and divine alchemy across cultures",
+      "The Warrior's Recovery Protocol - a 90-day structured system",
+      "The Dark Knight phase - navigating the first 21 days",
+      "Energy redirection - channeling sexual energy into creative output",
+      "The 45% testosterone surge - what happens within 7 days",
+      "Long-term transformation - what changes after 30, 60, and 90 days"
     ],
     disclaimer: "Educational content only. Not medical advice. Individual results may vary. Consult a healthcare professional for personal health decisions."
   },
@@ -836,13 +845,13 @@ var books = [
       {file: "public/book-previews/quit-prn/human-architect-p8.webp", label: "Human Architect Method"}
     ],
     inside: [
-      "The neuroscience of porn addiction — how dopamine hijacks your brain",
-      "The 21-day reboot protocol — day by day instructions",
-      "Trigger identification and rewiring — HALT, BED, and the craving loop",
-      "Environment design — making relapse harder than recovery",
-      "Accountability systems — building a support structure that works",
-      "Relapse prevention — what to do when (not if) you slip",
-      "Life after porn — clarity, confidence, and restored drive"
+      "The neuroscience of porn addiction - how dopamine hijacks your brain",
+      "The 21-day reboot protocol - day by day instructions",
+      "Trigger identification and rewiring - HALT, BED, and the craving loop",
+      "Environment design - making relapse harder than recovery",
+      "Accountability systems - building a support structure that works",
+      "Relapse prevention - what to do when (not if) you slip",
+      "Life after porn - clarity, confidence, and restored drive"
     ],
     disclaimer: "Educational content only. Not a substitute for professional therapy or medical advice. If you struggle with compulsive behavior, seek qualified support."
   }
@@ -989,10 +998,10 @@ function runDiagnostic() {
   var rec = "";
   var book = "";
 
-  if (total <= 8) { level = "LOW OBSTRUCTION — MAINTENANCE MODE"; rec = "You are already executing at a high level. Use Life Force Energy and Intelligent Design to deepen."; book = "life-force-energy"; }
-  else if (total <= 13) { level = "MODERATE LEAK — AUDIT REQUIRED"; rec = "Begin with Alkaline Awakening for 21 days. Add Quit PRN if porn is present. Your V=P-O score will improve 25-40%."; book = "alkaline-awakening"; }
-  else if (total <= 18) { level = "HIGH OBSTRUCTION — FULL REBOOT"; rec = "Start immediately with Quit PRN Manual (21 days) + Alkaline Awakening. Parasite Conspiracy next if fatigue remains. This is not optional."; book = "quit-prn"; }
-  else { level = "CRITICAL — SYSTEM COLLAPSE IMMINENT"; rec = "Full system required. Quit PRN + Alkaline Awakening + Parasite Conspiracy simultaneously for first 30 days. Then Life Force Energy. No half-measures will work."; book = "quit-prn"; }
+  if (total <= 8) { level = "LOW OBSTRUCTION - MAINTENANCE MODE"; rec = "You are already executing at a high level. Use Life Force Energy and Intelligent Design to deepen."; book = "life-force-energy"; }
+  else if (total <= 13) { level = "MODERATE LEAK - AUDIT REQUIRED"; rec = "Begin with Alkaline Awakening for 21 days. Add Quit PRN if porn is present. Your V=P-O score will improve 25-40%."; book = "alkaline-awakening"; }
+  else if (total <= 18) { level = "HIGH OBSTRUCTION - FULL REBOOT"; rec = "Start immediately with Quit PRN Manual (21 days) + Alkaline Awakening. Parasite Conspiracy next if fatigue remains. This is not optional."; book = "quit-prn"; }
+  else { level = "CRITICAL - SYSTEM COLLAPSE IMMINENT"; rec = "Full system required. Quit PRN + Alkaline Awakening + Parasite Conspiracy simultaneously for first 30 days. Then Life Force Energy. No half-measures will work."; book = "quit-prn"; }
 
   document.getElementById("diag-score").textContent = total;
   document.getElementById("diag-level").textContent = level;
@@ -1018,10 +1027,10 @@ function calcVitality() {
   document.getElementById("vitality-fill").style.width = pct + "%";
 
   var label = document.getElementById("vitality-label");
-  if (vitality < 35) label.textContent = "CRITICAL LEAK — BEGIN DIAGNOSTIC + 21-DAY PURGE IMMEDIATELY";
-  else if (vitality < 55) label.textContent = "MODERATE LEAK — AUDIT YOUR INPUTS. POWER IS BEING STOLEN.";
-  else if (vitality < 72) label.textContent = "RECOVERING — CONSISTENT EXECUTION WILL PUSH YOU HIGHER";
-  else label.textContent = "STRONG ARCHITECTURE — NOW DEEPEN WITH RETENTION + INTELLIGENT DESIGN";
+  if (vitality < 35) label.textContent = "CRITICAL LEAK - BEGIN DIAGNOSTIC + 21-DAY PURGE IMMEDIATELY";
+  else if (vitality < 55) label.textContent = "MODERATE LEAK - AUDIT YOUR INPUTS. POWER IS BEING STOLEN.";
+  else if (vitality < 72) label.textContent = "RECOVERING - CONSISTENT EXECUTION WILL PUSH YOU HIGHER";
+  else label.textContent = "STRONG ARCHITECTURE - NOW DEEPEN WITH RETENTION + INTELLIGENT DESIGN";
 }
 
 // NEW PREMIUM STEP-BY-STEP HALT DIAGNOSTIC ENGINE
@@ -1089,19 +1098,19 @@ function calculateAndShowResults() {
   document.getElementById('diag-score').textContent = total;
   let level = '', interp = '', protocol = '';
   if (total <= 8) {
-    level = 'LOW OBSTRUCTION — MAINTENANCE MODE';
+    level = 'LOW OBSTRUCTION - MAINTENANCE MODE';
     interp = 'You are already executing at a high level. Use Life Force Energy and Intelligent Design to deepen.';
     protocol = 'Focus: Life Force Energy + Intelligent Design';
   } else if (total <= 13) {
-    level = 'MODERATE LEAK — AUDIT REQUIRED';
+    level = 'MODERATE LEAK - AUDIT REQUIRED';
     interp = 'Begin with Alkaline Awakening for 21 days. Add Quit PRN if porn is present. Your V=P-O score will improve 25-40%.';
     protocol = 'Start: Alkaline Awakening + Quit PRN if needed';
   } else if (total <= 18) {
-    level = 'HIGH OBSTRUCTION — FULL REBOOT';
+    level = 'HIGH OBSTRUCTION - FULL REBOOT';
     interp = 'Start immediately with Quit PRN Manual (21 days) + Alkaline Awakening. Parasite Conspiracy next if fatigue remains. This is not optional.';
     protocol = 'Immediate: Quit PRN + Alkaline Awakening';
   } else {
-    level = 'CRITICAL — SYSTEM COLLAPSE IMMINENT';
+    level = 'CRITICAL - SYSTEM COLLAPSE IMMINENT';
     interp = 'Full system required. Quit PRN + Alkaline Awakening + Parasite Conspiracy simultaneously for first 30 days. Then Life Force Energy. No half-measures will work.';
     protocol = 'Full 90-Day Protocol Required';
   }
@@ -1314,7 +1323,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Final authority signal in console for the curious
-  console.log("%c[Human Architect v2.1] The architecture is ready. Execute without negotiation. — Tyson Architect", "color:#3b82f6; font-family:monospace");
+  console.log("%c[Human Architect v2.1] The architecture is ready. Execute without negotiation. - Tyson Architect", "color:#3b82f6; font-family:monospace");
 });
 
 // Expose for debugging / future agents
