@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://alkalinearchitect.github.io/human-architect-site/sitemap.xml
