@@ -147,7 +147,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .nav-in { max-width:1200px; margin:0 auto; padding:0 40px; display:flex; align-items:center; justify-content:space-between; }
 .logo { font-family:var(--serif); font-size:18px; font-weight:300; color:var(--paper); letter-spacing:-0.02em; }
 .logo span { font-style:italic; font-weight:400; opacity:.55; }
-.nav-links { display:flex; align-items:center; gap:34px; list-style:none; }
+.nav-links { display:flex; align-items:center; gap:40px; list-style:none; }
 .nav-links a { color:var(--paper2); font-size:10px; font-weight:600; transition:color .25s; letter-spacing:.1em; text-transform:uppercase; }
 .nav-links a:hover { color:var(--paper); }
 .nav-cta { padding:9px 20px !important; border-radius:9999px; background:var(--paper) !important; color:#000 !important; font-weight:700; font-size:10px !important; letter-spacing:.12em; text-transform:uppercase; border:1px solid var(--paper) !important; }
@@ -403,7 +403,8 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .reveal.visible, .reveal.fallback-visible { opacity:1; transform:none; }
 
 /* Authority quotes */
-.illuminate { color:var(--accent); font-style:italic; font-weight:400; text-shadow:0 0 12px var(--accent-glow); }
+.illuminate { color:#ff2d55; font-style:italic; font-weight:700; text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); animation: illuminatePulse 2.4s ease-in-out infinite; }
+@keyframes illuminatePulse { 0%,100% { text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); } 50% { text-shadow:0 0 12px rgba(255,45,85,1), 0 0 30px rgba(255,45,85,0.7), 0 0 60px rgba(255,45,85,0.35); } }
 
 /* Footer */
 .footer { padding:52px 0 40px; border-top:1px solid var(--border); }
@@ -563,11 +564,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   <div class="nav-in">
     <div class="logo">HUMAN ARCHITECT <span>by Tyson Architect</span></div>
     <ul class="nav-links">
-      <li><a href="#books"><i class="fa-solid fa-book"></i> The Books</a></li>
-      <li><a href="#what">The System</a></li>
-      <li><a href="#roadmap"><i class="fa-solid fa-road"></i> 90-Day Rebuild</a></li>
-      <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> Questions</a></li>
-      <li><a href="#founder"><i class="fa-solid fa-user"></i> The Architect</a></li>
+      <li><a href="#books">The Books</a></li>
+      <li><a href="#roadmap">90-Day Rebuild</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="nav-cta">GET THE SYSTEM</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Menu">
@@ -579,12 +578,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <!-- MOBILE MENU -->
 <div class="mobi" id="mobi">
   <button class="mobi-close" id="mobiClose">CLOSE</button>
-  <a href="#books"><i class="fa-solid fa-book"></i> The Books</a>
-  <a href="#what"><i class="fa-solid fa-compass"></i> The System</a>
-  <a href="#roadmap"><i class="fa-solid fa-road"></i> 90-Day Rebuild</a>
-  <a href="#faq"><i class="fa-solid fa-circle-question"></i> Questions</a>
-  <a href="#founder"><i class="fa-solid fa-user"></i> The Architect</a>
-  <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank">SECURE THE SYSTEM</a>
+  <a href="#books">The Books</a>
+  <a href="#roadmap">90-Day Rebuild</a>
+  <a href="#faq">FAQ</a>
+  <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank">GET THE SYSTEM</a>
 </div>
 
 <!-- HERO - CINEMATIC -->
@@ -597,7 +594,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       <span class="word">POWER</span>
       <span class="word">IS</span>
       <span class="word">BEING</span>
-      <span class="word">STOLEN</span>
+      <span class="word illuminate">STOLEN</span>
       <span class="word">EVERY</span>
       <span class="word">DAY.</span>
     </h1>
@@ -1028,7 +1025,7 @@ var books = [
     previews: [
       {file: "public/book-previews/parasite-conspiracy/cover-p1.webp", label: "Cover"},
       {file: "public/book-previews/parasite-conspiracy/protocols-p3.webp", label: "Parasite Protocols"},
-      {file: "public/book-previews/parasite-conspiracy/cleanses-p24.webp", label: "Cleanse Protocol"}
+      {file: "public/book-previews/parasite-conspiracy/cleanses-p24.webp", label: "The Kill Zone"}
     ],
     inside: [
       "The hidden epidemic - why parasites are more common than you think",
