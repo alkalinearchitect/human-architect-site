@@ -403,8 +403,10 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .reveal.visible, .reveal.fallback-visible { opacity:1; transform:none; }
 
 /* Authority quotes */
-.illuminate { color:#ff2d55; font-style:italic; font-weight:700; text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); animation: illuminatePulse 2.4s ease-in-out infinite; }
+.illuminate { color:#ff2d55; font-style:italic; font-weight:700; text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); animation: illuminatePulse 2.4s ease-in-out infinite, illuminateBurst 1.2s ease-out; }
+.illuminate-subtle { color:var(--accent); font-style:italic; font-weight:400; text-shadow:0 0 12px var(--accent-glow); }
 @keyframes illuminatePulse { 0%,100% { text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); } 50% { text-shadow:0 0 12px rgba(255,45,85,1), 0 0 30px rgba(255,45,85,0.7), 0 0 60px rgba(255,45,85,0.35); } }
+@keyframes illuminateBurst { 0% { text-shadow:0 0 60px rgba(255,45,85,1), 0 0 120px rgba(255,45,85,0.8), 0 0 200px rgba(255,45,85,0.5); transform:scale(1.08); } 40% { text-shadow:0 0 30px rgba(255,45,85,0.95), 0 0 60px rgba(255,45,85,0.6), 0 0 100px rgba(255,45,85,0.3); transform:scale(1.02); } 100% { text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); transform:scale(1); } }
 
 /* Footer */
 .footer { padding:52px 0 40px; border-top:1px solid var(--border); }
@@ -630,7 +632,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <section class="sec">
   <div class="wrap">
     <div class="manifesto reveal">
-      <blockquote>“You are not broken. You are <span class="illuminate">obstructed</span>. The leaks are measurable. The architecture can be rebuilt.”</blockquote>
+      <blockquote>"You are not broken. You are <span class="illuminate-subtle">obstructed</span>. The leaks are measurable. The architecture can be rebuilt."</blockquote>
       <cite>- TYSON ARCHITECT</cite>
     </div>
   </div>
@@ -1206,12 +1208,21 @@ function startProtocolFromBook(slug) {
 
 // HERO CINEMATIC: Word stagger + morph + canvas particles
 function initHeroCinematic() {
-  // Word stagger
+  // Word stagger — STOLEN (illuminate) appears first, rest follow
   var words = document.querySelectorAll("#hero-headline .word");
+  var stolenWord = document.querySelector("#hero-headline .word.illuminate");
+  // STOLEN appears immediately with dramatic glow
+  if (stolenWord) {
+    stolenWord.style.transition = "all 0.5s cubic-bezier(.22,1,.36,1)";
+    stolenWord.classList.add("visible");
+  }
+  // Rest stagger in, skipping STOLEN
+  var delay = 120;
   words.forEach(function(w, i) {
+    if (w.classList.contains("illuminate")) return; // already shown
     setTimeout(function() {
       w.classList.add("visible");
-    }, 180 * (i + 1));
+    }, delay * (i + 1));
   });
 
   // Hero rule reveal after the stagger finishes
