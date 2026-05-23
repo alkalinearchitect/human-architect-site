@@ -522,6 +522,61 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 /* Comparison table */
 .compare { padding:80px 0; }
 .compare-table { display:grid; grid-template-columns:1.2fr repeat(3, 1fr); gap:0; margin-top:48px; border:1px solid var(--border); border-radius:18px; overflow:hidden; background:var(--bg2); }
+
+/* ── HERO PORTRAIT ── */
+.hero-portrait-wrap { position:relative; width:120px; height:180px; margin:0 auto 28px; }
+.hero-portrait-ring { width:120px; height:180px; border-radius:12px; overflow:hidden; border:2px solid var(--accent); box-shadow:0 0 30px rgba(196,30,58,0.3), 0 0 60px rgba(196,30,58,0.1); position:relative; z-index:2; }
+.hero-portrait { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-portrait-glow { position:absolute; inset:-8px; border-radius:16px; background:radial-gradient(ellipse at center, rgba(196,30,58,0.25) 0%, transparent 70%); animation:portraitGlow 3s ease-in-out infinite; z-index:1; }
+@keyframes portraitGlow { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.05); } }
+
+/* ── SECTION TRANSITIONS ── */
+.sec { opacity:1; transform:none; transition:none; }
+.sec.will-reveal { opacity:0; transform:translateY(40px); transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.sec.revealed { opacity:1; transform:translateY(0); }
+.sec.will-reveal .sh > * { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.sec.revealed .sh > *:nth-child(1) { transition-delay:0.1s; opacity:1; transform:translateY(0); }
+.sec.revealed .sh > *:nth-child(2) { transition-delay:0.2s; opacity:1; transform:translateY(0); }
+.sec.revealed .sh > *:nth-child(3) { transition-delay:0.3s; opacity:1; transform:translateY(0); }
+
+/* Staggered book cards */
+.book-card { transition:transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, opacity 0.6s ease; }
+.book-card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 30px 60px -15px rgba(0,0,0,0.6); }
+
+/* CTA breathing glow */
+.btn.bp { animation:ctaPulse 2.5s ease-in-out infinite; }
+@keyframes ctaPulse { 0%,100% { box-shadow:0 0 0 0 rgba(196,30,58,0.4); } 50% { box-shadow:0 0 20px 4px rgba(196,30,58,0.25); } }
+
+/* Section divider glow */
+.section-divider { width:100%; height:1px; background:linear-gradient(90deg, transparent, var(--accent), transparent); opacity:0.3; margin:0; }
+
+/* Smooth scroll for the whole page */
+html { scroll-behavior:smooth; }
+
+/* Enhanced reveal for stats */
+.stat { transition:transform 0.3s ease; }
+.stat:hover { transform:translateY(-4px); }
+
+/* Testimonial card hover */
+.testi-card { transition:transform 0.3s ease, border-color 0.3s ease; }
+.testi-card:hover { transform:translateY(-4px); border-color:var(--accent); }
+
+/* Phase card hover */
+.phase { transition:transform 0.3s ease, box-shadow 0.3s ease; }
+.phase:hover { transform:translateY(-4px); box-shadow:0 20px 40px -15px rgba(0,0,0,0.5); }
+
+/* Founder portrait */
+.founder-portrait { width:120px; height:180px; border-radius:12px; object-fit:cover; border:2px solid var(--accent); box-shadow:0 0 30px rgba(196,30,58,0.2); flex-shrink:0; }
+
+/* Fade-in on load */
+@keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.hero .hero-eyebrow { animation:fadeInUp 0.8s ease 0.2s both; }
+.hero #hero-headline { animation:fadeInUp 0.8s ease 0.4s both; }
+.hero .hero-rule { animation:fadeInUp 0.8s ease 0.6s both; }
+.hero .morph { animation:fadeInUp 0.8s ease 0.8s both; }
+.hero .ctas { animation:fadeInUp 0.8s ease 1.0s both; }
+.hero .hero-microcta { animation:fadeInUp 0.8s ease 1.2s both; }
+.hero-portrait-wrap { animation:fadeInUp 0.8s ease 0.1s both, portraitGlow 3s ease-in-out 1.5s infinite; }
 @media (max-width:820px) { .compare-table { grid-template-columns:1fr; } .compare-cell.header { display:none; } .compare-cell { border-right:none !important; } }
 .compare-cell { padding:18px 20px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); font-size:13px; color:var(--paper); display:flex; align-items:center; }
 .compare-cell.header { background:var(--bg3); font-family:var(--serif); font-size:15px; font-weight:400; letter-spacing:-.01em; padding:22px 20px; }
@@ -604,6 +659,12 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <section class="hero">
   <canvas id="hero-canvas" width="1400" height="900"></canvas>
   <div class="hc">
+    <div class="hero-portrait-wrap">
+      <div class="hero-portrait-ring">
+        <img src="public/tyson-architect.webp" alt="Tyson Architect — The Human Architect" class="hero-portrait" width="120" height="180" loading="eager">
+      </div>
+      <div class="hero-portrait-glow"></div>
+    </div>
     <div class="hero-eyebrow">THE OBSTRUCTION AUDIT — BY TYSON ARCHITECT</div>
     <h1 id="hero-headline">
       <span class="word">YOUR</span>
@@ -650,7 +711,40 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   </div>
 </section>
 
-<!-- THE SYSTEM — quiet, confident panel (was: noisy diagnostic + calculator) -->
+<hr class="section-divider">
+
+<!-- BOOKS — MOVED UP: Product immediately after manifesto for conversion -->
+<section class="sec" id="books">
+  <div class="wrap">
+    <div class="sh">
+      <div class="eyebrow">THE COMPLETE SYSTEM</div>
+      <h2>Five Books.<br>One Rebuild.</h2>
+      <p>You do not need more information. You need the exact protocols that remove what is blocking your energy, focus, and drive — then rebuild you into the man who executes without hesitation. Every book is a weapon. Together, they are the system.</p>
+    </div>
+
+    <div class="books-grid" id="booksGrid"></div>
+  </div>
+</section>
+
+<div class="product-explain" style="max-width:720px; margin:40px auto 0; padding:28px; background:var(--bg3); border:1px solid var(--border); border-radius:16px; text-align:center;">
+  <div style="font-size:11px; letter-spacing:0.2em; color:var(--paper2); margin-bottom:8px;">WHAT YOU ACTUALLY RECEIVE</div>
+  <h3 style="font-size:21px; margin-bottom:12px;">The Human Architect 5-Book System</h3>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:12px; text-align:left; font-size:13px; color:var(--paper2);">
+    <div>• Full Alkaline Detox &amp; Lymphatic Protocols</div>
+    <div>• 21-Day Porn Elimination System</div>
+    <div>• 90-Day Semen Retention &amp; Vitality Rebuild</div>
+    <div>• Parasite Cleanse &amp; Prevention Guide</div>
+    <div>• Intelligent Design Philosophy for Identity Shift</div>
+    <div>• 7 Named Protocols (HALT, V=P-O, Circulation, etc.)</div>
+    <div>• Day-by-Day 30/90 Execution Plans</div>
+    <div>• All Future Protocol Updates</div>
+  </div>
+  <div style="margin-top:16px; font-size:12px; color:var(--accent);">One purchase. Complete architecture. No subscriptions.</div>
+</div>
+
+<hr class="section-divider">
+
+<!-- THE SYSTEM — quiet, confident panel -->
 <section class="sec" id="what">
   <div class="wrap">
     <div class="sh">
@@ -691,35 +785,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     </div>
   </div>
 </section>
-
-<!-- BOOKS -->
-<section class="sec" id="books">
-  <div class="wrap">
-    <div class="sh">
-      <div class="eyebrow">THE COMPLETE SYSTEM</div>
-      <h2>Five Books.<br>One Rebuild.</h2>
-      <p>You do not need more information. You need the exact protocols that remove what is blocking your energy, focus, and drive — then rebuild you into the man who executes without hesitation. Every book is a weapon. Together, they are the system.</p>
-    </div>
-
-    <div class="books-grid" id="booksGrid"></div>
-  </div>
-</section>
-
-<div class="product-explain" style="max-width:720px; margin:40px auto 0; padding:28px; background:var(--bg3); border:1px solid var(--border); border-radius:16px; text-align:center;">
-  <div style="font-size:11px; letter-spacing:0.2em; color:var(--paper2); margin-bottom:8px;">WHAT YOU ACTUALLY RECEIVE</div>
-  <h3 style="font-size:21px; margin-bottom:12px;">The Human Architect 5-Book System</h3>
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:12px; text-align:left; font-size:13px; color:var(--paper2);">
-    <div>• Full Alkaline Detox &amp; Lymphatic Protocols</div>
-    <div>• 21-Day Porn Elimination System</div>
-    <div>• 90-Day Semen Retention &amp; Vitality Rebuild</div>
-    <div>• Parasite Cleanse &amp; Prevention Guide</div>
-    <div>• Intelligent Design Philosophy for Identity Shift</div>
-    <div>• 7 Named Protocols (HALT, V=P-O, Circulation, etc.)</div>
-    <div>• Day-by-Day 30/90 Execution Plans</div>
-    <div>• All Future Protocol Updates</div>
-  </div>
-  <div style="margin-top:16px; font-size:12px; color:var(--accent);">One purchase. Complete architecture. No subscriptions.</div>
-</div>
 
 <!-- 90-DAY REBUILD ROADMAP - NEW -->
 <section class="roadmap" id="roadmap">
@@ -866,11 +931,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <section class="sec" id="founder">
   <div class="wrap">
     <div class="founder reveal">
-      <div class="founder-img founder-monogram" aria-hidden="true">
-        <div class="monogram-mark">TA</div>
-        <div class="monogram-rule"></div>
-        <div class="monogram-sub">THE ARCHITECT</div>
-      </div>
+      <img src="public/tyson-architect.webp" alt="Tyson Architect — The Human Architect" class="founder-portrait" width="120" height="180" loading="lazy">
       <div>
         <h3>Tyson Architect</h3>
         <div class="role">THE HUMAN ARCHITECT</div>
@@ -1442,6 +1503,57 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Final authority signal in console for the curious
   console.log("%c[Human Architect v2.1] The architecture is ready. Execute without negotiation. - Tyson Architect", "color:#c41e3a; font-family:monospace");
+
+  // ── SCROLL-TRIGGERED SECTION REVEALS ──
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('will-reveal');
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  // Apply to all sections except hero
+  document.querySelectorAll('.sec, .roadmap, .testi, .compare').forEach(function(el) {
+    el.classList.add('will-reveal');
+    observer.observe(el);
+  });
+
+  // ── PARALLAX HERO CANVAS ──
+  var heroCanvas = document.getElementById('hero-canvas');
+  if (heroCanvas) {
+    window.addEventListener('scroll', function() {
+      var scrolled = window.pageYOffset;
+      if (scrolled < window.innerHeight) {
+        heroCanvas.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+      }
+    }, { passive: true });
+  }
+
+  // ── SMOOTH SCROLL FOR ANCHOR LINKS ──
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ── FAB BUTTON VISIBILITY ──
+  var fab = document.querySelector('.fab');
+  if (fab) {
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 600) {
+        fab.classList.add('visible');
+      } else {
+        fab.classList.remove('visible');
+      }
+    }, { passive: true });
+  }
 });
 
 // Expose for debugging / future agents
