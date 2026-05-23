@@ -44,3 +44,8 @@ public/books/pages/*.png
 public/substack-avatar.png
 compress_images.py
 tools/
+*.bak*
+*.BACKUP*
+index.html.backup*
+backups/
+start-local.sh
