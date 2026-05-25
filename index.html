@@ -918,7 +918,7 @@ html { scroll-behavior:smooth; }
 <section class="sec" id="founder">
   <div class="wrap">
     <div class="founder reveal">
-      <img src="public/tyson-architect.webp" alt="Tyson Architect — The Human Architect" class="founder-portrait" width="120" height="180" loading="lazy">
+      <img src="public/tyson-architect.webp" alt="Tyson Architect — The Human Architect" class="founder-portrait" width="120" height="180" loading="eager">
       <div>
         <h3>Tyson Architect</h3>
         <div class="role">THE HUMAN ARCHITECT</div>
@@ -1160,7 +1160,7 @@ function renderBooks() {
   for (var i = 0; i < books.length; i++) {
     var b = books[i];
     h += '<div class="book-card reveal" data-slug="' + b.slug + '" onclick="openModal(\'' + b.slug + '\')">';
-    h += '<div class="book-card-img-wrap"><img src="' + b.cover + '" alt="' + b.title + ' by Tyson Architect" loading="lazy" class="book-card-img"><div class="book-card-overlay"><span>OPEN PROTOCOLS</span></div></div>';
+    h += '<div class="book-card-img-wrap"><img src="' + b.cover + '" alt="' + b.title + ' by Tyson Architect" loading="eager" class="book-card-img"><div class="book-card-overlay"><span>OPEN PROTOCOLS</span></div></div>';
     h += '<div class="book-card-meta"><span class="book-card-num">BOOK ' + (i+1) + '</span><span>' + b.category + '</span></div>';
     h += '<div class="book-card-title">' + b.title + '</div>';
     h += '<div class="book-card-desc">' + b.desc + '</div>';
