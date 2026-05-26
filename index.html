@@ -400,7 +400,17 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .book-card-desc { font-size:12px; color:var(--paper2); line-height:1.5; font-weight:300; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
 .book-card-cta { font-size:9px; color:var(--paper2); text-transform:uppercase; letter-spacing:.2em; font-weight:600; margin-top:auto; display:flex; align-items:center; gap:4px; transition:gap .3s; }
 
-/* Previews */
+/* Book Preview Video */
+.book-preview-video { position:relative; width:100%; max-width:480px; margin:0 auto 52px; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:#000; aspect-ratio:9/16; }
+.book-preview-video video { width:100%; height:100%; object-fit:cover; display:block; }
+.book-preview-video-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; background:rgba(0,0,0,0.35); cursor:pointer; transition:background .3s; }
+.book-preview-video-overlay:hover { background:rgba(0,0,0,0.2); }
+.book-preview-video-overlay span { font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,0.7); font-weight:600; }
+.book-preview-play-btn { background:none; border:none; cursor:pointer; padding:0; transition:transform .2s; }
+.book-preview-play-btn:hover { transform:scale(1.1); }
+@media (max-width:600px) { .book-preview-video { max-width:100%; margin-bottom:36px; } }
+
+/* Preview grids */
 .preview-panels { display:flex; flex-direction:column; gap:62px; }
 .preview-panel { width:100%; }
 .preview-panel-header { text-align:center; margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid var(--border); }
@@ -1633,6 +1643,17 @@ html { scroll-behavior:smooth; }
       <div class="eyebrow">INSIDE THE BOOKS</div>
       <h2>Actual Pages.<br>Real <em>Protocols</em>.</h2>
     </div>
+    <div class="book-preview-video">
+      <video id="bookPreviewVideo" autoplay muted loop playsinline poster="https://files.catbox.moe/7hicgc.png" width="100%" height="auto">
+        <source src="VIDEO_URL_PLACEHOLDER" type="video/mp4">
+      </video>
+      <div class="book-preview-video-overlay" id="bookPreviewOverlay">
+        <button class="book-preview-play-btn" onclick="var v=document.getElementById('bookPreviewVideo');var o=document.getElementById('bookPreviewOverlay');v.play();o.style.display='none';v.controls=true;">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.6)" stroke="rgba(255,255,255,0.3)" stroke-width=".5"/><polygon points="9,6 18,12 9,18" fill="white"/></svg>
+        </button>
+        <span>BOOK PREVIEW</span>
+      </div>
+    </div>
     <div class="preview-panels" id="previewPanels"></div>
   </div>
 </section>
@@ -2007,7 +2028,7 @@ function renderPreviews() {
     h += '<div class="preview-grid">';
     for (var j = 0; j < Math.min(6, b.previews.length); j++) {
       var p = b.previews[j];
-      h += '<div class="page-prev" onclick="window.open(\'' + p.file + '\', \'_blank\')">';
+      h += '<div class="page-prev">';
       h += '<img src="' + p.file + '" alt="' + p.label + ' from ' + b.title + '">';
       h += '<div class="page-prev-label">' + p.label + '</div>';
       h += '</div>';
