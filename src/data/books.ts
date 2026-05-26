@@ -123,9 +123,9 @@ export const books: Book[] = [
     paymentLink: '#',
     status: 'published',
     gallery: [
-      { src: '/books/pages/pc-cover-art.jpg',    caption: 'Protocols of Illumination' },
-      { src: '/books/pages/pc-herbs.jpg',        caption: 'Herbs for Parasites' },
-      { src: '/books/pages/pc-mind-control.webp', caption: 'What Is Controlling Your Mind?' },
+      { src: '/books/pages/pc-cover-art.jpg', caption: 'Protocols of Illumination' },
+      { src: '/books/pages/pc-herbs.jpg',     caption: 'Herbs for Parasites' },
+      { src: '/books/pages/pc-massage.jpg',   caption: 'Releasing What the Body Stores' },
     ],
     pullQuotes: [
       { text: 'This is not fear. This is awareness.' },
