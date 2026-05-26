@@ -46,10 +46,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   }
                 });
               }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-              document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+              const observeAll = () => {
+                document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
+              };
+              observeAll();
+              const mo = new MutationObserver(observeAll);
+              mo.observe(document.body, { childList: true, subtree: true });
+              setInterval(observeAll, 1000);
+              setTimeout(observeAll, 2000);
+              setTimeout(observeAll, 5000);
             })();
           `
         }} />
+        <noscript>
+          <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+        </noscript>
       </body>
     </html>
   )
