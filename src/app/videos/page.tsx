@@ -118,25 +118,13 @@ export default function VideosPage() {
             return (
               <div
                 key={video.id}
-                className="reveal"
+                className="reveal video-card"
                 style={{
                   background: '#161628',
                   border: '1px solid rgba(255,255,255,0.06)',
                   borderRadius: 20,
                   overflow: 'hidden',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget
-                  el.style.borderColor = 'rgba(212,168,83,0.25)'
-                  el.style.transform = 'translateY(-4px)'
-                  el.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4)'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget
-                  el.style.borderColor = 'rgba(255,255,255,0.06)'
-                  el.style.transform = 'translateY(0)'
-                  el.style.boxShadow = 'none'
                 }}
               >
                 {/* Thumbnail */}

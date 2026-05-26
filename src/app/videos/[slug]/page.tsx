@@ -65,12 +65,7 @@ export default async function VideoPage({ params }: Props) {
               marginBottom: 24,
               transition: 'color 0.2s',
             }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = '#a78bfa')
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color = '#6b6b80')
-            }
+            className="back-link"
           >
             ← All Videos
           </a>

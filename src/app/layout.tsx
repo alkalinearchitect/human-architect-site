@@ -59,7 +59,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `
         }} />
         <noscript>
-          <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+          <style dangerouslySetInnerHTML={{
+            __html: '.reveal{opacity:1!important;transform:none!important}'
+          }} />
         </noscript>
       </body>
     </html>
