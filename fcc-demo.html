@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Score Calculator — Free Claude Code Demo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    color: #e8e8e8;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .bg-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .bg-glow-1 { top: -200px; left: -200px; background: #d4a843; }
+  .bg-glow-2 { bottom: -200px; right: -200px; background: #8b6914; }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 520px;
+    max-width: 95vw;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    text-align: center;
+    color: #d4a843;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.02em;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .question-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s;
+    animation: fadeUp 0.5s ease-out backwards;
+  }
+  .question-card:nth-child(1) { animation-delay: 0.1s; }
+  .question-card:nth-child(2) { animation-delay: 0.2s; }
+  .question-card:nth-child(3) { animation-delay: 0.3s; }
+  .question-card:nth-child(4) { animation-delay: 0.4s; }
+  .question-card:nth-child(5) { animation-delay: 0.5s; }
+
+  .question-card:hover { border-color: #333; }
+
+  .question-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .score-value {
+    color: #d4a843;
+    font-size: 1.1rem;
+    font-weight: 700;
+    min-width: 2ch;
+    text-align: right;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #d4a843 var(--progress, 50%), #222 var(--progress, 50%));
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #d4a843;
+    border: 2px solid #0a0a0a;
+    box-shadow: 0 0 8px rgba(212,168,67,0.4);
+    transition: transform 0.15s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, #d4a843, #b8922e);
+    color: #0a0a0a;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn:hover {
+    box-shadow: 0 4px 20px rgba(212,168,67,0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Result overlay */
+  .result-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.4s ease;
+  }
+  .result-overlay.active { display: flex; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .result-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    width: 400px;
+    max-width: 90vw;
+    animation: scaleIn 0.5s ease-out;
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .score-circle {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 1.5rem;
+    position: relative;
+  }
+  .score-circle svg { transform: rotate(-90deg); }
+  .score-circle .bg { fill: none; stroke: #1a1a1a; stroke-width: 8; }
+  .score-circle .progress {
+    fill: none;
+    stroke: url(#goldGrad);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .score-number {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #d4a843;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .result-label {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+  }
+  .result-grade {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .close-btn {
+    padding: 0.7rem 2rem;
+    background: transparent;
+    border: 1px solid #333;
+    color: #888;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+  }
+  .close-btn:hover { border-color: #d4a843; color: #d4a843; }
+
+  .fcc-badge {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    color: #333;
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<div class="container">
+  <h1>Health Score</h1>
+  <p class="subtitle">Rate each area 1–10 · Built by Free Claude Code</p>
+
+  <div class="question-card">
+    <div class="question-label">
+      <span>😴 Sleep Quality</span>
+      <span class="score-value" id="val-sleep">5</span>
+    </div>
+    <input type="range" id="sleep" min="1" max="10" value="5" oninput="update(this)">
+  </div>
+
+  <div class="question-card">
+    <div class="question-label">
+      <span>🏋️ Exercise Frequency</span>
+      <span class="score-value" id="val-exercise">5</span>
+    </div>
+    <input type="range" id="exercise" min="1" max="10" value="5" oninput="update(this)">
+  </div>
+
+  <div class="question-card">
+    <div class="question-label">
+      <span>🥗 Diet & Nutrition</span>
+      <span class="score-value" id="val-diet">5</span>
+    </div>
+    <input type="range" id="diet" min="1" max="10" value="5" oninput="update(this)">
+  </div>
+
+  <div class="question-card">
+    <div class="question-label">
+      <span>🧠 Stress Management</span>
+      <span class="score-value" id="val-stress">5</span>
+    </div>
+    <input type="range" id="stress" min="1" max="10" value="5" oninput="update(this)">
+  </div>
+
+  <div class="question-card">
+    <div class="question-label">
+      <span>⚡ Energy Levels</span>
+      <span class="score-value" id="val-energy">5</span>
+    </div>
+    <input type="range" id="energy" min="1" max="10" value="5" oninput="update(this)">
+  </div>
+
+  <button class="btn" onclick="calculate()">Calculate Score</button>
+
+  <p class="fcc-badge">GENERATED BY FREE CLAUDE CODE · OPENROUTER · $0 COST</p>
+</div>
+
+<div class="result-overlay" id="resultOverlay" onclick="closeResult(event)">
+  <div class="result-card" onclick="event.stopPropagation()">
+    <div class="score-circle">
+      <svg width="160" height="160" viewBox="0 0 160 160">
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4a843"/>
+            <stop offset="100%" stop-color="#f0d78c"/>
+          </linearGradient>
+        </defs>
+        <circle class="bg" cx="80" cy="80" r="70"/>
+        <circle class="progress" id="scoreProgress" cx="80" cy="80" r="70"/>
+      </svg>
+      <div class="score-number" id="scoreNumber">0</div>
+    </div>
+    <div class="result-label">Your Health Score</div>
+    <div class="result-grade" id="resultGrade">—</div>
+    <button class="close-btn" onclick="closeResult()">Try Again</button>
+  </div>
+</div>
+
+<script>
+function update(el) {
+  const v = el.value;
+  document.getElementById('val-' + el.id).textContent = v;
+  const pct = ((v - 1) / 9) * 100;
+  el.style.setProperty('--progress', pct + '%');
+}
+
+function calculate() {
+  const scores = ['sleep','exercise','diet','stress','energy'].map(id => +document.getElementById(id).value);
+  const avg = Math.round(scores.reduce((a,b) => a+b, 0) / scores.length * 10);
+  const pct = avg / 100;
+
+  const overlay = document.getElementById('resultOverlay');
+  overlay.classList.add('active');
+
+  // Animate circle
+  const circle = document.getElementById('scoreProgress');
+  const circumference = 440;
+  circle.style.strokeDashoffset = circumference;
+
+  setTimeout(() => {
+    circle.style.strokeDashoffset = circumference * (1 - pct);
+  }, 100);
+
+  // Animate number
+  const numEl = document.getElementById('scoreNumber');
+  let current = 0;
+  const step = Math.max(1, Math.floor(avg / 40));
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= avg) { current = avg; clearInterval(timer); }
+    numEl.textContent = current;
+  }, 30);
+
+  // Grade
+  const grades = [
+    [90, 'ELITE', '#f0d78c'],
+    [75, 'STRONG', '#d4a843'],
+    [60, 'SOLID', '#b8922e'],
+    [45, 'BUILDING', '#8b6914'],
+    [0,  'NEEDS WORK', '#666']
+  ];
+  const [_, label, color] = grades.find(([min]) => avg >= min);
+  const gradeEl = document.getElementById('resultGrade');
+  gradeEl.textContent = label;
+  gradeEl.style.color = color;
+}
+
+function closeResult(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('resultOverlay').classList.remove('active');
+}
+
+// Init sliders
+document.querySelectorAll('input[type="range"]').forEach(update);
+</script>
+</body>
+</html>
