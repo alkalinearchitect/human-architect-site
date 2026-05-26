@@ -1392,7 +1392,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
         playsinline
         loop
         poster="https://files.catbox.moe/u7ckm9.jpg"
-        preload="auto"
+        preload="none"
       >
         <source src="https://files.catbox.moe/n15l1i.mp4" type="video/mp4">
       </video>
@@ -1848,18 +1848,74 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
       <div style="margin-bottom:10px;"><span class="guarantee-seal">30-Day Money-Back</span></div>
       <div style="font-size:10px; color:var(--accent); letter-spacing:0.3em; margin-bottom:8px;">30-DAY IRONCLAD GUARANTEE</div>
       <h3 style="font-size:24px; margin-bottom:14px; letter-spacing:-0.02em;">Execute for 30 Days. Full Refund If Nothing Changes.</h3>
-      <p style="color:var(--paper2); font-size:14px; line-height:1.65; max-width:480px; margin:0 auto 18px;">Run every protocol as written. Track your output — energy, clarity, drive. Not your feelings. Your output. If nothing measurably shifts, contact us within 30 days. Full refund. No questions. No hoops. No interrogation. The system works — but it works through your execution, not your purchase. We sell architecture. You supply the will. If you do not execute, the guarantee is irrelevant. If you do execute, you will never need it.</p>
+      <p style="color:var(--paper2); font-size:14px; line-height:1.65; max-width:480px; margin:0 auto 18px;">Run every protocol as written. Track your output — energy, clarity, drive. Not your feelings. Your output. If nothing measurably shifts, contact us within 30 days. Full refund. No questions. No hoops.</p>
       <div style="font-size:11px; color:var(--paper3);">Self-accountability is required. Results come from action. Always.</div>
     </div>
   </div>
 </section>
+
+
+<!-- OBSTRUCTION AUDIT QUIZ -->
+<section class="sec" id="audit">
+  <div class="wrap">
+    <div class="sh" style="text-align:center;">
+      <div class="eyebrow">FREE ASSESSMENT</div>
+      <h2>What's Obstructing <em>You</em>?</h2>
+      <p>Four questions. Sixty seconds. The audit identifies your primary obstruction — and points you to the exact protocol that removes it.</p>
+    </div>
+    <div style="max-width:520px; margin:32px auto 0;">
+      <div id="quizCard" style="background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:32px 28px;">
+        <div id="quizStep1">
+          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Question 1 of 4</div>
+          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:20px;">How would you describe your energy right now?</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <button onclick="quizAnswer(1,'low')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Consistently low — I push through fog most days</button>
+            <button onclick="quizAnswer(1,'crash')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">High then crash — wired at night, dead by 3pm</button>
+            <button onclick="quizAnswer(1,'moderate')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Moderate — functional but not what it used to be</button>
+            <button onclick="quizAnswer(1,'good')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Good — but I know I am operating below potential</button>
+          </div>
+        </div>
+        <div id="quizEmail" style="display:none;">
+          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Get Your Full Assessment</div>
+          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:8px;">Where should we send your results?</div>
+          <div style="font-size:12px; color:var(--paper3); margin-bottom:20px;">Your personalised obstruction assessment + the exact protocol to remove it. Free. No spam.</div>
+          <div class="signup">
+            <input type="email" id="quizEmailInput" placeholder="your@email.com" style="min-width:0;">
+            <button onclick="submitQuizEmail()">GET MY ASSESSMENT →</button>
+          </div>
+          <div style="margin-top:12px; font-size:10px; color:var(--paper3);">We respect your privacy. Unsubscribe anytime.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+var quizScore = { diet: 0, energy: 0, focus: 0, drive: 0 };
+function quizAnswer(q, ans) {
+  if (q === 1) {
+    if (ans === 'low') { quizScore.diet += 2; quizScore.energy += 2; }
+    if (ans === 'crash') { quizScore.focus += 2; quizScore.drive += 1; }
+    if (ans === 'moderate') { quizScore.diet += 1; quizScore.energy += 1; }
+    if (ans === 'good') { quizScore.drive += 1; }
+    document.getElementById('quizStep1').style.display = 'none';
+    document.getElementById('quizEmail').style.display = 'block';
+  }
+}
+function submitQuizEmail() {
+  var email = document.getElementById('quizEmailInput').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  // For now, redirect to signup with email
+  window.location.href = 'https://humanarchitect.substack.com/subscribe?email=' + encodeURIComponent(email);
+}
+</script>
 
 <!-- FINAL CTA -->
 <section class="sec">
   <div class="wrap">
     <div class="cta-box reveal">
       <h2>Stop Reading.<br>Start Rebuilding.</h2>
-      <p>Five books. Seven named protocols. Thirty days to measurable shift. You have read enough. You have consumed enough content. The only thing that was ever missing was your decision to execute — not tomorrow, not Monday. Now. The man you are right now is the man who decided to keep reading instead of acting. Close this tab after you buy. Open the first book. Begin.</p>
+      <p>Five books. Seven protocols. Thirty days to measurable shift. You have read enough. The only thing that was ever missing was your decision to execute — not tomorrow. Now.</p>
       <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="btn bp" style="font-size:11px; padding:18px 46px;">GET THE COMPLETE SYSTEM →</a>
       <div style="margin-top:18px; font-size:10px; color:var(--paper3); letter-spacing:.2em;">INSTANT DOWNLOAD · 30-DAY MONEY-BACK GUARANTEE · 7 NAMED PROTOCOLS</div>
     </div>
@@ -1913,7 +1969,7 @@ var books = [
     subtitle: "21 Days to Remove What Is Rotting Inside You",
     category: "Health, Detox & Nutrition",
     pages: 357,
-    desc: "The foundation. 357 pages of precise alkaline science — not theory, not opinion, the actual biochemistry your doctor was never taught. Remove acid, mucus, and stored toxins in 21 days. 125+ recipes with exact ratios — not suggestions, ratios. Lymphatic activation your doctor never tested because he was never trained to look. Circadian eating aligned to cortisol — eat with the clock or against your own hormones. Breathwork and cold exposure for hormonal optimization — free tools, precise protocols. This rebuild starts here. Without this foundation, every other protocol is built on poison. You cannot retain energy in a body that is rotting from the inside.",
+    desc: "The foundation. 357 pages of alkaline science — remove acid, mucus, and stored toxins in 21 days. 125+ recipes with exact ratios. Lymphatic activation, circadian eating, breathwork and cold exposure protocols. This rebuild starts here.",
     cover: "book-covers/alkaline-awakening.webp",
     previews: [
       {file: "book-previews/alkaline-awakening/cover-p1.webp", label: "Cover"},
@@ -1942,7 +1998,7 @@ var books = [
     subtitle: "You Were Not an Accident. You Were Designed for Dominion.",
     category: "Consciousness & Creation",
     pages: 204,
-    desc: "The philosophy that makes every protocol permanent — because willpower is not a system, it is a battery, and batteries die. Your DNA is code. Not metaphor. Code. Your eye is an engineering marvel no laboratory has replicated. The universe is fine-tuned to tolerances so narrow that 'random' is not a serious explanation — it is a refusal to follow the evidence. You were not an accident. You were designed for dominion. Stop negotiating with weakness. Start living from the blueprint — because the blueprint is what separates a man who transforms from a man who merely tries.",
+    desc: "The philosophy that makes every protocol permanent. Your DNA is code. The universe is fine-tuned. You were not an accident — you were designed for dominion. Stop negotiating with weakness. Start living from the blueprint.",
     cover: "book-covers/intelligent-design.png",
     previews: [
       {file: "book-previews/intelligent-design/cover-p1.webp", label: "Cover"},
@@ -1966,7 +2022,7 @@ var books = [
     subtitle: "The Hidden Epidemic No Doctor Will Name",
     category: "Health, Detox & Parasites",
     pages: 70,
-    desc: "Unexplained fatigue. Brain fog. Gut issues that never resolve no matter what you change. The missing piece most men never address — because no doctor will name it. Parasitic infection is not a third-world problem. It is in your body. Right now. Identify the intruders. Execute the cleanse with exact dosing — not suggestions, not 'try this,' exact protocols. Reclaim the energy that was never yours to lose. Something stole it. This book tells you what, where, and how to kill it.",
+    desc: "Unexplained fatigue. Brain fog. Gut issues that never resolve. The missing piece most men never address. Identify the intruders. Execute the cleanse with exact dosing. Reclaim the energy that was never yours to lose.",
     cover: "book-covers/parasite-conspiracy.png",
     previews: [
       {file: "book-previews/parasite-conspiracy/cover-p1.webp", label: "Cover"},
@@ -1990,7 +2046,7 @@ var books = [
     subtitle: "Transmute Your Most Powerful Resource",
     category: "Discipline, Energy & Vitality",
     pages: 163,
-    desc: "The most powerful — and most wasted — resource in the male body. 45% testosterone surge from retention. The Warrior's Recovery protocol: 90 days to transmute sexual energy from a leaking battery into an unstoppable grid. Catabolic to anabolic. Weakness to magnetic presence dopamine recalibrated from cheap thrills to genuine drive. You are not depriving yourself. You are reclaiming voltage you have been hemorrhaging through a screen since you were thirteen.",
+    desc: "The most powerful — and most wasted — resource in the male body. measurable hormonal shifts from retention. The Warrior's Recovery protocol: 90 days to transmute sexual energy from a leaking battery into an unstoppable grid. Catabolic to anabolic. Weakness to magnetic presence dopamine recalibrated from cheap thrills to genuine drive. You are not depriving yourself. You are reclaiming voltage you have been hemorrhaging through a screen since you were thirteen.",
     cover: "book-covers/life-force-energy.png",
     previews: [
       {file: "book-previews/life-force-energy/cover-p1.webp", label: "Cover"},
@@ -2003,7 +2059,7 @@ var books = [
       "The Warrior's Recovery Protocol — a 90-day structured transmutation system with named phases and daily targets",
       "The Dark Knight Phase: navigating the first 21 days — the wall is coming, the protocol tells you exactly what to do when it hits",
       "Energy redirection — channel sexual energy into creative and physical output that other men can feel in the room",
-      "The 45% testosterone surge: measurable hormonal shifts within 7 days — track it, confirm it, build on it",
+      "Measurable hormonal shifts: what the research shows about retention and testosterone — track it, confirm it, build on it",
       "Long-term transformation timelines: what changes at 30, 60, and 90 days — the man at day 90 does not recognise the man at day 1"
     ],
     disclaimer: "Educational content only. Not medical advice. Individual results may vary. Consult a healthcare professional for personal health decisions."
@@ -2014,7 +2070,7 @@ var books = [
     subtitle: "Break the Dopamine Cage in 21 Days",
     category: "Discipline, Recovery & Self-Control",
     pages: 44,
-    desc: "Porn is not a habit. It is a dopamine cage — and the door is unlocked from the inside. Day-by-day 21-day protocol to break the loop, rewire your brain's reward circuitry, and restore the sexual energy you have been flushing down a screen since before you understood what you were losing. HALT audits your inputs. BED engineers your environment. Relapse-proof systems replace willpower. This is not a motivational speech. It is the exit — with instructions. Every day has a target. Every target has a protocol. Every protocol has an outcome you can measure.",
+    desc: "Porn is not a habit. It is a dopamine cage — and the door is unlocked from the inside. Day-by-day 21-day protocol to break the loop and rewire your brain's reward circuitry. HALT audits your inputs. BED engineers your environment. Relapse-proof systems replace willpower. This is not a motivational speech. It is the exit.",
     cover: "book-covers/quit-prn-manual.png",
     previews: [
       {file: "book-previews/quit-prn/cover-p1.webp", label: "Cover"},
@@ -2891,6 +2947,43 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }, { passive: true });
   }
+
+
+  // ── COUNTER ANIMATION ──
+  function animateCounters() {
+    var counters = document.querySelectorAll('.stat .num[data-target]');
+    counters.forEach(function(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+      var duration = 1200;
+      var start = 0;
+      var startTime = null;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = Math.min((timestamp - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target;
+          el.classList.add('counted');
+        }
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  // Trigger when stats section is visible
+  var statsObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCounters();
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  var statsSection = document.querySelector('.stats');
+  if (statsSection) statsObserver.observe(statsSection);
 
   // ── 2. RIPPLE EFFECT on .btn, .fab, .modal-action-btn ──
   function createRipple(e) {
