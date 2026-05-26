@@ -800,6 +800,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
   border: 1px solid var(--border);
   background: #000;
   box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  padding-bottom: 50px;
 }
 .video-player {
   width: 100%;
@@ -826,14 +827,14 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 }
 .video-mute-btn {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
   z-index: 10;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.6);
   color: #fff;
   display: flex;
   align-items: center;
@@ -1934,13 +1935,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var videoOverlay = document.getElementById('videoOverlay');
   var videoMuteBtn = document.getElementById('videoMuteBtn');
   if (videoEl && videoOverlay) {
-    // Start muted for browser autoplay policy
-    videoEl.muted = true;
-    videoEl.play().catch(function() {
-      // Autoplay blocked, overlay stays visible
-    });
-
-    // Play with sound on overlay click
+    // No autoplay - user must click to start with sound
     videoOverlay.addEventListener('click', function() {
       videoEl.muted = false;
       videoEl.play();
@@ -1957,17 +1952,20 @@ document.addEventListener("DOMContentLoaded", function() {
         var muteIcon = videoMuteBtn.querySelector('.mute-icon');
         var unmuteIcon = videoMuteBtn.querySelector('.unmute-icon');
         if (videoEl.muted) {
-          muteIcon.style.display = 'block';
+          muteIcon.style.display = '';
           unmuteIcon.style.display = 'none';
         } else {
           muteIcon.style.display = 'none';
-          unmuteIcon.style.display = 'block';
+          unmuteIcon.style.display = '';
         }
       });
     }
 
-    // Show overlay on pause
+    // Show overlay + mute btn on pause
     videoEl.addEventListener('pause', function() {
+      videoOverlay.classList.remove('hidden');
+    });
+    videoEl.addEventListener('ended', function() {
       videoOverlay.classList.remove('hidden');
     });
   }
