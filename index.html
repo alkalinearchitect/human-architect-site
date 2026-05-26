@@ -1081,7 +1081,6 @@ html { scroll-behavior:smooth; }
         id="semen-retention-video"
         class="video-player"
         playsinline
-        muted
         loop
         poster="/videos/semen-retention-poster.jpg"
         preload="metadata"
@@ -1905,7 +1904,8 @@ document.addEventListener("DOMContentLoaded", function() {
   var videoEl = document.getElementById('semen-retention-video');
   var videoOverlay = document.getElementById('videoOverlay');
   if (videoEl && videoOverlay) {
-    // Try muted autoplay
+    // Start muted for browser autoplay policy, unmute on user interaction
+    videoEl.muted = true;
     videoEl.play().then(function() {
       videoOverlay.classList.add('hidden');
     }).catch(function() {
@@ -1914,6 +1914,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     videoOverlay.addEventListener('click', function() {
       if (videoEl.paused) {
+        videoEl.muted = false;
         videoEl.play();
         videoOverlay.classList.add('hidden');
       } else {
