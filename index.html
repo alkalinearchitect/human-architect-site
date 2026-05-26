@@ -21,7 +21,7 @@
 <meta property="og:title" content="Human Architect — Stop Leaking Power. Rebuild Your Biology.">
 <meta property="og:description" content="5 books. 7 named protocols. 90 days. The complete system for men who refuse to stay obstructed. By Tyson Architect.">
 <meta property="og:site_name" content="Human Architect">
-<meta property="og:image" content="https://human-architect-site.vercel.app/public/book-covers/alkaline-awakening.webp">
+<meta property="og:image" content="https://files.catbox.moe/iofupp.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="800">
 <meta property="og:locale" content="en_GB">
@@ -30,7 +30,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Human Architect — 5 Books. 7 Protocols. Zero Excuses.">
 <meta name="twitter:description" content="The complete male regeneration system. Alkaline detox. Semen retention. Porn elimination. Parasite cleanse. Identity rebuild. By Tyson Architect.">
-<meta name="twitter:image" content="https://human-architect-site.vercel.app/public/book-covers/alkaline-awakening.webp">
+<meta name="twitter:image" content="https://files.catbox.moe/iofupp.jpg">
 <meta name="twitter:creator" content="@humanarchitect8">
 
 <!-- JSON-LD Authority Signals for AEO/GEO -->
@@ -73,7 +73,7 @@
   "description": "5 books, 7 named protocols, 90-day execution plan for complete male regeneration. Alkaline detox, semen retention, porn recovery, parasite cleanse, identity architecture.",
   "brand": {"@type": "Brand", "name": "Human Architect"},
   "url": "https://human-architect-site.vercel.app/",
-  "image": "https://human-architect-site.vercel.app/public/book-covers/alkaline-awakening.webp",
+  "image": "https://files.catbox.moe/iofupp.jpg",
   "offers": {
     "@type": "Offer",
     "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae",
@@ -111,6 +111,37 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://human-architect-site.vercel.app/"},
+    {"@type": "ListItem", "position": 2, "name": "The Books", "item": "https://human-architect-site.vercel.app/#books"},
+    {"@type": "ListItem", "position": 3, "name": "90-Day Rebuild", "item": "https://human-architect-site.vercel.app/#roadmap"},
+    {"@type": "ListItem", "position": 4, "name": "FAQ", "item": "https://human-architect-site.vercel.app/#faq"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Human Architect by Tyson Architect — The Complete Male Rebuild System",
+  "description": "The Human Architect system: 5 books, 7 named protocols, 90-day execution plan. Alkaline detox, semen retention, porn recovery, parasite cleanse, identity rebuild.",
+  "url": "https://human-architect-site.vercel.app/",
+  "author": {"@type": "Person", "name": "Tyson Architect"},
+  "publisher": {"@type": "Organization", "name": "Human Architect", "logo": {"@type": "ImageObject", "url": "https://files.catbox.moe/iofupp.jpg"}},
+  "mainEntity": {
+    "@type": "BookSeries",
+    "name": "Human Architect 5-Book System",
+    "author": "Tyson Architect",
+    "numberOfBooks": 5
+  }
+}
+</script>
+
 <style>
 :root {
   --bg: #000000;
@@ -144,6 +175,31 @@
   --warm-glow: rgba(245,158,11,0.12);
 }
 
+/* Section color accents */
+.stat:nth-child(1) .num { color: var(--gold); }
+.stat:nth-child(2) .num { color: var(--green); }
+.stat:nth-child(3) .num { color: var(--accent); }
+.stat:nth-child(4) .num { color: var(--warm); }
+
+/* Gold accent for testimonial quotes */
+.testi-card blockquote::before { color: var(--gold); }
+
+/* Warm accent for final CTA section */
+.cta-box { border-color: var(--warm); box-shadow: 0 0 60px var(--warm-glow), 0 0 60px var(--accent-glow); }
+
+/* Breadcrumb */
+.breadcrumb { padding: 8px 0 0; font-size: 11px; color: var(--paper3); }
+.breadcrumb ol { list-style: none; display: flex; gap: 8px; align-items: center; }
+.breadcrumb li::after { content: '/'; margin-left: 8px; color: var(--border2); }
+.breadcrumb li:last-child::after { display: none; }
+.breadcrumb a { color: var(--paper3); text-decoration: none; transition: color .2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb [aria-current] { color: var(--paper2); }
+
+/* Guarantee seal */
+.guarantee-seal { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--green); border-radius: 999px; font-size: 10px; font-weight: 600; letter-spacing: .15em; color: var(--green); text-transform: uppercase; }
+.guarantee-seal::before { content: '✓'; font-size: 12px; }
+
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 /* Prevent tap highlight flash on iOS */
 * { -webkit-tap-highlight-color: transparent; }
@@ -163,6 +219,14 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 
 ::-webkit-scrollbar { width:6px; height:6px; }
 ::-webkit-scrollbar-thumb { background:rgba(245,245,240,0.15); border-radius:999px; }
+
+/* Skip link */
+.skip-link { position:absolute; top:-100%; left:16px; z-index:9999; padding:10px 18px; background:var(--accent); color:#fff; font-size:13px; font-weight:600; border-radius:0 0 8px 8px; text-decoration:none; transition:top .2s; }
+.skip-link:focus { top:0; }
+
+/* Focus visible */
+:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+:focus:not(:focus-visible) { outline:none; }
 
 /* Progress */
 .prog { position:fixed; top:0; left:0; height:2px; width:0%; background:linear-gradient(to right, var(--accent), #e11d48); z-index:300; transition:width .06s linear; }
@@ -1213,11 +1277,11 @@ html { scroll-behavior:smooth; }
 </head>
 <body>
 
-<a href="#books" class="skip-link">Skip to books</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 <div class="prog" id="prog"></div>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-in">
     <div class="logo">HUMAN ARCHITECT <span>by Tyson Architect</span></div>
     <ul class="nav-links">
@@ -1242,6 +1306,11 @@ html { scroll-behavior:smooth; }
 </div>
 
 <!-- HERO - CINEMATIC -->
+<main id="main" role="main">
+
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb" class="breadcrumb"><div class="wrap"><ol><li><a href="/">Home</a></li><li><a href="#books">The Books</a></li><li><a href="#roadmap">90-Day Rebuild</a></li><li><span aria-current="page">FAQ</span></li></ol></div></nav>
+
 <section class="hero">
   <canvas id="hero-canvas" width="1400" height="900"></canvas>
   <div class="hc">
@@ -1277,6 +1346,10 @@ html { scroll-behavior:smooth; }
     <div class="stat reveal"><div class="num" data-target="7">0</div><div class="label">Named Protocols</div></div>
     <div class="stat reveal"><div class="num" data-target="30">0</div><div class="label">Days to Measurable Shift</div></div>
     <div class="stat reveal"><div class="num" data-target="90">0</div><div class="label">Days to Full Rebuild</div></div>
+  </div>
+  <div style="text-align:center; margin-top:24px; padding:16px 0; border-top:1px solid var(--border);">
+    <div style="font-size:10px; letter-spacing:.25em; color:var(--paper3); text-transform:uppercase; margin-bottom:6px;">Join the rebuild</div>
+    <div style="font-size:13px; color:var(--paper2);">Men across <strong style="color:var(--gold);">40+ countries</strong> are running the system right now</div>
   </div>
 </div>
 
@@ -1705,6 +1778,7 @@ html { scroll-behavior:smooth; }
 <section class="sec" id="guarantee">
   <div class="wrap">
     <div style="max-width:620px; margin:0 auto; text-align:center; padding:32px 20px; background:var(--bg2); border:1px solid var(--border); border-radius:20px;">
+      <div style="margin-bottom:10px;"><span class="guarantee-seal">30-Day Money-Back</span></div>
       <div style="font-size:10px; color:var(--accent); letter-spacing:0.3em; margin-bottom:8px;">30-DAY IRONCLAD GUARANTEE</div>
       <h3 style="font-size:24px; margin-bottom:14px; letter-spacing:-0.02em;">Execute for 30 Days. Full Refund If Nothing Changes.</h3>
       <p style="color:var(--paper2); font-size:14px; line-height:1.65; max-width:480px; margin:0 auto 18px;">Run every protocol as written. Track your output — energy, clarity, drive. Not your feelings. Your output. If nothing measurably shifts, contact us within 30 days. Full refund. No questions. No hoops. No interrogation. The system works — but it works through your execution, not your purchase. We sell architecture. You supply the will. If you do not execute, the guarantee is irrelevant. If you do execute, you will never need it.</p>
@@ -1725,7 +1799,9 @@ html { scroll-behavior:smooth; }
   </div>
 </section>
 
-<footer class="footer">
+</main>
+
+<footer class="footer" role="contentinfo">
   <div class="footer-in">
     <div class="footer-copy">© 2026 Tyson Architect. Human Architect. All rights reserved.<br>Self-accountability is the price of admission. Always.</div>
     <ul class="footer-links">
