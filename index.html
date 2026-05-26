@@ -257,12 +257,13 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .mobi a { display:block; padding:22px 0; font-family:var(--serif); font-size:26px; font-weight:300; color:var(--paper); border-bottom:1px solid var(--border); letter-spacing:-.03em; }
 
 /* Hero - Cinematic */
-.hero { min-height:100vh; display:flex; align-items:center; justify-content:flex-start; padding:100px 60px 80px; position:relative; overflow:hidden; background: #000 url('https://files.catbox.moe/bcs0bx.PNG') 35% center / cover no-repeat; }
+.hero { min-height:100vh; display:flex; align-items:center; justify-content:flex-start; padding:100px 60px 80px; position:relative; overflow:hidden; background:#000; }
 .hero::before { display:none; }
+.hero-bg-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:35% center; z-index:0; }
 .hero-img { display:none; }
 @media (max-width:900px) {
-  .hero { padding:80px 20px 60px; background-position: 60% center; }
-  .hero::before { display:none; }
+  .hero { padding:80px 20px 60px; }
+  .hero-bg-img { object-position:60% center; }
 }
 #hero-canvas { position:absolute; inset:0; z-index:0; opacity:0.15; pointer-events:none; }
 .hc { position:relative; z-index:2; max-width:580px; width:100%; }
@@ -1323,6 +1324,7 @@ html { scroll-behavior:smooth; }
 <nav aria-label="Breadcrumb" class="breadcrumb"><div class="wrap"><ol><li><a href="/">Home</a></li><li><a href="#books">The Books</a></li><li><a href="#roadmap">90-Day Rebuild</a></li><li><span aria-current="page">FAQ</span></li></ol></div></nav>
 
 <section class="hero">
+  <img src="https://files.catbox.moe/7hicgc.png" alt="Human Architect — Two Worlds" class="hero-bg-img" width="1920" height="1080" loading="eager">
   <canvas id="hero-canvas" width="1400" height="900"></canvas>
   <div class="hc">
     <div class="hero-eyebrow">THE OBSTRUCTION AUDIT — BY TYSON ARCHITECT</div>
