@@ -840,6 +840,377 @@ img[loading="lazy"]:not([src=""]) {
 noscript .reveal,
 noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
+/* ═══════════════════════════════════════════════════
+   APPLE MOTION UPGRADE — June 2026
+   Spring physics · Magnetic hover · Scroll-timeline
+   ═══════════════════════════════════════════════════ */
+
+/* -- Spring timing custom properties */
+:root {
+  --spring1: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --spring2: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring3: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── A1. SCROLL-DRIVEN SECTION REVEALS (native CSS, zero JS) ── */
+@supports (animation-timeline: view()) {
+  .sec, .roadmap, .testi, .compare, .pricing-section {
+    animation: sectionScrollReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+  @keyframes sectionScrollReveal {
+    from { opacity: 0; transform: translateY(60px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .sec .sh > *, .roadmap .sh > * {
+    animation: sectionChildReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  @keyframes sectionChildReveal {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* Stagger children via nth-child delays */
+  .sec .sh > *:nth-child(2) { animation-range: entry 5% entry 40%; }
+  .sec .sh > *:nth-child(3) { animation-range: entry 10% entry 40%; }
+}
+
+/* ── A2. MAGNETIC BUTTON — glow follows cursor AND spring-attracts ── */
+.btn {
+  position: relative;
+  overflow: hidden;
+  --mx: 50%;
+  --my: 50%;
+  transition: transform 0.4s var(--spring1), box-shadow 0.4s var(--spring2);
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  top: var(--my);
+  left: var(--mx);
+  width: 0; height: 0;
+  background: radial-gradient(circle, rgba(255,45,85,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s var(--spring2), height 0.4s var(--spring2);
+  pointer-events: none;
+}
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+.btn:hover {
+  transform: scale(1.04) translateY(-2px);
+  box-shadow: 0 12px 40px rgba(196,30,58,0.25);
+}
+.btn:active {
+  transform: scale(0.97);
+  transition: transform 0.15s ease-out;
+}
+
+/* ── A3. FROSTED GLASS PROTOCOL POPUP — iOS-style sheet ── */
+.proto-sheet-overlay {
+  position: fixed; inset: 0; z-index: 10001;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.4s var(--spring2);
+}
+.proto-sheet-overlay.open {
+  opacity: 1; pointer-events: all;
+}
+.proto-sheet {
+  width: 100%; max-width: 680px;
+  background: rgba(30,30,30,0.92);
+  backdrop-filter: blur(40px) saturate(1.8);
+  -webkit-backdrop-filter: blur(40px) saturate(1.8);
+  border-radius: 24px 24px 0 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-bottom: none;
+  padding: 12px 0 max(32px, env(safe-area-inset-bottom));
+  transform: translateY(100%) scale(0.96);
+  transition: transform 0.5s var(--spring1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.proto-sheet-overlay.open .proto-sheet {
+  transform: translateY(0) scale(1);
+}
+.proto-sheet-handle {
+  width: 36px; height: 4px; border-radius: 2px;
+  background: rgba(255,255,255,0.2);
+  margin: 0 auto 16px;
+}
+.proto-sheet h3 {
+  font-family: var(--serif);
+  font-size: 24px; font-weight: 300;
+  color: var(--paper); letter-spacing: -0.02em;
+  padding: 0 28px; margin-bottom: 4px;
+}
+.proto-sheet .proto-subtitle {
+  font-size: 11px; color: var(--accent);
+  letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; padding: 0 28px; margin-bottom: 20px;
+}
+.proto-sheet .proto-body {
+  font-size: 14.5px; color: var(--paper2);
+  line-height: 1.7; padding: 0 28px;
+}
+.proto-sheet .proto-close {
+  position: absolute; top: 16px; right: 16px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none; color: var(--paper2);
+  font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.proto-sheet .proto-close:hover { background: rgba(255,255,255,0.2); }
+
+/* ── A4. HERO WORD ANIMATION — enhanced stagger ── */
+.hero #hero-headline .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) rotateX(-20deg);
+  animation: heroWordSpring 0.8s var(--spring1) forwards;
+}
+@keyframes heroWordSpring {
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+
+/* ── A5. BOOK CARD SPRING TILT ── */
+.book-card {
+  transition: transform 0.5s var(--spring1), box-shadow 0.5s var(--spring2);
+}
+.book-card:hover {
+  transform: translateY(-10px) rotateX(2deg) scale(1.02);
+  box-shadow: 0 30px 80px -20px rgba(196,30,58,0.3);
+}
+.book-card:active {
+  transform: scale(0.98);
+  transition: transform 0.15s ease-out;
+}
+
+/* ── A6. NAV LINK SPRING UNDERLINE ── */
+.nav-links a, .footer-links a {
+  position: relative;
+}
+.nav-links a::after, .footer-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 50%;
+  width: 0; height: 1.5px;
+  background: var(--accent);
+  border-radius: 1px;
+  transform: translateX(-50%);
+  transition: width 0.4s var(--spring1);
+}
+.nav-links a:hover::after, .footer-links a:hover::after {
+  width: 100%;
+}
+
+/* ── A7. FAQ SPRING OPEN ── */
+.faq-item { transition: border-color 0.3s var(--spring2); }
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--spring1);
+}
+.faq-item.open .faq-a {
+  grid-template-rows: 1fr;
+}
+.faq-a > * { overflow: hidden; }
+
+/* ── A8. CTA BREATHING — refined ── */
+@media (prefers-reduced-motion: no-preference) {
+  .cta-box {
+    animation: ctaBreathApple 4s ease-in-out infinite;
+  }
+  @keyframes ctaBreathApple {
+    0%, 100% { box-shadow: 0 24px 70px rgba(0,0,0,0.45); }
+    50% { box-shadow: 0 24px 70px rgba(0,0,0,0.45), 0 0 60px rgba(196,30,58,0.12); }
+  }
+}
+
+/* ── A9. PROTOCOL CARD HOVER — subtle lift ── */
+.protoc, .trust-item {
+  transition: transform 0.4s var(--spring1), border-color 0.3s;
+}
+.protoc:hover, .trust-item:hover {
+  transform: translateY(-4px);
+}
+
+/* ── A10. IMAGE PARALLAX WRAPPER ── */
+.hero-img-wrap {
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ── A11. SMOOTH SCROLL DRIVEN PARTICLES ── */
+@supports (animation-timeline: scroll()) {
+  .scroll-indicator {
+    animation: scrollIndicatorFade linear;
+    animation-timeline: scroll(root);
+    animation-range: 0% 15%;
+  }
+  @keyframes scrollIndicatorFade {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+  }
+}
+
+/* ── A12. RIPPLE EFFECT ── */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transform: scale(0);
+  animation: rippleAnim 0.65s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ── A13. CHAR REVEAL — hero headline ── */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px) rotateX(-15deg);
+  animation: charSpring 0.6s var(--spring1) forwards;
+}
+@keyframes charSpring {
+  to { opacity: 1; transform: translateY(0) rotateX(0); }
+}
+
+/* ── A14. PHASE CARD INTERACTION ── */
+.phase {
+  transition: transform 0.4s var(--spring1), border-color 0.3s, box-shadow 0.4s;
+  cursor: pointer;
+}
+.phase:hover {
+  transform: translateY(-6px);
+  border-color: var(--border2);
+  box-shadow: 0 20px 50px -15px rgba(196,30,58,0.15);
+}
+.phase:active {
+  transform: scale(0.98);
+  transition: transform 0.15s ease-out;
+}
+
+/* ── A15. TESTIMONIAL CARD HOVER ── */
+.testi-card {
+  transition: transform 0.4s var(--spring1), border-color 0.3s, box-shadow 0.4s;
+}
+.testi-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px -20px rgba(196,30,58,0.2);
+}
+
+/* ── A16. COMPARABLE ROW STAGGER ── */
+.compare-row .compare-cell {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.5s var(--spring2), transform 0.5s var(--spring2);
+}
+.compare-row.visible .compare-cell { opacity: 1; transform: none; }
+.compare-row.visible .compare-cell:nth-child(1) { transition-delay: 0ms; }
+.compare-row.visible .compare-cell:nth-child(2) { transition-delay: 60ms; }
+.compare-row.visible .compare-cell:nth-child(3) { transition-delay: 120ms; }
+.compare-row.visible .compare-cell:nth-child(4) { transition-delay: 180ms; }
+
+/* ── A17. FAB SPRING BOUNCE ── */
+.fab {
+  transition: transform 0.4s var(--spring1), opacity 0.3s;
+}
+.fab.visible {
+  animation: fabSpringIn 0.6s var(--spring1) forwards;
+}
+@keyframes fabSpringIn {
+  0% { transform: translateY(20px) scale(0.8); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+.fab:active {
+  transform: scale(0.92);
+  transition: transform 0.15s ease-out;
+}
+
+/* ── A18. MODAL SPRING ── */
+.modal {
+  background: rgba(18,18,18,0.99);
+  border: 1px solid var(--border2);
+  border-radius: 24px;
+  max-width: 740px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(40px) scale(0.95) rotateX(4deg);
+  filter: blur(4px);
+  transition: all 0.5s var(--spring1);
+  box-shadow: 0 60px 160px rgba(0,0,0,0.8);
+}
+.modal-overlay.open .modal {
+  transform: translateY(0) scale(1) rotateX(0);
+  filter: blur(0);
+}
+
+/* ── A19. SIGNUP INPUT FOCUS ── */
+.signup {
+  transition: border-color 0.3s, box-shadow 0.3s var(--spring2);
+}
+.signup:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(196,30,58,0.15);
+}
+
+/* ── A20. STICKY CTA SLIDE ── */
+.sticky-cta {
+  transform: translateY(100%);
+  transition: transform 0.4s var(--spring1);
+}
+.sticky-cta.visible {
+  transform: translateY(0);
+}
+
+/* ── A21. SCROLL-DRIVEN HERO PARALLAX ── */
+@supports (animation-timeline: scroll(root)) {
+  .hero {
+    animation: heroParallax linear;
+    animation-timeline: scroll(root);
+    animation-range: 0 50vh;
+  }
+  @keyframes heroParallax {
+    from { transform: translateY(0); }
+    to { transform: translateY(-80px); }
+  }
+  .hero .hc {
+    animation: heroContentFade linear;
+    animation-timeline: scroll(root);
+    animation-range: 0 40vh;
+  }
+  @keyframes heroContentFade {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-40px); }
+  }
+}
+
+/* ── A22. REDUCED MOTION — kill all animations ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero h1 .word, .char { opacity: 1 !important; transform: none !important; filter: none !important; }
+  .scroll-down .mouse::after { animation: none !important; }
+  .sec, .roadmap, .testi, .compare { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
 /* Authority quotes */
 .illuminate { color:#ff2d55; font-style:italic; font-weight:700; text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); animation: illuminatePulse 2.4s ease-in-out infinite, illuminateBurst 1.2s ease-out; }
 .illuminate-subtle { color:var(--accent); font-style:italic; font-weight:400; text-shadow:0 0 12px var(--accent-glow); }
@@ -3154,6 +3525,154 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Expose for debugging / future agents
 window.HumanArchitect = { openModal: openModal };
+
+// ═══════════════════════════════════════════════════════════════
+// APPLE MOTION JS — Protocol sheet, Enhanced Hero, Micro-interactions
+// ═══════════════════════════════════════════════════════════════
+
+// ── B1. FROSTED GLASS PROTOCOL SHEET ──
+// Protocol data for popups
+var protoData = {
+  'halt': {
+    title: 'HALT Protocol',
+    subtitle: 'THE DIAGNOSTIC FRAMEWORK',
+    body: 'HALT stands for Hungry, Angry, Lonely, Tired. These four states are the primary leaks in your biological architecture. Before you execute any protocol, you run HALT. If any of these four variables are compromised, no supplement, diet, or recovery method will hold. You fix the variable first. Then you build on stable ground. This is not motivational advice. This is systems design for the human body.'
+  },
+  'v-p-o': {
+    title: 'V = P - O Formula',
+    subtitle: 'THE GOVERNING EQUATION',
+    body: 'According to Tyson Architect: your available energy (Vital Life Force) equals your innate Power minus Obstruction. Power is fixed — it was set at conception. Obstruction is accumulated — pathogens, mucus, trapped emotions, toxic relationships, poor circulation. You cannot increase your power. You can only reduce obstruction. Every protocol in the Human Architect system is designed to remove O. When O approaches zero, V approaches P. This is not philosophy. This is arithmetic.'
+  },
+  'mucusless': {
+    title: 'Mucusless Diet',
+    subtitle: 'THE ELIMINATION PROTOCOL',
+    body: 'The mucusless diet is not a food fad. It is a systematic removal of all foods that produce mucus in the body. Mucus is not just what you cough up. It is the waste product of every bodily system that is not properly eliminating. Arnold Ehret proved over 100 years ago that mucus-forming foods create obstruction. The Mucusless Diet removes: all animal products, refined grains, dairy, refined sugar, and processed oils. What remains: fruits, vegetables, leafy greens, and limited starches. Thirty days. No exceptions.'
+  },
+  'circulation': {
+    title: 'Circulation Protocol',
+    subtitle: 'THE GROUNDING SYSTEM',
+    body: 'Blood quality determines everything. Oxygen delivery, hormone transport, immune response, cognitive function — all governed by circulation. The Circulation Protocol combines: daily grounding (barefoot contact with earth), cold exposure (cold showers 2-5 minutes), infrared sauna (20-30 minutes, 3-4x/week), and compression therapy. These four inputs force blood to move through stagnant areas. Healing cannot happen without circulation. You can have the perfect diet, but if blood does not reach the tissue, healing does not occur.'
+  },
+  'porn-free': {
+    title: 'PRN Protocol',
+    subtitle: 'THE NEURAL RESET',
+    body: 'Pornography creates a dopamine baseline that makes normal life feel grey. The PRN Protocol is not about willpower — it is about dopamine receptor recovery. Day 1-7: complete abstinence from all artificial sexual stimulation. Day 8-30: cold exposure, intense exercise, and social re-engagement. Day 30-90: identity rebuild. You are not "quitting porn." You are rebuilding a dopamine system that was hijacked by supernormal stimuli. This is neurological recovery, not moral instruction.'
+  },
+  'identity': {
+    title: 'Identity Shift',
+    subtitle: 'THE FOUNDATIONAL LAYER',
+    body: 'Every protocol fails if the identity does not shift. You cannot execute a mucusless diet while identifying as someone who "needs" bread. You cannot do PRN recovery while identifying as a "porn user." Identity is the operating system. Protocols are applications. If the OS is corrupted, no app runs correctly. The Identity Shift happens in three stages: (1) Name who you are not, (2) Name who you are, (3) Execute from the new identity. Every book in the system begins here.'
+  }
+};
+
+function initProtoSheet() {
+  // Create overlay
+  var overlay = document.createElement('div');
+  overlay.className = 'proto-sheet-overlay';
+  overlay.id = 'protoSheet';
+  overlay.innerHTML =
+    '<div class="proto-sheet">' +
+      '<div class="proto-sheet-handle"></div>' +
+      '<button class="proto-close" aria-label="Close">✕</button>' +
+      '<h3 id="protoSheetTitle"></h3>' +
+      '<div class="proto-subtitle" id="protoSheetSubtitle"></div>' +
+      '<div class="proto-body" id="protoSheetBody"></div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  var sheetTitle = document.getElementById('protoSheetTitle');
+  var sheetSub = document.getElementById('protoSheetSubtitle');
+  var sheetBody = document.getElementById('protoSheetBody');
+
+  function openProto(key) {
+    var data = protoData[key];
+    if (!data) return;
+    sheetTitle.textContent = data.title;
+    sheetSub.textContent = data.subtitle;
+    sheetBody.innerHTML = '<p>' + data.body + '</p>';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProto() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelector('.proto-close').addEventListener('click', closeProto);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeProto(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeProto(); });
+
+  // Attach to protocol elements
+  document.querySelectorAll('.protoc').forEach(function(el) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function() {
+      var key = el.getAttribute('data-proto') || el.id || '';
+      if (protoData[key]) openProto(key);
+    });
+  });
+}
+initProtoSheet();
+
+// ── B2. ENHANCED HERO STAGGER — improved timing ──
+function enhanceHeroStagger() {
+  var words = document.querySelectorAll('#hero-headline .word');
+  words.forEach(function(w, i) {
+    w.style.animationDelay = (i * 0.12) + 's';
+  });
+  // Ensure illuminate word gets extra glow
+  var stolen = document.querySelector('#hero-headline .word.illuminate');
+  if (stolen) {
+    stolen.style.animationDelay = '0s';
+  }
+}
+enhanceHeroStagger();
+
+// ── B3. MAGNETIC BUTTON CURSOR TRACKING ──
+function enhanceMagnetic() {
+  var magBtns = document.querySelectorAll('.btn, .fab');
+  for (var i = 0; i < magBtns.length; i++) {
+    magBtns[i].addEventListener('mousemove', function(e) {
+      var rect = e.currentTarget.getBoundingClientRect();
+      var mx = ((e.clientX - rect.left) / rect.width) * 100;
+      var my = ((e.clientY - rect.top) / rect.height) * 100;
+      e.currentTarget.style.setProperty('--mx', mx + '%');
+      e.currentTarget.style.setProperty('--my', my + '%');
+    });
+    magBtns[i].addEventListener('mouseleave', function(e) {
+      e.currentTarget.style.setProperty('--mx', '50%');
+      e.currentTarget.style.setProperty('--my', '50%');
+    });
+  }
+}
+enhanceMagnetic();
+
+// ── B4. IMAGE PARALLAX WRAPPER ──
+function initImgParallax() {
+  var heroImg = document.querySelector('.hero-img-wrap');
+  if (!heroImg) return;
+  window.addEventListener('scroll', function() {
+    var scrolled = window.pageYOffset;
+    if (scrolled < window.innerHeight) {
+      heroImg.style.transform = 'translateY(' + (scrolled * 0.2) + 'px) scale(' + (1 + scrolled * 0.0003) + ')';
+    }
+  }, { passive: true });
+}
+initImgParallax();
+
+// ── B5. SCROLL INDICATOR HIDE ──
+function initScrollIndicator() {
+  var indicator = document.querySelector('.scroll-indicator');
+  if (!indicator) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 200) {
+      indicator.style.opacity = '0';
+      indicator.style.pointerEvents = 'none';
+    }
+  }, { passive: true });
+}
+initScrollIndicator();
+
 </script>
 
 </body>
