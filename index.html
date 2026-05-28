@@ -22,16 +22,14 @@
 <meta property="og:title" content="Human Architect — 5 Books. 7 Protocols. Stop Leaking Power.">
 <meta property="og:description" content="5 books, 7 named protocols, 90-day rebuild. Alkaline detox, semen retention, porn recovery, parasite elimination. By Tyson Architect.">
 <meta property="og:site_name" content="Human Architect">
-<meta property="og:image" content="https://files.catbox.moe/7hicgc.png">
-<meta property="og:image:width" content="1672">
-<meta property="og:image:height" content="941">
+<meta property="og:image" content="hero-main.png">
+<meta property="og:image:width" content="853">
+<meta property="og:image:height" content="1844">
 <meta property="og:locale" content="en_GB">
-
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Human Architect — HALT, V=P-O, Warrior's Recovery. 7 Protocols That Rebuild Men.">
-<meta name="twitter:description" content="The complete male regeneration system by Tyson Architect. HALT Protocol, V=P-O Formula, Circulation Protocol, Mucusless Diet, Warrior's Recovery. 7 named protocols. 90-day execution.">
-<meta name="twitter:image" content="https://files.catbox.moe/7hicgc.png">
+<meta name="twitter:title" content="Human Architect — 5 Books. 7 Protocols. Stop Leaking Power.">
+<meta name="twitter:description" content="5 books, 7 named protocols, 90-day rebuild. By Tyson Architect.">
+<meta name="twitter:image" content="hero-main.png">
 <meta name="twitter:creator" content="@humanarchitect8">
 
 <!-- JSON-LD Authority Signals for AEO/GEO -->
@@ -74,7 +72,7 @@
   "description": "5 books, 7 named protocols, 90-day execution plan for complete male regeneration. Alkaline detox, semen retention, porn recovery, parasite elimination protocol, identity architecture.",
   "brand": {"@type": "Brand", "name": "Human Architect"},
   "url": "https://human-architect-site.vercel.app/",
-  "image": "https://files.catbox.moe/7hicgc.png",
+  "image": "hero-main.png",
   "offers": {
     "@type": "Offer",
     "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae",
@@ -260,17 +258,17 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .mobi-close { position:absolute; top:18px; right:18px; background:transparent; border:1px solid var(--border); color:var(--paper); cursor:pointer; padding:12px; font-size:10px; text-transform:uppercase; letter-spacing:.12em; font-weight:600; z-index:201; border-radius:9999px; min-width:46px; min-height:46px; display:flex; align-items:center; justify-content:center; }
 .mobi a { display:block; padding:22px 0; font-family:var(--serif); font-size:26px; font-weight:300; color:var(--paper); border-bottom:1px solid var(--border); letter-spacing:-.03em; }
 
-/* Hero - Image LEFT, Text RIGHT, never overlap */
+/* Hero - Portrait image LEFT, Text RIGHT */
 .hero { display:flex; align-items:stretch; padding:0; position:relative; overflow:hidden; background:#000; width:100%; min-height:100vh; }
 .hero::before { display:none; }
-.hero-img-wrap { flex:0 0 52%; position:relative; z-index:1; min-height:100vh; overflow:hidden; }
-.hero-bg-img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center center; display:block; }
-#hero-canvas { position:absolute; inset:0; z-index:0; opacity:0.15; pointer-events:none; }
+.hero-img-wrap { flex:0 0 45%; position:relative; z-index:1; min-height:100vh; overflow:hidden; }
+.hero-bg-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center; display:block; }
+#hero-canvas { display:none; }
 .hc { flex:1 1 48%; max-width:620px; position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; min-height:100vh; padding:120px 60px 100px 40px; }
 @media (max-width:900px) {
   .hero { flex-direction:column; min-height:0; align-items:flex-start; }
   .hero-img-wrap { flex:none; width:100%; min-height:0; max-height:none; height:auto; order:1; position:relative; }
-  .hero-bg-img { position:relative; inset:auto; width:100%; height:auto; object-fit:contain; object-position:center center; display:block; }
+  .hero-bg-img { position:relative; inset:auto; width:100%; height:auto; object-fit:cover; object-position:center center; display:block; max-height:60vh; }
   .hc { flex:none; max-width:100%; width:100%; order:2; min-height:auto; padding:48px 20px 56px; text-align:center; align-items:center; }
   .ctas { justify-content:center; }
 }
@@ -1293,7 +1291,24 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 </style>
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <noscript><style>.sec.will-reveal{opacity:1!important;transform:none!important}.hero h1 .word{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
+    <noscript><style>.sec.will-reveal{opacity:1!important;transform:none!important}.hero h1 .word{opacity:1!important;transform:none!important;filter:none!important}
+/* Hero proof bar */
+.hero-proof {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--paper3);
+  text-transform: uppercase;
+  margin-top: 18px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 1.4s;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.founder-portrait { display: none; }
+</style></noscript>
 </head>
 <body>
 
@@ -1346,7 +1361,8 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
       <span class="word illuminate">STEALING IT.</span>
     </h1>
     <div class="hero-rule" id="hero-rule"></div>
-    <p class="morph" id="morph-text">You are tired. Not the kind sleep fixes. The kind where you wake up foggy, push through your day on autopilot, and lie awake at night knowing you were built for more than this. Something is stealing it. I spent years letting it happen. Then I found the leaks. Now I am going to show you where yours are.</p>
+    <p id="hero-sub">Every leak has a name. Every obstruction has a protocol. <em>You are not broken — you are obstructed.</em></p>
+    <div class="hero-proof">✦ 7 Named Protocols &nbsp;·&nbsp; 90-Day Rebuild &nbsp;·&nbsp; 30-Day Guarantee</div>
 
     <div class="ctas">
       <button onclick="document.getElementById('books').scrollIntoView({behavior:'smooth'})" class="btn bp">HOW THIS WORKS <span class="arrow">→</span></button>
@@ -1356,10 +1372,10 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
   </div>
 
   <div class="hero-img-wrap">
-    <img src="https://files.catbox.moe/7hicgc.png" alt="Human Architect — Two Worlds" class="hero-bg-img" width="1672" height="941" loading="eager">
+    <img src="hero-main.png" alt="Human Architect by Tyson Architect" class="hero-bg-img" width="853" height="1844" loading="eager">
   </div>
 
-  <canvas id="hero-canvas" width="1400" height="900"></canvas>
+  <canvas id="hero-canvas" width="1400" height="900" style="pointer-events:none;position:relative;z-index:1;"></canvas>
   <div class="scroll-down" aria-hidden="true">
     <div class="mouse"></div>
     <span>SCROLL</span>
@@ -1370,10 +1386,10 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 <!-- STATS — unified 5-cell row, count-up on view -->
 <div class="wrap">
   <div class="stats">
-    <div class="stat reveal"><div class="num" data-target="5">0</div><div class="label">Books. One System.</div></div>
     <div class="stat reveal"><div class="num" data-target="7">0</div><div class="label">Named Protocols</div></div>
-    <div class="stat reveal"><div class="num" data-target="30">0</div><div class="label">Days to Measurable Shift</div></div>
-    <div class="stat reveal"><div class="num" data-target="90">0</div><div class="label">Days to Full Rebuild</div></div>
+    <div class="stat reveal"><div class="num" data-target="5">0</div><div class="label">Books. One System.</div></div>
+    <div class="stat reveal"><div class="num" data-target="357">0</div><div class="label">Pages of Execution Maps</div></div>
+    <div class="stat reveal"><div class="num" data-target="125">0</div><div class="label">Alkaline Recipes Included</div></div>
   </div>
   <div style="text-align:center; margin-top:24px; padding:16px 0; border-top:1px solid var(--border);">
     <div style="font-size:10px; letter-spacing:.25em; color:var(--paper3); text-transform:uppercase; margin-bottom:6px;">According to WHOOP user data</div>
@@ -1451,85 +1467,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ -->
-<!-- ALKALINE AWAKENING VIDEO                 -->
-<!-- ═══════════════════════════════════════ -->
-<section class="section reveal" id="video-alkaline">
-  <div class="wrap">
-    <div class="sh">
-      <div class="eyebrow">FIRST. UNDERSTAND THIS.</div>
-      <h2>Why 21 Days of Alkaline<br>Detox Changes Your <em>Entire Baseline</em>.</h2>
-      <p>You are not lazy. You are acidic. Chronic low-grade acidemia pushes blood pH toward 7.30-7.35. Oxygen delivery drops. Enzymes slow. Waste builds up. You feel it as fatigue. Fog. No drive. Arnold Ehret mapped this in 1922 — the human body runs inside a pH window of 7.35-7.45. Outside it, everything slows down. Including you. I watched this shift in myself. The fog did not slowly lift. It left.</p>
-    </div>
-    <div class="video-wrapper">
-      <video
-        id="alkaline-awakening-video"
-        class="video-player"
-        playsinline
-        loop
-        poster="https://files.catbox.moe/iofupp.jpg"
-        preload="auto"
-      >
-        <source src="https://files.catbox.moe/2y1kg4.mp4" type="video/mp4">
-      </video>
 
-      <div class="video-overlay" id="videoOverlayAlkaline">
-        <button class="video-play-btn" id="videoPlayBtnAlkaline" aria-label="Play video">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-          <span>PLAY WITH SOUND</span>
-        </button>
-      </div>
-
-      <div class="video-controls" id="videoControlsAlkaline">
-        <button class="video-control-btn" id="videoPauseBtnAlkaline" aria-label="Pause">
-          <svg class="pause-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-          <svg class="play-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-
-        <button class="video-control-btn video-skip-btn" id="videoSkipBackAlkaline" aria-label="Back 10s">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.5 3C17.15 3 21.08 6.03 22.47 10.22L20.1 11C19.05 7.81 16.04 5.5 12.5 5.5c-1.73 0-3.35.56-4.68 1.5L10 9H4V3l2.6 2.6C8.23 4.1 10.28 3 12.5 3zM8 13h5v2H8v-2zm0 4h5v2H8v-2zm-2-4h1v2H6v-2zm0 4h1v2H6v-2z"/></svg>
-          <span>-10</span>
-        </button>
-
-        <div class="video-progress-wrap" id="videoProgressWrapAlkaline">
-          <div class="video-progress-bar">
-            <div class="video-progress-buffered" id="videoBufferedAlkaline"></div>
-            <div class="video-progress-played" id="videoPlayedAlkaline"></div>
-            <div class="video-progress-handle" id="videoHandleAlkaline"></div>
-          </div>
-        </div>
-
-        <span class="video-time" id="videoTimeAlkaline">0:00 / 0:00</span>
-
-        <button class="video-control-btn video-skip-btn" id="videoSkipForwardAlkaline" aria-label="Forward 10s">
-          <span>+10</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 18v-6l5 3-5 3zm7-15v6l5-3-5-3z"/></svg>
-        </button>
-
-        <button class="video-control-btn" id="videoMuteBtnAlkaline" aria-label="Toggle sound">
-          <svg class="vol-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-          <svg class="mute-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-        </button>
-
-        <button class="video-control-btn" id="videoFullscreenBtnAlkaline" aria-label="Fullscreen">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MANIFESTO -->
-<section class="sec">
-  <div class="wrap">
-    <div class="manifesto reveal">
-      <blockquote>"You are not broken. You are <span class="illuminate-subtle">obstructed</span>. Every leak has a name. Every obstruction has a protocol. The man who executes does not become better. He stops pretending he ever was."</blockquote>
-      <cite>— TYSON ARCHITECT</cite>
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider">
 
 <!-- BOOKS — MOVED UP: Product immediately after manifesto for conversion -->
 <section class="sec" id="books">
@@ -1585,8 +1523,10 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
         <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> All future updates — free, for life</li>
         <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> 30-day ironclad money-back guarantee</li>
       </ul>
+      <div style="display:inline-block; background:var(--accent); color:#fff; font-size:10px; letter-spacing:.15em; padding:5px 14px; border-radius:4px; margin-bottom:16px;">TODAY — £49 · ONE-TIME PAYMENT</div>
+      <br>
       <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="btn bp" style="font-size:12px; padding:20px 48px; display:inline-flex;">I'M DONE LEAKING — £49 →</a>
-      <div style="margin-top:16px; font-size:10px; color:var(--paper3); letter-spacing:.14em;">INSTANT DOWNLOAD · PDF · ANY DEVICE · ONE-TIME PAYMENT</div>
+      <div style="margin-top:16px; font-size:10px; color:var(--paper3); letter-spacing:.14em;">INSTANT DOWNLOAD · PDF · ANY DEVICE · 30-DAY GUARANTEE</div>
     </div>
   </div>
 </section>
@@ -1677,7 +1617,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
       <h2>Actual Pages.<br>Real <em>Protocols</em>.</h2>
     </div>
     <div class="book-preview-video">
-      <video id="bookPreviewVideo" autoplay muted loop playsinline poster="https://files.catbox.moe/7hicgc.png" width="100%" height="auto">
+      <video id="bookPreviewVideo" autoplay muted loop playsinline poster="hero-main.png" width="100%" height="auto">
         <source src="https://files.catbox.moe/ng7xyb.mp4" type="video/mp4">
       </video>
       <div class="book-preview-video-overlay" id="bookPreviewOverlay">
@@ -1791,7 +1731,6 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 <section class="sec" id="founder">
   <div class="wrap">
     <div class="founder reveal">
-      <img src="https://files.catbox.moe/tyson-architect.webp" alt="Tyson Architect — The Human Architect" class="founder-portrait" width="120" height="180" loading="eager">
       <div>
         <h3>Tyson Architect</h3>
         <div class="role">THE HUMAN ARCHITECT</div>
@@ -1864,29 +1803,50 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
     <div class="sh" style="text-align:center;">
       <div class="eyebrow">FREE ASSESSMENT</div>
       <h2>What's Obstructing <em>You</em>?</h2>
-      <p>Four questions. Sixty seconds. The audit identifies your primary obstruction — and points you to the exact protocol that removes it.</p>
+      <p>Three questions. Sixty seconds. Identifies your primary obstruction — and the protocol that removes it.</p>
     </div>
     <div style="max-width:520px; margin:32px auto 0;">
       <div id="quizCard" style="background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:32px 28px;">
         <div id="quizStep1">
-          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Question 1 of 4</div>
-          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:20px;">How would you describe your energy right now?</div>
+          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Question 1 of 3</div>
+          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:20px;">How would you describe your morning energy?</div>
           <div style="display:flex; flex-direction:column; gap:8px;">
             <button onclick="quizAnswer(1,'low')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Consistently low — I push through fog most days</button>
             <button onclick="quizAnswer(1,'crash')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">High then crash — wired at night, dead by 3pm</button>
-            <button onclick="quizAnswer(1,'moderate')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Moderate — functional but not what it used to be</button>
-            <button onclick="quizAnswer(1,'good')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Good — but I know I am operating below potential</button>
+            <button onclick="quizAnswer(1,'moderate')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Moderate — functional but far from what it was</button>
+            <button onclick="quizAnswer(1,'good')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Good mornings — but drive and focus feel capped</button>
+          </div>
+        </div>
+        <div id="quizStep2" style="display:none;">
+          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Question 2 of 3</div>
+          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:20px;">What is the hardest thing to quit?</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <button onclick="quizAnswer(2,'porn')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Porn — I have tried. It always comes back</button>
+            <button onclick="quizAnswer(2,'screens')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Screens and scrolling — hours vanish</button>
+            <button onclick="quizAnswer(2,'food')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Food — I eat what I know is poison</button>
+            <button onclick="quizAnswer(2,'all')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">All of it. Nothing feels in my control</button>
+          </div>
+        </div>
+        <div id="quizStep3" style="display:none;">
+          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Question 3 of 3</div>
+          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:20px;">What made you stop on this page?</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <button onclick="quizAnswer(3,'porn')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Porn is stealing my drive</button>
+            <button onclick="quizAnswer(3,'energy')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Energy at 3pm is gone</button>
+            <button onclick="quizAnswer(3,'fog')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">Brain fog — I used to think clearly</button>
+            <button onclick="quizAnswer(3,'identity')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s;">I do not do what I said I would do</button>
           </div>
         </div>
         <div id="quizEmail" style="display:none;">
-          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Get Your Full Assessment</div>
-          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:8px;">Where should we send your results?</div>
-          <div style="font-size:12px; color:var(--paper3); margin-bottom:20px;">Your personalised obstruction assessment + the exact protocol to remove it. Free. No spam.</div>
+          <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:8px;">Your Assessment</div>
+          <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:8px;">Primary obstruction: <span id="quizPrimary" style="color:var(--accent);font-weight:600;"></span></div>
+          <div id="quizRec" style="font-size:13px; color:var(--paper2); margin-bottom:16px; line-height:1.5;"></div>
+          <div style="font-size:12px; color:var(--paper3); margin-bottom:12px;">Get the protocol to remove it — free.</div>
           <div class="signup">
             <input type="email" id="quizEmailInput" placeholder="your@email.com" style="min-width:0;">
-            <button onclick="submitQuizEmail()">GET MY ASSESSMENT →</button>
+            <button onclick="submitQuizEmail()">GET MY PROTOCOL →</button>
           </div>
-          <div style="margin-top:12px; font-size:10px; color:var(--paper3);">We respect your privacy. Unsubscribe anytime.</div>
+          <div style="margin-top:12px; font-size:10px; color:var(--paper3);">Unsubscribe anytime.</div>
         </div>
       </div>
     </div>
@@ -1895,20 +1855,45 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
 <script>
 var quizScore = { diet: 0, energy: 0, focus: 0, drive: 0 };
+var totalObstruction = { porn: 0, leak: 0, fog: 0, identity: 0 };
 function quizAnswer(q, ans) {
   if (q === 1) {
-    if (ans === 'low') { quizScore.diet += 2; quizScore.energy += 2; }
-    if (ans === 'crash') { quizScore.focus += 2; quizScore.drive += 1; }
-    if (ans === 'moderate') { quizScore.diet += 1; quizScore.energy += 1; }
-    if (ans === 'good') { quizScore.drive += 1; }
+    if (ans === 'low') { quizScore.diet += 2; quizScore.energy += 2; totalObstruction.fog += 2; }
+    if (ans === 'crash') { quizScore.focus += 2; quizScore.drive += 1; totalObstruction.porn += 1; totalObstruction.leak += 1; }
+    if (ans === 'moderate') { quizScore.diet += 1; quizScore.energy += 1; totalObstruction.fog += 1; }
+    if (ans === 'good') { quizScore.drive += 1; totalObstruction.identity += 1; }
     document.getElementById('quizStep1').style.display = 'none';
+    document.getElementById('quizStep2').style.display = 'block';
+  }
+  if (q === 2) {
+    if (ans === 'porn') { totalObstruction.porn += 3; quizScore.drive += 2; }
+    if (ans === 'screens') { totalObstruction.porn += 2; quizScore.focus += 2; }
+    if (ans === 'food') { totalObstruction.fog += 3; quizScore.diet += 2; }
+    if (ans === 'all') { totalObstruction.porn += 2; totalObstruction.leak += 2; totalObstruction.fog += 2; }
+    document.getElementById('quizStep2').style.display = 'none';
+    document.getElementById('quizStep3').style.display = 'block';
+  }
+  if (q === 3) {
+    if (ans === 'porn') { totalObstruction.porn += 3; }
+    if (ans === 'energy') { totalObstruction.leak += 3; quizScore.energy += 2; }
+    if (ans === 'fog') { totalObstruction.fog += 3; }
+    if (ans === 'identity') { totalObstruction.identity += 3; quizScore.drive += 1; }
+    var max = Math.max(totalObstruction.porn, totalObstruction.leak, totalObstruction.fog, totalObstruction.identity);
+    var primary = 'multiple leaks';
+    var rec = 'The full 5-book system targets all of them at once.';
+    if (totalObstruction.porn === max) { primary = 'Dopamine from screens'; rec = 'Quit PRN Manual + HALT Protocol. 21-day protocol. The cage breaks.'; }
+    else if (totalObstruction.leak === max) { primary = 'Energy leaking daily'; rec = "Life Force Energy + Warrior's Recovery. 90-day protocol. Seal the leak."; }
+    else if (totalObstruction.fog === max) { primary = 'Acid and mucus in your system'; rec = 'Alkaline Awakening. 21-day detox. The fog lifts fast.'; }
+    else if (totalObstruction.identity === max) { primary = 'Identity without architecture'; rec = 'Start with Intelligent Design. Architecture compounds.'; }
+    document.getElementById('quizPrimary').textContent = primary;
+    document.getElementById('quizRec').textContent = rec;
+    document.getElementById('quizStep3').style.display = 'none';
     document.getElementById('quizEmail').style.display = 'block';
   }
 }
 function submitQuizEmail() {
   var email = document.getElementById('quizEmailInput').value;
-  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
-  // For now, redirect to signup with email
+  if (!email || !email.includes('@')) { alert('Enter a valid email.'); return; }
   window.location.href = 'https://humanarchitect.substack.com/subscribe?email=' + encodeURIComponent(email);
 }
 </script>
@@ -1944,8 +1929,8 @@ function submitQuizEmail() {
       <li><a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank">SHOP THE SYSTEM</a></li>
       <li><a href="#system">THE SYSTEM</a></li>
       <li><a href="#guarantee">GUARANTEE</a></li>
-      <li><a href="#disclaimer">DISCLAIMER</a></li>
-      <li><a href="#privacy">PRIVACY</a></li>
+      <li><a href="#books">THE BOOKS</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
   </div>
 </footer>
@@ -2005,6 +1990,7 @@ var books = [
     cover: "/book-covers/intelligent-design.webp",
     previews: [
       {file: "/book-covers/intelligent-design.webp", label: "Cover"},
+      {file: "/book-previews/intelligent-design/cover-p1.webp", label: "Inside Page"},
       {file: "/book-previews/intelligent-design/eye-marvel-p24.webp", label: "The Human Eye"},
       {file: "/book-previews/intelligent-design/human-brain-p18.webp", label: "The Human Brain"}
     ],
@@ -2029,7 +2015,9 @@ var books = [
     cover: "/book-covers/parasite-conspiracy.webp",
     previews: [
       {file: "/book-covers/parasite-conspiracy.webp", label: "Cover"},
+      {file: "/book-previews/parasite-conspiracy/cover-p1.webp", label: "Inside Page"},
       {file: "/book-previews/parasite-conspiracy/protocols-p3.webp", label: "Parasite Protocols"},
+      {file: "/book-previews/parasite-conspiracy/cleanses-p24.webp", label: "Cleanse Guide"},
       {file: "/book-previews/parasite-conspiracy/mind-control-p17.webp", label: "What Is Controlling Your Mind?"}
     ],
     inside: [
@@ -2053,6 +2041,7 @@ var books = [
     cover: "/book-covers/life-force-energy.webp",
     previews: [
       {file: "/book-covers/life-force-energy.webp", label: "Cover"},
+      {file: "/book-previews/life-force-energy/cover-p1.webp", label: "Inside Page"},
       {file: "/book-previews/life-force-energy/magnetism-p5.webp", label: "Science of Magnetism"},
       {file: "/book-previews/life-force-energy/warrior-p11.webp", label: "Warrior's Recovery"}
     ],
@@ -2077,6 +2066,7 @@ var books = [
     cover: "/book-covers/quit-prn-manual.webp",
     previews: [
       {file: "/book-covers/quit-prn-manual.webp", label: "Cover"},
+      {file: "/book-previews/quit-prn/cover-p1.webp", label: "Inside Page"},
       {file: "/book-previews/quit-prn/conservation-p2.webp", label: "Energy Conservation"},
       {file: "/book-previews/quit-prn/halt-protocol-p22.webp", label: "HALT Protocol"}
     ],
