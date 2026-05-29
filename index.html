@@ -266,7 +266,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 #hero-canvas { display:none; }
 .hc { flex:1 1 48%; max-width:620px; position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; min-height:100vh; padding:120px 60px 100px 40px; }
 @media (max-width:900px) {
-  .hero { flex-direction:column; min-height:0; align-items:flex-start; }
+  .hero { flex-direction:column; min-height:0; align-items:flex-start; overflow:visible; }
   .hero-img-wrap { flex:none; width:100%; min-height:0; max-height:none; height:auto; order:1; position:relative; }
   .hero-bg-img { position:relative; inset:auto; width:100%; height:auto; object-fit:cover; object-position:center center; display:block; max-height:60vh; }
   .hc { flex:none; max-width:100%; width:100%; order:2; min-height:auto; padding:48px 20px 56px; text-align:center; align-items:center; }
@@ -400,7 +400,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .book-card-meta { display:flex; justify-content:space-between; align-items:center; font-size:9px; color:var(--paper2); text-transform:uppercase; letter-spacing:.22em; font-weight:600; margin-bottom:8px; }
 .book-card-num { color:var(--accent); }
 .book-card-title { font-family:var(--serif); font-size:16px; line-height:1.15; margin-bottom:6px; color:var(--paper); font-weight:300; letter-spacing:-.03em; }
-.book-card-desc { font-size:13px; color:var(--paper2); line-height:1.6; font-weight:300; margin-bottom:12px; }
+.book-card-desc { font-size:13px; color:var(--paper2); line-height:1.6; font-weight:300; margin-bottom:12px; overflow-wrap:break-word; word-wrap:break-word; word-break:break-word; white-space:normal; }
 .book-card-cta { font-size:9px; color:var(--paper2); text-transform:uppercase; letter-spacing:.2em; font-weight:600; margin-top:auto; display:flex; align-items:center; gap:4px; transition:gap .3s; }
 
 /* Book Preview Video */
@@ -565,7 +565,11 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── 5. MAGNETIC BUTTON HOVER ── */
-.btn, .fab, .modal-action-btn, .cta-box .btn {
+.btn, .fab, .cta-box .btn {
+  transition: all 0.4s cubic-bezier(.23,1,.36,1);
+  position: relative;
+}
+.btn.bp, .modal-action-btn {
   transition: all 0.4s cubic-bezier(.23,1,.36,1);
   position: relative;
   overflow: hidden;
@@ -598,7 +602,7 @@ html { scroll-behavior: smooth; }
 
 /* ── 7. HERO TEXT REVEAL — char by char ── */
 .hero-title .char {
-  display: inline-block;
+  display: inline;
   opacity: 0;
   transform: translateY(30px) rotateX(-20deg);
   animation: charReveal 0.7s cubic-bezier(.23,1,.36,1) forwards;
@@ -975,7 +979,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
 /* ── A4. HERO WORD ANIMATION — enhanced stagger ── */
 .hero #hero-headline .word {
-  display: inline-block;
+  display: inline;
   opacity: 0;
   transform: translateY(40px) rotateX(-20deg);
   animation: heroWordSpring 0.8s var(--spring1) forwards;
@@ -1024,7 +1028,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 .faq-item.open .faq-a {
   grid-template-rows: 1fr;
 }
-.faq-a > * { overflow: hidden; }
+.faq-a > * { overflow-wrap:break-word; word-wrap:break-word; }
 
 /* ── A8. CTA BREATHING — refined ── */
 @media (prefers-reduced-motion: no-preference) {
@@ -1079,7 +1083,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
 /* ── A13. CHAR REVEAL — hero headline ── */
 .char {
-  display: inline-block;
+  display: inline;
   opacity: 0;
   transform: translateY(20px) rotateX(-15deg);
   animation: charSpring 0.6s var(--spring1) forwards;
@@ -1652,6 +1656,38 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 @keyframes ctaBreath { 0%,100% { box-shadow:0 10px 30px var(--accent-glow); } 50% { box-shadow:0 16px 50px rgba(196,30,58,0.34); } }
 @media (prefers-reduced-motion: no-preference) {
   .btn.bp:not(:hover) { animation:ctaBreath 3.6s ease-in-out infinite; }
+}
+
+/* ── GLOBAL MOBILE TEXT SAFETY — no cutoff, no truncation, no line-clamp ── */
+@media (max-width: 820px) {
+  /* Every text element wraps naturally */
+  p, h1, h2, h3, h4, h5, h6, li, span, a, blockquote, cite, label, button {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    -webkit-line-clamp: none !important;
+    line-clamp: none !important;
+  }
+  /* Kill any remaining -webkit-box-orient on mobile */
+  .book-card-desc, .tool-card p, .protoc p, .faq-a, .faq-a p, .faq-a li,
+  .modal-cover-info p, .modal-body p, .modal-body li, .testi-card p,
+  .testi-card .quote, .testi-card .author, .cta-box p, .cta-box h2,
+  .hero-sub, .hero-proof, .preview-panel-header h3, .preview-panel-header .tag,
+  .page-prev-label, .sticky-cta-text, .stat .label, .num {
+    display: block !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    -webkit-line-clamp: none !important;
+    -webkit-box-orient: unset !important;
+    line-clamp: none !important;
+    max-height: none !important;
+  }
+  /* Hero word spans don't clip */
+  .hero-title .word, #hero-headline .word {
+    overflow: visible !important;
+  }
 }
 
 /* prefers-reduced-motion: blanket calm */
