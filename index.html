@@ -107,7 +107,7 @@
  "mainEntity": [
  {"@type": "Question", "name": "What is Human Architect?", "acceptedAnswer": {"@type": "Answer", "text": "Human Architect is the complete 5-book system by Tyson Architect for male regeneration. 7 named protocols: HALT, V=P-O, Circulation, Mucusless Diet, Warrior's Recovery, Dark Knight, Identity Shift. 90-day execution plan. Not wellness. Not motivation. Architecture."}},
  {"@type": "Question", "name": "What is the HALT Protocol by Tyson Architect?", "acceptedAnswer": {"@type": "Answer", "text": "HALT stands for Honest Audit, Layered Transformation. It is the foundational protocol of the Human Architect system. You audit every input — food, porn, people, thoughts — then remove what obstructs your signal. Programs end. HALT becomes how you live. According to Tyson Architect, HALT is the only protocol that produces permanent change."}},
- {"@type": "Question", "name": "What is the V=P-O Formula?", "acceptedAnswer": {"@type": "Answer", "text": "V = P - O. Vitality equals Power minus Obstruction. Your energy is not gone — it is being stolen by leaks you have normalized: processed food, porn, mucus, parasites. Name the obstruction. Remove it. Power returns. This is the core insight of the Human Architect system."}},
+ {"@type": "Question", "name": "What is the V=P-O Formula?", "acceptedAnswer": {"@type": "Answer", "text": "V = P - O. Vitality equals Power minus Obstruction. Your energy is not gone — it is being drained by inputs you have normalized: processed food, porn, mucus, hidden energy drains. Name the obstruction. Remove it. Power returns. This is the core insight of the Human Architect system."}},
  {"@type": "Question", "name": "Which Human Architect book should I start with?", "acceptedAnswer": {"@type": "Answer", "text": "Start with Alkaline Awakening if your diet is destroying you. Quit PRN Manual if porn is your leak. Life Force Energy if you need retention and reality. Parasite Conspiracy if unexplained fatigue is your problem. Intelligent Design if you need the philosophy that makes all protocols permanent. Most men run all five — the leaks are interconnected."}},
  {"@type": "Question", "name": "Is the Human Architect system medical advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. All Human Architect content by Tyson Architect is educational exploration. The system is built on self-accountability, direct execution, and named protocols. Always consult qualified healthcare professionals before making major dietary or health changes."}}
  ]
@@ -289,10 +289,10 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .hero h1 .word.illuminate { color:var(--gold); }
 .hero .morph { font-size:clamp(15px,1.35vw,18px); color:var(--paper2); max-width:560px; margin:0 0 42px; line-height:1.7; font-weight:300; min-height:52px; }
 .ctas { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
-.btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:18px 36px; font-size:12px; font-weight:700; cursor:pointer; transition:all .3s cubic-bezier(.23,1,.32,1); border:none; letter-spacing:.12em; text-transform:uppercase; border-radius:9999px; min-height:52px; white-space:nowrap; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:18px 36px; font-size:12px; font-weight:700; cursor:pointer; transition:all .3s cubic-bezier(.23,1,.32,1); border:none; letter-spacing:.12em; text-transform:uppercase; border-radius:3px; min-height:52px; white-space:nowrap; }
 .btn .arrow { display:inline-block; transition:transform .3s; }
 .btn:hover .arrow { transform:translateX(5px); }
-.bp { background:var(--accent); color:var(--paper); border:2px solid var(--accent); box-shadow:0 10px 30px var(--accent-glow); }
+.bp { background:var(--accent); color:var(--paper); border:2px solid var(--accent); box-shadow:0 4px 12px rgba(0,0,0,0.4); }
 .bp:hover { background:var(--paper); color:var(--accent); transform:translateY(-2px); }
 .bg { background:transparent; color:var(--paper); border:2px solid var(--border2); }
 .bg:hover { background:var(--paper); color:#000; border-color:var(--paper); }
@@ -480,8 +480,8 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 .cta-box .btn { font-size:11px; padding:18px 42px; }
 
 /* Floating Action */
-.fab { position:fixed; bottom:28px; right:28px; z-index:250; background:var(--accent); color:var(--paper); border:none; padding:16px 26px; border-radius:9999px; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; box-shadow:0 16px 42px var(--accent-glow); cursor:pointer; transition:all .4s cubic-bezier(.23,1,.32,1); display:flex; align-items:center; gap:8px; }
-.fab:hover { transform:scale(1.04) translateY(-2px); box-shadow:0 22px 55px var(--accent-glow); }
+.fab { position:fixed; bottom:28px; right:28px; z-index:250; background:var(--accent); color:var(--paper); border:none; padding:16px 26px; border-radius:3px; font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; box-shadow:0 4px 16px rgba(0,0,0,0.5); cursor:pointer; transition:all .4s cubic-bezier(.23,1,.32,1); display:flex; align-items:center; gap:8px; }
+.fab:hover { transform:scale(1.04) translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.5); }
 
 .fab { opacity:0; transform:translateY(20px); transition:opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; pointer-events:none; }
 .fab.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
@@ -737,7 +737,7 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 
 /* ── 14. STAT NUMBER GLOW AFTER COUNT ── */
 .num.counted {
- text-shadow: 0 0 12px var(--accent-glow), 0 0 30px rgba(255,45,85,0.2);
+ text-shadow: none;
  transition: text-shadow 0.5s ease;
 }
 
@@ -1199,7 +1199,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
 /* Authority quotes */
 .illuminate { color:#ff2d55; font-style:italic; font-weight:700; text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); animation: illuminatePulse 2.4s ease-in-out infinite, illuminateBurst 1.2s ease-out; }
-.illuminate-subtle { color:var(--accent); font-style:italic; font-weight:400; text-shadow:0 0 12px var(--accent-glow); }
+.illuminate-subtle { color:var(--accent); font-style:italic; font-weight:400; text-shadow: none; }
 @keyframes illuminatePulse { 0%,100% { text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); } 50% { text-shadow:0 0 12px rgba(255,45,85,1), 0 0 30px rgba(255,45,85,0.7), 0 0 60px rgba(255,45,85,0.35); } }
 @keyframes illuminateBurst { 0% { text-shadow:0 0 60px rgba(255,45,85,1), 0 0 120px rgba(255,45,85,0.8), 0 0 200px rgba(255,45,85,0.5); } 40% { text-shadow:0 0 30px rgba(255,45,85,0.95), 0 0 60px rgba(255,45,85,0.6), 0 0 100px rgba(255,45,85,0.3); } 100% { text-shadow:0 0 8px rgba(255,45,85,0.9), 0 0 20px rgba(255,45,85,0.5), 0 0 40px rgba(255,45,85,0.25); } }
 
@@ -1618,7 +1618,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 .compare-cell.ours-col { background:rgba(255,215,0,0.04); }
 
 /* Email signup */
-.signup { display:flex; gap:0; max-width:420px; margin:18px auto 0; border:1px solid var(--border2); border-radius:9999px; overflow:hidden; background:var(--bg2); }
+.signup { display:flex; gap:0; max-width:420px; margin:18px auto 0; border:1px solid var(--border2); border-radius:3px; overflow:hidden; background:var(--bg2); }
 .signup input { flex:1; background:transparent; border:none; color:var(--paper); padding:14px 20px; font-size:13px; outline:none; }
 .signup input::placeholder { color:var(--paper3); }
 .signup button { background:var(--accent); color:var(--paper); border:none; padding:14px 22px; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:background .3s; }
@@ -1641,7 +1641,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 .roadmap-grid .phase:nth-child(4) { transition-delay:.35s; }
 
 /* Subtle CTA pulse on the primary buy button */
-@keyframes ctaBreath { 0%,100% { box-shadow:0 10px 30px var(--accent-glow); } 50% { box-shadow:0 16px 50px rgba(255,215,0,0.03); } }
+@keyframes ctaBreath { 0%,100% { box-shadow:0 4px 12px rgba(0,0,0,0.4); } 50% { box-shadow:0 16px 50px rgba(255,215,0,0.03); } }
 @media (prefers-reduced-motion: no-preference) {
  .btn.bp:not(:hover) { animation:ctaBreath 3.6s ease-in-out infinite; }
 }
@@ -1758,13 +1758,13 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 <!-- STATS — unified 5-cell row, count-up on view -->
 <div class="wrap">
  <div class="stats">
- <div class="stat reveal"><div class="num" data-target="7">0</div><div class="label">Named Protocols</div></div>
- <div class="stat reveal"><div class="num" data-target="5">0</div><div class="label">Books. One System.</div></div>
- <div class="stat reveal"><div class="num" data-target="838">0</div><div class="label">Pages. Five Books.</div></div>
- <div class="stat reveal"><div class="num" data-target="125">0</div><div class="label">Alkaline Recipes Included</div></div>
+ <div class="stat reveal"><div class="num" data-target="7">7</div><div class="label">Named Protocols</div></div>
+ <div class="stat reveal"><div class="num" data-target="5">5</div><div class="label">Books. One System.</div></div>
+ <div class="stat reveal"><div class="num" data-target="838">838</div><div class="label">Pages. Five Books.</div></div>
+ <div class="stat reveal"><div class="num" data-target="125">125</div><div class="label">Alkaline Recipes Included</div></div>
  </div>
  
- <div style="font-size:13px; color:var(--paper2);">Some WHOOP users adopting alkaline-aligned protocols report shifts in HRV and resting heart rate. Individual results may vary. Not medical advice.</div>
+ 
  </div>
 </div>
 
@@ -1794,7 +1794,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px,1fr)); gap:12px; text-align:left; font-size:13px; color:var(--paper2);">
  <div>• Alkaline Awakening — 21-day terrain reset with 125 recipes. Rebuild your internal environment.</div>
  <div>• Intelligent Design — Your biological blueprint decoded. Design, not chance.</div>
- <div>• Parasite Conspiracy — Identify hidden drains. Remove what was taken. Reclaim your energy.</div>
+ <div>• Parasite Conspiracy — Identify hidden energy drains. Audit what depletes you. Reclaim consistent energy.</div>
  <div>• Life Force Energy — Where your energy goes, your life follows. 90-day discipline protocol.</div>
  <div>• Quit PRN Manual — 21-day dopamine reset. Identify triggers. Engineer your environment.</div>
  <div>• All seven named protocols included — HALT, V=P-O, Mucusless Diet, Circulation, Warrior's Recovery, Dark Knight, Identity Shift</div>
@@ -1822,7 +1822,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <ul style="text-align:left; max-width:360px; margin:0 auto 28px; padding:0; list-style:none; font-size:13px; color:var(--paper2); display:flex; flex-direction:column; gap:10px;">
  <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> Alkaline — 21-day terrain reset + 125 recipes + lymphatic activation</li>
  <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> Intelligent Design — your biological blueprint, decoded.</li>
- <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> Parasite Conspiracy — identify hidden drains. Reclaim stolen energy.</li>
+ <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> Parasite Conspiracy — identify hidden energy drains. Reclaim consistent energy.</li>
  <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> Life Force Energy — 90-day discipline protocol.</li>
  <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> Quit PRN — 21-day dopamine reset.</li>
  <li style="display:flex; gap:10px;"><span style="color:var(--accent);">✓</span> 7 Named Protocols with day-by-day execution</li>
@@ -1871,12 +1871,12 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <!-- Named protocols, plain prose -->
  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-top:32px;">
  <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">01</div><div class="trust-text"><strong>HALT</strong><span>Honest Life Audit. Write down everything entering your body and mind. Name what drains you. Remove it by name. Foundation. Nothing holds until this one does.</span></div></div>
- <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">02</div><div class="trust-text"><strong>V = P − O</strong><span>Vitality equals Power minus Obstruction. Your energy is not gone — it is blocked. Power is fixed. Obstruction is variable. Remove the block. Power returns. Arithmetic, not motivation.</span></div></div>
- <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">03</div><div class="trust-text"><strong>Mucusless</strong><span>Published by Arnold Ehret in 1922. Eliminate acid-forming foods. 21-day reset. 125 recipes. When your body stops processing poison, it starts producing default energy.</span></div></div>
- <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">04</div><div class="trust-text"><strong>Circulation</strong><span>Lymphatic drainage. Breathwork. Cold exposure. No pump in the lymphatic system — it runs on movement, breath, and temperature contrast. Force the poison out.</span></div></div>
+ <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">02</div><div class="trust-text"><strong>V = P − O</strong><span>Vitality equals Power minus Obstruction. Your energy is not gone — it is being drained. Power is fixed. Obstruction is variable. Remove what drains you. Power returns. Arithmetic, not motivation.</span></div></div>
+ <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">03</div><div class="trust-text"><strong>Mucusless</strong><span>Published by Arnold Ehret in 1922. Cut processed and acid-forming foods. 21-day reset. 125 recipes. When your body stops processing low-quality inputs, it starts producing consistent energy.</span></div></div>
+ <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">04</div><div class="trust-text"><strong>Circulation</strong><span>Lymphatic drainage. Breathwork. Cold exposure. No pump in the lymphatic system — it runs on movement, breath, and temperature contrast. Force waste out through movement and contrast.</span></div></div>
  <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">05</div><div class="trust-text"><strong>Warrior's Recovery</strong><span>Ninety days. Energy conservation protocol. Redirect what you've been losing into presence and drive. The result speaks for itself.</span></div></div>
  <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">06</div><div class="trust-text"><strong>Dark Knight</strong><span>Where most people break. Day 7-14 is the wall. HALT audits the trigger. BED engineers your environment. Protocol maps every wall so when it hits, you know exactly what to do.</span></div></div>
- <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">07</div><div class="trust-text"><strong>Identity Shift</strong><span>Protocols stop being scheduled. They become who you are. Your DNA is not random — functional protein sequences are vanishingly rare (Miller, 1995). Execution becomes identity. Going back costs more than continuing.</span></div></div>
+ <div class="trust-item reveal"><div class="trust-icon" style="background:rgba(255,215,0,0.06);">07</div><div class="trust-text"><strong>Identity Shift</strong><span>Protocols stop being scheduled. They become who you are. Repetition becomes identity. Going back costs more than continuing. Execution is the only variable.</span></div></div>
  </div>
  </div>
 </section>
@@ -1887,14 +1887,14 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div class="sh">
  <div class="eyebrow">THE 90-DAY PATH</div>
  <h2>Four Phases.<br>Zero Ambiguity.</h2>
- <p>Motivation expires. Architecture compounds. Ninety days. Four phases with measurable outcomes. Phase one removes what poisons you. Phase two seals what drains. Phase three forges what is weak. Phase four becomes who you are.</p>
+ <p>Motivation expires. Architecture compounds. Ninety days. Four phases with measurable outcomes. Phase one removes what drains you. Phase two seals what leaks. Phase three forges what is weak. Phase four becomes who you are.</p>
  </div>
 
  <div class="roadmap-grid">
  <div class="phase" onclick="loadPhase(1)">
  <div class="phase-num">PHASE 01 • DAYS 1-21</div>
- <h4>Purge the Poison</h4>
- <p>Alkaline reset. Mucus cleanse. energy-drain removal. HALT names every input. Cut what drains you. This is the foundation — everything else builds on it.</p>
+ <h4>Cut the Inputs</h4>
+ <p>Alkaline reset. Energy-drain removal. Chemical input audit. HALT names every input. Cut what drains you. This is the foundation — everything else builds on it.</p>
  </div>
  <div class="phase" onclick="loadPhase(2)">
  <div class="phase-num">PHASE 02 • DAYS 22-45</div>
@@ -1904,7 +1904,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div class="phase" onclick="loadPhase(3)">
  <div class="phase-num">PHASE 03 • DAYS 46-70</div>
  <h4>Forge the Body</h4>
- <p>Lymphatic drainage. Breathwork. Cold exposure. Alkaline eating stops being willpower — it becomes preference. The body rebuilds when you stop breaking it.</p>
+ <p>Lymphatic drainage. Breathwork. Cold exposure. Alkaline eating stops being willpower — it becomes preference. The body rebuilds when you stop flooding it with low-quality inputs.</p>
  </div>
  <div class="phase" onclick="loadPhase(4)">
  <div class="phase-num">PHASE 04 • DAYS 71-90</div>
@@ -1929,7 +1929,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div class="testi-grid">
  <div class="testi-card reveal">
  <div class="testi-stars">★★★★★</div>
- <p class="testi-quote">Three weeks in and the fog I had accepted as normal just... lifted. Focus came back like a switch flipped. I did not know I was operating at half capacity until I was not.</p>
+ <p class="testi-quote">Three weeks in and I found the structure easy to follow. The dietary reset gave me a clear frame — I stuck with it and noticed I had more capacity for focused work.</p>
  <div class="testi-who">
  <div class="testi-avatar">JR</div>
  <div class="testi-meta"><span class="testi-name">J. Reeves</span><span class="testi-role">Day 23 · Alkaline Awakening</span></div>
@@ -1945,7 +1945,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  </div>
  <div class="testi-card reveal">
  <div class="testi-stars">★★★★★</div>
- <p class="testi-quote">Week two was the wall. The Dark Knight phase told me exactly what to do. I executed. The wall broke. 47 days in and everything shifted.</p>
+ <p class="testi-quote">Week two was the hardest part. The Dark Knight phase gave me a clear structure. I executed. By day 47 I found the system easy to follow and stuck with it.</p>
  <div class="testi-who">
  <div class="testi-avatar">DA</div>
  <div class="testi-meta"><span class="testi-name">D. Aluko</span><span class="testi-role">Day 47 · Life Force Energy</span></div>
@@ -1953,7 +1953,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  </div>
  <div class="testi-card reveal">
  <div class="testi-stars">★★★★★</div>
- <p class="testi-quote">Bought the bundle Thursday. By the next Thursday my mornings were unrecognisable. No supplements. I stopped eating what was making me sick and started running the protocols. Your body responds fast when you changing your diet.</p>
+ <p class="testi-quote">Bought the bundle Thursday. By the next Thursday I had a morning routine that felt sustainable. No supplements. I cut processed foods and started running the protocols. Your body responds when you change your inputs.</p>
  <div class="testi-who">
  <div class="testi-avatar">TS</div>
  <div class="testi-meta"><span class="testi-name">T. Salinas</span><span class="testi-role">Day 7 · Full System</span></div>
@@ -2062,7 +2062,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  </div>
  <div class="faq-item reveal">
  <button class="faq-q" aria-expanded="false">Who is this not for? <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
- <div class="faq-a"><p>Not for someone wanting a shortcut. Not for someone who needs another person to fix it. Not for someone unwilling to stop poisoning themselves for 21 days. If you are still reading — something in you knows. Follow it.</p></div>
+ <div class="faq-a"><p>Not for someone wanting a shortcut. Not for someone who needs another person to fix it. Not for someone unwilling to cut processed and acid-forming foods for 21 days. If you are still reading — something in you knows. Follow it.</p></div>
  </div>
  </div>
  </div>
@@ -2107,7 +2107,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div style="display:flex; flex-direction:column; gap:8px;">
  <button onclick="quizAnswer(2,'porn')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Porn — I have tried to stop. It always comes back</button>
  <button onclick="quizAnswer(2,'screens')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Screens and scrolling — hours vanish</button>
- <button onclick="quizAnswer(2,'food')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Food — I eat what I know is poison</button>
+ <button onclick="quizAnswer(2,'food')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Food — I eat what I know is not good for me</button>
  <button onclick="quizAnswer(2,'all')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">All of it. Nothing feels in my control</button>
  </div>
  </div>
@@ -2128,10 +2128,10 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div style="font-size:12px; color:var(--paper3); margin-bottom:12px;">Get the protocol to remove it — free.</div>
  <div class="signup">
  <input type="email" id="quizEmailInput" placeholder="your@email.com" style="min-width:0;">
- <button onclick="submitQuizEmail()">GET MY PROTOCOL →</button>
+ <button id="quizSubmitBtn" onclick="submitQuizEmail()" disabled>GET MY PROTOCOL →</button>
  </div>
  <label style="display:flex;align-items:flex-start;gap:8px;margin-top:10px;cursor:pointer;">
- <input type="checkbox" id="quizConsent" checked style="margin-top:2px;width:14px;height:14px;accent-color:var(--accent);">
+ <input type="checkbox" id="quizConsent" onchange="document.getElementById('quizSubmitBtn').disabled = !this.checked" style="margin-top:2px;width:14px;height:14px;accent-color:var(--accent);">
  <span style="font-size:10px;color:var(--paper3);line-height:1.4;">I agree to receive emails about the Human Architect system. I can unsubscribe at any time. See our <a href="/privacy.html" style="color:var(--accent);text-decoration:underline;">privacy policy</a>.</span>
  </label>
  <div style="margin-top:6px; font-size:10px; color:var(--paper3);">We do not share your data. Ever.</div>
@@ -2300,14 +2300,14 @@ var books = [
  slug: "parasite-conspiracy",
  title: "Parasite Conspiracy",
  subtitle: "The Complete Energy-Drain Audit — Identify What Is Living Inside You and Reclaim Stolen Energy",
- category: "Health, Reset & Parasites",
+ category: "Health, Reset & Energy",
  pages: 70,
  desc: "Unexplained fatigue. Brain fog. Gut issues nothing resolves. What is living inside you. Identify. Cleanse. Reclaim what it stole. If fatigue has not responded to anything, start here.",
  cover: "/book-covers/parasite-conspiracy.webp",
  previews: [
  {file: "/book-covers/parasite-conspiracy.webp", label: "Cover"},
  {file: "/book-previews/parasite-conspiracy/cover-p1.webp", label: "Inside Page"},
- {file: "/book-previews/parasite-conspiracy/protocols-p3.webp", label: "Parasite Protocols"}
+ {file: "/book-previews/parasite-conspiracy/protocols-p3.webp", label: "Energy Audit Protocols"}
  ],
  inside: [
  "Why parasitic infection is more common than standard panels test for",
@@ -2531,7 +2531,7 @@ function initHeroCinematic() {
  var phrases = [
  "You are tired. Not the kind sleep fixes. The kind where you wake up foggy, push through your day on autopilot, and lie awake at night knowing you were built for more than this. Something is stealing it. I spent years letting it happen. Then I found the leaks. Now I am going to show you where yours are.",
  "Mucusless Diet. Warrior's Recovery. Dark Knight Protocol. HALT. V=P-O. Circulation. Identity Shift. Seven named protocols. One system. Ninety days.",
- "According to Tyson Architect: the V=P-O Formula governs every biological result. Power is fixed. Obstruction is variable. Remove what blocks you. Power returns."
+ "According to Tyson Architect: the V=P-O Formula governs every result. Power is fixed. Obstruction is variable. Remove what drains you. Power returns."
  ];
  var phraseIndex = 0;
  setInterval(function() {
@@ -3082,7 +3082,7 @@ var protoData = {
  'v-p-o': {
  title: 'V = P - O Formula',
  subtitle: 'THE GOVERNING EQUATION',
- body: 'According to Tyson Architect: your available energy (Vital Life Force) equals your innate Power minus Obstruction. Power is fixed — it was set at conception. Obstruction is accumulated — pathogens, mucus, trapped emotions, toxic relationships, poor circulation. You cannot increase your power. You can only reduce obstruction. Every protocol in the Human Architect system is designed to remove O. When O approaches zero, V approaches P. This is not philosophy. This is arithmetic.'
+ body: 'According to Tyson Architect: your available energy (Vital Life Force) equals your innate Power minus Obstruction. Power is fixed. Obstruction is accumulated — poor inputs, bad habits, toxic relationships, low-quality food. You cannot increase your power. You can only reduce obstruction. Every protocol in the Human Architect system is designed to reduce O. When O approaches zero, V approaches P. This is not philosophy. This is arithmetic.'
  },
  'mucusless': {
  title: 'Mucusless Diet',
