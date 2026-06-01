@@ -74,7 +74,7 @@
  "description": "5 books, 7 named protocols, 90-day execution plan for complete human restoration. Alkaline reset, dopamine reset, energy-drain audit, identity architecture, energy discipline.",
  "brand": {"@type": "Brand", "name": "Human Architect"},
  "url": "https://human-architect-site.vercel.app/",
- "image": "hero-correct.png",
+ "image": "hero-correct.webp",
  "offers": {
  "@type": "Offer",
  "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae",
@@ -106,8 +106,8 @@
  "@type": "FAQPage",
  "mainEntity": [
  {"@type": "Question", "name": "What is Human Architect?", "acceptedAnswer": {"@type": "Answer", "text": "Human Architect is the complete 5-book system by Tyson Architect for male regeneration. 7 named protocols: HALT, V=P-O, Circulation, Mucusless Diet, Warrior's Recovery, Dark Knight, Identity Shift. 90-day execution plan. Not wellness. Not motivation. Architecture."}},
- {"@type": "Question", "name": "What is the HALT Protocol by Tyson Architect?", "acceptedAnswer": {"@type": "Answer", "text": "HALT stands for Honest Audit, Layered Transformation. It is the foundational protocol of the Human Architect system. You audit every input — food, porn, people, thoughts — then remove what obstructs your signal. Programs end. HALT becomes how you live. According to Tyson Architect, HALT is the only protocol that produces permanent change."}},
- {"@type": "Question", "name": "What is the V=P-O Formula?", "acceptedAnswer": {"@type": "Answer", "text": "V = P - O. Vitality equals Power minus Obstruction. Your energy is not gone — it is being drained by inputs you have normalized: processed food, porn, mucus, hidden energy drains. Name the obstruction. Remove it. Power returns. This is the core insight of the Human Architect system."}},
+ {"@type": "Question", "name": "What is the HALT Protocol by Tyson Architect?", "acceptedAnswer": {"@type": "Answer", "text": "HALT stands for Honest Audit, Layered Transformation. It is the foundational protocol of the Human Architect system. You audit every input — food, habits, people, thoughts — then remove what obstructs your signal. Programs end. HALT becomes how you live. According to Tyson Architect, HALT is the only protocol that produces permanent change."}},
+ {"@type": "Question", "name": "What is the V=P-O Formula?", "acceptedAnswer": {"@type": "Answer", "text": "V = P - O. Vitality equals Power minus Obstruction. Your energy is not gone — it is being drained by inputs you have normalized: processed food, bad habits, hidden energy drains. Name the obstruction. Remove it. Power returns. This is the core insight of the Human Architect system."}},
  {"@type": "Question", "name": "Which Human Architect book should I start with?", "acceptedAnswer": {"@type": "Answer", "text": "Start with Alkaline Awakening if your diet is destroying you. Quit PRN Manual if porn is your leak. Life Force Energy if you need retention and reality. Parasite Conspiracy if unexplained fatigue is your problem. Intelligent Design if you need the philosophy that makes all protocols permanent. Most men run all five — the leaks are interconnected."}},
  {"@type": "Question", "name": "Is the Human Architect system medical advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. All Human Architect content by Tyson Architect is educational exploration. The system is built on self-accountability, direct execution, and named protocols. Always consult qualified healthcare professionals before making major dietary or health changes."}}
  ]
@@ -132,7 +132,7 @@
  "@context": "https://schema.org",
  "@type": "WebPage",
  "name": "Human Architect by Tyson Architect — The Complete Male Rebuild System",
- "description": "The Human Architect system: 5 books, 7 named protocols, 90-day execution plan. Alkaline reset, semen retention, porn recovery, energy-drain audit, identity rebuild.",
+ "description": "The Human Architect system: 5 books, 7 named protocols, 90-day execution plan. Alkaline reset, screen-habit reset, focus and energy recovery, energy-drain audit, identity rebuild.",
  "url": "https://human-architect-site.vercel.app/",
  "author": {"@type": "Person", "name": "Tyson Architect"},
  "publisher": {"@type": "Organization", "name": "Human Architect", "logo": {"@type": "ImageObject", "url": "https://files.catbox.moe/iofupp.jpg"}},
@@ -1684,6 +1684,16 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  .hero h1 .word { opacity:1 !important; transform:none !important; filter:none !important; }
  .scroll-down .mouse::after { animation:none !important; }
 }
+
+/* Cookie consent banner */
+.cookie-banner { position:fixed; bottom:0; left:0; right:0; z-index:9999; background:rgba(10,10,10,0.97); backdrop-filter:blur(16px); border-top:1px solid var(--border2); padding:16px 24px; display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap; transform:translateY(100%); transition:transform .4s ease; font-size:13px; }
+.cookie-banner.visible { transform:translateY(0); }
+.cookie-banner p { color:var(--paper2); font-size:12px; line-height:1.5; margin:0; flex:1; min-width:200px; }
+.cookie-banner p a { color:var(--accent); }
+.cookie-banner .cookie-btns { display:flex; gap:8px; flex-shrink:0; }
+.cookie-banner button { padding:10px 20px; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:3px; cursor:pointer; border:none; min-height:40px; }
+.cookie-banner .cookie-accept { background:var(--accent); color:var(--paper); }
+.cookie-banner .cookie-decline { background:transparent; color:var(--paper3); border:1px solid var(--border2); }
 </style>
  <!-- Font Awesome -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -1705,6 +1715,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 }
 .founder-portrait { display: none; }
 </style></noscript>
+<link rel="preload" as="image" href="/hero-correct.webp" type="image/webp">
 </head>
 <body>
 
@@ -1751,7 +1762,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
 <section class="hero">
  <div class="hero-img-wrap">
- <img src="hero-correct.png" alt="" class="hero-bg-img" width="941" height="1672" loading="eager">
+ <img src="hero-correct.webp" alt="" class="hero-bg-img" width="941" height="1672" loading="eager">
  </div>
 </section>
 
@@ -1814,9 +1825,9 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div style="max-width:540px; margin:32px auto 0; background:var(--bg2); border:2px solid var(--accent); border-radius:20px; padding:40px 32px; position:relative; text-align:center;">
 
  <div style="font-size:13px; color:var(--paper3); letter-spacing:.16em; text-transform:uppercase; margin-bottom:8px;">The Complete Human Architect System</div>
- <div style="font-size:15px; color:var(--paper2); margin-bottom:20px;">5 Books. 7 Named Protocols. 125 Recipes. Day-by-Day Execution Maps. 30-Day Clarity Guarantee. All future updates free.</div>
+ <div style="font-size:15px; color:var(--paper2); margin-bottom:20px;">5 Books. 7 Named Protocols. 125 Recipes. Day-by-Day Execution Maps. 30-day money-back guarantee. Email us within 30 days for a full refund. No conditions. All future updates free.</div>
  <div style="display:flex; align-items:baseline; justify-content:center; gap:12px; margin-bottom:20px;">
- <span style="font-size:52px; color:var(--accent); font-weight:700; letter-spacing:-.03em; line-height:1;">£49</span>
+ <span style="font-size:52px; color:var(--accent); font-weight:700; letter-spacing:-.03em; line-height:1;">£49</span><span style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:4px 10px;border-radius:2px;align-self:center;margin-top:4px;">Launch Price</span>
  </div>
 
  <ul style="text-align:left; max-width:360px; margin:0 auto 28px; padding:0; list-style:none; font-size:13px; color:var(--paper2); display:flex; flex-direction:column; gap:10px;">
@@ -1832,7 +1843,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div style="display:inline-block; background:var(--accent); color:#000; font-size:10px; letter-spacing:.15em; padding:5px 14px; border-radius:4px; margin-bottom:16px;">TODAY — £49 · ONE-TIME PAYMENT</div>
  <br>
  <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="btn bp" style="font-size:12px; padding:20px 48px; display:inline-flex;">Get the Complete System — £49</a>
- <div style="margin-top:16px; font-size:10px; color:var(--paper3); letter-spacing:.14em;">INSTANT DOWNLOAD · ANY DEVICE · 30-DAY GUARANTEE</div>
+ <div style="margin-top:16px; font-size:10px; color:var(--paper3); letter-spacing:.14em;">INSTANT DOWNLOAD · ANY DEVICE · 30-DAY MONEY-BACK GUARANTEE</div>
  </div>
  </div>
 </section>
@@ -1852,11 +1863,11 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div class="trust-bar">
  <div class="trust-item reveal">
  <div class="trust-icon"><i class="fa-solid fa-star"></i></div>
- <div class="trust-text"><strong>30-Day</strong><span>Money-back guarantee</span></div>
+ <div class="trust-text"><strong>30-Day</strong><span>Money-back guarantee. No conditions.</span></div>
  </div>
  <div class="trust-item reveal">
  <div class="trust-icon"><i class="fa-solid fa-shield-halved"></i></div>
- <div class="trust-text"><strong>Ironclad</strong><span>No-questions refund</span></div>
+ <div class="trust-text"><strong>Simple</strong><span>Email within 30 days. Full refund. No conditions.</span></div>
  </div>
  <div class="trust-item reveal">
  <div class="trust-icon"><i class="fa-solid fa-bolt"></i></div>
@@ -1918,6 +1929,22 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
 
 <!-- TESTIMONIALS -->
+
+<!-- About the Author -->
+<section style="padding:80px 0 60px;border-top:1px solid var(--border);">
+  <div style="max-width:680px;margin:0 auto;padding:0 24px;">
+    <div style="font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">About the Author</div>
+    <div style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+      <div style="width:80px;height:80px;border-radius:4px;background:var(--bg3);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--accent);font-weight:700;">T</div>
+      <div style="flex:1;min-width:240px;">
+        <div style="font-size:18px;font-weight:700;color:var(--paper);margin-bottom:8px;">Tyson Architect</div>
+        <p style="font-size:14px;color:var(--paper2);line-height:1.8;margin-bottom:12px;">Tyson Architect is the creator of the Human Architect system — a 90-day execution framework built from five books and seven named protocols. His work sits at the intersection of identity reconstruction, dietary reset, and performance optimisation. He writes at <a href="https://humanarchitect8.substack.com" target="_blank" rel="noopener" style="color:var(--accent);">Human Architect on Substack</a> and has spent years developing, testing, and refining the protocols with a private community of men executing the full system.</p>
+        <p style="font-size:13px;color:var(--paper3);line-height:1.7;">Not a doctor. Not a coach. A systems builder. The Human Architect content is educational — built from research, self-experimentation, and real execution data from the men who have run the full 90-day protocol.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="testi" id="testimonials">
  <p style="text-align:center;font-size:11px;color:rgba(245,241,232,0.45);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Individual experiences. Not typical results and not a guarantee of outcome.</p>
  <div class="wrap">
@@ -2105,7 +2132,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <div style="font-size:10px; letter-spacing:.2em; color:var(--accent); text-transform:uppercase; margin-bottom:12px;">Question 2 of 3</div>
  <div style="font-size:18px; font-family:var(--serif); font-weight:300; color:var(--paper); margin-bottom:20px;">What is the hardest thing to quit?</div>
  <div style="display:flex; flex-direction:column; gap:8px;">
- <button onclick="quizAnswer(2,'porn')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Porn — I have tried to stop. It always comes back</button>
+ <button onclick="quizAnswer(2,'porn')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Screen habits — I have tried to stop. They always come back</button>
  <button onclick="quizAnswer(2,'screens')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Screens and scrolling — hours vanish</button>
  <button onclick="quizAnswer(2,'food')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">Food — I eat what I know is not good for me</button>
  <button onclick="quizAnswer(2,'all')" style="text-align:left; padding:14px 18px; background:var(--bg3); border:1px solid var(--border); border-radius:10px; color:var(--paper); font-size:13px; cursor:pointer; transition:all .2s; -webkit-tap-highlight-color:transparent;">All of it. Nothing feels in my control</button>
@@ -2222,6 +2249,9 @@ function submitQuizEmail() {
  <li><a href="#books">THE BOOKS</a></li>
  <li><a href="#faq">FAQ</a></li>
  <li><a href="/privacy.html">PRIVACY</a></li>
+ <li><a href="/terms.html">TERMS</a></li>
+ <li><a href="/refund-policy.html">REFUNDS</a></li>
+ <li><a href="/contact.html">CONTACT</a></li>
  </ul>
  </div>
 </footer>
@@ -2335,12 +2365,12 @@ var books = [
  {file: "/book-previews/life-force-energy/warrior-p11.webp", label: "Warrior's Recovery"}
  ],
  inside: [
- "Semen retention science: testosterone elevation on day 7 and dopamine receptor resensitization over 90 days",
+ "Focus and energy: measurable shifts in drive and clarity over 90 days of execution",
  "Kundalini, chi, and cross-cultural energy transmutation traditions decoded",
  "The Warrior's Recovery Protocol: a 90-day system with named phases, daily targets, and measurable hormonal outcomes",
  "The Dark Knight Phase: the day 7-14 wall and what the protocol tells you to do when dopamine crashes",
  "Energy redirection: how retained sexual energy channels into creative and physical output",
- "Measurable hormonal shifts: what the research shows about retention and testosterone — track it, confirm it, build on it",
+ "Measurable performance shifts: what tracking shows about focus and consistency — measure it, confirm it, build on it",
  "30, 60, and 90-day transformation timelines from the Warrior's Recovery Protocol"
  ],
  disclaimer: "Educational content only. Not medical advice. Individual results may vary. Consult a healthcare professional for personal health decisions."
@@ -2360,13 +2390,13 @@ var books = [
  {file: "/book-previews/quit-prn/halt-protocol-p22.webp", label: "HALT Protocol"}
  ],
  inside: [
- "Dopamine hijack: how porn rewires reward circuitry and drops baseline motivation",
+ "Reward system reset: how compulsive habits lower baseline drive and how to reverse it",
  "The precise 21-day Quit PRN reboot: day-by-day instructions with zero ambiguity",
  "Trigger identification using HALT and BED: the craving loop decoded neurologically",
  "BED environment engineering: structural change that makes relapse harder than recovery",
  "Accountability architecture for the moments your own resolve is not enough",
  "Relapse protocol: exact steps for the slip that is not a failure",
- "Life after porn: clarity, drive, and confidence measured by the men who executed"
+ "Life after the reset: clarity, drive, and confidence measured by the men who executed"
  ],
  disclaimer: "Educational content only. Not a substitute for professional therapy or medical advice. If you struggle with compulsive behavior, seek qualified support."
  }
@@ -3214,5 +3244,70 @@ if (reveals.length) {
 } catch(e) { console.error("JS init error:", e); }
 </script>
 
+
+// Sticky CTA: show after scrolling past hero
+var stickyCta = document.getElementById('stickyCta');
+if (stickyCta) {
+  var stickyObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0 });
+  // Observe the stats section (below hero)
+  var statsSection = document.getElementById('stats') || document.querySelector('.stats') || document.querySelector('.stat');
+  if (statsSection) stickyObserver.observe(statsSection);
+  // Fallback: show after 800px scroll
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 800) stickyCta.classList.add('visible');
+    else stickyCta.classList.remove('visible');
+  }, { passive: true });
+}
+
+<!-- Cookie Consent Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>We use cookies for analytics and retargeting. By continuing, you accept our <a href="/privacy.html">Privacy Policy</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookies()">Decline</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Accept</button>
+  </div>
+</div>
+
+<!-- Analytics Placeholder — OWNER MUST REPLACE IDs -->
+<script>
+// Cookie consent
+function acceptCookies() {
+  localStorage.setItem('cookie_consent', 'accepted');
+  document.getElementById('cookieBanner').classList.remove('visible');
+  // TODO: Owner to insert Meta Pixel + GA4 init here
+  // Example: !function(f,b,e,v,n,t,s){...}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  // fbq('init', 'YOUR_PIXEL_ID'); fbq('track', 'PageView');
+  // gtag('config', 'GA4_MEASUREMENT_ID');
+}
+function declineCookies() {
+  localStorage.setItem('cookie_consent', 'declined');
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+// Show banner if no consent stored
+if (!localStorage.getItem('cookie_consent')) {
+  setTimeout(function(){ document.getElementById('cookieBanner').classList.add('visible'); }, 1500);
+}
+</script>
+
+// Lead magnet: show after quiz completion
+function showLeadMagnet() {
+  var el = document.getElementById('freeDownload');
+  if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior: 'auto' }); }
+}
+function sendLeadMagnet() {
+  var email = document.getElementById('leadEmail').value;
+  if (!email || !email.includes('@')) { alert('Enter a valid email.'); return; }
+  // TODO: Owner to connect to email service (Substack, ConvertKit, etc.)
+  // For now, open mailto as fallback
+  window.location.href = 'mailto:support@human-architect-site.vercel.app?subject=HALT Protocol Request&body=Send me the free HALT Protocol. Email: ' + encodeURIComponent(email);
+}
 </body>
 </html>
