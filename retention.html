@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>The Most Powerful Resource in Your Body | Human Architect by Tyson Architect</title>
   <meta name="description" content="Semen retention protocol video — the science of what happens when you stop leaking your most powerful biochemical resource.">
   <meta property="og:title" content="The Most Powerful Resource in Your Body | Human Architect">
@@ -20,7 +20,7 @@
       --accent:#c8ff00;--text:rgba(255,255,255,.92);--muted:rgba(255,255,255,.5);
       --font:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     }
-    html{background:var(--bg);scroll-behavior:smooth}
+    html{background:var(--bg);scroll-behavior:auto}
     body{font-family:var(--font);color:var(--text);background:var(--bg);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
     /* Nav */
@@ -30,33 +30,47 @@
     .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
     .nav-links a{font-size:10px;letter-spacing:.25em;text-transform:uppercase;text-decoration:none;color:var(--muted);font-weight:600;transition:color .2s}
     .nav-links a:hover{color:var(--accent)}
-    .nav-cta{font-size:10px !important;letter-spacing:.15em !important;padding:9px 20px !important;border:1px solid var(--accent) !important;border-radius:99px !important;color:var(--accent) !important;text-decoration:none !important;font-weight:800 !important;transition:all .2s !important}
-    .nav-cta:hover{background:var(--accent) !important;color:#000 !important}
+    .nav-cta{font-size:10px!important;letter-spacing:.15em!important;padding:9px 20px!important;border:1px solid var(--accent)!important;border-radius:99px!important;color:var(--accent)!important;text-decoration:none!important;font-weight:800!important;transition:all .2s!important;white-space:nowrap}
+    .nav-cta:hover{background:var(--accent)!important;color:#000!important}
+    .hamburger{display:none;background:none;border:none;color:var(--text);cursor:pointer;padding:8px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
 
     /* Video Page */
-    .video-page{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 56px);padding:48px 20px 80px}
-    .vp-heading{text-align:center;max-width:720px;margin:0 auto 40px}
+    .video-page{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:calc(100vh - 56px);padding:48px 20px 80px}
+    .vp-heading{text-align:center;max-width:720px;margin:0 auto 32px}
     .vp-eyebrow{font-size:10px;letter-spacing:.35em;color:var(--accent);text-transform:uppercase;font-weight:700;margin-bottom:16px}
-    .vp-title{font-size:clamp(28px,5vw,52px);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px}
+    .vp-title{font-size:clamp(26px,6vw,52px);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
     .vp-title em{font-style:normal;color:var(--accent)}
     .vp-body{font-size:15px;line-height:1.75;color:var(--muted);max-width:560px;margin:0 auto}
     .vp-body strong{color:var(--text);font-weight:600}
 
     /* Video */
-    .video-frame{width:100%;max-width:800px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#000}
-    .video-frame video{width:100%;height:auto;display:block}
+    .video-frame{width:100%;max-width:800px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#000;aspect-ratio:16/9}
+    .video-frame video{width:100%;height:100%;display:block;object-fit:cover}
 
     /* CTA */
-    .vp-cta{margin-top:48px;text-align:center}
+    .vp-cta{margin-top:40px;text-align:center}
     .vp-cta p{font-size:12px;color:var(--muted);margin-bottom:16px;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
     .btn{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;border-radius:99px;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:all .2s;cursor:pointer;border:none}
     .btn-accent{background:var(--accent);color:#000}
     .btn-accent:hover{filter:brightness(1.1);transform:translateY(-1px)}
 
-    @media(max-width:600px){
-      .video-page{padding:32px 12px 60px}
-      .vp-title{font-size:26px}
-      .video-frame{border-radius:10px}
+    /* Mobile menu */
+    .mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,10,10,.98);z-index:200;flex-direction:column;justify-content:center;align-items:center;gap:32px;padding:40px}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:22px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;color:var(--text);font-weight:300;font-family:Georgia,serif}
+    .mobile-menu .nav-cta{font-size:14px!important;padding:14px 32px!important}
+    .menu-close{position:absolute;top:18px;right:18px;background:none;border:1px solid var(--border);color:var(--paper);cursor:pointer;padding:12px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:600;z-index:201;border-radius:9999px;min-width:46px;min-height:46px;display:flex;align-items:center;justify-content:center}
+
+    /* ── MOBILE ── */
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .hamburger{display:flex;align-items:center;gap:6px}
+      .video-page{padding:32px 16px 60px}
+      .vp-title{font-size:clamp(24px,8vw,42px)}
+      .vp-body{font-size:14px}
+      .video-frame{border-radius:10px;aspect-ratio:16/9}
+      .vp-heading{margin-bottom:24px}
+      .vp-cta{margin-top:32px}
     }
   </style>
 </head>
@@ -67,12 +81,22 @@
     <a href="/" class="nav-logo">Human Architect</a>
     <ul class="nav-links">
       <li><a href="/#books">The Books</a></li>
-      <li><a href="/#rebuild">90-Day Rebuild</a></li>
+      <li><a href="/#roadmap">90-Day Rebuild</a></li>
       <li><a href="/#faq">FAQ</a></li>
       <li><a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="nav-cta">GET THE SYSTEM</a></li>
     </ul>
+    <button class="hamburger" onclick="document.body.querySelector('.mobile-menu').classList.add('open')" aria-label="Menu">MENU</button>
   </div>
 </nav>
+
+<!-- Mobile fullscreen menu -->
+<div class="mobile-menu">
+  <button class="menu-close" onclick="this.parentElement.classList.remove('open')">X</button>
+  <a href="/#books" onclick="document.querySelector('.mobile-menu').classList.remove('open')">The Books</a>
+  <a href="/#roadmap" onclick="document.querySelector('.mobile-menu').classList.remove('open')">90-Day Rebuild</a>
+  <a href="/#faq" onclick="document.querySelector('.mobile-menu').classList.remove('open')">FAQ</a>
+  <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="nav-cta">GET THE SYSTEM</a>
+</div>
 
 <main class="video-page">
   <div class="vp-heading">
@@ -84,8 +108,8 @@
   <div class="video-frame">
     <video
       controls
-      preload="auto"
-      poster="https://files.catbox.moe/u7ckm9.jpg"
+      preload="metadata"
+      poster="/semen-retention-poster.jpg"
       playsinline
     >
       <source src="/videos/semen-retention.mp4" type="video/mp4">
