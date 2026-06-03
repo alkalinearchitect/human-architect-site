@@ -1920,26 +1920,35 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
   }
 
   // ═══════════════════════════════════════════════════
-  // MATRIX RAIN — movie accurate
-  // Each column: bright white head → green trail → fade
-  // Characters morph as they fall. SLOW and CINEMATIC.
+  // MATRIX RAIN — film accurate
+  // Tight columns, long trails, varied speeds, dense characters
   // ═══════════════════════════════════════════════════
   var raf=null,cols=[];
-  var FONT=14;
-  var TRAIL=18; // how many trailing chars per column
+  // Tuned for film look: small font, tight spacing, long trails
+  var FONT=11;           // small = fine-grained like the film
+  var FONT_GAP=9.5;      // horizontal spacing — tight columns
+  var TRAIL_MIN=25;      // minimum trail length
+  var TRAIL_MAX=60;      // maximum trail length — long cascading streams
+  var MORPH_RATE=0.12;   // probability of char morphing per frame
+  var FADE_ALPHA=0.022;  // very slow fade = trails linger (film look)
+  var SPEED_FAST=2.5;    // fast columns (film has both fast and slow)
+  var SPEED_SLOW=0.4;    // slow columns
+  function rchr(){return String.fromCharCode(0x30A0+Math.floor(Math.random()*96))}
   function buildCols(){
-    var n=Math.ceil(cv.width/FONT)+1;
+    var n=Math.ceil(cv.width/FONT_GAP)+2;
     cols=[];
     for(var i=0;i<n;i++){
+      var trailLen=TRAIL_MIN+Math.floor(Math.random()*(TRAIL_MAX-TRAIL_MIN));
       var col={
-        x:i*FONT,
-        y:Math.random()*(cv.height+800)-800,
-        s:0.6+Math.random()*1.4, // SLOW cinematic speed — 0.6 to 2.0 px/frame
-        chars:[] // trail buffer
+        x:i*FONT_GAP,
+        y:Math.random()*(cv.height+1200)-1200,
+        // Film has dramatically different speeds — some fast, some slow
+        s:SPEED_SLOW+Math.random()*(SPEED_FAST-SPEED_SLOW),
+        len:trailLen,
+        chars:[]
       };
-      // pre-fill trail with random katakana
-      for(var t=0;t<TRAIL;t++){
-        col.chars.push(String.fromCharCode(0x30A0+Math.floor(Math.random()*96)));
+      for(var t=0;t<trailLen;t++){
+        col.chars.push(rchr());
       }
       cols.push(col);
     }
@@ -1948,52 +1957,80 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
     function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;buildCols()}
     window.addEventListener('resize',resize);resize();
     var ctx=cv.getContext('2d');
-    (function draw(){
-      // Fade trail — creates the "wash" effect
-      ctx.fillStyle='rgba(0,0,0,0.035)';
+    ctx.font='bold 11px monospace';
+    // Pre-compute color LUT for trail fade (no per-char string alloc in draw loop)
+    // head=white, near=bright green, mid=green, tail=fade to black
+    var colorLUT=[];
+    for(var ci=0;ci<TRAIL_MAX;ci++){
+      var ratio=ci/TRAIL_MAX;
+      if(ci===0){
+        colorLUT[ci]='#e8ffe8';  // near-white bright head
+      }else if(ci===1){
+        colorLUT[ci]='#39ff14';  // neon green
+      }else if(ci===2){
+        colorLUT[ci]='#00e620';  // bright green
+      }else if(ci<8){
+        colorLUT[ci]='#00b818';  // strong green
+      }else{
+        // Smooth alpha fade from green to black
+        var alpha=Math.max(0,1-ratio*1.8);
+        var g=Math.round(120+Math.random()*40); // slight variation
+        colorLUT[ci]='rgba(0,'+g+',24,'+alpha.toFixed(2)+')';
+      }
+    }
+    function draw(){
+      // Slow fade creates the "wash" effect — trails linger like the film
+      ctx.fillStyle='rgba(0,0,0,'+FADE_ALPHA+')';
       ctx.fillRect(0,0,cv.width,cv.height);
-      ctx.font='bold 14px monospace';
+      ctx.font='bold 11px monospace';
+      ctx.textBaseline='top';
       for(var i=0;i<cols.length;i++){
         var c=cols[i];
-        // New random char at head
-        var ch=String.fromCharCode(0x30A0+Math.floor(Math.random()*96));
-        c.chars.unshift(ch);
-        if(c.chars.length>TRAIL) c.chars.pop();
-        // Draw trail → head
+        // Push new char at head
+        c.chars.unshift(rchr());
+        if(c.chars.length>c.len) c.chars.pop();
+        // Draw entire column from head to tail
         for(var t=0;t<c.chars.length;t++){
           var cy=c.y-t*FONT;
-          if(cy<0||cy>cv.height+FONT) break;
-          if(t===0){
-            // HEAD: near-white (no shadowBlur = smooth)
-            ctx.fillStyle='#d4ffd4';
-          } else if(t<3){
-            // Near head: bright green (no shadowBlur)
-            ctx.fillStyle='#39ff14';
-          } else if(t<6){
-            ctx.fillStyle='#00cc22';
-          } else {
-            var alpha=1-(t/TRAIL);
-            ctx.fillStyle='rgba(0,204,34,'+alpha.toFixed(2)+')';
+          if(cy<-FONT||cy>cv.height+FONT) continue;
+          // Use color LUT but add slight randomness to tail chars for organic feel
+          if(t>=8&&Math.random()>0.7){
+            // Occasionally brighten a "dead" trail char (film has random bright pulses)
+            ctx.fillStyle='#00ff33';
+          }else{
+            ctx.fillStyle=colorLUT[t]||'rgba(0,80,16,0.03)';
           }
           ctx.fillText(c.chars[t],c.x,cy);
         }
-        // Randomly morph a trailing char (the "flicker" effect)
-        if(Math.random()>0.85){
-          var idx=2+Math.floor(Math.random()*(c.chars.length-2));
-          if(idx<c.chars.length) c.chars[idx]=String.fromCharCode(0x30A0+Math.floor(Math.random()*96));
+        // Morph random chars in the trail (the signature flicker)
+        if(Math.random()<MORPH_RATE){
+          var mi=2+Math.floor(Math.random()*(c.chars.length-2));
+          if(mi<c.chars.length) c.chars[mi]=rchr();
+        }
+        // Multiple morphs for denser flicker
+        if(Math.random()<MORPH_RATE*0.5){
+          var mi2=4+Math.floor(Math.random()*Math.min(20,c.chars.length-4));
+          if(mi2<c.chars.length) c.chars[mi2]=rchr();
         }
         c.y+=c.s;
-        if(c.y-TRAIL*FONT>cv.height+100){
-          c.y=-Math.random()*600;
-          c.s=0.6+Math.random()*1.4;
-          // reset trail
-          for(var t=0;t<TRAIL;t++){
-            c.chars[t]=String.fromCharCode(0x30A0+Math.floor(Math.random()*96));
+        // Reset column when it falls off screen
+        if(c.y-(c.len*FONT)>cv.height+200){
+          c.y=-(200+Math.random()*800);
+          c.len=TRAIL_MIN+Math.floor(Math.random()*(TRAIL_MAX-TRAIL_MIN));
+          c.s=SPEED_SLOW+Math.random()*(SPEED_FAST-SPEED_SLOW);
+          // Occasionally make a column FAST (film signature)
+          if(Math.random()<0.1) c.s=SPEED_FAST+Math.random()*1.5;
+          while(c.chars.length<c.len) c.chars.push(rchr());
+          while(c.chars.length>c.len) c.chars.pop();
+          // Re-randomize some chars
+          for(var rr=0;rr<Math.min(10,c.len);rr++){
+            c.chars[rr]=rchr();
           }
         }
       }
       raf=requestAnimationFrame(draw);
-    })();
+    }
+    draw();
   }
 
   var t2,t3,t4;
