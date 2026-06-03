@@ -1784,303 +1784,92 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 
 </head>
 <body>
-<style id="mi-block">html{overflow:hidden!important}</style>
+<style>
+/* ═══ NAV MATRIX RAIN ═══ */
+#nav-rain{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  opacity:1;transition:opacity 2.5s ease-out;
+}
+#nav-rain.done{opacity:0}
+</style>
 
 <script>
 ;(function(){
-  function init(){
-  try{
-  // ALWAYS show intro (no sessionStorage guard — was blocking repeat views)
-  // ── Device Detection ──
-  var deviceName='your device';
-  (function(){
-    var ua=navigator.userAgent,p=navigator.platform;
-    var sW=screen.width,sH=screen.height,dpr=window.devicePixelRatio||1;
-    // Apple
-    if(/iPhone/.test(ua)){
-      if(sW>=430&&dpr>=3)deviceName='iPhone 16 Pro Max';
-      else if(sW>=402&&dpr>=3)deviceName='iPhone 16 Pro';
-      else if(sW>=393)deviceName='iPhone 16';
-      else if(sW>=390)deviceName='iPhone 15/14 Pro';
-      else if(sW>=375)deviceName='iPhone';
-      else deviceName='iPhone SE';
-    } else if(/iPad/.test(ua)){
-      if(sW>=1032)deviceName='iPad Pro 13';
-      else if(sW>=1024)deviceName='iPad Pro 11';
-      else if(sW>=834)deviceName='iPad Air';
-      else if(sW>=820)deviceName='iPad';
-      else deviceName='iPad Mini';
-    } else if(p==='MacIntel'||/Mac OS X/.test(ua)){
-      deviceName='Mac';
-    }
-    // Samsung
-    else if(/Samsung/.test(ua)||/SM-[GTN]/.test(ua)){
-      var sm=ua.match(/SM-(\w+)/);
-      deviceName=sm?'Samsung Galaxy ('+sm[1]+')':'Samsung Galaxy';
-    }
-    // Google Pixel
-    else if(/Pixel/.test(ua)){
-      var px=ua.match(/Pixel\s?\d[a-z]?/);
-      deviceName=px?px[0]:'Google Pixel';
-    }
-    // OnePlus
-    else if(/OnePlus/.test(ua)){
-      var op=ua.match(/OnePlus\s?\w+/);
-      deviceName=op?op[0]:'OnePlus';
-    }
-    // Huawei
-    else if(/Huawei/.test(ua)||/HONOR/.test(ua)){
-      deviceName=/HONOR/.test(ua)?'HONOR':'Huawei';
-    }
-    // Sony
-    else if(/Sony/.test(ua)||/Xperia/.test(ua))deviceName='Sony Xperia';
-    // Xiaomi
-    else if(/Xiaomi/.test(ua)||/Mi\s/.test(ua)||/Redmi/.test(ua))deviceName='Xiaomi';
-    // Microsoft Surface
-    else if(/Surface/.test(ua))deviceName='Surface';
-    // Generic Windows/Mac/Linux desktop
-    else if(/Windows/.test(ua))deviceName='PC';
-    else if(/Linux/.test(ua)&&!/Android/.test(ua))deviceName='Linux PC';
-  })();
-
-  var GREEN='#39ff14';
-  var GLOW='0 0 8px #39ff14,0 0 20px #39ff14,0 0 40px #00ff41';
-
-  // Minimal text: 3 lines max
-  var LINES=[
-    {t:'Wake up.',d:1200},
-    {t:'Reality isn\'t what you think it is.',d:1800},
-    {t:'You\'ve been lied to.',d:600},
-    {t:'Break free.',d:600}
-  ];
-
-  // Build overlay
-  var ov=document.createElement('div');
-  ov.style.cssText='position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:2147483647;background:#000;overflow:hidden;font-family:monospace;transition:opacity 2.5s ease-out';
-
-  var kf=document.createElement('style');
-  kf.textContent='@keyframes _mc{0%,100%{opacity:1}50%{opacity:0}}.mg{animation:_mg .08s forwards}@keyframes _mg{0%{opacity:0}100%{opacity:1}}';
-  document.head.appendChild(kf);
-
-  // Terminal box — centered, no headline clutter
-  var tw=document.createElement('div');
-  tw.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center';
-  var tb=document.createElement('div');
-  tb.style.cssText='padding:20px;max-width:560px;width:100%';
-
-  var lineEls=[];
-  for(var i=0;i<LINES.length;i++){
-    var el=document.createElement('div');
-    el.style.cssText='font-size:16px;line-height:2.6;color:'+GREEN+';opacity:0;text-shadow:0 0 8px '+GREEN+',0 0 20px '+GREEN+',0 0 40px #00ff41';
-    el.setAttribute('data-t',LINES[i].t);
-    tb.appendChild(el);
-    lineEls.push(el);
-  }
-  var cur=document.createElement('span');
-  cur.style.cssText='display:inline-block;width:9px;height:16px;background:'+GREEN+';margin-left:3px;vertical-align:middle;animation:_mc .7s step-end infinite;box-shadow:0 0 6px '+GREEN+',0 0 14px '+GREEN+'';
-  tb.appendChild(cur);
-  tw.appendChild(tb);
-
-  var rw=document.createElement('div');
-  rw.style.cssText='position:absolute;inset:0;opacity:0';
+  var nav=document.getElementById('nav');
+  if(!nav)return;
   var cv=document.createElement('canvas');
-  cv.style.cssText='position:absolute;left:0;top:0;width:100%;height:100%';
-  rw.appendChild(cv);
+  cv.id='nav-rain';
+  nav.style.position='relative';
+  nav.appendChild(cv);
 
-  ov.appendChild(rw);
-  ov.appendChild(tw);
-  document.body.appendChild(ov);
-
-  // Glitch-type: each char scrambles before settling
-  var CHARS='アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF';
-  var timers=[];
-  function typeLine(idx,done){
-    if(idx>=LINES.length){done();return}
-    var el=lineEls[idx],target=el.getAttribute('data-t'),pos=0;
-    el.style.opacity='1';
-    (function tick(){
-      if(pos>=target.length){
-        timers.push(setTimeout(function(){typeLine(idx+1,done)},LINES[idx].d));
-        return;
-      }
-      var glitches=target[pos]===' '?0:2+Math.floor(Math.random()*2);
-      var g=0;
-      (function glitchStep(){
-        if(g<glitches){
-          el.textContent=target.substring(0,pos)+CHARS[Math.floor(Math.random()*CHARS.length)];
-          g++;
-          timers.push(setTimeout(glitchStep,40));
-        } else {
-          el.textContent=target.substring(0,pos+1);
-          pos++;
-          timers.push(setTimeout(tick,30+Math.random()*20));
-        }
-      })();
-    })();
-  }
-
-  // ═══════════════════════════════════════════════════
-  // MATRIX RAIN — film accurate
-  // Tight columns, long trails, varied speeds, dense characters
-  // ═══════════════════════════════════════════════════
-  var raf=null,cols=[];
-  // Tuned for film look: small font, tight spacing, long trails
-  var FONT=11;           // small = fine-grained like the film
-  var FONT_GAP=9.5;      // horizontal spacing — tight columns
-  var TRAIL_MIN=25;      // minimum trail length
-  var TRAIL_MAX=60;      // maximum trail length — long cascading streams
-  var MORPH_RATE=0.12;   // probability of char morphing per frame
-  var FADE_ALPHA=0.022;  // very slow fade = trails linger (film look)
-  var SPEED_FAST=2.5;    // fast columns (film has both fast and slow)
-  var SPEED_SLOW=0.4;    // slow columns
+  var FONT=10,FONT_GAP=8,TRAIL_MIN=8,TRAIL_MAX=22;
+  var FADE=0.06,SPEED_FAST=1.8,SPEED_SLOW=0.3;
+  var cols=[],raf;
   function rchr(){return String.fromCharCode(0x30A0+Math.floor(Math.random()*96))}
-  function buildCols(){
-    var n=Math.ceil(cv.width/FONT_GAP)+2;
+
+  function build(){
+    var n=Math.ceil(nav.offsetWidth/FONT_GAP)+1;
     cols=[];
     for(var i=0;i<n;i++){
-      var trailLen=TRAIL_MIN+Math.floor(Math.random()*(TRAIL_MAX-TRAIL_MIN));
-      var col={
-        x:i*FONT_GAP,
-        y:Math.random()*(cv.height+1200)-1200,
-        // Film has dramatically different speeds — some fast, some slow
-        s:SPEED_SLOW+Math.random()*(SPEED_FAST-SPEED_SLOW),
-        len:trailLen,
-        chars:[]
-      };
-      for(var t=0;t<trailLen;t++){
-        col.chars.push(rchr());
-      }
-      cols.push(col);
+      var len=TRAIL_MIN+Math.floor(Math.random()*(TRAIL_MAX-TRAIL_MIN));
+      var c={x:i*FONT_GAP,y:Math.random()*nav.offsetHeight*2-nav.offsetHeight,s:SPEED_SLOW+Math.random()*(SPEED_FAST-SPEED_SLOW),len:len,chars:[]};
+      for(var t=0;t<len;t++)c.chars.push(rchr());
+      cols.push(c);
     }
   }
-  function startRain(){
-    function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;buildCols()}
-    window.addEventListener('resize',resize);resize();
-    var ctx=cv.getContext('2d');
-    ctx.font='bold 11px monospace';
-    // Pre-compute color LUT for trail fade (no per-char string alloc in draw loop)
-    // head=white, near=bright green, mid=green, tail=fade to black
-    var colorLUT=[];
-    for(var ci=0;ci<TRAIL_MAX;ci++){
-      var ratio=ci/TRAIL_MAX;
-      if(ci===0){
-        colorLUT[ci]='#e8ffe8';  // near-white bright head
-      }else if(ci===1){
-        colorLUT[ci]='#39ff14';  // neon green
-      }else if(ci===2){
-        colorLUT[ci]='#00e620';  // bright green
-      }else if(ci<8){
-        colorLUT[ci]='#00b818';  // strong green
-      }else{
-        // Smooth alpha fade from green to black
-        var alpha=Math.max(0,1-ratio*1.8);
-        var g=Math.round(120+Math.random()*40); // slight variation
-        colorLUT[ci]='rgba(0,'+g+',24,'+alpha.toFixed(2)+')';
+
+  function resize(){cv.width=nav.offsetWidth;cv.height=nav.offsetHeight;build()}
+  window.addEventListener('resize',resize);resize();
+  var ctx=cv.getContext('2d');
+  ctx.font='bold 10px monospace';
+  ctx.textBaseline='top';
+
+  // Pre-compute colors
+  var LUT=[];
+  for(var i=0;i<TRAIL_MAX;i++){
+    if(i===0)LUT[i]='#e8ffe8';
+    else if(i===1)LUT[i]='#39ff14';
+    else if(i<4)LUT[i]='#00cc22';
+    else{var a=Math.max(0,1-i/TRAIL_MAX);LUT[i]='rgba(0,180,30,'+a.toFixed(2)+')'}
+  }
+
+  function draw(){
+    ctx.fillStyle='rgba(0,0,0,'+FADE+')';
+    ctx.fillRect(0,0,cv.width,cv.height);
+    ctx.font='bold 10px monospace';
+    for(var i=0;i<cols.length;i++){
+      var c=cols[i];
+      c.chars.unshift(rchr());
+      if(c.chars.length>c.len)c.chars.pop();
+      for(var t=0;t<c.chars.length;t++){
+        var cy=c.y-t*FONT;
+        if(cy<-FONT||cy>cv.height)continue;
+        ctx.fillStyle=LUT[t]||'rgba(0,60,12,0.05)';
+        ctx.fillText(c.chars[t],c.x,cy);
+      }
+      if(Math.random()<0.15){
+        var mi=2+Math.floor(Math.random()*(c.chars.length-2));
+        if(mi<c.chars.length)c.chars[mi]=rchr();
+      }
+      c.y+=c.s;
+      if(c.y-c.len*FONT>cv.height+50){
+        c.y=-Math.random()*nav.offsetHeight;
+        c.s=SPEED_SLOW+Math.random()*(SPEED_FAST-SPEED_SLOW);
+        if(Math.random()<0.15)c.s=SPEED_FAST+Math.random()*0.8;
       }
     }
-    function draw(){
-      // Slow fade creates the "wash" effect — trails linger like the film
-      ctx.fillStyle='rgba(0,0,0,'+FADE_ALPHA+')';
-      ctx.fillRect(0,0,cv.width,cv.height);
-      ctx.font='bold 11px monospace';
-      ctx.textBaseline='top';
-      for(var i=0;i<cols.length;i++){
-        var c=cols[i];
-        // Push new char at head
-        c.chars.unshift(rchr());
-        if(c.chars.length>c.len) c.chars.pop();
-        // Draw entire column from head to tail
-        for(var t=0;t<c.chars.length;t++){
-          var cy=c.y-t*FONT;
-          if(cy<-FONT||cy>cv.height+FONT) continue;
-          // Use color LUT but add slight randomness to tail chars for organic feel
-          if(t>=8&&Math.random()>0.7){
-            // Occasionally brighten a "dead" trail char (film has random bright pulses)
-            ctx.fillStyle='#00ff33';
-          }else{
-            ctx.fillStyle=colorLUT[t]||'rgba(0,80,16,0.03)';
-          }
-          ctx.fillText(c.chars[t],c.x,cy);
-        }
-        // Morph random chars in the trail (the signature flicker)
-        if(Math.random()<MORPH_RATE){
-          var mi=2+Math.floor(Math.random()*(c.chars.length-2));
-          if(mi<c.chars.length) c.chars[mi]=rchr();
-        }
-        // Multiple morphs for denser flicker
-        if(Math.random()<MORPH_RATE*0.5){
-          var mi2=4+Math.floor(Math.random()*Math.min(20,c.chars.length-4));
-          if(mi2<c.chars.length) c.chars[mi2]=rchr();
-        }
-        c.y+=c.s;
-        // Reset column when it falls off screen
-        if(c.y-(c.len*FONT)>cv.height+200){
-          c.y=-(200+Math.random()*800);
-          c.len=TRAIL_MIN+Math.floor(Math.random()*(TRAIL_MAX-TRAIL_MIN));
-          c.s=SPEED_SLOW+Math.random()*(SPEED_FAST-SPEED_SLOW);
-          // Occasionally make a column FAST (film signature)
-          if(Math.random()<0.1) c.s=SPEED_FAST+Math.random()*1.5;
-          while(c.chars.length<c.len) c.chars.push(rchr());
-          while(c.chars.length>c.len) c.chars.pop();
-          // Re-randomize some chars
-          for(var rr=0;rr<Math.min(10,c.len);rr++){
-            c.chars[rr]=rchr();
-          }
-        }
-      }
-      raf=requestAnimationFrame(draw);
-    }
-    draw();
+    raf=requestAnimationFrame(draw);
   }
+  draw();
 
-  var t2,t3,t4;
-
-  // Phase2: fade terminal, rain fades in, then everything dissolves into site
-  function phase2(){
-    tw.style.transition='opacity 1.8s';
-    tw.style.opacity='0';
-    rw.style.transition='opacity 3s';
-    rw.style.opacity='1';
-    // After terminal gone (2s), hold rain for 4s, then dissolve overlay into site
-    t3=setTimeout(function(){
-      ov.style.transition='opacity 3s ease-out';
-      ov.style.opacity='0';
-      t4=setTimeout(cleanup,3200);
-    },5800);
-  }
-
-  function cleanup(){
-    // no sessionStorage — always show
-    if(raf)cancelAnimationFrame(raf);
-    timers.forEach(function(t){clearTimeout(t)});
-    clearTimeout(t2);clearTimeout(t3);clearTimeout(t4);
-    if(ov.parentNode)ov.remove();
-    var bs=document.getElementById('mi-block');
-    if(bs)bs.remove();
-    if(kf.parentNode)kf.remove();
-  }
-
-  // Start: rain runs immediately but invisible, typing starts after 400ms
-  startRain();
-  rw.style.opacity='0';
-  t2=setTimeout(function(){
-    typeLine(0,function(){
-      cur.style.display='none';
-      clearTimeout(t2);
-      t2=setTimeout(phase2,800);
-    });
-  },400);
-
-  }catch(e){
-    var er=document.createElement('div');
-    er.style.cssText='position:fixed;top:0;left:0;z-index:99999;background:red;color:white;padding:20px;font-family:monospace;font-size:14px';
-    er.textContent='Matrix error: '+e.message;
-    document.body.appendChild(er);
-  }
-  }
-
-  // Run when body is ready
-  if(document.body){init()}else{document.addEventListener('DOMContentLoaded',init)}
+  // Hold rain for 3.5s then fade out — site is visible underneath
+  setTimeout(function(){
+    cv.classList.add('done');
+    setTimeout(function(){
+      if(raf)cancelAnimationFrame(raf);
+      cv.remove();
+    },2600);
+  },3500);
 })();
 </script>
 
