@@ -74,7 +74,7 @@
  "description": "5 books, 7 named protocols, 90-day execution plan for complete human restoration. Alkaline reset, dopamine reset, energy-drain audit, identity architecture, energy discipline.",
  "brand": {"@type": "Brand", "name": "Human Architect"},
  "url": "https://human-architect-site.vercel.app/",
- "image": "hero-correct.webp",
+ "image": "https://alkalinearchitect.github.io/human-architect-site/hero-correct.webp",
  "offers": {
  "@type": "Offer",
  "url": "https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae",
@@ -1780,71 +1780,11 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 }
 .founder-portrait { display: none; }
 </style></noscript>
-<link rel="preload" as="image" href="/hero-correct.webp" type="image/webp">
+<link rel="preload" as="image" href="hero-correct.webp" type="image/webp">
 
 </head>
 <body>
-<style id="ii-block">html{overflow:hidden!important}</style>
-
-<script>
-;(function(){
-  function init(){
-  try{
-  var ov=document.createElement('div');
-  ov.id='intro-overlay';
-  ov.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden';
-
-  var vid=document.createElement('video');
-  vid.id='intro-vid';
-  vid.src='/videos/intro.mp4';
-  vid.muted=false;
-  vid.playsInline=true;
-  vid.preload='auto';
-  vid.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000';
-
-  /* Muted autoplayfallback — try unmuted first, fall back to muted */
-  vid.muted=false;
-  var p=vid.play();
-  if(p&&p.catch){p.catch(function(){vid.muted=true;vid.play()})}
-
-  /* Skip button */
-  var skip=document.createElement('button');
-  skip.textContent='SKIP';
-  skip.style.cssText='position:absolute;bottom:max(48px,env(safe-area-inset-bottom) + 24px);right:24px;z-index:2147483648;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.25);border-radius:4px;padding:8px 20px;font-size:11px;font-weight:600;letter-spacing:0.12em;cursor:pointer;transition:opacity 0.3s;opacity:0;font-family:system-ui,-apple-system,sans-serif;backdrop-filter:blur(8px)';
-  /* Fade in skip after 1.5s so it doesn\'t ruin the opening */
-  var skipTimer=setTimeout(function(){skip.style.opacity='1'},1500);
-
-  function dismiss(){
-    clearTimeout(skipTimer);
-    ov.style.transition='opacity 1.2s ease-out';
-    ov.style.opacity='0';
-    setTimeout(function(){
-      if(ov.parentNode)ov.remove();
-      var bs=document.getElementById('ii-block');
-      if(bs)bs.remove();
-    },1300);
-  }
-
-  skip.addEventListener('click',dismiss);
-  vid.addEventListener('ended',dismiss);
-
-  ov.appendChild(vid);
-  ov.appendChild(skip);
-  document.body.appendChild(ov);
-
-  }catch(e){
-    var er=document.createElement('div');
-    er.style.cssText='position:fixed;top:0;left:0;z-index:99999;background:red;color:white;padding:20px;font-family:monospace;font-size:14px';
-    er.textContent='Intro error: '+e.message;
-    document.body.appendChild(er);
-    var bs=document.getElementById('ii-block');
-    if(bs)bs.remove();
-  }
-  }
-
-  if(document.body){init()}else{document.addEventListener('DOMContentLoaded',init)}
-})();
-</script>
+<script src="matrix-intro.js"></script>
 
 
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -1858,7 +1798,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <ul class="nav-links">
  <li><a href="#books">The Books</a></li>
  <li><a href="#roadmap">The Protocol</a></li>
- <li><a href="/retention">Documentary</a></li>
+ <li><a href="retention.html">Documentary</a></li>
  <li><a href="#faq">FAQ</a></li>
  <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="btn bp hero-btn-main">Get the System</a>
  </ul>
@@ -1873,7 +1813,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  <button class="mobi-close" id="mobiClose">CLOSE</button>
  <a href="#books">The Books</a>
  <a href="#roadmap">The Protocol</a>
- <a href="/retention">Documentary</a>
+ <a href="retention.html">Documentary</a>
  <a href="#faq">FAQ</a>
  <a href="https://shop.beacons.ai/alkalinearchitect/35dfea2c-5da1-46eb-8952-af717d9eaeae" target="_blank" class="btn bp hero-btn-main">Get the System</a>
 </div>
@@ -1882,7 +1822,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 <main id="main" role="main">
 
 <!-- BREADCRUMB -->
-<!-- BREADCRUMB --><nav aria-label="Breadcrumb" class="breadcrumb"><div class="wrap"><ol><li><a href="/">Home</a></li><li><a href="#books">The Books</a></li><li><a href="#roadmap">The Protocol</a></li><li><span aria-current="page">FAQ</span></li></ol></div></nav>
+<!-- BREADCRUMB --><nav aria-label="Breadcrumb" class="breadcrumb"><div class="wrap"><ol><li><a href="./">Home</a></li><li><a href="#books">The Books</a></li><li><a href="#roadmap">The Protocol</a></li><li><span aria-current="page">FAQ</span></li></ol></div></nav>
 
 <section class="hero">
  <div class="hero-img-wrap">
@@ -2302,7 +2242,7 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
  </div>
  <label style="display:flex;align-items:flex-start;gap:8px;margin-top:10px;cursor:pointer;">
  <input type="checkbox" id="quizConsent" onchange="document.getElementById('quizSubmitBtn').disabled = !this.checked" style="margin-top:2px;width:14px;height:14px;accent-color:var(--accent);">
- <span style="font-size:10px;color:var(--paper3);line-height:1.4;">I agree to receive emails about the Human Architect system. I can unsubscribe at any time. See our <a href="/privacy.html" style="color:var(--accent);text-decoration:underline;">privacy policy</a>.</span>
+ <span style="font-size:10px;color:var(--paper3);line-height:1.4;">I agree to receive emails about the Human Architect system. I can unsubscribe at any time. See our <a href="privacy.html" style="color:var(--accent);text-decoration:underline;">privacy policy</a>.</span>
  </label>
  <div style="margin-top:6px; font-size:10px; color:var(--paper3);">We do not share your data. Ever.</div>
  </div>
@@ -2391,10 +2331,10 @@ function submitQuizEmail() {
  <li><a href="#guarantee">GUARANTEE</a></li>
  <li><a href="#books">THE BOOKS</a></li>
  <li><a href="#faq">FAQ</a></li>
- <li><a href="/privacy.html">PRIVACY</a></li>
- <li><a href="/terms.html">TERMS</a></li>
- <li><a href="/refund-policy.html">REFUNDS</a></li>
- <li><a href="/contact.html">CONTACT</a></li>
+ <li><a href="privacy.html">PRIVACY</a></li>
+ <li><a href="terms.html">TERMS</a></li>
+ <li><a href="refund-policy.html">REFUNDS</a></li>
+ <li><a href="contact.html">CONTACT</a></li>
  </ul>
  </div>
 </footer>
@@ -2422,15 +2362,15 @@ var books = [
  category: "Health, Reset & Nutrition",
  pages: 357,
  desc: "The foundation. Remove acid, mucus, and stored toxins in 21 days. 125 recipes. Exact ratios. Lymphatic activation. Circadian eating. Breathwork and cold. Every protocol answers one question — what is stealing your power right now, and how do we remove it yesterday?",
- cover: "/book-covers/alkaline-awakening.webp",
+ cover: "book-covers/alkaline-awakening.webp",
  previews: [
- {file: "/book-covers/alkaline-awakening.webp", label: "Cover"},
- {file: "/book-previews/alkaline-awakening/breathwork-p2.webp", label: "Breathwork & Ice Baths"},
- {file: "/book-previews/alkaline-awakening/ph-balance-p3.webp", label: "pH Balance & Lymphatic"},
- {file: "/book-previews/alkaline-awakening/circadian-rhythm-p4.webp", label: "Circadian Eating"},
- {file: "/book-previews/alkaline-awakening/recipes-p7.webp", label: "Alkaline Recipes"},
- {file: "/book-previews/alkaline-awakening/harmony-p17.webp", label: "Natural Design"},
- {file: "/book-previews/alkaline-awakening/6-staples-p40.webp", label: "Alkaline University"}
+ {file: "book-covers/alkaline-awakening.webp", label: "Cover"},
+ {file: "book-previews/alkaline-awakening/breathwork-p2.webp", label: "Breathwork & Ice Baths"},
+ {file: "book-previews/alkaline-awakening/ph-balance-p3.webp", label: "pH Balance & Lymphatic"},
+ {file: "book-previews/alkaline-awakening/circadian-rhythm-p4.webp", label: "Circadian Eating"},
+ {file: "book-previews/alkaline-awakening/recipes-p7.webp", label: "Alkaline Recipes"},
+ {file: "book-previews/alkaline-awakening/harmony-p17.webp", label: "Natural Design"},
+ {file: "book-previews/alkaline-awakening/6-staples-p40.webp", label: "Alkaline University"}
  ],
  inside: [
  "Blood pH optimization: the 7.35-7.45 window that governs oxygen delivery and enzyme function",
@@ -2451,12 +2391,12 @@ var books = [
  category: "Consciousness & Creation",
  pages: 204,
  desc: "The philosophy that makes every protocol hold. Your DNA is code, not chance. You were built for dominion over your own biology. Start living from the blueprint.",
- cover: "/book-covers/intelligent-design.webp",
+ cover: "book-covers/intelligent-design.webp",
  previews: [
- {file: "/book-covers/intelligent-design.webp", label: "Cover"},
- {file: "/book-previews/intelligent-design/cover-p1.webp", label: "Inside Page"},
- {file: "/book-previews/intelligent-design/eye-marvel-p24.webp", label: "The Human Eye"},
- {file: "/book-previews/intelligent-design/human-brain-p18.webp", label: "The Human Brain"}
+ {file: "book-covers/intelligent-design.webp", label: "Cover"},
+ {file: "book-previews/intelligent-design/cover-p1.webp", label: "Inside Page"},
+ {file: "book-previews/intelligent-design/eye-marvel-p24.webp", label: "The Human Eye"},
+ {file: "book-previews/intelligent-design/human-brain-p18.webp", label: "The Human Brain"}
  ],
  inside: [
  "The DNA code as language: information theory at the foundation of biological architecture",
@@ -2476,11 +2416,11 @@ var books = [
  category: "Health, Reset & Energy",
  pages: 70,
  desc: "Unexplained fatigue. Brain fog. Gut issues nothing resolves. What is living inside you. Identify. Cleanse. Reclaim what it stole. If fatigue has not responded to anything, start here.",
- cover: "/book-covers/parasite-conspiracy.webp",
+ cover: "book-covers/parasite-conspiracy.webp",
  previews: [
- {file: "/book-covers/parasite-conspiracy.webp", label: "Cover"},
- {file: "/book-previews/parasite-conspiracy/cover-p1.webp", label: "Inside Page"},
- {file: "/book-previews/parasite-conspiracy/protocols-p3.webp", label: "Energy Audit Protocols"}
+ {file: "book-covers/parasite-conspiracy.webp", label: "Cover"},
+ {file: "book-previews/parasite-conspiracy/cover-p1.webp", label: "Inside Page"},
+ {file: "book-previews/parasite-conspiracy/protocols-p3.webp", label: "Energy Audit Protocols"}
  ],
  inside: [
  "Why parasitic infection is more common than standard panels test for",
@@ -2500,12 +2440,12 @@ var books = [
  category: "Discipline, Energy & Vitality",
  pages: 163,
  desc: "Energy is the most powerful resource you will ever possess. Ninety days of Warrior's Recovery redirects what you've been losing into something compounding. This is not motivation — it is architecture.",
- cover: "/book-covers/life-force-energy.webp",
+ cover: "book-covers/life-force-energy.webp",
  previews: [
- {file: "/book-covers/life-force-energy.webp", label: "Cover"},
- {file: "/book-previews/life-force-energy/cover-p1.webp", label: "Inside Page"},
- {file: "/book-previews/life-force-energy/magnetism-p5.webp", label: "Science of Magnetism"},
- {file: "/book-previews/life-force-energy/warrior-p11.webp", label: "Warrior's Recovery"}
+ {file: "book-covers/life-force-energy.webp", label: "Cover"},
+ {file: "book-previews/life-force-energy/cover-p1.webp", label: "Inside Page"},
+ {file: "book-previews/life-force-energy/magnetism-p5.webp", label: "Science of Magnetism"},
+ {file: "book-previews/life-force-energy/warrior-p11.webp", label: "Warrior's Recovery"}
  ],
  inside: [
  "Focus and energy: measurable shifts in drive and clarity over 90 days of execution",
@@ -2525,12 +2465,12 @@ var books = [
  category: "Discipline, Recovery & Self-Control",
  pages: 44,
  desc: "A dopamine cage with a door that opens from inside. Twenty-one days. HALT audits the trigger. BED engineers your environment. The wall hits day 7-14. Protocol tells you what to do. This is a demolition plan.",
- cover: "/book-covers/quit-prn-manual.webp",
+ cover: "book-covers/quit-prn-manual.webp",
  previews: [
- {file: "/book-covers/quit-prn-manual.webp", label: "Cover"},
- {file: "/book-previews/quit-prn/cover-p1.webp", label: "Inside Page"},
- {file: "/book-previews/quit-prn/conservation-p2.webp", label: "Energy Conservation"},
- {file: "/book-previews/quit-prn/halt-protocol-p22.webp", label: "HALT Protocol"}
+ {file: "book-covers/quit-prn-manual.webp", label: "Cover"},
+ {file: "book-previews/quit-prn/cover-p1.webp", label: "Inside Page"},
+ {file: "book-previews/quit-prn/conservation-p2.webp", label: "Energy Conservation"},
+ {file: "book-previews/quit-prn/halt-protocol-p22.webp", label: "HALT Protocol"}
  ],
  inside: [
  "Reward system reset: how compulsive habits lower baseline drive and how to reverse it",
@@ -3404,7 +3344,7 @@ if (stickyCta) {
 
 <!-- Cookie Consent Banner -->
 <div class="cookie-banner" id="cookieBanner">
-  <p>We use cookies for analytics and retargeting. By continuing, you accept our <a href="/privacy.html">Privacy Policy</a>.</p>
+  <p>We use cookies for analytics and retargeting. By continuing, you accept our <a href="privacy.html">Privacy Policy</a>.</p>
   <div class="cookie-btns">
     <button class="cookie-decline" onclick="declineCookies()">Decline</button>
     <button class="cookie-accept" onclick="acceptCookies()">Accept</button>
