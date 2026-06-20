@@ -31,6 +31,12 @@ jobs:
           mkdir -p _site
           cp index.html robots.txt sitemap.xml _site/
           cp -r public _site/
+          for dir in book-covers book-previews videos; do
+            if [ -d "$dir" ]; then
+              cp -r "$dir" _site/
+              echo "Copied $dir/"
+            fi
+          done
           echo "Prepared site files for deployment"
 
       - name: Upload artifact
