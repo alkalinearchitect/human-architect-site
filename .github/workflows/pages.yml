@@ -29,7 +29,8 @@ jobs:
       - name: Prepare deployment directory
         run: |
           mkdir -p _site
-          cp index.html robots.txt sitemap.xml _site/
+          # Copy all root-level HTML, JS, CSS, images, and data files
+          cp *.html *.js *.css *.webp *.png *.jpg *.jpeg *.svg *.ico *.json *.txt *.xml _site/ 2>/dev/null || true
           cp -r public _site/
           for dir in book-covers book-previews videos; do
             if [ -d "$dir" ]; then
@@ -38,6 +39,7 @@ jobs:
             fi
           done
           echo "Prepared site files for deployment"
+          ls -la _site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
