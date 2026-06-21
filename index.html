@@ -798,27 +798,21 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 <!-- BREADCRUMB -->
 <!-- BREADCRUMB --><nav aria-label="Breadcrumb" class="breadcrumb"><div class="wrap"><ol><li><a href="./">Home</a></li><li><a href="#books">The Books</a></li><li><a href="#roadmap">The Protocol</a></li><li><span aria-current="page">FAQ</span></li></ol></div></nav>
 
-<section class="hero">
- <div class="hero-video-wrap" id="hero-threejs">
-  <!-- Three.js Matrix rain replaces video for WebGL browsers -->
-  <canvas id="matrix-hero-canvas"></canvas>
-  <!-- Fallback video for non-WebGL -->
-  <video autoplay muted loop playsinline poster="videos/intro-poster.jpg" class="hero-video" id="hero-fallback-video" style="display:none;">
-   <source src="videos/intro-hero.mp4" type="video/mp4;">
-  </video>
- </div>
- <div class="hero-img-wrap">
+<!-- HERO - MATRIX PARTICLE RAIN -->
+<section class="hero" id="hero">
+ <canvas id="matrix-rain-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;"></canvas>
+ <div class="hero-img-wrap" style="z-index:0;">
   <img src="hero-correct.webp" alt="" class="hero-bg-img" width="1586" height="992" loading="eager">
  </div>
  <div class="hero-headline-wrap" style="position:absolute; bottom:12%; left:0; right:0; text-align:center; padding:0 24px; z-index:5;">
- <p class="hero-eyebrow reveal" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">BY TYSON ARCHITECT</p>
- <h1 id="hero-headline">
- <span class="word">You are built</span>
- <span class="word">for more</span>
- <span class="word illuminate">than this.</span>
- <span class="word">Something is</span>
- <span class="word">stealing it.</span>
- </h1>
+  <p class="hero-eyebrow reveal" style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">BY TYSON ARCHITECT</p>
+  <h1 id="hero-headline">
+   <span class="word">You are built</span>
+   <span class="word">for more</span>
+   <span class="word illuminate">than this.</span>
+   <span class="word">Something is</span>
+   <span class="word">stealing it.</span>
+  </h1>
  </div>
 </section>
 
@@ -1599,105 +1593,6 @@ function startProtocolFromBook(slug) {
  }, 200);
 }
 
-// HERO CINEMATIC: Word stagger + morph + canvas particles
-function initHeroCinematic() {
- // Word stagger — null-safe
- var words = document.querySelectorAll("#hero-headline .word");
- var stolenWord = document.querySelector("#hero-headline .word.illuminate");
- if (stolenWord) {
- stolenWord.style.transition = "all 0.5s cubic-bezier(.22,1,.36,1)";
- stolenWord.classList.add("visible");
- }
- var delay = 120;
- words.forEach(function(w, i) {
- if (w.classList.contains("illuminate")) return;
- setTimeout(function() { w.classList.add("visible"); }, delay * (i + 1));
- });
-
- // Hero rule reveal — null-safe
- setTimeout(function(){
- var r = document.getElementById('hero-rule');
- if (r) r.classList.add('visible');
- }, 180 * (words.length + 1));
-
- // Morphing text — null-safe (element may not exist)
- var morphEl = document.getElementById("morph-text");
- if (morphEl) {
- var phrases = [
- "You are tired. Not the kind sleep fixes. The kind where you wake up foggy, push through your day on autopilot, and lie awake at night knowing you were built for more than this. Something is stealing it. I spent years letting it happen. Then I found the leaks. Now I am going to show you where yours are.",
- "Mucusless Diet. Warrior's Recovery. Dark Knight Protocol. HALT. V=P-O. Circulation. Identity Shift. Seven named protocols. One system. Ninety days.",
- "According to Tyson Architect: the V=P-O Formula governs every result. Power is fixed. Obstruction is variable. Remove what drains you. Power returns."
- ];
- var phraseIndex = 0;
- setInterval(function() {
- morphEl.style.transition = "opacity .4s, transform .4s";
- morphEl.style.opacity = "0";
- morphEl.style.transform = "translateY(8px)";
- setTimeout(function() {
- phraseIndex = (phraseIndex + 1) % phrases.length;
- morphEl.textContent = phrases[phraseIndex];
- morphEl.style.transition = "opacity .6s, transform .6s";
- morphEl.style.opacity = "1";
- morphEl.style.transform = "translateY(0)";
- }, 420);
- }, 5200);
- }
-
- // Crimson particle canvas
- var canvas = document.getElementById("hero-canvas");
- if (!canvas) return;
- // Crimson particle canvas — skip on mobile for perf
- if (window.innerWidth < 768) {
- canvas.style.display = 'none';
- return;
- }
- var ctx = canvas.getContext("2d");
- var particles = [];
-
- function resizeCanvas() {
- canvas.width = window.innerWidth;
- canvas.height = Math.max(720, window.innerHeight * 0.9);
- }
- window.addEventListener("resize", resizeCanvas);
- resizeCanvas();
-
- function createParticle() {
- return {
- x: Math.random() * canvas.width,
- y: Math.random() * canvas.height * 0.7,
- size: Math.random() * 2.2 + 0.6,
- speed: Math.random() * 0.35 + 0.12,
- opacity: Math.random() * 0.5 + 0.25
- };
- }
-
- for (var i = 0; i < 38; i++) {
- particles.push(createParticle());
- }
-
- function draw() {
- ctx.clearRect(0, 0, canvas.width, canvas.height);
- ctx.fillStyle = "#c8ff00";
-
- for (var i = 0; i < particles.length; i++) {
- var p = particles[i];
- ctx.globalAlpha = p.opacity;
- ctx.fillRect(p.x, p.y, p.size, p.size);
-
- p.y += p.speed;
- p.opacity -= 0.0008;
-
- if (p.y > canvas.height * 0.85 || p.opacity <= 0.02) {
- particles[i] = createParticle();
- particles[i].y = 20;
- }
- }
- ctx.globalAlpha = 1;
- requestAnimationFrame(draw);
- }
- draw();
-}
-
 // Progress bar
 function updateProgress() {
  var st = window.scrollY;
@@ -1719,9 +1614,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
  renderBooks();
  renderPreviews();
- initHeroCinematic();
-
-
+ 
+ 
  // Reveal observer
  var obs = new IntersectionObserver(function(entries) {
  for (var i = 0; i < entries.length; i++) {
@@ -1867,17 +1761,6 @@ document.addEventListener("DOMContentLoaded", function() {
  el.classList.add('will-reveal');
  observer.observe(el);
  });
-
- // ── PARALLAX HERO CANVAS ──
- var heroCanvas = document.getElementById('hero-canvas');
- if (heroCanvas) {
- window.addEventListener('scroll', function() {
- var scrolled = window.pageYOffset;
- if (scrolled < window.innerHeight) {
- heroCanvas.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
- }
- }, { passive: true });
- }
 
  // ── SMOOTH SCROLL FOR ANCHOR LINKS ──
  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
@@ -2353,52 +2236,116 @@ function sendLeadMagnet() {
   document.head.appendChild(s);
 })();
 </script>
-<script>
-(function(){
-  var gl=document.createElement("canvas").getContext("webgl");
-  if(!gl){var fb=document.getElementById("hero-fallback-video");if(fb)fb.style.display="block";return;}
-  var wrap=document.getElementById("hero-threejs");
-  if(wrap){var v=wrap.querySelector("video");if(v)v.remove();var fb=document.getElementById("hero-fallback-video");if(fb)fb.remove();}
-  var c=document.getElementById("matrix-hero-canvas");
-  if(!c){c=document.createElement("canvas");c.id="matrix-hero-canvas";c.style.cssText="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;";if(wrap)wrap.appendChild(c);}
-  var S=new THREE.Scene(),cam=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,.1,1000);
-  var R=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true});R.setSize(window.innerWidth,window.innerHeight);R.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  var N=3000,pos=new Float32Array(N*3),col=new Float32Array(N*3),sz=new Float32Array(N),vel=new Float32Array(N);
-  for(var i=0;i<N;i++){pos[i*3]=(Math.random()-.5)*60;pos[i*3+1]=(Math.random()-.5)*60;pos[i*3+2]=(Math.random()-.5)*60;col[i*3]=.05+Math.random()*.15;col[i*3+1]=.5+Math.random()*.5;col[i*3+2]=.05+Math.random()*.1;sz[i]=Math.random()*3+.5;vel[i]=Math.random()*1+.2;}
-  var G=new THREE.BufferGeometry();G.setAttribute("position",new THREE.BufferAttribute(pos,3));G.setAttribute("color",new THREE.BufferAttribute(col,3));G.setAttribute("size",new THREE.BufferAttribute(sz,1));
-  var VS="attribute float size;attribute vec3 color;varying vec3 vC;void main(){vC=color;vec4 mv=modelViewMatrix*vec4(position,1.0);gl_PointSize=size*(200.0/-mv.z);gl_Position=projectionMatrix*mv;}";
-  var FS="varying vec3 vC;void main(){float d=length(gl_PointCoord-vec2(0.5));if(d>.5)discard;float a=1.0-d*2.0;gl_FragColor=vec4(vC,a*0.6);}";
-  var M=new THREE.ShaderMaterial({vertexShader:VS,fragmentShader:FS,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false});
-  var P=new THREE.Points(G,M);S.add(P);cam.position.z=30;
-  var mx=0,my=0;
-  document.addEventListener("mousemove",function(e){mx=(e.clientX/window.innerWidth-.5)*2;my=(e.clientY/window.innerHeight-.5)*2;});
-  var clk=new THREE.Clock();
-  function anim(){requestAnimationFrame(anim);
-    var dt=clk.getDelta(),p=G.attributes.position.array;
-    for(var i=0;i<N;i++){p[i*3+1]-=vel[i]*dt*15;if(p[i*3+1]<-30){p[i*3+1]=30;p[i*3]=(Math.random()-.5)*60;p[i*3+2]=(Math.random()-.5)*60;}}
-    G.attributes.position.needsUpdate=true;
-    cam.position.x+=(mx*5-cam.position.x)*.03;
-    cam.position.y+=(-my*5-cam.position.y)*.03;
-    cam.lookAt(S.position);
-    P.rotation.y+=.0003;
-    R.render(S,cam);
-  }anim();
-  window.addEventListener("resize",function(){cam.aspect=window.innerWidth/window.innerHeight;cam.updateProjectionMatrix();R.setSize(window.innerWidth,window.innerHeight);});
-  console.log("Matrix OK");
-})();
-</script>
+
+<!-- Three.js + GSAP: Matrix Particle Rain & Scroll Parallax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
-  if(typeof gsap==="undefined")return;
-  gsap.registerPlugin(ScrollTrigger);
-  var h=document.querySelector(".hero"),w=document.querySelector(".hero-video-wrap");
-  if(!h||!w)return;
-  gsap.to(w,{scrollTrigger:{trigger:h,start:"top top",end:"bottom top",scrub:1},scale:1.15,y:-60,ease:"none"});
-  var hl=document.querySelector(".hero-headline-wrap");
-  if(hl)gsap.to(hl,{scrollTrigger:{trigger:h,start:"top top",end:"center top",scrub:1},opacity:0,scale:.95,y:-30,ease:"none"});
-  console.log("Scroll OK");
+  // ── MATRIX PARTICLE RAIN ──
+  var canvas = document.getElementById('matrix-rain-canvas');
+  if (!canvas) return;
+
+  // Skip on mobile for performance
+  if (window.innerWidth < 768) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // Particles
+  var count = 3000;
+  var positions = new Float32Array(count * 3);
+  var colors = new Float32Array(count * 3);
+  var sizes = new Float32Array(count);
+  var velocities = new Float32Array(count);
+
+  for (var i = 0; i < count; i++) {
+    positions[i * 3]     = (Math.random() - 0.5) * 60;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 60;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 60;
+    colors[i * 3]     = 0.05 + Math.random() * 0.15;  // R
+    colors[i * 3 + 1] = 0.5 + Math.random() * 0.5;    // G
+    colors[i * 3 + 2] = 0.05 + Math.random() * 0.1;   // B
+    sizes[i] = Math.random() * 3 + 0.5;
+    velocities[i] = Math.random() * 1 + 0.2;
+  }
+
+  var geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+  var vertexShader = 'attribute float size; attribute vec3 color; varying vec3 vColor; void main() { vColor = color; vec4 mv = modelViewMatrix * vec4(position, 1.0); gl_PointSize = size * (200.0 / -mv.z); gl_Position = projectionMatrix * mv; }';
+  var fragmentShader = 'varying vec3 vColor; void main() { float d = length(gl_PointCoord - vec2(0.5)); if (d > 0.5) discard; float a = 1.0 - d * 2.0; gl_FragColor = vec4(vColor, a * 0.6); }';
+
+  var material = new THREE.ShaderMaterial({
+    vertexShader: vertexShader,
+    fragmentShader: fragmentShader,
+    transparent: true,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
+  });
+
+  var particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+  camera.position.z = 30;
+
+  // Mouse tracking
+  var mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', function(e) {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+
+  var clock = new THREE.Clock();
+  function animate() {
+    requestAnimationFrame(animate);
+    var dt = clock.getDelta();
+    var pos = geometry.attributes.position.array;
+    for (var i = 0; i < count; i++) {
+      pos[i * 3 + 1] -= velocities[i] * dt * 15;
+      if (pos[i * 3 + 1] < -30) {
+        pos[i * 3 + 1] = 30;
+        pos[i * 3] = (Math.random() - 0.5) * 60;
+        pos[i * 3 + 2] = (Math.random() - 0.5) * 60;
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+    camera.position.x += (mouseX * 5 - camera.position.x) * 0.03;
+    camera.position.y += (-mouseY * 5 - camera.position.y) * 0.03;
+    camera.lookAt(scene.position);
+    particles.rotation.y += 0.0003;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', function() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // ── GSAP SCROLL PARALLAX ──
+  if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    var hero = document.querySelector('.hero');
+    var heroHeadline = document.querySelector('.hero-headline-wrap');
+    if (hero && heroHeadline) {
+      gsap.to(heroHeadline, {
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'center top', scrub: 1 },
+        opacity: 0, scale: 0.95, y: -30, ease: 'none'
+      });
+    }
+  }
+
+  console.log('Matrix Rain + Scroll Parallax initialized');
 })();
 </script>
 
