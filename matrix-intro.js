@@ -9,13 +9,25 @@
 
   try{if(sessionStorage.getItem('matrixintro-done'))return}catch(e){}
 
-  // ── Kid the page instantly ──
+  // ── Failsafe: ALWAYS reveal page after 12s max ──
+  var failsafeTimer=setTimeout(function(){
+    var b=document.querySelector('style');
+    if(b&&b.textContent&&b.textContent.indexOf('visibility:hidden')!==-1&&b.parentNode)b.remove();
+    var ov2=document.getElementById('matrix-intro-overlay');
+    if(ov2&&ov2.parentNode)ov2.remove();
+    document.documentElement.style.visibility='';
+    if(document.body){document.body.style.visibility='';document.body.style.overflow=''}
+    try{sessionStorage.setItem('matrixintro-done','1')}catch(e){}
+  },12000);
+
+  // ── Hide the page instantly ──
   var blocker=document.createElement('style');
   blocker.textContent='html,body{visibility:hidden!important;overflow:hidden!important}';
   document.head.appendChild(blocker);
 
   // ── Full-screen canvas overlay ──
   var ov=document.createElement('div');
+  ov.id='matrix-intro-overlay';
   ov.style.cssText='position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:2147483647;background:#000;overflow:hidden;transition:opacity 2.5s ease-out .3s;font-family:Courier New,Courier,monospace;text-align:center';
 
   var cv=document.createElement('canvas');
@@ -153,6 +165,7 @@
   }
 
   function cleanup(){
+    clearTimeout(failsafeTimer);
     try{sessionStorage.setItem('matrixintro-done','1')}catch(e){}
     if(raf)cancelAnimationFrame(raf);
     timers.forEach(function(t){clearTimeout(t)});
