@@ -799,9 +799,12 @@ h1, h2, h3 { font-family:var(--serif); font-weight:300; letter-spacing:-0.045em;
 <!-- BREADCRUMB --><nav aria-label="Breadcrumb" class="breadcrumb"><div class="wrap"><ol><li><a href="./">Home</a></li><li><a href="#books">The Books</a></li><li><a href="#roadmap">The Protocol</a></li><li><span aria-current="page">FAQ</span></li></ol></div></nav>
 
 <section class="hero">
- <div class="hero-video-wrap">
-  <video autoplay muted loop playsinline poster="videos/intro-poster.jpg" class="hero-video">
-   <source src="videos/intro-hero.mp4" type="video/mp4">
+ <div class="hero-video-wrap" id="hero-threejs">
+  <!-- Three.js Matrix rain replaces video for WebGL browsers -->
+  <canvas id="matrix-hero-canvas"></canvas>
+  <!-- Fallback video for non-WebGL -->
+  <video autoplay muted loop playsinline poster="videos/intro-poster.jpg" class="hero-video" id="hero-fallback-video" style="display:none;">
+   <source src="videos/intro-hero.mp4" type="video/mp4;">
   </video>
  </div>
  <div class="hero-img-wrap">
@@ -2350,5 +2353,8 @@ function sendLeadMagnet() {
   document.head.appendChild(s);
 })();
 </script>
+<!-- Three.js Matrix Hero Intro -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/matrix-intro.js"></script>
 </body>
 </html>
