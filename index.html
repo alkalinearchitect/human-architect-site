@@ -1786,7 +1786,6 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 </style></noscript>
 <link rel="preload" as="image" href="hero-correct.webp" type="image/webp">
 
-<style>html{visibility:hidden!important;overflow:hidden!important}</style>
 <script>
 /**
  * Matrix Film Intro — Human Architect
@@ -1796,12 +1795,21 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
 ;(function(){
   'use strict';
 
+  // Only show once per session
   try{if(sessionStorage.getItem('matrixintro-done-v2'))return}catch(e){}
+
+  // ── Hide the page (only if we're showing the effect) ──
+  var blocker=document.createElement('style');
+  blocker.id='matrix-blocker';
+  blocker.textContent='html{visibility:hidden!important;overflow:hidden!important}';
+  document.head.appendChild(blocker);
 
   // ── Failsafe: ALWAYS reveal page after 12s max ──
   var failsafeTimer=setTimeout(function(){
     var ov2=document.getElementById('matrix-intro-overlay');
     if(ov2&&ov2.parentNode)ov2.remove();
+    var blk2=document.getElementById('matrix-blocker');
+    if(blk2&&blk2.parentNode)blk2.remove();
     document.documentElement.style.visibility='';
     document.documentElement.style.overflow='';
     if(document.body){document.body.style.visibility='';document.body.style.overflow=''}
@@ -1952,8 +1960,8 @@ noscript .fade-up { opacity: 1 !important; transform: none !important; }
     try{sessionStorage.setItem('matrixintro-done-v2','1')}catch(e){}
     if(raf)cancelAnimationFrame(raf);
     timers.forEach(function(t){clearTimeout(t)});
-    var blk=document.querySelector('style');
-    while(blk&&blk.textContent&&blk.textContent.indexOf('visibility:hidden')!==-1){var n=blk.nextSibling;blk.remove();blk=n&&n.tagName==='STYLE'?n:null}
+    var blk=document.getElementById('matrix-blocker');
+    if(blk&&blk.parentNode)blk.remove();
     if(ov.parentNode)ov.remove();
     document.documentElement.style.visibility='';
     document.documentElement.style.overflow='';
