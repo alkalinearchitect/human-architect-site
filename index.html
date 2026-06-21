@@ -2237,40 +2237,80 @@ function sendLeadMagnet() {
 })();
 </script>
 
-<!-- Matrix Rain + Scroll Parallax — Pure Canvas 2D, no WebGL/CDN -->
+<!-- Matrix Rain — Film-Authentic Digital Rain Effect -->
 <script>
 (function(){
   var canvas = document.getElementById('matrix-rain-canvas');
   if(!canvas) return;
   var ctx = canvas.getContext('2d');
-  var w, h, chars = '0123456789ABCDEF', columns, drops;
+  var w, h, fontSize=14, columns, drops, speeds, brightness;
   
-  function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;columns=Math.floor(w/20);drops=[];for(var i=0;i<columns;i++)drops[i]=Math.random()*h/20;}
+  function resize(){
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=window.innerHeight;
+    columns=Math.floor(w/fontSize);
+    drops=[]; speeds=[]; brightness=[];
+    for(var i=0;i<columns;i++){
+      drops[i]=(Math.random()*h/fontSize)*-1;
+      speeds[i]=0.5+Math.random()*1.5;
+      brightness[i]=0.3+Math.random()*0.7;
+    }
+  }
   resize();
   window.addEventListener('resize',resize);
   
-  var mx=0,my=0;
-  document.addEventListener('mousemove',function(e){mx=(e.clientX/w-.5)*2;my=(e.clientY/h-.5)*2;});
+  var mx=0;
+  document.addEventListener('mousemove',function(e){mx=(e.clientX/w-.5)*3;});
+  
+  // Matrix characters — katakana + numbers + letters
+  var chars='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF';
   
   function draw(){
-    ctx.fillStyle='rgba(0,0,0,0.08)';
+    // Semi-transparent black overlay for trail effect
+    ctx.fillStyle='rgba(0,0,0,0.06)';
     ctx.fillRect(0,0,w,h);
-    ctx.fillStyle='#00ff66';
-    ctx.shadowColor='#00ff66';
-    ctx.shadowBlur=8;
-    ctx.font='18px monospace';
+    
     for(var i=0;i<drops.length;i++){
-      var char=chars[Math.floor(Math.random()*chars.length)];
-      var x=i*20+drops[i]*mx*0.5;
-      var y=drops[i]*20+my*20;
-      ctx.fillText(char,x,y);
-      if(y>h&&Math.random()>0.975)drops[i]=0;
-      drops[i]+=0.5+Math.random()*0.5;
+      var x=i*fontSize+mx*drops[i]*0.3;
+      var y=drops[i]*fontSize;
+      
+      // Brightness varies by position — head of stream is brightest
+      var headBright=brightness[i];
+      var r=0;
+      var g=Math.floor(180*headBright+75);
+      var b=Math.floor(50*headBright);
+      
+      // Draw the leading character (brightest)
+      ctx.fillStyle='rgba('+r+','+g+','+b+',1)';
+      ctx.shadowColor='#00ff66';
+      ctx.shadowBlur=15;
+      ctx.font=fontSize+'px monospace';
+      ctx.fillText(chars[Math.floor(Math.random()*chars.length)],x,y);
+      
+      // Draw trailing characters (fading)
+      for(var j=1;j<15;j++){
+        var trailY=y-j*fontSize;
+        if(trailY<0) break;
+        var fade=1-(j/15);
+        ctx.fillStyle='rgba('+r+','+Math.floor(g*fade)+','+Math.floor(b*fade)+','+fade*0.8+')';
+        ctx.shadowBlur=0;
+        ctx.fillText(chars[Math.floor(Math.random()*chars.length)],x,trailY);
+      }
+      
+      // Move drop down
+      drops[i]+=speeds[i];
+      
+      // Reset when off screen
+      if(drops[i]*fontSize>h+200){
+        drops[i]=(Math.random()*100+50)*-1;
+        speeds[i]=0.5+Math.random()*1.5;
+        brightness[i]=0.3+Math.random()*0.7;
+      }
     }
     requestAnimationFrame(draw);
   }
   draw();
-  console.log('Matrix Rain OK');
+  console.log('Matrix Rain Film-Authentic OK');
 })();
 </script>
 </body>
