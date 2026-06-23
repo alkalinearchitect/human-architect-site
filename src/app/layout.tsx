@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${jetbrains.variable}`}>
-      <body className="bg-[#0a0a0f] text-[#f0f0f0] font-sans antialiased">
+      <body style={{ background: 'var(--color-void)', color: 'var(--color-text)' }} className="font-sans antialiased">
         <ScrollProgress />
         <GrainOverlay />
         <Header />
@@ -40,6 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: '.reveal{opacity:1!important;transform:none!important}'
           }} />
         </noscript>
+        {/* Plausible Analytics */}
+        <Script
+          defer
+          data-domain="alkalinearchitect.github.io"
+          src="https://plausible.io/js/script.tagged-events.outbound-links.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
